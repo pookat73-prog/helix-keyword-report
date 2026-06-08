@@ -111,6 +111,7 @@
   .badge-symptom{background:var(--surface-2);color:var(--ink-dim);border:1px solid var(--line);}
   .badge-hospital{background:var(--blue-soft);color:var(--blue);}
   .badge-general{background:#f5f5f5;color:#999;border:1px solid #e0e0e0;}
+  .badge-ambiguous{background:var(--purple-soft);color:var(--purple);border:1px solid rgba(107,79,168,.25);margin-left:4px;cursor:help;}
   .comp-badge{display:inline-block;padding:1.5px 7px;border-radius:4px;font-size:10px;font-weight:600;}
   .comp-badge.high{background:var(--red-soft);color:var(--red);}
   .comp-badge.mid{background:var(--gold-soft);color:var(--gold);}
@@ -625,11 +626,11 @@ const ALL_DATA = [
   {kw:'강아지치과',         mobile:990, pc:180,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:false},
   {kw:'동물치과',           mobile:270, pc:30, comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:false},
   // 건강검진
-  {kw:'강아지건강검진비용', mobile:2470,pc:270,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
-  {kw:'고양이건강검진비용', mobile:1600,pc:240,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
-  {kw:'강아지건강검진',     mobile:1180,pc:240,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'강아지건강검진비용', mobile:2470,pc:270,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:true, kwType:'treatment'},
+  {kw:'고양이건강검진비용', mobile:1600,pc:240,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:true, kwType:'treatment'},
+  {kw:'강아지건강검진',     mobile:1180,pc:240,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:true, kwType:'treatment'},
   {kw:'강아지MRI비용',      mobile:1230,pc:130,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
-  {kw:'고양이건강검진',     mobile:840, pc:150,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'고양이건강검진',     mobile:840, pc:150,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:true, kwType:'treatment'},
   {kw:'강아지MRI',          mobile:370, pc:70, comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
   {kw:'강아지CT',           mobile:170, pc:40, comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
   {kw:'동물병원MRI',        mobile:80,  pc:20, comp:'높음',ads:7, cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
@@ -648,14 +649,14 @@ const ALL_DATA = [
   {kw:'강아지수혈',           mobile:230, pc:30, comp:'중간',ads:8, cat:'med',isCore:false,isGeneral:false,kwType:'treatment'},
   {kw:'고양이수혈',           mobile:150, pc:20, comp:'높음',ads:7, cat:'med',isCore:false,isGeneral:false,kwType:'treatment'},
   {kw:'장내미생물이식강아지', mobile:40,  pc:5,  comp:'중간',ads:1, cat:'med',isCore:false,isGeneral:false,kwType:'treatment'},
-  // 정형외과
-  {kw:'슬개골탈구',           mobile:1440,pc:290,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,kwType:'disease'},
-  {kw:'강아지십자인대파열',   mobile:1200,pc:170,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,kwType:'disease'},
-  {kw:'강아지십자인대수술',   mobile:510, pc:90, comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,kwType:'treatment'},
-  {kw:'슬개골탈구수술',       mobile:480, pc:70, comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,kwType:'treatment'},
+  // 정형외과 — isAmbiguous: 일반 병원도 다루지만 헬릭스 전문성도 있는 경계 키워드 (UI에서 ? 뱃지로 표시)
+  {kw:'슬개골탈구',           mobile:1440,pc:290,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,isAmbiguous:true,kwType:'disease'},
+  {kw:'강아지십자인대파열',   mobile:1200,pc:170,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,isAmbiguous:true,kwType:'disease'},
+  {kw:'강아지십자인대수술',   mobile:510, pc:90, comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,isAmbiguous:true,kwType:'treatment'},
+  {kw:'슬개골탈구수술',       mobile:480, pc:70, comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,isAmbiguous:true,kwType:'treatment'},
   {kw:'강아지자궁축농증수술', mobile:470, pc:50, comp:'높음',ads:7, cat:'rehab',isCore:false,isGeneral:false,kwType:'treatment'},
-  {kw:'TPLO',                 mobile:330, pc:140,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,kwType:'treatment'},
-  {kw:'강아지TPLO',           mobile:300, pc:110,comp:'높음',ads:7, cat:'rehab',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'TPLO',                 mobile:330, pc:140,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,isAmbiguous:true,kwType:'treatment'},
+  {kw:'강아지TPLO',           mobile:300, pc:110,comp:'높음',ads:7, cat:'rehab',isCore:false,isGeneral:false,isAmbiguous:true,kwType:'treatment'},
   // 포지셔닝 (병원·브랜드 탐색 — 분류 미지정)
   {kw:'서울동물병원',       mobile:1120,pc:180,comp:'높음',ads:10,cat:'gen',isCore:false,isGeneral:false},
   {kw:'다학제진료',         mobile:600, pc:130,comp:'높음',ads:3, cat:'gen',isCore:false,isGeneral:false},
@@ -851,7 +852,7 @@ function renderTable(){
     if(d.isGeneral) tr.className='is-general'+(showGeneral?'':' hidden-general');
     tr.innerHTML=`
       <td class="kw-name">${kwHtml}${d.isCore?'<span class="core-flag">★ 핵심</span>':''}</td>
-      <td>${d.isCore?'<span class="badge badge-core">시술명</span>':d.isGeneral?'<span class="badge badge-general">일반</span>':'<span class="badge badge-symptom">증상·탐색</span>'}</td>
+      <td>${d.isCore?'<span class="badge badge-core">시술명</span>':d.isGeneral?'<span class="badge badge-general">일반</span>':'<span class="badge badge-symptom">증상·탐색</span>'}${d.isAmbiguous?'<span class="badge badge-ambiguous" title="헬릭스 전문성과 일반 병원 영역이 겹치는 경계 키워드">?</span>':''}</td>
       <td><span class="cat-tag ${meta.tagClass}">${meta.label}</span></td>
       <td class="num-r">${d.mobile<=5?'<span style="color:var(--ink-muted)">&lt;10</span>':d.mobile.toLocaleString()}</td>
       <td class="num-r">${d.pc<=5?'<span style="color:var(--ink-muted)">&lt;10</span>':d.pc.toLocaleString()}</td>
