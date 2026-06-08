@@ -309,7 +309,6 @@
     <div class="nation-intro">
       <strong>전국에서 오는 이유가 되는 키워드.</strong> 지방 보호자는 "서울 동물병원"을 직접 검색하기보다 시술명·증상어로 먼저 탐색한 뒤 치료 가능한 병원을 역으로 찾습니다. 헬릭스가 제공하는 뇌종양 수술·방사선 치료·요오드 치료는 전국에서 손에 꼽히는 수준이라, <strong>시술명 키워드 노출 자체가 전국권 유입 경로</strong>입니다.
     </div>
-    <div class="nation-grid" id="nationGrid"></div>
   </div>
 
   <!-- SECTION 3 -->
@@ -629,6 +628,7 @@ function buildPriority(){
 
 function buildNationwide(){
   const grid=document.getElementById('nationGrid');
+  if(!grid) return;
   NATIONWIDE.forEach(g=>{
     const card=document.createElement('div');
     card.className='nation-card';
