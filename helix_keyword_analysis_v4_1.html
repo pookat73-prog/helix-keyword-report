@@ -116,6 +116,7 @@
   .comp-badge.high{background:var(--red-soft);color:var(--red);}
   .comp-badge.mid{background:var(--gold-soft);color:var(--gold);}
   .comp-badge.low{background:var(--accent-soft);color:var(--accent);}
+  .opp-tag{display:inline-block;margin-left:5px;padding:1.5px 6px;border-radius:3px;font-size:9.5px;font-weight:700;background:var(--gold-soft);color:var(--gold);letter-spacing:.02em;vertical-align:middle;}
   .core-flag{display:inline-flex;align-items:center;gap:2px;padding:1.5px 5px;border-radius:3px;font-size:8.5px;font-weight:700;background:var(--gold-soft);color:var(--gold);margin-left:4px;}
 
   /* Nationwide */
@@ -263,7 +264,6 @@
     <div class="kpi-row">
       <div class="kpi"><div class="kpi-label">전체 키워드</div><div class="kpi-val" id="kTotal">—</div></div>
       <div class="kpi"><div class="kpi-label">핵심 4대 특화</div><div class="kpi-val gold" id="kCore">—</div></div>
-      <div class="kpi"><div class="kpi-label">전국권 유입</div><div class="kpi-val orange" id="kNation">—</div></div>
       <div class="kpi"><div class="kpi-label">저경쟁 기회</div><div class="kpi-val" id="kLow">—</div></div>
     </div>
   </div>
@@ -694,7 +694,6 @@ let showGeneral = false;
 function buildKpi(){
   document.getElementById('kTotal').textContent = DATA.length;
   document.getElementById('kCore').textContent = DATA.filter(d=>['p1','p2','p3','p4'].includes(d.cat)).length;
-  document.getElementById('kNation').textContent = DATA.filter(d=>d.cat==='nation').length;
   document.getElementById('kLow').textContent = DATA.filter(d=>d.comp==='낮음').length + '개';
 }
 
@@ -857,7 +856,7 @@ function renderTable(){
       <td class="num-r">${d.mobile<=5?'<span style="color:var(--ink-muted)">&lt;10</span>':d.mobile.toLocaleString()}</td>
       <td class="num-r">${d.pc<=5?'<span style="color:var(--ink-muted)">&lt;10</span>':d.pc.toLocaleString()}</td>
       <td><div class="vol-wrap"><div class="vol-bg"><div class="${fillClass}" style="width:${pct}%"></div></div></div></td>
-      <td><span class="comp-badge ${cc}">${d.comp}</span></td>
+      <td><span class="comp-badge ${cc}">${d.comp==='낮음'?'🎯 ':''}${d.comp}</span>${d.comp==='낮음'?'<span class="opp-tag" title="저경쟁 선점 기회">선점기회</span>':''}</td>
       <td class="num-r">${d.ads}</td>
     `;
     tbody.appendChild(tr);
