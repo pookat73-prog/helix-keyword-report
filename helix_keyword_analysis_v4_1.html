@@ -921,21 +921,64 @@ function renderTable(){
 }
 function sortBy(k){if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=-1;}renderTable();}
 function setNav(el){document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));el.classList.add('active');}
+// 분류별 공략 우선순위 — 수동 큐레이션 리스트 (B안)
+// 선점 시그니처 시술명까지 포함하여 마케팅 관점에서 의도된 노출 순서로 정렬
+const RANK_LISTS = {
+  treatment: [
+    {kw:'강아지백내장수술비용', mobile:1470},
+    {kw:'강아지백내장수술',     mobile:650},
+    {kw:'강아지십자인대수술',   mobile:510},
+    {kw:'슬개골탈구수술',       mobile:480},
+    {kw:'강아지자궁축농증수술', mobile:470},
+    {kw:'강아지담낭제거수술',   mobile:70},
+    {kw:'강아지뇌수술',         mobile:10},
+    {kw:'강아지뇌종양수술',     mobile:5},
+    {kw:'동물방사선치료',       mobile:5},
+    {kw:'동물색전술',           mobile:5},
+  ],
+  disease: [
+    {kw:'강아지췌장염',       mobile:2680},
+    {kw:'강아지폐수종',       mobile:2660},
+    {kw:'고양이구내염',       mobile:2250},
+    {kw:'강아지심장병',       mobile:2040},
+    {kw:'강아지유선종양',     mobile:1640},
+    {kw:'강아지자궁축농증',   mobile:1630},
+    {kw:'고양이신부전',       mobile:1280},
+    {kw:'강아지당뇨',         mobile:1110},
+    {kw:'강아지신부전',       mobile:1090},
+    {kw:'강아지혈소판감소증', mobile:800},
+  ],
+  symptom: [
+    {kw:'강아지스케일링비용', mobile:4210},
+    {kw:'강아지치석제거',     mobile:3890},
+    {kw:'강아지백내장',       mobile:3210},
+    {kw:'강아지눈충혈',       mobile:2530},
+    {kw:'강아지설사할때',     mobile:2130},
+    {kw:'강아지백내장초기',   mobile:1700},
+    {kw:'강아지디스크증상',   mobile:1170},
+    {kw:'강아지결막염',       mobile:1170},
+    {kw:'강아지뇌수막염',     mobile:950},
+    {kw:'강아지발작',         mobile:930},
+  ],
+};
+
 function buildRanking(){
+  const compLookup = Object.fromEntries(DATA.map(d=>[d.kw, d.comp]));
   ['treatment','disease','symptom'].forEach(type=>{
-    const all=DATA.filter(d=>d.kwType===type && !d.isGeneral && d.mobile>5);
-    const top=all.sort((a,b)=>b.mobile-a.mobile).slice(0,10);
+    const list=RANK_LISTS[type]||[];
     const ol=document.getElementById('rankList-'+type);
     const cnt=document.getElementById('rankCount-'+type);
-    cnt.textContent='상위 '+top.length+' / 전체 '+all.length+'개';
-    if(!top.length){ol.innerHTML='<div class="rank-empty">표시할 키워드가 없습니다.</div>';return;}
-    ol.innerHTML=top.map((d,i)=>{
+    cnt.textContent='큐레이션 Top '+list.length;
+    ol.innerHTML=list.map((d,i)=>{
+      const comp=compLookup[d.kw];
+      const isLow=comp==='낮음';
       const cls=[];
       if(i<3) cls.push('is-top3');
-      if(d.comp==='낮음') cls.push('is-low');
+      if(isLow) cls.push('is-low');
+      const volTxt = d.mobile<=5 ? '<10' : d.mobile.toLocaleString();
       return `<li class="${cls.join(' ')}">
-        <span class="rank-kw">${d.kw}${d.comp==='낮음'?' 🎯':''}</span>
-        <span class="rank-vol">${d.mobile.toLocaleString()}</span>
+        <span class="rank-kw">${d.kw}${isLow?' 🎯':''}</span>
+        <span class="rank-vol">${volTxt}</span>
       </li>`;
     }).join('');
   });
