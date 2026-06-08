@@ -219,7 +219,7 @@
   <a class="nav-item" href="#p1" onclick="setNav(this)">① 뇌종양 수술</a>
   <a class="nav-item" href="#p2" onclick="setNav(this)">② 인터벤션</a>
   <a class="nav-item" href="#p3" onclick="setNav(this)">③ 방사선 치료</a>
-  <a class="nav-item" href="#p4" onclick="setNav(this)">④ 고양이 요오드</a>
+  <a class="nav-item" href="#p4" onclick="setNav(this)">④ 고양이 요오드 · 동위원소</a>
 </nav>
 
 <div class="main">
@@ -319,12 +319,35 @@
       <span class="sec-sub">전문성·의도 기반 · 일반 동물병원 키워드 비활성 표시</span>
     </div>
 
+    <div class="nation-intro" style="margin-bottom:14px;">
+      <strong>📈 고검색량 키워드 활용 전략 — "검색량은 높은데 왜 선점 키워드가 아닌가"</strong><br>
+      검색량이 높은 키워드는 SEO 상위 노출 경쟁이 치열하고 헬릭스 포지셔닝과도 거리가 있지만, 버리지 않습니다. 아래 3가지 방식으로 다르게 활용합니다.
+    </div>
+    <div class="ins-row">
+      <div class="ins-card">
+        <div class="ins-label">① 유입 후 연결</div>
+        <div class="ins-title">관문으로 활용하라</div>
+        <div class="ins-body">"강아지발작", "강아지췌장염", "고양이신부전" 같은 키워드는 검색량 1,000회 이상이지만 어느 동물병원이나 다루는 범용 질환이다. 경쟁에서 이기기 어렵고, 이겨도 헬릭스 포지셔닝이 희석된다. 단, 이 키워드들은 콘텐츠 내부에서 헬릭스 특화 시술로 연결하는 관문으로 활용한다. 예: "강아지발작 → 뇌종양 감별 필요 → 헬릭스 신경외과"</div>
+      </div>
+      <div class="ins-card">
+        <div class="ins-label">② 광고(CPC) 타겟</div>
+        <div class="ins-title">광고로 노출시켜라</div>
+        <div class="ins-body">SEO로 상위 노출이 어려운 고경쟁 키워드는 네이버/구글 광고의 타겟 키워드로 설정한다. 검색량이 많으면 노출 기회가 많다는 뜻이기도 하다. 콘텐츠가 아니라 광고로 유입시키고, 랜딩 페이지에서 헬릭스 전문성을 보여주는 구조.</div>
+      </div>
+      <div class="ins-card">
+        <div class="ins-label">③ FAQ·블로그 트래픽 엔진</div>
+        <div class="ins-title">AI 검색 노출을 키워라</div>
+        <div class="ins-body">고검색량 키워드로 FAQ나 블로그 콘텐츠를 만들면 사이트 전체 체류 시간이 늘어나고, 구글·네이버 AI 검색 노출 빈도가 높아진다. 헬릭스 특화 시술을 직접 검색하지 않더라도, 관련 증상을 검색한 보호자가 헬릭스를 먼저 접하는 경로가 된다.</div>
+      </div>
+    </div>
+
     <div class="controls">
       <div class="search-wrap">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="text" id="searchInput" placeholder="키워드 검색…">
       </div>
       <div class="filter-row" id="filterRow"></div>
+      <div class="filter-row" id="typeFilterRow" style="flex-basis:100%;"></div>
       <select class="sort-sel" id="sortSel">
         <option value="mobile_d">모바일 ↓</option>
         <option value="mobile_a">모바일 ↑</option>
@@ -410,7 +433,7 @@ const PRIORITY = {
     {kw:'강아지뇌종양',           mobile:390, pc:30,  comp:'높음',ads:10,type:'symptom'},
     {kw:'강아지비강종양',         mobile:5,   pc:5,   comp:'높음',ads:3, type:'symptom'},
   ]},
-  p4:{rank:4,label:'고양이 방사성 요오드 치료',en:'Feline Radioiodine Therapy',note:'갑상선기능항진증',kws:[
+  p4:{rank:4,label:'고양이 방사성 요오드 치료 · 동위원소 치료',en:'Feline Radioiodine & Radioisotope Therapy',note:'갑상선기능항진증',kws:[
     {kw:'고양이방사성요오드치료', mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
     {kw:'고양이요오드치료',       mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
     {kw:'고양이동위원소치료',     mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
@@ -446,112 +469,113 @@ const NATIONWIDE=[
 ];
 
 // isGeneral: true = 일반 동물병원도 커버하는 범용 키워드 (비활성 표시)
+// kwType: 'symptom' | 'disease' | 'treatment' — 분류 필터용. 병원·포지셔닝성 키워드는 미지정.
 const ALL_DATA = [
   // 뇌종양/신경계 (p1)
-  {kw:'강아지디스크증상',   mobile:1170,pc:70,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false},
-  {kw:'강아지뇌수막염',     mobile:950, pc:80,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false},
-  {kw:'강아지발작',         mobile:930, pc:90,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false},
-  {kw:'강아지경련',         mobile:830, pc:60,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false},
-  {kw:'강아지뇌수두증',     mobile:650, pc:80,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false},
-  {kw:'강아지척수공동증',   mobile:430, pc:50,  comp:'높음',ads:7, cat:'p1',isCore:false,isGeneral:false},
-  {kw:'강아지뇌종양',       mobile:390, pc:30,  comp:'높음',ads:10,cat:'p1',isCore:true, isGeneral:false},
-  {kw:'강아지간질',         mobile:360, pc:40,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false},
-  {kw:'강아지디스크',       mobile:730, pc:120, comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false},
-  {kw:'강아지목디스크',     mobile:440, pc:40,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false},
-  {kw:'강아지척수염',       mobile:120, pc:20,  comp:'높음',ads:3, cat:'p1',isCore:false,isGeneral:false},
-  {kw:'고양이뇌종양',       mobile:30,  pc:5,   comp:'높음',ads:7, cat:'p1',isCore:false,isGeneral:false},
-  {kw:'강아지뇌수술',       mobile:10,  pc:5,   comp:'높음',ads:7, cat:'p1',isCore:true, isGeneral:false},
-  {kw:'강아지뇌종양수술',   mobile:5,   pc:5,   comp:'낮음',ads:0, cat:'p1',isCore:true, isGeneral:false},
-  {kw:'뇌종양수술동물병원', mobile:5,   pc:5,   comp:'낮음',ads:0, cat:'p1',isCore:true, isGeneral:false},
+  {kw:'강아지디스크증상',   mobile:1170,pc:70,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'symptom'},
+  {kw:'강아지뇌수막염',     mobile:950, pc:80,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지발작',         mobile:930, pc:90,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'symptom'},
+  {kw:'강아지경련',         mobile:830, pc:60,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'symptom'},
+  {kw:'강아지뇌수두증',     mobile:650, pc:80,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지척수공동증',   mobile:430, pc:50,  comp:'높음',ads:7, cat:'p1',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지뇌종양',       mobile:390, pc:30,  comp:'높음',ads:10,cat:'p1',isCore:true, isGeneral:false,kwType:'disease'},
+  {kw:'강아지간질',         mobile:360, pc:40,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지디스크',       mobile:730, pc:120, comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지목디스크',     mobile:440, pc:40,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지척수염',       mobile:120, pc:20,  comp:'높음',ads:3, cat:'p1',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'고양이뇌종양',       mobile:30,  pc:5,   comp:'높음',ads:7, cat:'p1',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지뇌수술',       mobile:10,  pc:5,   comp:'높음',ads:7, cat:'p1',isCore:true, isGeneral:false,kwType:'treatment'},
+  {kw:'강아지뇌종양수술',   mobile:5,   pc:5,   comp:'낮음',ads:0, cat:'p1',isCore:true, isGeneral:false,kwType:'treatment'},
+  {kw:'뇌종양수술동물병원', mobile:5,   pc:5,   comp:'낮음',ads:0, cat:'p1',isCore:true, isGeneral:false,kwType:'treatment'},
   // 인터벤션 (p2)
-  {kw:'강아지유선종양',       mobile:1640,pc:190,comp:'높음',ads:10,cat:'p2',isCore:false,isGeneral:false},
-  {kw:'강아지담낭점액종',     mobile:570, pc:140,comp:'높음',ads:7, cat:'p2',isCore:false,isGeneral:false},
-  {kw:'강아지담낭',           mobile:490, pc:60, comp:'높음',ads:3, cat:'p2',isCore:false,isGeneral:false},
-  {kw:'강아지엑소좀',         mobile:240, pc:60, comp:'높음',ads:7, cat:'p2',isCore:false,isGeneral:false},
-  {kw:'강아지담낭제거수술',   mobile:70,  pc:20, comp:'중간',ads:3, cat:'p2',isCore:false,isGeneral:false},
-  {kw:'동물색전술',           mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false},
-  {kw:'강아지색전술',         mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false},
-  {kw:'강아지스텐트시술',     mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false},
-  {kw:'동물인터벤션',         mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false},
-  {kw:'하이브리드수술실동물', mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false},
+  {kw:'강아지유선종양',       mobile:1640,pc:190,comp:'높음',ads:10,cat:'p2',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지담낭점액종',     mobile:570, pc:140,comp:'높음',ads:7, cat:'p2',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지담낭',           mobile:490, pc:60, comp:'높음',ads:3, cat:'p2',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지엑소좀',         mobile:240, pc:60, comp:'높음',ads:7, cat:'p2',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'강아지담낭제거수술',   mobile:70,  pc:20, comp:'중간',ads:3, cat:'p2',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'동물색전술',           mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false,kwType:'treatment'},
+  {kw:'강아지색전술',         mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false,kwType:'treatment'},
+  {kw:'강아지스텐트시술',     mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false,kwType:'treatment'},
+  {kw:'동물인터벤션',         mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false,kwType:'treatment'},
+  {kw:'하이브리드수술실동물', mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false,kwType:'treatment'},
   // 방사선 (p3)
-  {kw:'고양이비만세포종',   mobile:650, pc:100,comp:'높음',ads:7, cat:'p3',isCore:false,isGeneral:false},
-  {kw:'강아지종양',         mobile:620, pc:70, comp:'높음',ads:10,cat:'p3',isCore:false,isGeneral:false},
-  {kw:'강아지뇌종양',       mobile:390, pc:30, comp:'높음',ads:10,cat:'p3',isCore:false,isGeneral:false},
-  {kw:'강아지암',           mobile:360, pc:5,  comp:'높음',ads:10,cat:'p3',isCore:false,isGeneral:false},
-  {kw:'고양이암',           mobile:200, pc:20, comp:'높음',ads:7, cat:'p3',isCore:false,isGeneral:false},
-  {kw:'동물방사선치료',     mobile:5,   pc:10, comp:'중간',ads:6, cat:'p3',isCore:true, isGeneral:false},
-  {kw:'강아지방사선치료',   mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p3',isCore:true, isGeneral:false},
-  {kw:'방사선치료동물병원', mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p3',isCore:true, isGeneral:false},
+  {kw:'고양이비만세포종',   mobile:650, pc:100,comp:'높음',ads:7, cat:'p3',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지종양',         mobile:620, pc:70, comp:'높음',ads:10,cat:'p3',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지뇌종양',       mobile:390, pc:30, comp:'높음',ads:10,cat:'p3',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지암',           mobile:360, pc:5,  comp:'높음',ads:10,cat:'p3',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'고양이암',           mobile:200, pc:20, comp:'높음',ads:7, cat:'p3',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'동물방사선치료',     mobile:5,   pc:10, comp:'중간',ads:6, cat:'p3',isCore:true, isGeneral:false,kwType:'treatment'},
+  {kw:'강아지방사선치료',   mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p3',isCore:true, isGeneral:false,kwType:'treatment'},
+  {kw:'방사선치료동물병원', mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p3',isCore:true, isGeneral:false,kwType:'treatment'},
   // 요오드 (p4)
-  {kw:'고양이신부전',             mobile:1280,pc:220,comp:'높음',ads:10,cat:'p4',isCore:false,isGeneral:false},
-  {kw:'고양이갑상선기능항진증',   mobile:5,   pc:5,  comp:'높음',ads:3, cat:'p4',isCore:true, isGeneral:false},
-  {kw:'고양이방사성요오드치료',   mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false},
-  {kw:'고양이요오드치료',         mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false},
-  {kw:'고양이동위원소치료',       mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false},
-  {kw:'고양이동위원소',           mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false},
-  {kw:'고양이갑상선치료',         mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false},
+  {kw:'고양이신부전',             mobile:1280,pc:220,comp:'높음',ads:10,cat:'p4',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'고양이갑상선기능항진증',   mobile:5,   pc:5,  comp:'높음',ads:3, cat:'p4',isCore:true, isGeneral:false,kwType:'disease'},
+  {kw:'고양이방사성요오드치료',   mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false,kwType:'treatment'},
+  {kw:'고양이요오드치료',         mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false,kwType:'treatment'},
+  {kw:'고양이동위원소치료',       mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false,kwType:'treatment'},
+  {kw:'고양이동위원소',           mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false,kwType:'treatment'},
+  {kw:'고양이갑상선치료',         mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false,kwType:'treatment'},
   // 안과
-  {kw:'강아지백내장',         mobile:3210,pc:410,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false},
-  {kw:'강아지눈충혈',         mobile:2530,pc:110,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false},
-  {kw:'강아지백내장초기',     mobile:1700,pc:90, comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false},
-  {kw:'강아지백내장수술비용', mobile:1470,pc:180,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false},
-  {kw:'강아지결막염',         mobile:1170,pc:130,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false},
-  {kw:'강아지체리아이',       mobile:820, pc:90, comp:'높음',ads:3, cat:'oph',isCore:false,isGeneral:false},
-  {kw:'강아지각막궤양',       mobile:760, pc:110,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false},
-  {kw:'강아지녹내장',         mobile:720, pc:110,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false},
-  {kw:'강아지백내장수술',     mobile:650, pc:110,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false},
-  {kw:'강아지포도막염',       mobile:390, pc:50, comp:'높음',ads:3, cat:'oph',isCore:false,isGeneral:false},
+  {kw:'강아지백내장',         mobile:3210,pc:410,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지눈충혈',         mobile:2530,pc:110,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'symptom'},
+  {kw:'강아지백내장초기',     mobile:1700,pc:90, comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지백내장수술비용', mobile:1470,pc:180,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'강아지결막염',         mobile:1170,pc:130,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지체리아이',       mobile:820, pc:90, comp:'높음',ads:3, cat:'oph',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지각막궤양',       mobile:760, pc:110,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지녹내장',         mobile:720, pc:110,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지백내장수술',     mobile:650, pc:110,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'강아지포도막염',       mobile:390, pc:50, comp:'높음',ads:3, cat:'oph',isCore:false,isGeneral:false,kwType:'disease'},
   {kw:'강아지안과전문병원',   mobile:740, pc:60, comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false},
   {kw:'안과동물병원',         mobile:290, pc:160,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false},
   {kw:'동물안과',             mobile:160, pc:20, comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false},
   {kw:'고양이안과',           mobile:90,  pc:20, comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false},
   // 치과 — 스케일링 계열은 일반, 난치성·발치·전문 치과는 헬릭스
-  {kw:'강아지스케일링비용', mobile:4210,pc:360,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true},
-  {kw:'강아지치석제거',     mobile:3890,pc:320,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true},
-  {kw:'고양이구내염',       mobile:2250,pc:320,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:false},
-  {kw:'강아지입냄새',       mobile:2110,pc:170,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true},
-  {kw:'강아지치주염',       mobile:1090,pc:140,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true},
-  {kw:'고양이구내염약',     mobile:1260,pc:150,comp:'중간',ads:8, cat:'dent',isCore:false,isGeneral:false},
-  {kw:'고양이스케일링비용', mobile:1210,pc:130,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true},
-  {kw:'고양이입냄새',       mobile:800, pc:70, comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true},
-  {kw:'강아지잇몸염증',     mobile:670, pc:30, comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true},
-  {kw:'강아지발치비용',     mobile:530, pc:50, comp:'높음',ads:7, cat:'dent',isCore:false,isGeneral:false},
+  {kw:'강아지스케일링비용', mobile:4210,pc:360,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true, kwType:'treatment'},
+  {kw:'강아지치석제거',     mobile:3890,pc:320,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true, kwType:'treatment'},
+  {kw:'고양이구내염',       mobile:2250,pc:320,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지입냄새',       mobile:2110,pc:170,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true, kwType:'symptom'},
+  {kw:'강아지치주염',       mobile:1090,pc:140,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true, kwType:'disease'},
+  {kw:'고양이구내염약',     mobile:1260,pc:150,comp:'중간',ads:8, cat:'dent',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'고양이스케일링비용', mobile:1210,pc:130,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true, kwType:'treatment'},
+  {kw:'고양이입냄새',       mobile:800, pc:70, comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true, kwType:'symptom'},
+  {kw:'강아지잇몸염증',     mobile:670, pc:30, comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true, kwType:'disease'},
+  {kw:'강아지발치비용',     mobile:530, pc:50, comp:'높음',ads:7, cat:'dent',isCore:false,isGeneral:false,kwType:'treatment'},
   {kw:'강아지치과',         mobile:990, pc:180,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:false},
   {kw:'동물치과',           mobile:270, pc:30, comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:false},
   // 건강검진
-  {kw:'강아지건강검진비용', mobile:2470,pc:270,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false},
-  {kw:'고양이건강검진비용', mobile:1600,pc:240,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false},
-  {kw:'강아지건강검진',     mobile:1180,pc:240,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false},
-  {kw:'강아지MRI비용',      mobile:1230,pc:130,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false},
-  {kw:'고양이건강검진',     mobile:840, pc:150,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false},
-  {kw:'강아지MRI',          mobile:370, pc:70, comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false},
-  {kw:'강아지CT',           mobile:170, pc:40, comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false},
-  {kw:'동물병원MRI',        mobile:80,  pc:20, comp:'높음',ads:7, cat:'chk',isCore:false,isGeneral:false},
+  {kw:'강아지건강검진비용', mobile:2470,pc:270,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'고양이건강검진비용', mobile:1600,pc:240,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'강아지건강검진',     mobile:1180,pc:240,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'강아지MRI비용',      mobile:1230,pc:130,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'고양이건강검진',     mobile:840, pc:150,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'강아지MRI',          mobile:370, pc:70, comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'강아지CT',           mobile:170, pc:40, comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'동물병원MRI',        mobile:80,  pc:20, comp:'높음',ads:7, cat:'chk',isCore:false,isGeneral:false,kwType:'treatment'},
   // 전문 내과 — 일반 병원도 다루는 것은 일반 처리
-  {kw:'강아지설사할때',       mobile:2130,pc:70, comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:true},
-  {kw:'강아지심장병',         mobile:2040,pc:250,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false},
-  {kw:'강아지자궁축농증',     mobile:1630,pc:200,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false},
-  {kw:'강아지장염',           mobile:1530,pc:170,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:true},
-  {kw:'강아지당뇨',           mobile:1110,pc:160,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false},
-  {kw:'강아지신부전',         mobile:1090,pc:160,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false},
-  {kw:'강아지췌장염',         mobile:2680,pc:350,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:true},
-  {kw:'강아지폐수종',         mobile:2660,pc:270,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false},
-  {kw:'강아지혈소판감소증',   mobile:800, pc:100,comp:'높음',ads:3, cat:'med',isCore:false,isGeneral:false},
-  {kw:'강아지빈혈',           mobile:610, pc:80, comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false},
-  {kw:'강아지IBD',            mobile:320, pc:70, comp:'높음',ads:3, cat:'med',isCore:false,isGeneral:false},
-  {kw:'강아지수혈',           mobile:230, pc:30, comp:'중간',ads:8, cat:'med',isCore:false,isGeneral:false},
-  {kw:'고양이수혈',           mobile:150, pc:20, comp:'높음',ads:7, cat:'med',isCore:false,isGeneral:false},
-  {kw:'장내미생물이식강아지', mobile:40,  pc:5,  comp:'중간',ads:1, cat:'med',isCore:false,isGeneral:false},
+  {kw:'강아지설사할때',       mobile:2130,pc:70, comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:true, kwType:'symptom'},
+  {kw:'강아지심장병',         mobile:2040,pc:250,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지자궁축농증',     mobile:1630,pc:200,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지장염',           mobile:1530,pc:170,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:true, kwType:'disease'},
+  {kw:'강아지당뇨',           mobile:1110,pc:160,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지신부전',         mobile:1090,pc:160,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지췌장염',         mobile:2680,pc:350,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:true, kwType:'disease'},
+  {kw:'강아지폐수종',         mobile:2660,pc:270,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지혈소판감소증',   mobile:800, pc:100,comp:'높음',ads:3, cat:'med',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지빈혈',           mobile:610, pc:80, comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지IBD',            mobile:320, pc:70, comp:'높음',ads:3, cat:'med',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지수혈',           mobile:230, pc:30, comp:'중간',ads:8, cat:'med',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'고양이수혈',           mobile:150, pc:20, comp:'높음',ads:7, cat:'med',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'장내미생물이식강아지', mobile:40,  pc:5,  comp:'중간',ads:1, cat:'med',isCore:false,isGeneral:false,kwType:'treatment'},
   // 정형외과
-  {kw:'슬개골탈구',           mobile:1440,pc:290,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false},
-  {kw:'강아지십자인대파열',   mobile:1200,pc:170,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false},
-  {kw:'강아지십자인대수술',   mobile:510, pc:90, comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false},
-  {kw:'슬개골탈구수술',       mobile:480, pc:70, comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false},
-  {kw:'강아지자궁축농증수술', mobile:470, pc:50, comp:'높음',ads:7, cat:'rehab',isCore:false,isGeneral:false},
-  {kw:'TPLO',                 mobile:330, pc:140,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false},
-  {kw:'강아지TPLO',           mobile:300, pc:110,comp:'높음',ads:7, cat:'rehab',isCore:false,isGeneral:false},
-  // 포지셔닝
+  {kw:'슬개골탈구',           mobile:1440,pc:290,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지십자인대파열',   mobile:1200,pc:170,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,kwType:'disease'},
+  {kw:'강아지십자인대수술',   mobile:510, pc:90, comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'슬개골탈구수술',       mobile:480, pc:70, comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'강아지자궁축농증수술', mobile:470, pc:50, comp:'높음',ads:7, cat:'rehab',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'TPLO',                 mobile:330, pc:140,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,kwType:'treatment'},
+  {kw:'강아지TPLO',           mobile:300, pc:110,comp:'높음',ads:7, cat:'rehab',isCore:false,isGeneral:false,kwType:'treatment'},
+  // 포지셔닝 (병원·브랜드 탐색 — 분류 미지정)
   {kw:'서울동물병원',       mobile:1120,pc:180,comp:'높음',ads:10,cat:'gen',isCore:false,isGeneral:false},
   {kw:'다학제진료',         mobile:600, pc:130,comp:'높음',ads:3, cat:'gen',isCore:false,isGeneral:false},
   {kw:'고양이전문동물병원', mobile:500, pc:40, comp:'높음',ads:10,cat:'gen',isCore:false,isGeneral:false},
@@ -561,7 +585,7 @@ const ALL_DATA = [
   {kw:'종합동물병원',       mobile:80,  pc:10, comp:'높음',ads:10,cat:'gen',isCore:false,isGeneral:false},
   {kw:'아하인증동물병원',   mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'gen',isCore:false,isGeneral:false},
   {kw:'동물병원인증',       mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'gen',isCore:false,isGeneral:false},
-  // 전국권
+  // 전국권 (병원 탐색 — 분류 미지정)
   {kw:'일산동물병원',   mobile:1480,pc:310,comp:'높음',ads:10,cat:'nation',isCore:false,isGeneral:false},
   {kw:'분당동물병원',   mobile:730, pc:180,comp:'높음',ads:10,cat:'nation',isCore:false,isGeneral:false},
   {kw:'파주동물병원',   mobile:620, pc:250,comp:'높음',ads:10,cat:'nation',isCore:false,isGeneral:false},
@@ -574,7 +598,7 @@ const DATA = ALL_DATA.filter((d,i,a)=>a.findIndex(x=>x.kw===d.kw)===i);
 
 const CAT_META = {
   p1:{label:'뇌종양 수술',tagClass:'tag-p1'},p2:{label:'인터벤션',tagClass:'tag-p2'},
-  p3:{label:'방사선 치료',tagClass:'tag-p3'},p4:{label:'고양이 요오드',tagClass:'tag-p4'},
+  p3:{label:'방사선 치료',tagClass:'tag-p3'},p4:{label:'고양이 요오드 · 동위원소',tagClass:'tag-p4'},
   oph:{label:'안과',tagClass:'tag-oph'},dent:{label:'치과',tagClass:'tag-dent'},
   chk:{label:'건강검진',tagClass:'tag-chk'},med:{label:'전문 내과',tagClass:'tag-med'},
   rehab:{label:'정형외과',tagClass:'tag-rehab'},gen:{label:'포지셔닝',tagClass:'tag-gen'},
@@ -650,12 +674,18 @@ function buildNationwide(){
 
 const FILTERS=[
   {label:'전체',cat:'all'},{label:'① 뇌종양',cat:'p1'},{label:'② 인터벤션',cat:'p2'},
-  {label:'③ 방사선',cat:'p3'},{label:'④ 요오드',cat:'p4'},{label:'안과',cat:'oph'},
+  {label:'③ 방사선',cat:'p3'},{label:'④ 요오드 · 동위원소',cat:'p4'},{label:'안과',cat:'oph'},
   {label:'치과',cat:'dent'},{label:'검진',cat:'chk'},{label:'내과',cat:'med'},
   {label:'정형',cat:'rehab'},{label:'전국권',cat:'nation'},{label:'포지셔닝',cat:'gen'},
   {label:'★ 핵심시술만',cat:'core_only'},
 ];
-let activeCat='all',sortKey='mobile',sortDir=-1,searchQ='';
+const TYPE_FILTERS=[
+  {label:'전체',type:'all'},
+  {label:'증상',type:'symptom'},
+  {label:'질병',type:'disease'},
+  {label:'치료법·수술',type:'treatment'},
+];
+let activeCat='all',activeType='all',sortKey='mobile',sortDir=-1,searchQ='';
 
 function buildControls(){
   const row=document.getElementById('filterRow');
@@ -665,6 +695,18 @@ function buildControls(){
     pill.textContent=f.label; pill.dataset.cat=f.cat;
     pill.onclick=()=>{activeCat=f.cat;row.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));pill.classList.add('active');renderTable();};
     row.appendChild(pill);
+  });
+  const trow=document.getElementById('typeFilterRow');
+  const tlabel=document.createElement('span');
+  tlabel.textContent='분류';
+  tlabel.style.cssText='font-size:10px;color:var(--ink-muted);letter-spacing:.08em;text-transform:uppercase;align-self:center;margin-right:4px;';
+  trow.appendChild(tlabel);
+  TYPE_FILTERS.forEach(f=>{
+    const pill=document.createElement('button');
+    pill.className=`pill${f.type==='all'?' active':''}`;
+    pill.textContent=f.label; pill.dataset.type=f.type;
+    pill.onclick=()=>{activeType=f.type;trow.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));pill.classList.add('active');renderTable();};
+    trow.appendChild(pill);
   });
   document.getElementById('sortSel').onchange=e=>{
     const v=e.target.value;
@@ -698,6 +740,7 @@ function renderTable(){
   let rows=[...DATA];
   if(activeCat==='core_only') rows=rows.filter(d=>d.isCore);
   else if(activeCat!=='all') rows=rows.filter(d=>d.cat===activeCat);
+  if(activeType!=='all') rows=rows.filter(d=>d.kwType===activeType);
   if(searchQ) rows=rows.filter(d=>d.kw.toLowerCase().includes(searchQ));
   rows.sort((a,b)=>{
     if(sortKey==='mobile') return sortDir*(b.mobile-a.mobile);
