@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>헬릭스 특화진료 — 명칭·구조·카피·키워드</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0f1419;
+    --surface: #171d26;
+    --surface-2: #1e2632;
+    --line: #2b3543;
+    --ink: #e8edf2;
+    --ink-dim: #8b97a6;
+    --accent: #4db8a4;
+    --accent-soft: rgba(77,184,164,0.12);
+    --warn: #e8a84a;
+    --warn-soft: rgba(232,168,74,0.12);
+    --danger: #d97070;
+    --danger-soft: rgba(217,112,112,0.12);
+    --ok: #6fba8a;
+    --ok-soft: rgba(111,186,138,0.12);
+    --add: #6ba3d6;
+    --add-soft: rgba(107,163,214,0.12);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 44px 28px 100px; }
+
+  header { margin-bottom: 36px; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.22em; color: var(--accent);
+    text-transform: uppercase; font-weight: 600; margin-bottom: 10px;
+  }
+  h1 {
+    font-family: 'Gowun Dodum', serif;
+    font-size: 30px; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 8px;
+  }
+  .sub { color: var(--ink-dim); font-size: 13.5px; }
+
+  /* ── tabs ── */
+  .tabs {
+    display: flex; border-bottom: 1px solid var(--line);
+    margin-bottom: 30px; gap: 0;
+  }
+  .tab-btn {
+    padding: 11px 24px; background: none; border: none;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    color: var(--ink-dim); font-family: inherit; font-size: 13.5px;
+    cursor: pointer; transition: all 0.16s; white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 500; }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── badges ── */
+  .badge {
+    display: inline-block; padding: 2px 7px; border-radius: 4px;
+    font-size: 10.5px; font-weight: 600;
+  }
+  .badge-fix    { background: var(--danger-soft); color: var(--danger); }
+  .badge-change { background: var(--accent-soft);  color: var(--accent); }
+  .badge-warn   { background: var(--warn-soft);    color: var(--warn); }
+
+  /* ── notice bar ── */
+  .notice {
+    display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+    padding: 13px 18px; border-radius: 10px; margin-bottom: 22px;
+    background: var(--surface); border: 1px solid var(--line);
+    font-size: 12.5px; color: var(--ink-dim);
+  }
+  .notice strong { color: var(--ink); font-weight: 600; }
+
+  /* ═══════════════════════════════
+     TAB A — 명칭 정제
+  ═══════════════════════════════ */
+  .naming-table { width: 100%; border-collapse: collapse; }
+  .naming-table th {
+    text-align: left; padding: 11px 16px;
+    font-size: 10.5px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--ink-dim); background: var(--surface-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .naming-table td {
+    padding: 14px 16px; font-size: 13.5px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle; line-height: 1.5;
+  }
+  .naming-table tbody tr:hover td { background: var(--surface); }
+  .col-num { color: var(--accent); font-size: 12px; font-weight: 600; font-family: 'Gowun Dodum', serif; }
+  .col-original { color: var(--ink-dim); font-size: 13px; }
+  .col-en { font-style: italic; color: var(--ink-dim); font-size: 12.5px; }
+  .col-note { font-size: 12px; color: var(--ink-dim); }
+
+  /* ═══════════════════════════════
+     TAB D — 구조화
+  ═══════════════════════════════ */
+  .group-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .group-card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; padding: 24px;
+  }
+  .g-num {
+    font-size: 10.5px; color: var(--accent); font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px;
+  }
+  .g-title { font-size: 20px; font-weight: 600; margin-bottom: 2px; }
+  .g-en {
+    font-size: 12px; color: var(--ink-dim); font-style: italic;
+    margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line);
+  }
+  .g-items { list-style: none; }
+  .g-items li {
+    padding: 9px 0; font-size: 13.5px;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: baseline;
+    justify-content: space-between; gap: 10px;
+  }
+  .g-items li:last-child { border-bottom: none; padding-bottom: 0; }
+  .g-ko { display: flex; align-items: baseline; gap: 8px; }
+  .g-ko::before { content: '—'; color: var(--accent); flex-shrink: 0; }
+  .g-en-item { font-size: 11.5px; color: var(--ink-dim); font-style: italic; flex-shrink: 0; }
+
+  /* ═══════════════════════════════
+     TAB B — 웹 카피
+  ═══════════════════════════════ */
+  .copy-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .copy-card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 22px 24px;
+  }
+  .c-num { font-size: 11px; color: var(--accent); font-weight: 600; margin-bottom: 4px; }
+  .c-title { font-size: 15.5px; font-weight: 600; margin-bottom: 2px; }
+  .c-en {
+    font-size: 11.5px; color: var(--ink-dim); font-style: italic;
+    margin-bottom: 14px; padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .c-text { font-size: 13.5px; line-height: 1.85; color: var(--ink); }
+
+  /* ═══════════════════════════════
+     TAB C — 키워드 매핑
+  ═══════════════════════════════ */
+  .kw-table { width: 100%; border-collapse: collapse; }
+  .kw-table th {
+    text-align: left; padding: 11px 16px;
+    font-size: 10.5px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--ink-dim); background: var(--surface-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .kw-table td {
+    padding: 14px 16px; font-size: 13px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .kw-table tbody tr:hover td { background: rgba(255,255,255,0.01); }
+
+  .coverage {
+    display: inline-block; padding: 3px 11px; border-radius: 20px;
+    font-size: 11.5px; font-weight: 600;
+  }
+  .cov-strong { background: var(--ok-soft);     color: var(--ok); }
+  .cov-medium { background: var(--warn-soft);   color: var(--warn); }
+  .cov-weak   { background: var(--danger-soft); color: var(--danger); }
+
+  .cat-ref { font-size: 11.5px; color: var(--ink-dim); display: block; margin-top: 3px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+  .chip {
+    padding: 2px 9px; border-radius: 5px; font-size: 11.5px;
+    background: var(--surface-2); border: 1px solid var(--line); color: var(--ink-dim);
+  }
+  .chip-new {
+    background: var(--accent-soft); border-color: var(--accent); color: var(--accent);
+  }
+  .gap-label {
+    display: block; margin-top: 10px;
+    font-size: 11px; color: var(--danger); font-weight: 600; letter-spacing: 0.04em;
+  }
+
+  /* ── candidate picker ── */
+  .g-candidate-label {
+    display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--warn); margin-bottom: 10px;
+    background: var(--warn-soft); padding: 2px 8px; border-radius: 4px;
+  }
+  .g-candidates { list-style: none; margin-bottom: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .g-candidate-item {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+    padding: 8px 12px; border-radius: 8px;
+    border: 1px solid var(--line); background: var(--surface-2);
+    font-size: 13.5px; font-weight: 500; cursor: default;
+  }
+  .g-candidate-item .cand-num { font-size: 10px; color: var(--warn); font-weight: 600; flex-shrink: 0; }
+  .g-candidate-item .cand-en { font-size: 11.5px; color: var(--ink-dim); font-style: italic; flex-shrink: 0; }
+
+  .vote-btn {
+    display: block; margin-top: 16px;
+    padding: 10px 16px; border-radius: 9px; text-align: center;
+    background: var(--warn-soft); border: 1px solid var(--warn);
+    color: var(--warn); font-size: 13px; font-weight: 600;
+    text-decoration: none; transition: all 0.16s; letter-spacing: 0.02em;
+  }
+  .vote-btn:hover { background: var(--warn); color: var(--bg); }
+
+  /* ── NEW pulse badge ── */
+  @keyframes pulse-badge {
+    0%   { box-shadow: 0 0 0 0 rgba(232,168,74,0.7); transform: scale(1); }
+    50%  { box-shadow: 0 0 0 6px rgba(232,168,74,0); transform: scale(1.08); }
+    100% { box-shadow: 0 0 0 0 rgba(232,168,74,0); transform: scale(1); }
+  }
+  .new-badge {
+    display: inline-block; padding: 2px 7px; border-radius: 4px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+    background: var(--warn); color: var(--bg);
+    animation: pulse-badge 1.4s ease-in-out infinite;
+    vertical-align: middle; margin-left: 6px; line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">HELIX · 특화진료</div>
+    <h1>명칭 · 구조 · 카피 · 키워드</h1>
+    <p class="sub">확정 13개 특화진료 — 명칭 정제 / 그룹 구조화 / 웹 카피 / FAQ 키워드 매핑</p>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="sw('naming',this)">A. 명칭 정제</button>
+    <button class="tab-btn" onclick="sw('structure',this)">D. 구조화 <span class="new-badge">VOTE</span></button>
+    <button class="tab-btn" onclick="sw('copy',this)">B. 웹 카피</button>
+    <button class="tab-btn" onclick="sw('keywords',this)">C. 키워드 매핑</button>
+  </div>
+
+
+  <!-- ══════════ A. 명칭 정제 ══════════ -->
+  <div class="tab-panel active" id="tab-naming">
+    <div class="notice">
+      <strong>범례</strong>
+      <span class="badge badge-fix">오기 수정</span>
+      <span class="badge badge-change">명칭 변경</span>
+      <span class="badge badge-warn">축약 제안 — 검토 요망</span>
+    </div>
+    <table class="naming-table">
+      <thead>
+        <tr>
+          <th style="width:36px">#</th>
+          <th style="width:26%">원본</th>
+          <th style="width:26%">정제 한국어</th>
+          <th style="width:22%">English</th>
+          <th>비고</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="col-num">01</span></td>
+          <td class="col-original">통합 종양 진료</td>
+          <td>통합 종양 진료</td>
+          <td class="col-en">Integrated Oncology</td>
+          <td class="col-note">—</td>
+        </tr>
+        <tr>
+          <td><span class="col-num">02</span></td>
+          <td class="col-original">뇌종양</td>
+          <td>뇌종양 수술 <span class="badge badge-change">명칭 변경</span></td>
+          <td class="col-en">Brain Tumor Surgery</td>
+          <td class="col-note">상태명 → 서비스명 전환</td>
+        </tr>
+        <tr>
+          <td><span class="col-num">03</span></td>
+          <td class="col-original">방사선 치료</td>
+          <td>방사선 치료</td>
+          <td class="col-en">Radiation Therapy</td>
+          <td class="col-note">—</td>
+        </tr>
+        <tr>
+          <td><span class="col-num">04</span></td>
+          <td class="col-original">종양 색전술</td>
+          <td>종양 색전술</td>
+          <td class="col-en">Tumor Embolization</td>
+          <td class="col-note">—</td>
+        </tr>
+        <tr>
+          <td><span class="col-num">05</span></td>
+          <td class="col-original">혈관 중재술</td>
+          <td>혈관 중재술</td>
+          <td class="col-en">Vascular Intervention</td>
+          <td class="col-note">—</td>
+        </tr>
+        <tr>
+          <td><span class="col-num">06</span></td>
+          <td class="col-original">스탠트 시술</td>
+          <td>스텐트 시술 <span class="badge badge-fix">오기 수정</span></td>
+          <td class="col-en">Stent Intervention</td>
+          <td class="col-note">스탠트 → 스텐트</td>
+        </tr>
+        <tr>
+          <td><span class="col-num">07</span></td>
+          <td class="col-original">뇌척추 수술</td>
+          <td>뇌척추 수술</td>
+          <td class="col-en">Neurospinal Surgery</td>
+          <td class="col-note">—</td>
+        </tr>
+        <tr>
+          <td><span class="col-num">08</span></td>
+          <td class="col-original">흉복강경 수술</td>
+          <td>흉복강경 수술</td>
+          <td class="col-en">Minimally Invasive Surgery</td>
+          <td class="col-note">—</td>
+        </tr>
+        <tr>
+          <td><span class="col-num">09</span></td>
+          <td class="col-original">백내장/녹내장 수술</td>
+          <td>백내장·녹내장 수술 <span class="badge badge-change">기호 변경</span></td>
+          <td class="col-en">Cataract &amp; Glaucoma Surgery</td>
+          <td class="col-note">/ → · 구분기호 통일</td>
+        </tr>
+        <tr>
+          <td><span class="col-num">10</span></td>
+          <td class="col-original">비강경</td>
+          <td>비강경 검사 <span class="badge badge-change">명칭 보완</span></td>
+          <td class="col-en">Rhinoscopy &amp; Biopsy</td>
+          <td class="col-note">검사 + 생검 포함 명시</td>
+        </tr>
+        <tr>
+          <td><span class="col-num">11</span></td>
+          <td class="col-original">신장 투석</td>
+          <td>신장 투석</td>
+          <td class="col-en">Renal Dialysis</td>
+          <td class="col-note">—</td>
+        </tr>
+        <tr>
+          <td><span class="col-num">12</span></td>
+          <td class="col-original">FMT</td>
+          <td>FMT (장내 미생물 이식)</td>
+          <td class="col-en">Fecal Microbiota Transplantation</td>
+          <td class="col-note">병기 확정</td>
+        </tr>
+        <tr>
+          <td><span class="col-num">13</span></td>
+          <td class="col-original">고양이 갑상선기능항진증/동위원소 치료</td>
+          <td>고양이 갑상선기능항진증/동위원소 치료</td>
+          <td class="col-en">Feline Radioiodine Therapy</td>
+          <td class="col-note">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ══════════ D. 구조화 ══════════ -->
+  <div class="tab-panel" id="tab-structure">
+    <div class="group-grid">
+
+      <div class="group-card">
+        <div class="g-num">GROUP 01</div>
+        <div class="g-title">종양 치료</div>
+        <div class="g-en">Oncology &amp; Radiation</div>
+        <ul class="g-items">
+          <li><span class="g-ko">통합 종양 진료</span><span class="g-en-item">Integrated Oncology</span></li>
+          <li><span class="g-ko">뇌종양 수술</span><span class="g-en-item">Brain Tumor Surgery</span></li>
+          <li><span class="g-ko">방사선 치료</span><span class="g-en-item">Radiation Therapy</span></li>
+        </ul>
+      </div>
+
+      <div class="group-card">
+        <div class="g-num">GROUP 02</div>
+        <div class="g-title">인터벤션</div>
+        <div class="g-en">Intervention</div>
+        <ul class="g-items">
+          <li><span class="g-ko">종양 색전술</span><span class="g-en-item">Tumor Embolization</span></li>
+          <li><span class="g-ko">혈관 중재술</span><span class="g-en-item">Vascular Intervention</span></li>
+          <li><span class="g-ko">스텐트 시술</span><span class="g-en-item">Stent Intervention</span></li>
+        </ul>
+      </div>
+
+      <div class="group-card">
+        <div class="g-num">GROUP 03</div>
+        <div class="g-title">수술</div>
+        <div class="g-en">Surgery</div>
+        <ul class="g-items">
+          <li><span class="g-ko">뇌척추 수술</span><span class="g-en-item">Neurospinal Surgery</span></li>
+          <li><span class="g-ko">흉복강경 수술</span><span class="g-en-item">Minimally Invasive Surgery</span></li>
+          <li><span class="g-ko">백내장·녹내장 수술</span><span class="g-en-item">Cataract &amp; Glaucoma Surgery</span></li>
+          <li><span class="g-ko">비강경 검사</span><span class="g-en-item">Rhinoscopy &amp; Biopsy</span></li>
+        </ul>
+      </div>
+
+      <div class="group-card">
+        <div class="g-num">GROUP 04</div>
+        <span class="g-candidate-label">명칭 후보 선택 필요</span>
+        <ul class="g-candidates">
+          <li class="g-candidate-item">
+            <span><span class="cand-num">A &nbsp;</span>전문 치료</span>
+            <span class="cand-en">Specialty Therapy</span>
+          </li>
+          <li class="g-candidate-item">
+            <span><span class="cand-num">B &nbsp;</span>특수 치료</span>
+            <span class="cand-en">Advanced Treatment</span>
+          </li>
+          <li class="g-candidate-item">
+            <span><span class="cand-num">C &nbsp;</span>비수술 전문 치료</span>
+            <span class="cand-en">Non-surgical Specialty</span>
+          </li>
+        </ul>
+        <ul class="g-items">
+          <li><span class="g-ko">신장 투석</span><span class="g-en-item">Renal Dialysis</span></li>
+          <li><span class="g-ko">FMT (장내 미생물 이식)</span><span class="g-en-item">Fecal Microbiota Transplantation</span></li>
+          <li><span class="g-ko">고양이 갑상선기능항진증/동위원소 치료</span><span class="g-en-item">Feline Radioiodine Therapy</span></li>
+        </ul>
+        <a href="#" class="vote-btn">투표하러 가기 →</a>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════ B. 웹 카피 ══════════ -->
+  <div class="tab-panel" id="tab-copy">
+    <div class="copy-grid">
+
+      <div class="copy-card">
+        <div class="c-num">01</div>
+        <div class="c-title">통합 종양 진료</div>
+        <div class="c-en">Integrated Oncology</div>
+        <p class="c-text">내과·외과·영상의학이 한 케이스를 함께 검토합니다. 진단부터 치료 방향까지 다학제 팀이 단일 플랜을 수립합니다.</p>
+      </div>
+
+      <div class="copy-card">
+        <div class="c-num">02</div>
+        <div class="c-title">뇌종양 수술</div>
+        <div class="c-en">Brain Tumor Surgery</div>
+        <p class="c-text">수술 네비게이터와 정밀 영상을 기반으로 뇌종양에 안전하게 접근합니다. 최소 조직 손상을 원칙으로 합니다.</p>
+      </div>
+
+      <div class="copy-card">
+        <div class="c-num">03</div>
+        <div class="c-title">방사선 치료</div>
+        <div class="c-en">Radiation Therapy</div>
+        <p class="c-text">수술 접근이 어려운 부위의 종양을 방사선으로 치료합니다. 케이스에 따라 분할 방사선 또는 정위 방사선 방식을 적용합니다.</p>
+      </div>
+
+      <div class="copy-card">
+        <div class="c-num">04</div>
+        <div class="c-title">종양 색전술</div>
+        <div class="c-en">Tumor Embolization</div>
+        <p class="c-text">종양을 키우는 혈관을 차단해 성장을 억제합니다. 피부 절개 없이 카테터로만 접근하는 최소 침습 중재입니다.</p>
+      </div>
+
+      <div class="copy-card">
+        <div class="c-num">05</div>
+        <div class="c-title">혈관 중재술</div>
+        <div class="c-en">Vascular Intervention</div>
+        <p class="c-text">실시간 혈관 조영 하에 이상 혈관을 교정·처치합니다. 하이브리드 수술실에서 외과적 조치와 병행이 가능합니다.</p>
+      </div>
+
+      <div class="copy-card">
+        <div class="c-num">06</div>
+        <div class="c-title">스텐트 시술</div>
+        <div class="c-en">Stent Intervention</div>
+        <p class="c-text">협착된 기도·요도·식도·담도에 스텐트를 삽입해 폐색을 해소합니다. 수술 없이 내강 기능을 빠르게 회복시킵니다.</p>
+      </div>
+
+      <div class="copy-card">
+        <div class="c-num">07</div>
+        <div class="c-title">뇌척추 수술</div>
+        <div class="c-en">Neurospinal Surgery</div>
+        <p class="c-text">추간판 탈출·척수 압박·척추 불안정 등 신경계 수술을 전담합니다. 네비게이터 기반 정밀 접근으로 신경 손상 위험을 낮춥니다.</p>
+      </div>
+
+      <div class="copy-card">
+        <div class="c-num">08</div>
+        <div class="c-title">흉복강경 수술</div>
+        <div class="c-en">Minimally Invasive Surgery</div>
+        <p class="c-text">흉강과 복강을 내시경으로 접근하는 최소 절개 수술입니다. 개복·개흉 대비 회복이 빠르고 수술 후 통증이 적습니다.</p>
+      </div>
+
+      <div class="copy-card">
+        <div class="c-num">09</div>
+        <div class="c-title">백내장·녹내장 수술</div>
+        <div class="c-en">Cataract &amp; Glaucoma Surgery</div>
+        <p class="c-text">안과 전문의가 수정체 초음파 유화술과 안압 조절 수술을 시행합니다. 시력 보존과 통증 완화를 동시에 목표로 합니다.</p>
+      </div>
+
+      <div class="copy-card">
+        <div class="c-num">10</div>
+        <div class="c-title">비강경 검사</div>
+        <div class="c-en">Rhinoscopy &amp; Biopsy</div>
+        <p class="c-text">비강 내부를 직접 관찰하고 이상 조직을 채취합니다. 영상만으로는 확인되지 않는 비강 질환의 정밀 진단에 활용됩니다.</p>
+      </div>
+
+      <div class="copy-card">
+        <div class="c-num">11</div>
+        <div class="c-title">신장 투석</div>
+        <div class="c-en">Renal Dialysis</div>
+        <p class="c-text">급·만성 신부전 동물에게 혈액 투석 및 지속적 신대체 요법(CRRT)을 제공합니다. 신기능 회복 또는 안정적 유지를 위한 집중 관리를 지원합니다.</p>
+      </div>
+
+      <div class="copy-card">
+        <div class="c-num">12</div>
+        <div class="c-title">FMT (장내 미생물 이식)</div>
+        <div class="c-en">Fecal Microbiota Transplantation</div>
+        <p class="c-text">건강한 공여자의 장내 미생물을 이식해 만성 장질환을 치료합니다. 약물·식이에 반응하지 않는 난치성 장염에 적용됩니다.</p>
+      </div>
+
+      <div class="copy-card">
+        <div class="c-num">13</div>
+        <div class="c-title">고양이 갑상선기능항진증/동위원소 치료</div>
+        <div class="c-en">Feline Radioiodine Therapy</div>
+        <p class="c-text">방사성 요오드(I-131)를 투여해 과활성 갑상선 조직을 선택적으로 억제합니다. 고양이 갑상선기능항진증의 근치 치료법으로 가장 높은 완치율을 보입니다.</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════ C. 키워드 매핑 ══════════ -->
+  <div class="tab-panel" id="tab-keywords">
+    <div class="notice">
+      <strong>커버리지</strong>
+      <span class="coverage cov-strong">강</span> FAQ 전용 카테고리 있음 &nbsp;
+      <span class="coverage cov-medium">보통</span> 부분 커버 &nbsp;
+      <span class="coverage cov-weak">약</span> 전용 카테고리 없음 · 보강 필요 &nbsp;
+      <span class="chip chip-new">신규 추가 권장</span>
+    </div>
+    <table class="kw-table">
+      <thead>
+        <tr>
+          <th style="width:18%">특화진료</th>
+          <th style="width:22%">연결 FAQ 카테고리</th>
+          <th style="width:9%">커버리지</th>
+          <th>기존 핵심 키워드 / 보강 권장 키워드</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>통합 종양 진료</td>
+          <td>통합 종양<span class="cat-ref">Cat. 01</span></td>
+          <td><span class="coverage cov-strong">강</span></td>
+          <td>
+            <div class="chips">
+              <span class="chip">통합 종양</span>
+              <span class="chip">종양 전문</span>
+              <span class="chip">서울 종양 동물병원</span>
+              <span class="chip">반려동물 암 치료 비용</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>뇌종양 수술</td>
+          <td>뇌종양/신경계<span class="cat-ref">Cat. 03</span> · 네비게이터<span class="cat-ref">Cat. 05</span></td>
+          <td><span class="coverage cov-strong">강</span></td>
+          <td>
+            <div class="chips">
+              <span class="chip">뇌종양</span>
+              <span class="chip">뇌종양 수술</span>
+              <span class="chip">뇌종양 예후</span>
+              <span class="chip">수술 네비게이터</span>
+              <span class="chip">네비게이션 유도 수술</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>방사선 치료</td>
+          <td>방사선 치료<span class="cat-ref">Cat. 02</span></td>
+          <td><span class="coverage cov-strong">강</span></td>
+          <td>
+            <div class="chips">
+              <span class="chip">방사선 치료</span>
+              <span class="chip">방사선 치료 횟수</span>
+              <span class="chip">방사선 치료 부작용</span>
+              <span class="chip">서울 방사선 치료 동물병원</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>종양 색전술</td>
+          <td>인터벤션/중재시술/색전술<span class="cat-ref">Cat. 04</span></td>
+          <td><span class="coverage cov-strong">강</span></td>
+          <td>
+            <div class="chips">
+              <span class="chip">색전술</span>
+              <span class="chip">종양 색전술</span>
+              <span class="chip">화학색전술</span>
+              <span class="chip">TACE</span>
+              <span class="chip">간 색전술</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>혈관 중재술</td>
+          <td>인터벤션/중재시술/색전술<span class="cat-ref">Cat. 04</span></td>
+          <td><span class="coverage cov-medium">보통</span></td>
+          <td>
+            <div class="chips">
+              <span class="chip">혈관 중재</span>
+              <span class="chip">혈관 조영</span>
+              <span class="chip">카테터 시술</span>
+            </div>
+            <span class="gap-label">▲ 보강 권장</span>
+            <div class="chips">
+              <span class="chip chip-new">하이브리드 수술실 혈관 중재</span>
+              <span class="chip chip-new">동물 혈관 중재술</span>
+              <span class="chip chip-new">서울 혈관 중재 동물병원</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>스텐트 시술</td>
+          <td>인터벤션/중재시술/색전술<span class="cat-ref">Cat. 04</span></td>
+          <td><span class="coverage cov-strong">강</span></td>
+          <td>
+            <div class="chips">
+              <span class="chip">스텐트</span>
+              <span class="chip">기관 스텐트</span>
+              <span class="chip">요도 스텐트</span>
+              <span class="chip">식도 스텐트</span>
+              <span class="chip">담도 스텐트</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>뇌척추 수술</td>
+          <td>뇌종양/신경계<span class="cat-ref">Cat. 03</span></td>
+          <td><span class="coverage cov-strong">강</span></td>
+          <td>
+            <div class="chips">
+              <span class="chip">추간판 탈출</span>
+              <span class="chip">척수 압박</span>
+              <span class="chip">디스크</span>
+              <span class="chip">마비</span>
+              <span class="chip">신경계 재활</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>흉복강경 수술</td>
+          <td style="color: var(--ink-dim); font-size: 12.5px;">전용 카테고리 없음</td>
+          <td><span class="coverage cov-weak">약</span></td>
+          <td>
+            <span class="gap-label">▲ 신규 카테고리 추가 권장</span>
+            <div class="chips">
+              <span class="chip chip-new">흉강경 수술</span>
+              <span class="chip chip-new">복강경 수술</span>
+              <span class="chip chip-new">최소 침습 수술</span>
+              <span class="chip chip-new">개복 없는 수술</span>
+              <span class="chip chip-new">내시경 복강경</span>
+              <span class="chip chip-new">빠른 회복 수술</span>
+              <span class="chip chip-new">복강경 동물병원</span>
+              <span class="chip chip-new">흉강경 동물병원</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>백내장·녹내장 수술</td>
+          <td>안과<span class="cat-ref">Cat. 23</span></td>
+          <td><span class="coverage cov-strong">강</span></td>
+          <td>
+            <div class="chips">
+              <span class="chip">백내장</span>
+              <span class="chip">백내장 수술</span>
+              <span class="chip">녹내장</span>
+              <span class="chip">안압</span>
+              <span class="chip">수정체 초음파 유화술</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>비강경 검사</td>
+          <td style="color: var(--ink-dim); font-size: 12.5px;">전용 카테고리 없음</td>
+          <td><span class="coverage cov-weak">약</span></td>
+          <td>
+            <span class="gap-label">▲ 신규 카테고리 추가 권장</span>
+            <div class="chips">
+              <span class="chip chip-new">비강경</span>
+              <span class="chip chip-new">비강 내시경</span>
+              <span class="chip chip-new">비강 검사</span>
+              <span class="chip chip-new">비강 종양</span>
+              <span class="chip chip-new">비강 폴립</span>
+              <span class="chip chip-new">코피 원인 진단</span>
+              <span class="chip chip-new">만성 비염 동물</span>
+              <span class="chip chip-new">비강경 동물병원</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>신장 투석</td>
+          <td>신장/투석<span class="cat-ref">Cat. 07</span></td>
+          <td><span class="coverage cov-strong">강</span></td>
+          <td>
+            <div class="chips">
+              <span class="chip">신부전</span>
+              <span class="chip">혈액 투석</span>
+              <span class="chip">CRRT</span>
+              <span class="chip">투석 가능 동물병원</span>
+              <span class="chip">서울 투석 동물병원</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>FMT (장내 미생물 이식)</td>
+          <td>엑소좀/FMT/첨단 치료<span class="cat-ref">Cat. 21</span></td>
+          <td><span class="coverage cov-strong">강</span></td>
+          <td>
+            <div class="chips">
+              <span class="chip">FMT</span>
+              <span class="chip">장내 미생물 이식</span>
+              <span class="chip">분변 이식</span>
+              <span class="chip">난치성 장염</span>
+              <span class="chip">식이 불응성 장염</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>고양이 갑상선기능항진증/동위원소 치료</td>
+          <td>고양이 특화—갑상선/요오드<span class="cat-ref">Cat. 06</span></td>
+          <td><span class="coverage cov-strong">강</span></td>
+          <td>
+            <div class="chips">
+              <span class="chip">방사성 요오드</span>
+              <span class="chip">요오드 치료</span>
+              <span class="chip">I-131</span>
+              <span class="chip">갑상선기능항진증</span>
+              <span class="chip">서울 고양이 갑상선 치료</span>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+function sw(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
