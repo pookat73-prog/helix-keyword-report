@@ -75,6 +75,25 @@
   .premise-body{font-size:12px;color:var(--ink-dim);line-height:1.75;}
   .removed-kw-inline{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10.5px;background:#fdf2f2;color:#a04040;border:1px solid #f5c6c6;text-decoration:line-through;margin:1px 2px;}
 
+  /* 분류별 우선순위 랭킹 */
+  .rank-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .rank-col{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+  .rank-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  .rank-type-badge{display:inline-block;padding:3px 10px;border-radius:5px;font-size:11px;font-weight:600;letter-spacing:.02em;}
+  .rank-treatment{background:var(--accent-soft);color:var(--accent);}
+  .rank-disease{background:var(--red-soft);color:var(--red);}
+  .rank-symptom{background:var(--blue-soft);color:var(--blue);}
+  .rank-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-muted);}
+  .rank-list{list-style:none;counter-reset:rank;}
+  .rank-list li{counter-increment:rank;display:grid;grid-template-columns:22px 1fr auto;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:12.5px;}
+  .rank-list li:last-child{border-bottom:none;}
+  .rank-list li::before{content:counter(rank,decimal-leading-zero);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:var(--ink-muted);}
+  .rank-list li.is-top3::before{color:var(--gold);}
+  .rank-list li.is-low .rank-vol{color:var(--accent);font-weight:600;}
+  .rank-kw{color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .rank-vol{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-dim);text-align:right;}
+  .rank-empty{font-size:11.5px;color:var(--ink-muted);padding:14px 0;text-align:center;}
+
   /* 인사이트 카드 */
   .ins-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:26px;}
   .ins-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:17px;box-shadow:0 1px 3px rgba(0,0,0,.03);}
@@ -236,7 +255,7 @@
 
   @media(max-width:860px){
     .sidenav{display:none;}.main{margin-left:0;padding:24px 18px 80px;}
-    .priority-grid,.nation-grid,.ins-row,.premise-grid{grid-template-columns:1fr;}
+    .priority-grid,.nation-grid,.ins-row,.premise-grid,.rank-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -291,12 +310,49 @@
       <div class="premise-body">검색량이 낮아도 선정된 키워드들이 있다. 수요가 없어서가 아니라, 그 치료가 가능하다는 사실을 보호자들이 아직 모르기 때문이다. 보호자는 존재를 모르는 치료를 검색하지 않는다. 콘텐츠가 먼저 존재하면 검색량 자체가 생긴다. 헬릭스만 제공 가능한 시술에 한해, 경쟁자가 없는 지금 선점해두는 것이 장기적으로 유리하다.</div>
     </div>
     <div class="premise-card">
+      <div class="premise-icon">📉</div>
+      <div class="premise-title">저경쟁 키워드란?</div>
+      <div class="premise-body">네이버·구글 광고 경쟁자 수와 입찰 강도가 낮은 키워드다. 검색량이 적어서가 아니라, 아직 이 키워드로 광고하거나 콘텐츠를 만든 병원이 거의 없다는 뜻이다. 지금 선점하면 적은 비용으로 상단 노출이 가능하고, 콘텐츠 상위 노출도 빠르게 잡을 수 있다. 헬릭스의 저경쟁 키워드 대부분은 선점 키워드와 겹친다 — 그만큼 지금이 타이밍이다.</div>
+    </div>
+    <div class="premise-card">
       <div class="premise-icon">⚠️</div>
       <div class="premise-title">이 리포트에서 제거·비활성 처리한 기준</div>
       <div class="premise-body">
         <span class="removed-kw-inline">동물병원</span><span class="removed-kw-inline">24시동물병원</span><span class="removed-kw-inline">근처동물병원</span> — 위치 기반 즉시 탐색. 헬릭스와 무관한 유입.<br>
         <span class="removed-kw-inline">뇌전증</span><span class="removed-kw-inline">색전술</span><span class="removed-kw-inline">MRI 단독</span> — 사람 의료 키워드.<br>
         <span style="color:var(--ink-muted);font-size:10.5px;">흐리게 표시</span> — 검색량은 있지만 일반 동물병원도 커버하는 키워드. 헬릭스 특화와 연결 약함.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 0 — 분류별 공략 우선순위 -->
+  <div id="ranking" style="margin-bottom:48px;">
+    <div class="sec-head">
+      <span class="sec-num">00</span>
+      <span class="sec-title">분류별 공략 우선순위</span>
+      <span class="sec-sub">치료법·수술 / 질병명 / 증상 — 각 분류 내 검색량 상위 키워드</span>
+    </div>
+    <div class="rank-grid">
+      <div class="rank-col" data-type="treatment">
+        <div class="rank-head">
+          <span class="rank-type-badge rank-treatment">치료법 · 수술</span>
+          <span class="rank-count" id="rankCount-treatment"></span>
+        </div>
+        <ol class="rank-list" id="rankList-treatment"></ol>
+      </div>
+      <div class="rank-col" data-type="disease">
+        <div class="rank-head">
+          <span class="rank-type-badge rank-disease">질병명</span>
+          <span class="rank-count" id="rankCount-disease"></span>
+        </div>
+        <ol class="rank-list" id="rankList-disease"></ol>
+      </div>
+      <div class="rank-col" data-type="symptom">
+        <div class="rank-head">
+          <span class="rank-type-badge rank-symptom">증상</span>
+          <span class="rank-count" id="rankCount-symptom"></span>
+        </div>
+        <ol class="rank-list" id="rankList-symptom"></ol>
       </div>
     </div>
   </div>
@@ -865,7 +921,26 @@ function renderTable(){
 }
 function sortBy(k){if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=-1;}renderTable();}
 function setNav(el){document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));el.classList.add('active');}
-buildKpi();buildPriority();buildNationwide();buildControls();renderTable();
+function buildRanking(){
+  ['treatment','disease','symptom'].forEach(type=>{
+    const all=DATA.filter(d=>d.kwType===type && !d.isGeneral && d.mobile>5);
+    const top=all.sort((a,b)=>b.mobile-a.mobile).slice(0,10);
+    const ol=document.getElementById('rankList-'+type);
+    const cnt=document.getElementById('rankCount-'+type);
+    cnt.textContent='상위 '+top.length+' / 전체 '+all.length+'개';
+    if(!top.length){ol.innerHTML='<div class="rank-empty">표시할 키워드가 없습니다.</div>';return;}
+    ol.innerHTML=top.map((d,i)=>{
+      const cls=[];
+      if(i<3) cls.push('is-top3');
+      if(d.comp==='낮음') cls.push('is-low');
+      return `<li class="${cls.join(' ')}">
+        <span class="rank-kw">${d.kw}${d.comp==='낮음'?' 🎯':''}</span>
+        <span class="rank-vol">${d.mobile.toLocaleString()}</span>
+      </li>`;
+    }).join('');
+  });
+}
+buildKpi();buildRanking();buildPriority();buildNationwide();buildControls();renderTable();
 </script>
 </body>
 </html>
