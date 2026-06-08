@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>헬릭스 FAQ Q&A 초안</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg: #f5f6f8;
+    --surface: #ffffff;
+    --surface-2: #f9fafb;
+    --line: #e4e8ef;
+    --ink: #18243a;
+    --ink-dim: #6b7a92;
+    --ink-muted: #b0bac8;
+    --accent: #0d6e58;
+    --accent-soft: rgba(13,110,88,.09);
+    --accent-mid: rgba(13,110,88,.18);
+    --gold: #8a6800;
+    --gold-soft: rgba(138,104,0,.09);
+    --blue: #1a4fa0;
+    --blue-soft: rgba(26,79,160,.09);
+    --purple: #4e2e96;
+    --purple-soft: rgba(78,46,150,.09);
+    --orange: #9a4200;
+    --orange-soft: rgba(154,66,0,.09);
+    --red: #b02020;
+    --red-soft: rgba(176,32,32,.08);
+    --cat-p1: #b04010; --cat-p1-s: rgba(176,64,16,.09);
+    --cat-p2: #1a4fa0; --cat-p2-s: rgba(26,79,160,.09);
+    --cat-p3: #4e2e96; --cat-p3-s: rgba(78,46,150,.09);
+    --cat-p4: #0d6e58; --cat-p4-s: rgba(13,110,88,.09);
+    --cat-oph: #1a4fa0; --cat-oph-s: rgba(26,79,160,.09);
+    --cat-dent: #8a1060; --cat-dent-s: rgba(138,16,96,.09);
+    --cat-chk: #1a7a30; --cat-chk-s: rgba(26,122,48,.09);
+    --cat-med: #0d6e58; --cat-med-s: rgba(13,110,88,.09);
+    --cat-pos: #4a4a5a; --cat-pos-s: rgba(74,74,90,.09);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'IBM Plex Sans KR',sans-serif; background:var(--bg); color:var(--ink); line-height:1.65; -webkit-font-smoothing:antialiased; }
+
+  /* ── LAYOUT ── */
+  .sidenav {
+    position:fixed; left:0; top:0; bottom:0; width:200px;
+    background:var(--surface); border-right:1px solid var(--line);
+    padding:28px 0; z-index:100; overflow-y:auto;
+    box-shadow:2px 0 8px rgba(0,0,0,.04);
+  }
+  .sidenav .logo {
+    padding:0 20px 18px; border-bottom:1px solid var(--line); margin-bottom:12px;
+    font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.16em;
+    color:var(--accent); text-transform:uppercase; font-weight:500;
+  }
+  .nav-section { padding:14px 20px 5px; font-size:9px; color:var(--ink-muted); letter-spacing:.14em; text-transform:uppercase; }
+  .nav-item {
+    display:block; padding:9px 20px; font-size:13px; color:var(--ink-dim);
+    cursor:pointer; transition:all .13s; text-decoration:none; border-left:2px solid transparent;
+  }
+  .nav-item:hover { color:var(--ink); background:var(--surface-2); }
+  .nav-item.active { color:var(--accent); border-left-color:var(--accent); background:var(--accent-soft); font-weight:500; }
+
+  .main { margin-left:200px; padding:44px 52px 120px; max-width:1060px; }
+
+  /* ── HERO ── */
+  .hero { margin-bottom:36px; }
+  .eyebrow { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.2em; color:var(--accent); text-transform:uppercase; margin-bottom:10px; font-weight:500; }
+  h1 { font-family:'Noto Serif KR',serif; font-size:28px; font-weight:300; margin-bottom:6px; }
+  .hero-sub { color:var(--ink-dim); font-size:14px; margin-bottom:24px; }
+
+  .meta-row { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px; }
+  .meta-chip {
+    padding:6px 14px; background:var(--surface); border:1px solid var(--line);
+    border-radius:20px; font-size:11.5px; color:var(--ink-dim);
+    display:flex; align-items:center; gap:6px;
+  }
+  .meta-chip b { color:var(--ink); font-weight:600; font-family:'IBM Plex Mono',monospace; }
+
+  /* ── 전역 탭 (요약/상세) ── */
+  .global-tab-row {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:28px; flex-wrap:wrap; gap:12px;
+  }
+  .tab-toggle {
+    display:flex; background:var(--surface); border:1px solid var(--line);
+    border-radius:9px; padding:3px; gap:2px;
+  }
+  .tab-btn {
+    padding:7px 20px; border-radius:7px; font-size:12.5px; font-family:inherit;
+    border:none; cursor:pointer; transition:all .15s; color:var(--ink-dim); background:transparent;
+    font-weight:500;
+  }
+  .tab-btn.active { background:var(--accent); color:white; box-shadow:0 1px 4px rgba(13,110,88,.25); }
+
+  /* 필터 */
+  .filter-row { display:flex; gap:6px; flex-wrap:wrap; }
+  .pill {
+    padding:5px 13px; border-radius:20px; border:1px solid var(--line);
+    background:var(--surface); color:var(--ink-dim); font-size:11px;
+    cursor:pointer; transition:all .13s; user-select:none; font-family:inherit;
+  }
+  .pill:hover { color:var(--ink); border-color:var(--ink-muted); }
+  .pill.active { background:var(--accent-soft); border-color:var(--accent); color:var(--accent); font-weight:500; }
+
+  /* ── FAQ ITEM ── */
+  .faq-group { margin-bottom:44px; }
+  .group-head {
+    display:flex; align-items:center; gap:10px;
+    padding-bottom:12px; border-bottom:2px solid var(--line); margin-bottom:20px;
+  }
+  .group-badge {
+    display:inline-flex; align-items:center; gap:5px;
+    padding:3px 10px; border-radius:5px; font-size:10px; font-weight:700;
+  }
+  .group-title { font-family:'Noto Serif KR',serif; font-size:19px; font-weight:400; }
+  .group-count { font-size:11px; color:var(--ink-muted); margin-left:auto; font-family:'IBM Plex Mono',monospace; }
+
+  .faq-item {
+    background:var(--surface); border:1px solid var(--line); border-radius:12px;
+    margin-bottom:10px; overflow:hidden;
+    box-shadow:0 1px 4px rgba(0,0,0,.04); transition:box-shadow .15s;
+  }
+  .faq-item:hover { box-shadow:0 2px 10px rgba(0,0,0,.08); }
+
+  .faq-q {
+    padding:18px 22px; display:flex; align-items:flex-start; gap:12px;
+    cursor:pointer; user-select:none;
+  }
+  .faq-q-num {
+    font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--ink-muted);
+    margin-top:2px; flex-shrink:0; font-weight:500;
+  }
+  .faq-q-text { font-size:15.5px; font-weight:500; color:var(--ink); flex:1; line-height:1.55; }
+  .faq-q-arrow {
+    width:20px; height:20px; flex-shrink:0; margin-top:1px;
+    border-radius:50%; background:var(--surface-2); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    transition:all .2s; color:var(--ink-muted); font-size:10px;
+  }
+  .faq-item.open .faq-q-arrow { background:var(--accent); border-color:var(--accent); color:white; transform:rotate(180deg); }
+
+  .faq-a { display:none; border-top:1px solid var(--line); }
+  .faq-item.open .faq-a { display:block; }
+
+  /* 요약 탭 */
+  .a-summary {
+    padding:16px 22px 16px 46px;
+    font-size:15px; color:var(--ink); line-height:1.85;
+    border-left:3px solid var(--accent); margin:0; background:var(--accent-soft);
+  }
+
+  /* 상세 탭 */
+  .a-detail {
+    padding:20px 22px 20px 46px;
+  }
+  .a-detail-summary {
+    font-size:15px; color:var(--ink); line-height:1.85; margin-bottom:14px;
+    padding-bottom:14px; border-bottom:1px dashed var(--line);
+    font-weight:500;
+  }
+  .a-detail-body {
+    font-size:14.5px; color:var(--ink-dim); line-height:1.95;
+  }
+  .a-detail-body p { margin-bottom:8px; }
+  .a-detail-body p:last-child { margin-bottom:0; }
+  .a-detail-body strong { color:var(--ink); font-weight:600; }
+
+  .a-tag-row { display:flex; gap:6px; flex-wrap:wrap; margin-top:14px; }
+  .a-tag {
+    padding:2px 8px; border-radius:4px; font-size:10px; font-weight:600;
+    background:var(--surface-2); color:var(--ink-muted); border:1px solid var(--line);
+  }
+  .a-tag.helix { background:var(--accent-soft); color:var(--accent); border-color:rgba(13,110,88,.2); }
+
+  /* 복사 버튼 */
+  .copy-btn {
+    margin-top:12px; padding:5px 12px; border-radius:6px; border:1px solid var(--line);
+    background:var(--surface-2); color:var(--ink-dim); font-size:11px; cursor:pointer;
+    font-family:inherit; transition:all .13s;
+  }
+  .copy-btn:hover { border-color:var(--accent); color:var(--accent); }
+  .copy-btn.copied { background:var(--accent); color:white; border-color:var(--accent); }
+
+  /* 카테고리별 색상 */
+  .badge-p1  { background:var(--cat-p1-s); color:var(--cat-p1); }
+  .badge-p2  { background:var(--cat-p2-s); color:var(--cat-p2); }
+  .badge-p3  { background:var(--cat-p3-s); color:var(--cat-p3); }
+  .badge-p4  { background:var(--cat-p4-s); color:var(--cat-p4); }
+  .badge-oph { background:var(--cat-oph-s); color:var(--cat-oph); }
+  .badge-dent{ background:var(--cat-dent-s);color:var(--cat-dent); }
+  .badge-chk { background:var(--cat-chk-s); color:var(--cat-chk); }
+  .badge-med { background:var(--cat-med-s); color:var(--cat-med); }
+  .badge-pos { background:var(--cat-pos-s); color:var(--cat-pos); }
+
+  /* 검토 요청 안내 */
+  .review-notice {
+    background:#fffbf0; border:1px solid #e8d48a;
+    border-left:3px solid var(--gold); border-radius:10px;
+    padding:18px 22px; margin-top:20px;
+  }
+  .review-notice-head { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+  .review-icon { font-size:16px; }
+  .review-notice-head strong { font-size:13.5px; font-weight:600; color:var(--ink); }
+  .review-badge { padding:2px 8px; border-radius:4px; font-size:9.5px; font-weight:700; background:var(--gold-soft); color:var(--gold); border:1px solid rgba(138,104,0,.2); margin-left:4px; }
+  .review-body { font-size:13.5px; color:var(--ink-dim); line-height:1.75; }
+  .review-body b { color:var(--ink); }
+  .review-checklist { list-style:none; margin-top:10px; display:flex; flex-direction:column; gap:6px; }
+  .review-checklist li { display:flex; align-items:flex-start; gap:8px; font-size:13.5px; color:var(--ink-dim); }
+  .chk-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:5px; }
+
+  .empty-state { text-align:center; padding:60px; color:var(--ink-muted); font-size:13px; }
+
+  @media(max-width:860px){
+    .sidenav{display:none;}.main{margin-left:0;padding:24px 18px 80px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="sidenav">
+  <div class="logo">Helix · FAQ</div>
+  <span class="nav-section">카테고리</span>
+  <a class="nav-item active" onclick="filterCat('all',this)">전체</a>
+  <a class="nav-item" onclick="filterCat('p1',this)">① 뇌종양 수술</a>
+  <a class="nav-item" onclick="filterCat('p2',this)">② 인터벤션</a>
+  <a class="nav-item" onclick="filterCat('p3',this)">③ 방사선 치료</a>
+  <a class="nav-item" onclick="filterCat('p4',this)">④ 고양이 요오드</a>
+  <a class="nav-item" onclick="filterCat('oph',this)">안과</a>
+  <a class="nav-item" onclick="filterCat('dent',this)">치과</a>
+  <a class="nav-item" onclick="filterCat('chk',this)">건강검진</a>
+  <a class="nav-item" onclick="filterCat('med',this)">신장·내과</a>
+  <a class="nav-item" onclick="filterCat('pos',this)">협진·포지셔닝</a>
+</nav>
+
+<div class="main">
+
+  <div class="hero">
+    <div class="eyebrow">HELIX ANIMAL MEDICAL CENTER · FAQ Q&A DRAFT</div>
+    <h1>FAQ Q&A 초안</h1>
+    <p class="hero-sub">웹사이트 게시 + AI 검색 노출 동시 대응 · 요약/상세 이중 구조 · 격식체</p>
+    <div class="meta-row">
+      <div class="meta-chip">전체 Q&A <b id="totalCount">0</b>개</div>
+      <div class="meta-chip">카테고리 <b>9</b>개</div>
+      <div class="meta-chip" style="background:var(--accent-soft);border-color:rgba(13,110,88,.2);color:var(--accent);">요약 — 웹사이트 노출용</div>
+      <div class="meta-chip" style="background:var(--blue-soft);border-color:rgba(26,79,160,.2);color:var(--blue);">상세 — AI 검색 채택용</div>
+    </div>
+
+    <div class="review-notice">
+      <div class="review-notice-head">
+        <span class="review-icon">📋</span>
+        <strong>진료팀 검토 요청</strong>
+        <span class="review-badge">초안</span>
+      </div>
+      <div class="review-body">
+        <p>이 Q&A는 <b>네이버 키워드 검색 데이터</b>를 기반으로 보호자들의 검색 의도를 분석하여 질문을 구성한 초안입니다. 키워드 검색량에서 보호자 질문 형태로 전환한 것이므로, <b>실제 진료 현장에서 자주 받는 질문과 다를 수 있습니다.</b></p>
+        <p style="margin-top:8px;">아래 항목을 진료팀이 검토해 주시면 완성도가 높아집니다 —</p>
+        <ul class="review-checklist">
+          <li><span class="chk-dot"></span>실제로 보호자에게 자주 받는 질문 중 빠진 것이 있으면 추가 요청</li>
+          <li><span class="chk-dot"></span>답변 내용 중 임상적으로 수정이 필요한 부분 표시</li>
+          <li><span class="chk-dot"></span>헬릭스에서 실제로 시행하지 않는 내용이 포함된 경우 수정 요청</li>
+          <li><span class="chk-dot"></span>헬릭스만의 차별점이 더 강조되어야 하는 답변 표시</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="global-tab-row">
+    <div class="filter-row" id="filterRow"></div>
+    <div class="tab-toggle">
+      <button class="tab-btn active" id="tabSummary" onclick="switchTab('summary')">요약</button>
+      <button class="tab-btn" id="tabDetail" onclick="switchTab('detail')">상세</button>
+    </div>
+  </div>
+
+  <div id="faqContainer"></div>
+  <div class="empty-state" id="emptyState" style="display:none;">해당 카테고리의 Q&A가 없습니다.</div>
+
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════
+// FAQ 데이터
+// summary: 1~2문장 핵심 답변 (웹사이트 노출)
+// detail:  summary + 보충 설명 2~4문장 (AI 검색 채택)
+// tags: 관련 키워드 태그
+// helixTag: 헬릭스 특화 연결 포인트
+// ══════════════════════════════════════════════════════
+
+const FAQ = [
+
+  // ── ① 뇌종양 수술
+  { cat:'p1', catLabel:'뇌종양 수술', badgeClass:'badge-p1',
+    q:'강아지가 갑자기 발작을 일으켰습니다. 원인이 뇌종양일 수 있나요?',
+    summary:'발작은 뇌종양의 주요 증상 중 하나입니다. 뇌전증, 뇌수막염, 수두증 등 다양한 뇌 질환이 원인이 될 수 있으며, 정확한 감별을 위해 MRI 검사가 필요합니다.',
+    detail:'발작은 뇌에 이상이 생겼을 때 나타나는 신호 중 하나입니다. 원인으로는 뇌종양 외에도 뇌전증, 뇌수막염, 뇌수두증 등이 있으며, 임상 증상만으로는 감별이 어렵습니다. 정확한 진단을 위해 MRI 검사와 뇌척수액 검사를 포함한 정밀 평가가 권장됩니다.',
+    helixTag:'수술 네비게이터 기반 뇌종양 수술',
+    tags:['강아지 발작','강아지 뇌종양','강아지 뇌수막염','MRI'],
+  },
+  { cat:'p1', catLabel:'뇌종양 수술', badgeClass:'badge-p1',
+    q:'강아지 뇌종양 수술은 어느 정도의 위험도를 가지고 있나요?',
+    summary:'뇌종양 수술은 고위험 수술에 속하나, 수술 네비게이터와 정밀 영상 유도를 통해 정상 뇌조직 손상을 최소화할 수 있습니다. 수술 전 면밀한 평가를 통해 적응증 여부를 판단합니다.',
+    detail:'뇌종양 수술은 접근 경로와 종양 위치에 따라 위험도가 달라집니다. 헬릭스동물메디컬센터에서는 수술 네비게이터를 활용한 이미지 가이드 수술을 통해 실시간으로 수술 위치를 확인하며 진행합니다. 수술 전 CT·MRI 영상 분석을 통해 수술 가능성과 기대 예후를 보호자와 충분히 논의한 후 진행합니다.',
+    helixTag:'수술 네비게이터 · 정밀 영상 유도',
+    tags:['뇌종양 수술','강아지 뇌수술','수술 위험도'],
+  },
+  { cat:'p1', catLabel:'뇌종양 수술', badgeClass:'badge-p1',
+    q:'강아지 디스크(추간판 탈출증) 수술 후 얼마나 회복되나요?',
+    summary:'수술 후 회복 기간은 마비 정도와 증상 발생 기간에 따라 다르며, 경미한 경우 2~4주 내에 보행이 가능해지는 경우가 많습니다. 수술 후 재활 치료를 병행하면 회복률이 높아집니다.',
+    detail:'추간판 탈출증의 수술 예후는 수술 전 신경 기능 상태, 증상 발생 후 수술까지의 시간, 병변의 위치와 범위에 따라 크게 달라집니다. 심부 통각이 소실된 경우라도 조기 수술과 적극적 재활을 통해 회복 가능성을 높일 수 있습니다. 헬릭스에서는 수술 후 재활 치료를 연계하여 회복을 지원합니다.',
+    helixTag:'수술 후 재활 연계',
+    tags:['강아지 디스크','추간판 탈출증','강아지 디스크 수술','척추 수술'],
+  },
+  { cat:'p1', catLabel:'뇌종양 수술', badgeClass:'badge-p1',
+    q:'강아지 머리가 한쪽으로 기울어져 있고 눈이 떨립니다. 무슨 증상인가요?',
+    summary:'고개 기울임과 안구진탕은 전정계 이상이나 뇌 병변의 증상일 수 있습니다. 말초성 전정 질환부터 중추성 병변까지 감별이 필요하며, 신경학적 검사와 영상 검사가 권장됩니다.',
+    detail:'고개 기울임(head tilt)과 안구진탕(nystagmus)은 전정 기관 또는 소뇌·뇌간 병변에서 나타날 수 있습니다. 말초성 전정 질환은 일반적으로 예후가 좋으나, 중추성 원인인 경우 뇌종양, 뇌염, 뇌혈관 질환 등을 배제하기 위한 MRI 검사가 필요합니다. 증상이 갑자기 발생했거나 악화되는 경우 지체 없이 신경계 전문 병원을 방문하시기 바랍니다.',
+    helixTag:'신경계 정밀 진단 · MRI',
+    tags:['강아지 고개 기울임','전정 질환','강아지 뇌종양','안구 진탕'],
+  },
+
+  // ── ② 인터벤션
+  { cat:'p2', catLabel:'인터벤션', badgeClass:'badge-p2',
+    q:'종양 색전술이란 무엇이며, 수술과 어떻게 다른가요?',
+    summary:'종양 색전술은 종양에 혈액을 공급하는 혈관을 카테터로 차단하여 종양의 성장을 억제하는 최소 침습 중재 시술입니다. 피부를 절개하지 않아 회복이 빠르고, 수술이 어려운 위치의 종양에도 적용 가능합니다.',
+    detail:'색전술은 혈관 내로 카테터를 삽입하여 종양 공급 혈관을 차단함으로써 종양을 괴사시키거나 성장을 억제하는 시술입니다. 개복·개흉 수술 없이 시행되므로 마취 시간이 짧고 회복이 빠른 것이 장점입니다. 헬릭스동물메디컬센터는 하이브리드 수술실에서 실시간 혈관 조영 하에 시술하며, 필요 시 외과적 처치와 병행이 가능합니다.',
+    helixTag:'하이브리드 수술실 · 혈관 조영',
+    tags:['종양 색전술','강아지 색전술','동물 인터벤션','최소 침습'],
+  },
+  { cat:'p2', catLabel:'인터벤션', badgeClass:'badge-p2',
+    q:'강아지 담낭 점액종은 반드시 수술해야 하나요?',
+    summary:'담낭 점액종은 파열 위험이 있는 경우 응급 수술이 필요합니다. 파열 전 발견된 경우 상태에 따라 수술 또는 집중 관리를 선택하며, 지연 시 복막염으로 진행될 수 있어 조기 진단이 중요합니다.',
+    detail:'담낭 점액종은 담낭 내 점성 물질이 축적되는 질환으로, 담낭 파열 시 담즙성 복막염으로 이어져 생명을 위협할 수 있습니다. 초음파 검사에서 키위 단면 패턴이 관찰되면 수술적 담낭 절제를 권장합니다. 수술 시기, 마취 위험도, 전신 상태를 종합적으로 평가하여 치료 방향을 결정하며, 응급 상황에서는 즉각적인 처치가 필요합니다.',
+    helixTag:'복강경 담낭 절제 · 응급 수술',
+    tags:['강아지 담낭 점액종','강아지 담낭','담낭 수술'],
+  },
+  { cat:'p2', catLabel:'인터벤션', badgeClass:'badge-p2',
+    q:'스텐트 시술은 어떤 상황에서 시행되나요?',
+    summary:'스텐트 시술은 기도, 요도, 식도, 담도 등 내강이 협착되었을 때 내강을 확보하기 위해 시행합니다. 수술 없이 카테터를 통해 스텐트를 삽입하여 폐색을 해소합니다.',
+    detail:'기관 협착으로 호흡 곤란이 심한 경우, 요도 폐색으로 배뇨가 불가능한 경우, 식도나 담도 협착으로 식이·소화가 어려운 경우 등 다양한 상황에서 스텐트 시술이 적용됩니다. 헬릭스동물메디컬센터는 형광 투시 장비를 활용하여 정확한 위치에 스텐트를 거치하며, 시술 후 빠른 기능 회복을 도모합니다. 수술 불가 환자에게도 적용 가능한 것이 장점입니다.',
+    helixTag:'형광 투시 유도 · 스텐트 시술',
+    tags:['강아지 스텐트','기관 스텐트','요도 스텐트','동물 인터벤션'],
+  },
+  { cat:'p2', catLabel:'인터벤션', badgeClass:'badge-p2',
+    q:'강아지 유선 종양은 어떻게 치료하나요?',
+    summary:'유선 종양은 수술적 절제가 기본 치료입니다. 악성 여부와 전이 확인을 위해 수술 전 정밀 검사가 필요하며, 악성 종양의 경우 항암 치료나 방사선 치료를 병행할 수 있습니다.',
+    detail:'유선 종양의 약 50%는 악성으로 보고됩니다. 수술 전 흉부 방사선 검사와 복부 초음파를 통해 전이 여부를 확인하고, 조직 검사로 종양의 성격을 파악합니다. 악성 종양의 경우 완전 절제 후 항암 치료 또는 방사선 치료를 고려할 수 있으며, 헬릭스동물메디컬센터에서는 종양 내과·외과·영상의학과가 함께 치료 계획을 수립하는 다학제 진료를 시행합니다.',
+    helixTag:'다학제 종양 진료 · 방사선 치료 연계',
+    tags:['강아지 유선 종양','강아지 암','종양 수술','항암 치료'],
+  },
+
+  // ── ③ 방사선 치료
+  { cat:'p3', catLabel:'방사선 치료', badgeClass:'badge-p3',
+    q:'반려동물도 방사선 치료를 받을 수 있나요?',
+    summary:'네, 가능합니다. 수술 접근이 어려운 위치의 종양이나 수술 후 잔존 종양에 대해 방사선 치료를 시행할 수 있습니다. 치료 시 전신마취가 필요하며, 케이스에 따라 분할 방사선 또는 정위 방사선 방식을 적용합니다.',
+    detail:'동물 방사선 치료는 뇌종양, 비강 종양, 구강 종양, 연부조직 종양 등 수술만으로 완전 절제가 어려운 종양에 특히 효과적입니다. 분할 방사선은 주 수 회씩 수 주에 걸쳐 치료하는 방식이며, 정위 방사선은 단기간에 집중 조사하는 방식입니다. 치료 방식은 종양의 종류, 위치, 병기, 전신 상태에 따라 결정됩니다.',
+    helixTag:'헬릭스 방사선 치료 센터',
+    tags:['동물 방사선 치료','강아지 방사선 치료','반려동물 방사선'],
+  },
+  { cat:'p3', catLabel:'방사선 치료', badgeClass:'badge-p3',
+    q:'방사선 치료 중 부작용은 어떻게 관리하나요?',
+    summary:'방사선 치료 부위에 따라 피부 반응, 점막 염증, 일시적 탈모 등이 나타날 수 있습니다. 대부분 치료 종료 후 회복되며, 치료 기간 중 지속적인 모니터링과 지지 요법을 병행합니다.',
+    detail:'방사선 치료의 부작용은 조사 부위와 방식에 따라 다릅니다. 급성 부작용으로는 조사 부위의 피부 발적·탈모·점막 염증 등이 있으며, 대부분 치료 종료 4~6주 후 회복됩니다. 만성 부작용은 드물지만 심한 경우 방사선 괴사가 발생할 수 있습니다. 치료 계획 수립 시 정상 조직 노출을 최소화하는 방향으로 설계하며, 치료 기간 중 식욕 저하·통증 등에 대한 지지 요법을 함께 시행합니다.',
+    helixTag:'방사선 치료 후 관리 · 지지 요법',
+    tags:['방사선 치료 부작용','방사선 치료 후 관리','동물 방사선'],
+  },
+  { cat:'p3', catLabel:'방사선 치료', badgeClass:'badge-p3',
+    q:'고양이 비만세포종은 어떤 치료가 필요한가요?',
+    summary:'고양이 비만세포종은 발생 부위와 병기에 따라 수술, 방사선 치료, 약물 치료를 단독 또는 병행합니다. 피부형과 내장형으로 나뉘며 예후와 치료 방향이 다릅니다.',
+    detail:'고양이 비만세포종은 피부에 발생하는 경우와 비장·장관 등 내장에 발생하는 경우로 구분됩니다. 피부형 비만세포종은 완전 절제 시 예후가 비교적 좋으나, 내장형은 전신 병변 가능성이 높아 종합적인 병기 평가가 필요합니다. 절제 불가 병변에 대해서는 방사선 치료와 약물 치료를 병행할 수 있으며, 헬릭스에서는 다학제 팀이 케이스별 최적 치료 계획을 수립합니다.',
+    helixTag:'다학제 종양 진료 · 통합 종양학',
+    tags:['고양이 비만세포종','고양이 암','종양 치료'],
+  },
+  { cat:'p3', catLabel:'방사선 치료', badgeClass:'badge-p3',
+    q:'항암 치료 중 강아지가 밥을 잘 먹지 않습니다. 어떻게 해야 하나요?',
+    summary:'항암 치료 중 식욕 저하는 흔한 부작용입니다. 구역감 억제제, 식욕 촉진제를 사용하고, 고칼로리 소량 급여로 영양 상태를 유지하는 것이 중요합니다. 증상이 지속되면 담당 수의사와 상의하시기 바랍니다.',
+    detail:'항암 치료에 의한 구역감, 구내 점막 자극, 전신 무력감 등이 복합적으로 식욕 저하를 유발할 수 있습니다. 치료 기간 중에는 기호성 높은 사료나 처방식으로 교체하고, 소량 다회 급여를 권장합니다. 심한 경우 비위관 튜브를 통한 강제 급여나 정맥 영양 지원을 고려합니다. 체중과 영양 상태는 항암 치료 지속 여부를 결정하는 중요한 지표이므로 정기적인 모니터링이 필요합니다.',
+    helixTag:'항암 기간 지지 요법 · 영양 관리',
+    tags:['항암 부작용','항암 중 식욕 저하','강아지 항암 치료'],
+  },
+
+  // ── ④ 고양이 요오드 치료
+  { cat:'p4', catLabel:'고양이 요오드 치료', badgeClass:'badge-p4',
+    q:'고양이 갑상선기능항진증이란 무엇인가요?',
+    summary:'고양이 갑상선기능항진증은 갑상선이 과활성화되어 갑상선 호르몬이 과다 분비되는 질환입니다. 체중 감소, 과식, 구토, 활동 과다, 다음 다뇨 등이 주요 증상이며, 중·노령 고양이에서 흔히 발생합니다.',
+    detail:'갑상선기능항진증은 고양이에서 가장 흔한 내분비 질환 중 하나로, 대부분 갑상선 양성 종양(선종)에 의해 발생합니다. 진단은 혈청 총 T4(총 티록신) 수치 측정으로 이루어지며, 필요 시 유리 T4 검사와 갑상선 스캔이 추가됩니다. 치료하지 않으면 심장 비대, 고혈압, 신장 기능 저하로 이어질 수 있습니다.',
+    helixTag:'고양이 갑상선기능항진증 · 방사성 요오드 치료',
+    tags:['고양이 갑상선기능항진증','고양이 갑상선','T4','고양이 체중 감소'],
+  },
+  { cat:'p4', catLabel:'고양이 요오드 치료', badgeClass:'badge-p4',
+    q:'방사성 요오드(I-131) 치료는 어떻게 진행되나요?',
+    summary:'방사성 요오드를 1회 주사하면 갑상선 조직에 선택적으로 흡수되어 과활성 세포를 파괴합니다. 시술 자체는 간단하지만, 방사선 안전 기준에 따라 일정 기간 격리 입원이 필요합니다.',
+    detail:'I-131은 피하 또는 정맥 투여 후 갑상선 조직에 선택적으로 집적되어 과활성화된 갑상선 세포를 파괴합니다. 정상 갑상선 조직과 주변 조직에 대한 영향은 최소화됩니다. 치료 후 방사선 수치가 기준치 이하로 떨어질 때까지 격리 입원이 필요하며, 기간은 통상 1~2주입니다. 단 1회 치료로 95% 이상의 완치율을 보이는 것이 가장 큰 장점입니다.',
+    helixTag:'방사성 요오드 치료 · I-131',
+    tags:['방사성 요오드','I-131','고양이 요오드 치료','갑상선 완치'],
+  },
+  { cat:'p4', catLabel:'고양이 요오드 치료', badgeClass:'badge-p4',
+    q:'약물 치료와 방사성 요오드 치료 중 어느 것이 더 나은가요?',
+    summary:'방사성 요오드 치료는 단 1회로 95% 이상 완치가 가능한 근치 요법입니다. 약물 치료는 평생 복용이 필요하고 부작용 모니터링이 요구됩니다. 전신 상태와 보호자 여건에 따라 최적 치료를 선택합니다.',
+    detail:'메티마졸 등 항갑상선 약물은 호르몬 합성을 억제하지만 근치는 되지 않아 평생 복용이 필요하며, 구토·간 독성·혈액 이상 등 부작용이 발생할 수 있습니다. 방사성 요오드 치료는 한 번으로 영구적인 치료 효과를 기대할 수 있고 부작용이 적습니다. 다만 치료 후 일시적으로 갑상선기능저하증이 발생할 수 있으며, 격리 입원이 필요합니다. 신장 기능이 크게 저하된 경우 치료 방향 결정 시 신중한 고려가 필요합니다.',
+    helixTag:'방사성 요오드 치료 · 치료 방향 상담',
+    tags:['갑상선 약물 치료','방사성 요오드 치료 비교','고양이 갑상선 완치'],
+  },
+  { cat:'p4', catLabel:'고양이 요오드 치료', badgeClass:'badge-p4',
+    q:'요오드 치료 후 고양이와 함께 지내는 데 주의사항이 있나요?',
+    summary:'퇴원 후 일정 기간 고양이의 배설물과 직접 접촉을 최소화하고, 어린이·임신부와의 밀접 접촉을 제한하는 것이 권장됩니다. 담당 수의사의 퇴원 후 관리 지침을 반드시 따르시기 바랍니다.',
+    detail:'I-131 치료 후 일정 방사선 수치가 감쇠될 때까지 배설물(소변, 대변)에 방사성 물질이 포함될 수 있습니다. 퇴원 기준을 충족한 후에도 약 2~4주간 배설물 처리 시 장갑 착용, 어린이 및 임산부와의 밀착 생활 제한이 권장됩니다. 구체적인 지침은 치료 시설과 국가 방사선 안전 기준에 따라 다를 수 있으며, 퇴원 시 상세 안내를 드립니다.',
+    helixTag:'요오드 치료 후 관리 · 방사선 안전',
+    tags:['요오드 치료 후 관리','고양이 요오드 치료 주의사항','방사선 안전'],
+  },
+
+  // ── 안과
+  { cat:'oph', catLabel:'안과', badgeClass:'badge-oph',
+    q:'강아지 백내장 수술은 언제 하는 것이 좋은가요?',
+    summary:'백내장이 성숙기에 접어들어 시력 저하가 뚜렷하고 합병증이 없는 시기에 수술이 권장됩니다. 과성숙 백내장으로 진행되면 수술 난이도와 합병증 위험이 높아지므로, 조기 수술 계획을 세우는 것이 중요합니다.',
+    detail:'백내장 수술의 최적 시기는 수정체 혼탁 정도, 시력 손실 정도, 2차 합병증(포도막염, 녹내장 등) 여부를 종합적으로 판단하여 결정합니다. 수술 전 안구 초음파로 망막 기능을 확인하고, ERG(망막전위도) 검사를 통해 망막 반응을 평가합니다. 수술은 수정체 초음파 유화술(phacoemulsification)로 시행하며, 인공 수정체를 삽입합니다.',
+    helixTag:'안과 전문의 · 수정체 초음파 유화술',
+    tags:['강아지 백내장','강아지 백내장 수술','수정체 초음파 유화술'],
+  },
+  { cat:'oph', catLabel:'안과', badgeClass:'badge-oph',
+    q:'강아지 녹내장은 어떤 증상이 나타나나요?',
+    summary:'안압 상승으로 인해 눈의 통증, 각막 혼탁, 눈이 커 보이는 우안(우眼), 시력 저하 등이 나타납니다. 녹내장은 빠르게 진행되어 실명으로 이어질 수 있으므로 증상 발생 즉시 검진이 필요합니다.',
+    detail:'개에서 녹내장은 안방수 배출 장애로 안압이 급격히 상승하는 응급 질환입니다. 초기에는 경미한 충혈과 눈물이 관찰되다가, 안압이 지속적으로 상승하면 각막이 뿌옇게 변하고 안구가 확대됩니다. 발병 24~72시간 내에 시력을 잃을 수 있어 즉각적인 안압 처치가 필요합니다. 원발성과 속발성 녹내장으로 구분되며, 치료 방향이 다릅니다.',
+    helixTag:'안과 응급 · 안압 측정 · 녹내장 치료',
+    tags:['강아지 녹내장','안압','강아지 눈 통증','녹내장 치료'],
+  },
+  { cat:'oph', catLabel:'안과', badgeClass:'badge-oph',
+    q:'강아지 각막 궤양은 어떻게 치료하나요?',
+    summary:'각막 궤양의 깊이와 원인에 따라 점안 치료부터 수술적 처치까지 단계적으로 접근합니다. 표재성 궤양은 항생제 점안액과 각막 보호제로 치료하며, 심부 궤양은 각막 봉합이나 이식이 필요할 수 있습니다.',
+    detail:'각막 궤양은 깊이에 따라 표재성, 기질성, 데스메막 류로 분류합니다. 데스메막 류와 각막 천공은 수술적 처치가 필요한 응급 상태입니다. 원인 파악이 중요하며, 안검 내반, 속눈썹 이상 등 구조적 원인이 있다면 이를 교정하지 않으면 재발합니다. 헬릭스동물메디컬센터 안과에서는 세극등 생체 현미경과 형광 염색 검사로 궤양 상태를 정밀 평가합니다.',
+    helixTag:'안과 전문의 · 각막 수술',
+    tags:['강아지 각막 궤양','강아지 눈 치료','각막 봉합'],
+  },
+
+  // ── 치과
+  { cat:'dent', catLabel:'치과', badgeClass:'badge-dent',
+    q:'강아지 스케일링은 얼마나 자주 해야 하나요?',
+    summary:'치석 침착 속도와 구강 상태에 따라 다르지만, 일반적으로 연 1~2회 마취 스케일링이 권장됩니다. 정기 검진을 통해 치주 질환 진행 여부를 확인하고 적절한 시기를 결정합니다.',
+    detail:'구강 건강 관리는 전신 건강과 직결됩니다. 치석 축적 속도는 견종, 식이, 구강 위생 관리 수준에 따라 다릅니다. 소형견과 단두종은 치아 과밀로 치석이 빨리 쌓이는 경향이 있습니다. 마취 스케일링은 치석을 치은 아래까지 제거하고 치주 포켓 깊이를 평가할 수 있어, 무마취 스케일링보다 효과적입니다. 가정에서는 매일 칫솔질로 치석 형성을 늦추는 것이 중요합니다.',
+    helixTag:'동물 치과 전문 · 마취 스케일링',
+    tags:['강아지 스케일링','강아지 치석 제거','마취 스케일링'],
+  },
+  { cat:'dent', catLabel:'치과', badgeClass:'badge-dent',
+    q:'고양이 구내염이 재발하는 이유는 무엇인가요?',
+    summary:'고양이 만성 구내염은 구강 내 세균, 바이러스, 면역 반응이 복합적으로 작용하여 발생합니다. 약물 치료만으로는 완치가 어려운 경우가 많으며, 전치발치(全齒拔齒)가 근치 치료로 선택되기도 합니다.',
+    detail:'고양이 구내염(FCGS)은 칼리시바이러스, 헤르페스바이러스 감염과 면역 과반응이 관여하는 복잡한 질환입니다. 항생제·스테로이드 치료는 일시적 완화 효과가 있으나 재발이 흔합니다. 치아 흡수성 병변(FORL)이 동반된 경우 해당 치아 발치가 필요합니다. 심한 경우 전체 치아를 발치하는 전발치 후 70~80%의 환자에서 유의미한 호전을 보입니다.',
+    helixTag:'동물 치과 전문 · 전치발치 · 구강 전문',
+    tags:['고양이 구내염','고양이 구내염 재발','전발치','구내염 치료'],
+  },
+  { cat:'dent', catLabel:'치과', badgeClass:'badge-dent',
+    q:'강아지 치근단 농양은 어떻게 알 수 있나요?',
+    summary:'치근단 농양은 치아 뿌리 주변에 감염이 생긴 것으로, 눈 아래 부위의 부종·누공(작은 구멍에서 분비물이 나오는 것) 또는 씹기를 꺼리는 행동으로 발견되는 경우가 많습니다. 치과 방사선 검사로 확진합니다.',
+    detail:'상악 제4전구치(육식치)의 치근단 농양은 눈 아래 피부에 누공을 형성하는 특징적인 외형을 보입니다. 단순 피부 감염으로 오인되기 쉬우나, 원인인 치아를 치료하지 않으면 반복적으로 재발합니다. 치료는 원인치 발치 또는 근관 치료이며, 발치 전후 적절한 항생제 투여가 필요합니다. 구강 방사선 검사 없이는 진단이 어려우므로 전문 치과 검진이 권장됩니다.',
+    helixTag:'치과 방사선 · 구강 전문 검진',
+    tags:['강아지 치근단 농양','강아지 잇몸 농양','치과 방사선'],
+  },
+
+  // ── 건강검진
+  { cat:'chk', catLabel:'건강검진', badgeClass:'badge-chk',
+    q:'반려동물 건강검진은 몇 살부터 받아야 하나요?',
+    summary:'소형견·고양이는 7세 이상, 대형견은 5세 이상부터 시니어 검진을 권장합니다. 젊은 반려동물도 연 1회 기본 건강검진을 통해 이상 소견을 조기에 발견하는 것이 중요합니다.',
+    detail:'반려동물의 1년은 사람의 5~7년에 해당합니다. 소형견과 고양이는 7세, 대형견은 5세부터 노령기로 분류되며, 이 시기부터 심장, 신장, 내분비 질환 발생률이 급격히 높아집니다. 기본 검진 항목으로는 혈액검사, 소변검사, 흉부 방사선, 복부 초음파가 포함되며, 연령과 견종에 따라 심장 초음파, 혈압 측정, 갑상선 수치 등이 추가됩니다.',
+    helixTag:'헬릭스 프리미엄 건강검진 · 다과 전문의 결과 통합 검토',
+    tags:['강아지 건강검진','고양이 건강검진','시니어 검진','건강검진 나이'],
+  },
+  { cat:'chk', catLabel:'건강검진', badgeClass:'badge-chk',
+    q:'강아지 MRI 검사는 어떤 경우에 필요한가요?',
+    summary:'발작, 보행 이상, 원인 불명의 통증, 신경계 증상, 뇌·척추 종양 의심 시 MRI 검사가 권장됩니다. CT로는 확인이 어려운 뇌·척수의 연부조직 병변을 정밀하게 평가할 수 있습니다.',
+    detail:'MRI는 뇌와 척수의 연부조직을 CT보다 훨씬 높은 해상도로 영상화합니다. 뇌종양, 뇌수막염, 뇌수두증, 추간판 탈출증, 척수 종양 등의 진단에 필수적입니다. 검사 시 전신마취가 필요하며, 검사 시간은 약 30~60분입니다. 검사 전 혈액검사와 마취 전 평가를 통해 안전성을 확인합니다.',
+    helixTag:'MRI · CT · 정밀 영상 진단',
+    tags:['강아지 MRI','강아지 MRI 비용','MRI 검사 필요성'],
+  },
+  { cat:'chk', catLabel:'건강검진', badgeClass:'badge-chk',
+    q:'강아지 건강검진 결과가 정상인데도 정기 검진을 받아야 하나요?',
+    summary:'네, 필요합니다. 무증상 단계에서 발견된 이상 소견은 치료 효과가 높고 비용도 적게 듭니다. 정기 검진은 치료보다 예방에 집중하는 적극적인 건강 관리 방식입니다.',
+    detail:'많은 질환은 증상이 나타나기 전부터 수개월~수년에 걸쳐 진행됩니다. 예를 들어 만성 신장병은 신기능의 75% 이상이 소실되어야 증상이 나타나며, 조기 발견 시 진행을 늦출 수 있습니다. 정기 검진 데이터가 축적되면 이전 수치와 비교하여 미세한 변화도 감지할 수 있어 진단 민감도가 높아집니다.',
+    helixTag:'헬릭스 정기 건강검진 · 예방 의학',
+    tags:['강아지 건강검진 주기','예방 검진','무증상 질환'],
+  },
+
+  // ── 신장·내과
+  { cat:'med', catLabel:'신장·내과', badgeClass:'badge-med',
+    q:'고양이 신부전 진단을 받았습니다. 투석 치료가 필요한가요?',
+    summary:'만성 신부전은 일반적으로 식이 요법, 수액 치료, 약물로 관리합니다. 투석(혈액 투석 또는 CRRT)은 급성 신부전이나 만성 신부전 급성 악화 시 신기능 회복을 위한 집중 치료로 적용됩니다.',
+    detail:'신부전 치료 방향은 급성·만성 여부, 진행 단계, 원인에 따라 달라집니다. 만성 신부전(CKD)은 IRIS 병기 분류에 따라 단계별 관리를 시행합니다. 투석은 신장이 독소와 수분을 배출하지 못할 때 그 기능을 대신하는 치료로, 혈액 투석과 복막 투석, 지속적 신대체 요법(CRRT) 등이 있습니다. 헬릭스동물메디컬센터는 24시간 집중 모니터링 하에 투석 치료를 제공합니다.',
+    helixTag:'신장 투석 · CRRT · 24시간 ICU',
+    tags:['고양이 신부전','강아지 신부전','신장 투석','CRRT'],
+  },
+  { cat:'med', catLabel:'신장·내과', badgeClass:'badge-med',
+    q:'강아지 심장병 진단을 받았는데, 어떤 검사와 치료가 필요한가요?',
+    summary:'심장 초음파(심에코)와 흉부 방사선 검사로 심장 크기와 기능을 평가합니다. 약물 치료(피모벤단, 이뇨제 등)를 통해 심부전 진행을 늦추고 증상을 관리합니다.',
+    detail:'개에서 가장 흔한 심장 질환은 승모판 폐쇄부전증(MMVD)입니다. 심장 초음파로 판막 역류 정도, 심방·심실 크기, 심기능을 정량적으로 평가합니다. ACVIM 가이드라인에 따라 병기별 약물 치료를 시행하며, 심부전(폐수종, 흉수) 발생 시 입원 집중 치료가 필요합니다. 정기적인 추적 검사로 약물 조절과 병기 평가를 시행합니다.',
+    helixTag:'심장 전문 · 심장 초음파 · 24시간 ICU',
+    tags:['강아지 심장병','승모판 폐쇄부전증','강아지 폐수종','심장 초음파'],
+  },
+  { cat:'med', catLabel:'신장·내과', badgeClass:'badge-med',
+    q:'강아지 자궁축농증 수술 후 관리는 어떻게 해야 하나요?',
+    summary:'수술 후 24~48시간 집중 모니터링이 필요하며, 항생제 투여와 수액 치료를 병행합니다. 퇴원 후 2주간 운동 제한과 상처 관리를 철저히 하고, 이상 징후 발생 시 즉시 내원하시기 바랍니다.',
+    detail:'자궁축농증 수술(자궁 난소 적출)은 세균 독소에 의한 전신 염증 반응 상태에서 진행되는 경우가 많아, 수술 후 집중 케어가 중요합니다. 수술 후 탈수, 저혈압, 전해질 불균형을 교정하기 위한 수액 치료와 광범위 항생제 투여를 시행합니다. 패혈증이 동반된 경우 ICU 입원 치료가 필요하며, 신장·간 기능 모니터링도 함께 진행합니다.',
+    helixTag:'수술 후 집중 관리 · 24시간 ICU',
+    tags:['강아지 자궁축농증','자궁축농증 수술 후','강아지 수술 후 관리'],
+  },
+
+  // ── 협진·포지셔닝
+  { cat:'pos', catLabel:'협진·포지셔닝', badgeClass:'badge-pos',
+    q:'헬릭스동물메디컬센터는 어떤 병원인가요?',
+    summary:'헬릭스동물메디컬센터는 서울 서초구에 위치한 대형 종합 동물병원으로, 내과·외과·영상의학·안과·치과·재활 등 분과 전문의가 협진하는 다학제 진료 체계를 갖추고 있습니다.',
+    detail:'헬릭스동물메디컬센터는 AAHA-KVMA 인증(9번째), VECCS Level 2, CFC Gold 인증을 보유한 전문 동물 의료 기관입니다. 하이브리드 수술실, MRI·CT, 혈관 조영 장비(Alphenix Sky), 수술 네비게이터 등 첨단 의료 인프라를 보유하고 있으며, 방사선 치료, 인터벤션, 신장 투석, 방사성 요오드 치료 등 국내 소수 병원만 제공하는 특화 진료를 운영합니다.',
+    helixTag:'AAHA-KVMA 인증 · 다학제 진료',
+    tags:['헬릭스동물메디컬센터','서초 동물병원','종합 동물병원','동물 메디컬센터'],
+  },
+  { cat:'pos', catLabel:'협진·포지셔닝', badgeClass:'badge-pos',
+    q:'동네 동물병원과 헬릭스 같은 전문 병원은 어떻게 다른가요?',
+    summary:'일반 동물병원은 예방 접종, 기본 진료, 경미한 질환을 담당합니다. 헬릭스는 복잡한 케이스, 중증 질환, 고난도 수술, 특수 시술이 필요한 경우에 특화되어 있으며, 여러 전문의가 한 케이스를 함께 논의하는 협진 체계를 운영합니다.',
+    detail:'1차 동물병원에서 진단이 불확실하거나 치료 반응이 없는 경우, 고난도 수술이 필요한 경우, MRI·CT 등 정밀 영상 검사가 필요한 경우, 종양·심장·신경계 등 전문적 내과 관리가 필요한 경우에 2차 전문 병원인 헬릭스로 의뢰됩니다. 헬릭스에서는 필요 시 케이스 컨퍼런스를 통해 여러 전문의가 함께 치료 방향을 결정하며, 치료 후 주치의 병원과의 협력도 지원합니다.',
+    helixTag:'2차 병원 · 세컨드 오피니언 · 다학제 진료',
+    tags:['2차 동물병원','세컨드오피니언','동물병원 선택','전문 동물병원'],
+  },
+  { cat:'pos', catLabel:'협진·포지셔닝', badgeClass:'badge-pos',
+    q:'타 지역에서도 진료를 받을 수 있나요?',
+    summary:'네, 전국에서 내원하시는 보호자를 진료합니다. 헬릭스가 제공하는 방사선 치료, 뇌종양 수술, 방사성 요오드 치료, 인터벤션 시술 등은 전국적으로 가능한 병원이 매우 제한적입니다.',
+    detail:'헬릭스동물메디컬센터의 특화 진료는 국내에서 제공 가능한 기관이 극히 적어, 경기·강원·충청·경상·전라 등 전국에서 의뢰와 직접 방문이 이루어집니다. 원거리 보호자의 경우 진료 일정을 사전에 조율하여 불필요한 대기를 최소화합니다. 전원 시 기존 병원의 검사 자료와 의뢰서를 지참하시면 진료가 원활하게 진행됩니다.',
+    helixTag:'전국권 진료 · 의뢰 시스템',
+    tags:['서울 동물병원','전국 동물병원','동물병원 의뢰','지방에서 서울 동물병원'],
+  },
+  { cat:'pos', catLabel:'협진·포지셔닝', badgeClass:'badge-pos',
+    q:'다른 병원에서 세컨드 오피니언을 받고 싶은데 가능한가요?',
+    summary:'네, 세컨드 오피니언 진료를 시행합니다. 기존 병원의 검사 결과, 영상 자료, 의무 기록을 지참하시면 보다 정확한 평가와 치료 방향 제안이 가능합니다.',
+    detail:'세컨드 오피니언은 기존 진단과 치료 계획에 대한 추가적 전문 의견을 구하는 것입니다. 헬릭스에서는 보호자가 가져오신 자료를 바탕으로 독립적인 평가를 제공하며, 필요 시 추가 검사를 시행합니다. 치료 방향이 기존 병원과 다를 경우 그 이유와 근거를 명확히 설명하고, 최종 결정은 보호자가 내릴 수 있도록 충분한 정보를 제공합니다.',
+    helixTag:'세컨드 오피니언 · 독립적 전문 평가',
+    tags:['세컨드오피니언','다른 병원 의견','진단 재평가'],
+  },
+];
+
+// ── 상태
+let activeTab = 'summary';
+let activeCat = 'all';
+
+// 카테고리 메타
+const CAT_LABELS = {
+  all:'전체', p1:'① 뇌종양 수술', p2:'② 인터벤션', p3:'③ 방사선 치료',
+  p4:'④ 고양이 요오드', oph:'안과', dent:'치과', chk:'건강검진',
+  med:'신장·내과', pos:'협진·포지셔닝'
+};
+
+// ── 필터 빌드
+function buildFilters() {
+  const row = document.getElementById('filterRow');
+  Object.entries(CAT_LABELS).forEach(([cat, label]) => {
+    const pill = document.createElement('button');
+    pill.className = `pill${cat==='all'?' active':''}`;
+    pill.textContent = label;
+    pill.onclick = () => filterCat(cat, null);
+    row.appendChild(pill);
+  });
+}
+
+function filterCat(cat, navEl) {
+  activeCat = cat;
+  // 사이드바
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (navEl) navEl.classList.add('active');
+  else {
+    document.querySelectorAll('.nav-item').forEach(n => {
+      if (n.getAttribute('onclick') && n.getAttribute('onclick').includes(`'${cat}'`)) n.classList.add('active');
+    });
+  }
+  // 필터 알약
+  document.querySelectorAll('#filterRow .pill').forEach(p => {
+    p.classList.toggle('active', p.textContent === CAT_LABELS[cat]);
+  });
+  renderFaq();
+}
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.getElementById('tabSummary').classList.toggle('active', tab==='summary');
+  document.getElementById('tabDetail').classList.toggle('active', tab==='detail');
+  // 열린 아이템 업데이트
+  document.querySelectorAll('.faq-item.open').forEach(item => {
+    updateAnswerDisplay(item);
+  });
+}
+
+function updateAnswerDisplay(item) {
+  const summaryEl = item.querySelector('.a-summary-wrap');
+  const detailEl  = item.querySelector('.a-detail-wrap');
+  if (summaryEl) summaryEl.style.display = activeTab==='summary' ? 'block' : 'none';
+  if (detailEl)  detailEl.style.display  = activeTab==='detail'  ? 'block' : 'none';
+}
+
+// ── FAQ 렌더
+function renderFaq() {
+  const container = document.getElementById('faqContainer');
+  const emptyState = document.getElementById('emptyState');
+  container.innerHTML = '';
+
+  const filtered = activeCat === 'all' ? FAQ : FAQ.filter(f => f.cat === activeCat);
+  document.getElementById('totalCount').textContent = FAQ.length;
+
+  if (filtered.length === 0) { emptyState.style.display='block'; return; }
+  emptyState.style.display = 'none';
+
+  // 카테고리별 그룹핑
+  const groups = {};
+  filtered.forEach(f => {
+    if (!groups[f.cat]) groups[f.cat] = { label: f.catLabel, badgeClass: f.badgeClass, items: [] };
+    groups[f.cat].items.push(f);
+  });
+
+  let qNum = 1;
+  Object.values(groups).forEach(group => {
+    const groupEl = document.createElement('div');
+    groupEl.className = 'faq-group';
+    groupEl.innerHTML = `
+      <div class="group-head">
+        <span class="group-badge ${group.badgeClass}">${group.label}</span>
+        <span class="group-count">${group.items.length}개</span>
+      </div>
+    `;
+
+    group.items.forEach(f => {
+      const item = document.createElement('div');
+      item.className = 'faq-item';
+      item.innerHTML = `
+        <div class="faq-q" onclick="toggleItem(this.parentElement)">
+          <span class="faq-q-num">Q${qNum++}</span>
+          <span class="faq-q-text">${f.q}</span>
+          <span class="faq-q-arrow">▾</span>
+        </div>
+        <div class="faq-a">
+          <div class="a-summary-wrap" style="display:${activeTab==='summary'?'block':'none'}">
+            <p class="a-summary">${f.summary}</p>
+            <div style="padding:8px 22px 14px 46px; display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+              <button class="copy-btn" onclick="copyText(this,'${escape(f.summary)}')">요약 복사</button>
+              <span class="a-tag helix">▶ ${f.helixTag}</span>
+            </div>
+          </div>
+          <div class="a-detail-wrap" style="display:${activeTab==='detail'?'block':'none'}">
+            <div class="a-detail">
+              <p class="a-detail-summary">${f.summary}</p>
+              <div class="a-detail-body"><p>${f.detail}</p></div>
+              <div class="a-tag-row">
+                ${f.tags.map(t=>`<span class="a-tag">${t}</span>`).join('')}
+                <span class="a-tag helix">▶ ${f.helixTag}</span>
+              </div>
+              <button class="copy-btn" onclick="copyText(this,'${escape(f.summary + '\n\n' + f.detail)}')">전체 복사</button>
+            </div>
+          </div>
+        </div>
+      `;
+      groupEl.appendChild(item);
+    });
+
+    container.appendChild(groupEl);
+  });
+}
+
+function toggleItem(item) {
+  const wasOpen = item.classList.contains('open');
+  // 같은 그룹 내 다른 항목은 닫지 않음 (여러 개 동시 오픈 허용)
+  item.classList.toggle('open', !wasOpen);
+  if (!wasOpen) updateAnswerDisplay(item);
+}
+
+function copyText(btn, encoded) {
+  const text = unescape(encoded);
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '복사됨 ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = btn.textContent.includes('요약') || !btn.textContent.includes('✓') ? '요약 복사' : '전체 복사'; btn.classList.remove('copied'); btn.textContent = activeTab==='summary'?'요약 복사':'전체 복사'; }, 1400);
+  });
+}
+
+buildFilters();
+renderFaq();
+</script>
+</body>
+</html>

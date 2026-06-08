@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>헬릭스 고검색량 키워드 S·A등급</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg:#f4f6f9;
+    --surface:#ffffff;
+    --surface-2:#f8f9fb;
+    --line:#e2e6ed;
+    --line-2:#d0d6e0;
+    --ink:#1a2233;
+    --ink-dim:#6b7a92;
+    --ink-muted:#adb8c8;
+    --accent:#0e9e82;
+    --accent-soft:rgba(14,158,130,.10);
+    --gold:#b58a1a;
+    --gold-soft:rgba(181,138,26,.10);
+    --red:#c0392b;
+    --red-soft:rgba(192,57,43,.08);
+    --blue:#2467b8;
+    --blue-soft:rgba(36,103,184,.10);
+    --orange:#c05a10;
+    --orange-soft:rgba(192,90,16,.09);
+    --pink:#b02a72;
+    --pink-soft:rgba(176,42,114,.09);
+    --p1:#c0510e; --p1-soft:rgba(192,81,14,.10);
+    --p2:#1a5fa8; --p2-soft:rgba(26,95,168,.10);
+    --p3:#5a3d9e; --p3-soft:rgba(90,61,158,.10);
+    --p4:#0a7a62; --p4-soft:rgba(10,122,98,.10);
+    --s-color:#b58a1a; --s-soft:rgba(181,138,26,.12);
+    --a-color:#1a5fa8; --a-soft:rgba(26,95,168,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'IBM Plex Sans KR',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1100px;margin:0 auto;padding:52px 48px 100px;}
+
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;font-weight:500;}
+  h1{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:300;margin-bottom:6px;color:var(--ink);}
+  .hero-sub{color:var(--ink-dim);font-size:13px;margin-bottom:28px;}
+
+  .kpi-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px;}
+  .kpi{padding:13px 20px;background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:130px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+  .kpi-label{font-size:10px;color:var(--ink-dim);letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px;}
+  .kpi-val{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:500;}
+  .kpi-val.s{color:var(--s-color);}
+  .kpi-val.a{color:var(--a-color);}
+  .kpi-val.accent{color:var(--accent);}
+  .kpi-val.dim{color:var(--ink-muted);}
+
+  /* 등급 안내 */
+  .grade-legend{display:flex;gap:12px;margin-bottom:22px;flex-wrap:wrap;}
+  .grade-card{padding:14px 20px;border-radius:10px;flex:1;min-width:200px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+  .grade-card.s{background:#fffbf0;border:1px solid #e8d48a;}
+  .grade-card.a{background:#f0f5ff;border:1px solid #b8ceec;}
+  .grade-card.dim-explain{background:var(--surface);border:1px solid var(--line);}
+  .grade-badge{display:inline-block;width:24px;height:24px;border-radius:5px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;text-align:center;line-height:24px;margin-bottom:7px;}
+  .grade-badge.s{background:var(--s-color);color:white;}
+  .grade-badge.a{background:var(--a-color);color:white;}
+  .grade-badge.g{background:#e8eaed;color:var(--ink-dim);}
+  .grade-title{font-size:12.5px;font-weight:600;margin-bottom:3px;color:var(--ink);}
+  .grade-desc{font-size:11.5px;color:var(--ink-dim);}
+
+  /* 컨트롤 */
+  .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:13px;}
+  .search-wrap{position:relative;flex:1;min-width:180px;}
+  .search-wrap input{width:100%;padding:8px 12px 8px 32px;background:var(--surface);border:1px solid var(--line);border-radius:8px;color:var(--ink);font-family:inherit;font-size:12.5px;outline:none;transition:border-color .15s;}
+  .search-wrap input:focus{border-color:var(--accent);}
+  .search-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:13px;height:13px;stroke:var(--ink-dim);}
+  .filter-row{display:flex;gap:6px;flex-wrap:wrap;}
+  .pill{padding:5px 11px;border-radius:20px;border:1px solid var(--line);background:var(--surface);color:var(--ink-dim);font-size:11px;cursor:pointer;transition:all .13s;user-select:none;font-family:inherit;}
+  .pill:hover{color:var(--ink);border-color:var(--ink-muted);}
+  .pill.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:500;}
+  .sort-sel{padding:6px 10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;color:var(--ink);font-family:inherit;font-size:11.5px;outline:none;cursor:pointer;}
+
+  /* 토글 */
+  .toggle-wrap{display:flex;align-items:center;gap:8px;padding:7px 13px;background:var(--surface);border:1px solid var(--line);border-radius:8px;cursor:pointer;user-select:none;font-size:12px;color:var(--ink-dim);transition:all .15s;}
+  .toggle-wrap:hover{color:var(--ink);border-color:var(--ink-muted);}
+  .toggle-wrap.on{border-color:var(--ink-muted);color:var(--ink);}
+  .toggle-dot{width:28px;height:16px;border-radius:8px;background:var(--line-2);position:relative;transition:background .2s;flex-shrink:0;}
+  .toggle-dot::after{content:'';position:absolute;width:12px;height:12px;border-radius:50%;background:white;top:2px;left:2px;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+  .toggle-wrap.on .toggle-dot{background:var(--ink-dim);}
+  .toggle-wrap.on .toggle-dot::after{left:14px;}
+
+  .stats-strip{display:flex;gap:7px;margin-bottom:12px;flex-wrap:wrap;align-items:center;}
+  .stat-chip{padding:3px 9px;border-radius:5px;font-size:11px;display:flex;align-items:center;gap:4px;}
+  .stat-chip .dot{width:5px;height:5px;border-radius:50%;}
+  .chip-high{background:var(--red-soft);color:var(--red);}.chip-high .dot{background:var(--red);}
+  .chip-mid{background:var(--gold-soft);color:var(--gold);}.chip-mid .dot{background:var(--gold);}
+  .chip-low{background:var(--accent-soft);color:var(--accent);}.chip-low .dot{background:var(--accent);}
+  .stat-n{font-family:'IBM Plex Mono',monospace;font-weight:500;}
+
+  .sec-label{font-size:11.5px;color:var(--ink-dim);margin-bottom:12px;padding:8px 14px;background:var(--surface);border-radius:7px;border:1px solid var(--line);}
+  .sec-label strong{color:var(--ink);}
+
+  .table-wrap{border:1px solid var(--line);border-radius:12px;overflow:auto;box-shadow:0 1px 6px rgba(0,0,0,.05);}
+  table{width:100%;border-collapse:collapse;}
+  thead th{padding:10px 13px;font-size:9.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-dim);background:#f0f3f7;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none;}
+  thead th:hover{color:var(--ink);}
+  tbody tr{border-bottom:1px solid var(--line);background:var(--surface);transition:all .1s;}
+  tbody tr:last-child{border-bottom:none;}
+  tbody tr:hover{background:var(--surface-2);}
+
+  /* 일반 키워드 비활성 */
+  tbody tr.is-general{
+    opacity:0.35;
+    background:repeating-linear-gradient(-45deg,#fff,#fff 5px,#f8f9fb 5px,#f8f9fb 6px);
+  }
+  tbody tr.is-general:hover{opacity:0.55;}
+  tbody tr.is-general.hidden-general{display:none;}
+
+  tbody td{padding:9px 13px;font-size:12.5px;vertical-align:middle;color:var(--ink);}
+  .num-r{font-family:'IBM Plex Mono',monospace;font-size:12px;text-align:right;}
+  .kw-name{font-weight:500;}
+  .kw-name mark{background:#fff3b0;color:#7a5a00;border-radius:2px;padding:0 2px;}
+
+  .grade-tag{display:inline-block;width:24px;height:24px;border-radius:5px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;text-align:center;line-height:24px;}
+  .grade-tag.S{background:var(--s-color);color:white;}
+  .grade-tag.A{background:var(--a-color);color:white;}
+
+  .badge{display:inline-block;padding:1.5px 6px;border-radius:3px;font-size:9px;font-weight:700;}
+  .badge-general{background:#f0f0f0;color:#999;border:1px solid #ddd;}
+  .badge-helix{background:var(--gold-soft);color:var(--gold);}
+
+  .cat-tag{display:inline-block;padding:1.5px 7px;border-radius:4px;font-size:9.5px;font-weight:600;white-space:nowrap;}
+  .tag-p1{background:var(--p1-soft);color:var(--p1);}
+  .tag-p2{background:var(--p2-soft);color:var(--p2);}
+  .tag-p3{background:var(--p3-soft);color:var(--p3);}
+  .tag-p4{background:var(--p4-soft);color:var(--p4);}
+  .tag-oph{background:var(--blue-soft);color:var(--blue);}
+  .tag-dent{background:var(--pink-soft);color:var(--pink);}
+  .tag-chk{background:rgba(20,140,60,.09);color:#0f7a36;}
+  .tag-med{background:var(--accent-soft);color:var(--accent);}
+  .tag-rehab{background:var(--orange-soft);color:var(--orange);}
+  .tag-gen{background:#f2f4f7;color:var(--ink-dim);border:1px solid var(--line);}
+  .tag-nation{background:var(--orange-soft);color:var(--orange);}
+
+  .comp-badge{display:inline-block;padding:1.5px 7px;border-radius:4px;font-size:10px;font-weight:600;}
+  .comp-badge.high{background:var(--red-soft);color:var(--red);}
+  .comp-badge.mid{background:var(--gold-soft);color:var(--gold);}
+  .comp-badge.low{background:var(--accent-soft);color:var(--accent);}
+
+  .vol-wrap{display:flex;align-items:center;gap:6px;}
+  .vol-bg{flex:1;height:3px;background:var(--line);border-radius:2px;min-width:44px;}
+  .vol-fill-s{height:100%;border-radius:2px;background:var(--s-color);}
+  .vol-fill-a{height:100%;border-radius:2px;background:var(--a-color);}
+  .vol-fill-g{height:100%;border-radius:2px;background:var(--ink-muted);}
+
+  .empty-msg{text-align:center;padding:52px;color:var(--ink-dim);font-size:13px;display:none;}
+  .empty-msg.show{display:block;}
+
+  @media(max-width:700px){.wrap{padding:28px 18px 80px;}.grade-legend{flex-direction:column;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">HELIX · 고검색량 키워드 / S·A 등급</div>
+  <h1>검색량 기반 공략 키워드</h1>
+  <p class="hero-sub">모바일 월간검색수 500회 이상 · 동물병원 맥락 키워드만 · 사람 의료·위치 기반 범용어 제거 완료</p>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-label">S급 (1,000+)</div><div class="kpi-val s" id="kS">—</div></div>
+    <div class="kpi"><div class="kpi-label">A급 (500~999)</div><div class="kpi-val a" id="kA">—</div></div>
+    <div class="kpi"><div class="kpi-label">헬릭스 직결</div><div class="kpi-val accent" id="kHelix">—</div></div>
+    <div class="kpi"><div class="kpi-label">일반 병원 (비활성)</div><div class="kpi-val dim" id="kGeneral">—</div></div>
+  </div>
+
+  <div class="grade-legend">
+    <div class="grade-card s">
+      <div class="grade-badge s">S</div>
+      <div class="grade-title">S급 — 모바일 1,000회 이상</div>
+      <div class="grade-desc">수요 검증 완료. 콘텐츠·SEO 최우선 투자 대상. 경쟁도 높더라도 반드시 커버.</div>
+    </div>
+    <div class="grade-card a">
+      <div class="grade-badge a">A</div>
+      <div class="grade-title">A급 — 모바일 500~999회</div>
+      <div class="grade-desc">안정적 검색량. S급 이후 순차 커버. 경쟁도 중간 이하면 상위 노출 가능성 높음.</div>
+    </div>
+    <div class="grade-card dim-explain">
+      <div class="grade-badge g">일</div>
+      <div class="grade-title">일반 병원 키워드 (비활성)</div>
+      <div class="grade-desc">검색량은 있지만 헬릭스 특화진료와 연결이 약한 키워드. 기본 숨김 — 토글로 표시 가능.</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="키워드 검색…">
+    </div>
+    <div class="filter-row" id="filterRow"></div>
+    <select class="sort-sel" id="sortSel">
+      <option value="mobile_d">모바일 ↓</option>
+      <option value="grade_s">S급 먼저</option>
+      <option value="comp_l">경쟁 낮은 순</option>
+      <option value="kw_a">가나다순</option>
+    </select>
+    <div class="toggle-wrap" id="genToggle" onclick="toggleGeneral()">
+      <div class="toggle-dot"></div>
+      <span>일반 병원 키워드 표시</span>
+    </div>
+  </div>
+
+  <div class="stats-strip" id="statsStrip"></div>
+  <div class="sec-label" id="secLabel"></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th onclick="sortBy('grade')">등급</th>
+          <th onclick="sortBy('kw')">키워드</th>
+          <th>구분</th>
+          <th onclick="sortBy('cat')">카테고리</th>
+          <th onclick="sortBy('mobile')" style="text-align:right">모바일</th>
+          <th onclick="sortBy('pc')" style="text-align:right">PC</th>
+          <th>검색량</th>
+          <th onclick="sortBy('comp')">경쟁도</th>
+          <th onclick="sortBy('ads')" style="text-align:right">광고수</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+  <div class="empty-msg" id="emptyMsg">검색 결과가 없어요.</div>
+
+</div>
+
+<script>
+const RAW = [
+  // 안과
+  {kw:'강아지백내장',         mobile:3210,pc:410, comp:'높음',ads:10,cat:'oph',isGeneral:false},
+  {kw:'강아지눈충혈',         mobile:2530,pc:110, comp:'높음',ads:10,cat:'oph',isGeneral:false},
+  {kw:'강아지백내장초기',     mobile:1700,pc:90,  comp:'높음',ads:10,cat:'oph',isGeneral:false},
+  {kw:'강아지백내장수술비용', mobile:1470,pc:180, comp:'높음',ads:10,cat:'oph',isGeneral:false},
+  {kw:'강아지결막염',         mobile:1170,pc:130, comp:'높음',ads:10,cat:'oph',isGeneral:false},
+  {kw:'강아지체리아이',       mobile:820, pc:90,  comp:'높음',ads:3, cat:'oph',isGeneral:false},
+  {kw:'강아지각막궤양',       mobile:760, pc:110, comp:'높음',ads:10,cat:'oph',isGeneral:false},
+  {kw:'강아지녹내장',         mobile:720, pc:110, comp:'높음',ads:10,cat:'oph',isGeneral:false},
+  {kw:'강아지백내장수술',     mobile:650, pc:110, comp:'높음',ads:10,cat:'oph',isGeneral:false},
+  {kw:'강아지안과전문병원',   mobile:740, pc:60,  comp:'높음',ads:10,cat:'oph',isGeneral:false},
+  // 치과
+  {kw:'강아지스케일링비용',   mobile:4210,pc:360, comp:'높음',ads:10,cat:'dent',isGeneral:true},
+  {kw:'강아지치석제거',       mobile:3890,pc:320, comp:'높음',ads:10,cat:'dent',isGeneral:true},
+  {kw:'고양이구내염',         mobile:2250,pc:320, comp:'높음',ads:10,cat:'dent',isGeneral:false},
+  {kw:'강아지입냄새',         mobile:2110,pc:170, comp:'높음',ads:10,cat:'dent',isGeneral:true},
+  {kw:'강아지치주염',         mobile:1090,pc:140, comp:'높음',ads:10,cat:'dent',isGeneral:true},
+  {kw:'고양이구내염약',       mobile:1260,pc:150, comp:'중간', ads:8, cat:'dent',isGeneral:false},
+  {kw:'고양이스케일링비용',   mobile:1210,pc:130, comp:'높음',ads:10,cat:'dent',isGeneral:true},
+  {kw:'고양이입냄새',         mobile:800, pc:70,  comp:'높음',ads:10,cat:'dent',isGeneral:true},
+  {kw:'강아지잇몸염증',       mobile:670, pc:30,  comp:'높음',ads:10,cat:'dent',isGeneral:true},
+  {kw:'강아지발치비용',       mobile:530, pc:50,  comp:'높음',ads:7, cat:'dent',isGeneral:false},
+  {kw:'강아지치과',           mobile:990, pc:180, comp:'높음',ads:10,cat:'dent',isGeneral:false},
+  // 건강검진
+  {kw:'강아지건강검진비용',   mobile:2470,pc:270, comp:'높음',ads:10,cat:'chk',isGeneral:false},
+  {kw:'고양이건강검진비용',   mobile:1600,pc:240, comp:'높음',ads:10,cat:'chk',isGeneral:false},
+  {kw:'강아지건강검진',       mobile:1180,pc:240, comp:'높음',ads:10,cat:'chk',isGeneral:false},
+  {kw:'강아지MRI비용',        mobile:1230,pc:130, comp:'높음',ads:10,cat:'chk',isGeneral:false},
+  {kw:'고양이건강검진',       mobile:840, pc:150, comp:'높음',ads:10,cat:'chk',isGeneral:false},
+  // 전문 내과
+  {kw:'강아지설사할때',       mobile:2130,pc:70,  comp:'높음',ads:10,cat:'med',isGeneral:true},
+  {kw:'강아지심장병',         mobile:2040,pc:250, comp:'높음',ads:10,cat:'med',isGeneral:false},
+  {kw:'강아지자궁축농증',     mobile:1630,pc:200, comp:'높음',ads:10,cat:'med',isGeneral:false},
+  {kw:'강아지장염',           mobile:1530,pc:170, comp:'높음',ads:10,cat:'med',isGeneral:true},
+  {kw:'강아지당뇨',           mobile:1110,pc:160, comp:'높음',ads:10,cat:'med',isGeneral:false},
+  {kw:'강아지신부전',         mobile:1090,pc:160, comp:'높음',ads:10,cat:'med',isGeneral:false},
+  {kw:'강아지췌장염',         mobile:2680,pc:350, comp:'높음',ads:10,cat:'med',isGeneral:true},
+  {kw:'강아지폐수종',         mobile:2660,pc:270, comp:'높음',ads:10,cat:'med',isGeneral:false},
+  {kw:'강아지혈소판감소증',   mobile:800, pc:100, comp:'높음',ads:3, cat:'med',isGeneral:false},
+  {kw:'강아지빈혈',           mobile:610, pc:80,  comp:'높음',ads:10,cat:'med',isGeneral:false},
+  {kw:'고양이신부전',         mobile:1280,pc:220, comp:'높음',ads:10,cat:'p4', isGeneral:false},
+  {kw:'고양이심장병',         mobile:580, pc:90,  comp:'높음',ads:10,cat:'med',isGeneral:false},
+  // 뇌종양·신경계
+  {kw:'강아지뇌수막염',       mobile:950, pc:80,  comp:'높음',ads:10,cat:'p1',isGeneral:false},
+  {kw:'강아지발작',           mobile:930, pc:90,  comp:'높음',ads:10,cat:'p1',isGeneral:false},
+  {kw:'강아지경련',           mobile:830, pc:60,  comp:'높음',ads:10,cat:'p1',isGeneral:false},
+  {kw:'강아지뇌수두증',       mobile:650, pc:80,  comp:'높음',ads:10,cat:'p1',isGeneral:false},
+  {kw:'강아지디스크증상',     mobile:1170,pc:70,  comp:'높음',ads:10,cat:'p1',isGeneral:false},
+  {kw:'강아지디스크',         mobile:730, pc:120, comp:'높음',ads:10,cat:'p1',isGeneral:false},
+  // 방사선·종양
+  {kw:'강아지유선종양',       mobile:1640,pc:190, comp:'높음',ads:10,cat:'p3',isGeneral:false},
+  {kw:'고양이비만세포종',     mobile:650, pc:100, comp:'높음',ads:7, cat:'p3',isGeneral:false},
+  {kw:'강아지종양',           mobile:620, pc:70,  comp:'높음',ads:10,cat:'p3',isGeneral:false},
+  // 인터벤션
+  {kw:'강아지담낭점액종',     mobile:570, pc:140, comp:'높음',ads:7, cat:'p2',isGeneral:false},
+  // 정형외과
+  {kw:'슬개골탈구',           mobile:1440,pc:290, comp:'높음',ads:10,cat:'rehab',isGeneral:false},
+  {kw:'강아지십자인대파열',   mobile:1200,pc:170, comp:'높음',ads:10,cat:'rehab',isGeneral:false},
+  {kw:'강아지십자인대수술',   mobile:510, pc:90,  comp:'높음',ads:10,cat:'rehab',isGeneral:false},
+  // 포지셔닝
+  {kw:'서울동물병원',         mobile:1120,pc:180, comp:'높음',ads:10,cat:'gen',isGeneral:false},
+  {kw:'다학제진료',           mobile:600, pc:130, comp:'높음',ads:3, cat:'gen',isGeneral:false},
+  {kw:'고양이전문동물병원',   mobile:500, pc:40,  comp:'높음',ads:10,cat:'gen',isGeneral:false},
+  // 전국권
+  {kw:'일산동물병원',         mobile:1480,pc:310, comp:'높음',ads:10,cat:'nation',isGeneral:false},
+  {kw:'분당동물병원',         mobile:730, pc:180, comp:'높음',ads:10,cat:'nation',isGeneral:false},
+  {kw:'파주동물병원',         mobile:620, pc:250, comp:'높음',ads:10,cat:'nation',isGeneral:false},
+];
+
+const DATA = RAW
+  .filter(d=>d.mobile>=500)
+  .filter((d,i,a)=>a.findIndex(x=>x.kw===d.kw)===i)
+  .map(d=>({...d, grade:d.mobile>=1000?'S':'A'}));
+
+const CAT_META = {
+  p1:{label:'뇌종양·신경계',tagClass:'tag-p1'},p2:{label:'인터벤션',tagClass:'tag-p2'},
+  p3:{label:'방사선·종양',tagClass:'tag-p3'},p4:{label:'고양이 요오드',tagClass:'tag-p4'},
+  oph:{label:'안과',tagClass:'tag-oph'},dent:{label:'치과',tagClass:'tag-dent'},
+  chk:{label:'건강검진',tagClass:'tag-chk'},med:{label:'전문 내과',tagClass:'tag-med'},
+  rehab:{label:'정형외과',tagClass:'tag-rehab'},gen:{label:'포지셔닝',tagClass:'tag-gen'},
+  nation:{label:'전국권',tagClass:'tag-nation'},
+};
+
+const compScore=c=>c==='낮음'?0:c==='중간'?1:2;
+const MAX_VIZ=Math.max(...DATA.map(d=>d.mobile));
+let showGeneral=false;
+
+function buildKpi(){
+  document.getElementById('kS').textContent=DATA.filter(d=>d.grade==='S').length+'개';
+  document.getElementById('kA').textContent=DATA.filter(d=>d.grade==='A').length+'개';
+  document.getElementById('kHelix').textContent=DATA.filter(d=>!d.isGeneral).length+'개';
+  document.getElementById('kGeneral').textContent=DATA.filter(d=>d.isGeneral).length+'개';
+}
+
+const FILTERS=[
+  {label:'전체',cat:'all'},{label:'① 뇌종양',cat:'p1'},{label:'② 인터벤션',cat:'p2'},
+  {label:'③ 방사선',cat:'p3'},{label:'④ 요오드',cat:'p4'},{label:'안과',cat:'oph'},
+  {label:'치과',cat:'dent'},{label:'검진',cat:'chk'},{label:'내과',cat:'med'},
+  {label:'정형',cat:'rehab'},{label:'전국권',cat:'nation'},{label:'포지셔닝',cat:'gen'},
+  {label:'S급만',cat:'grade_s'},{label:'A급만',cat:'grade_a'},{label:'헬릭스 직결',cat:'helix_only'},
+];
+let activeCat='all',sortKey='mobile',sortDir=-1,searchQ='';
+
+function buildControls(){
+  const row=document.getElementById('filterRow');
+  FILTERS.forEach(f=>{
+    const pill=document.createElement('button');
+    pill.className=`pill${f.cat==='all'?' active':''}`;
+    pill.textContent=f.label; pill.dataset.cat=f.cat;
+    pill.onclick=()=>{activeCat=f.cat;row.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));pill.classList.add('active');renderTable();};
+    row.appendChild(pill);
+  });
+  document.getElementById('sortSel').onchange=e=>{
+    const v=e.target.value;
+    if(v==='mobile_d'){sortKey='mobile';sortDir=-1;}
+    else if(v==='grade_s'){sortKey='grade';sortDir=-1;}
+    else if(v==='comp_l'){sortKey='comp';sortDir=1;}
+    else if(v==='kw_a'){sortKey='kw';sortDir=1;}
+    renderTable();
+  };
+  document.getElementById('searchInput').oninput=e=>{searchQ=e.target.value.trim().toLowerCase();renderTable();};
+}
+
+function toggleGeneral(){
+  showGeneral=!showGeneral;
+  document.getElementById('genToggle').classList.toggle('on',showGeneral);
+  document.querySelectorAll('tr.is-general').forEach(tr=>tr.classList.toggle('hidden-general',!showGeneral));
+  updateSecLabel();
+}
+
+function updateSecLabel(){
+  const visible=[...document.querySelectorAll('#tableBody tr')].filter(tr=>!tr.classList.contains('hidden-general')).length;
+  const genCount=DATA.filter(d=>d.isGeneral).length;
+  document.getElementById('secLabel').innerHTML=showGeneral
+    ?`<strong>${visible}개</strong> 표시 중 — 일반 병원 키워드 <strong>${genCount}개</strong> 포함 (흐리게 표시)`
+    :`<strong>${visible}개</strong> 표시 중 — 헬릭스 직결 키워드만 · 일반 병원 키워드 <strong>${genCount}개</strong> 숨김`;
+}
+
+function renderTable(){
+  let rows=[...DATA];
+  if(activeCat==='grade_s') rows=rows.filter(d=>d.grade==='S');
+  else if(activeCat==='grade_a') rows=rows.filter(d=>d.grade==='A');
+  else if(activeCat==='helix_only') rows=rows.filter(d=>!d.isGeneral);
+  else if(activeCat!=='all') rows=rows.filter(d=>d.cat===activeCat);
+  if(searchQ) rows=rows.filter(d=>d.kw.toLowerCase().includes(searchQ));
+  rows.sort((a,b)=>{
+    if(sortKey==='mobile') return sortDir*(b.mobile-a.mobile);
+    if(sortKey==='grade'){const gs=g=>g==='S'?1:0;if(gs(b.grade)!==gs(a.grade))return sortDir*(gs(b.grade)-gs(a.grade));return b.mobile-a.mobile;}
+    if(sortKey==='comp') return sortDir*(compScore(b.comp)-compScore(a.comp));
+    if(sortKey==='kw') return sortDir*a.kw.localeCompare(b.kw,'ko');
+    return 0;
+  });
+  const h=rows.filter(d=>d.comp==='높음').length;
+  const m=rows.filter(d=>d.comp==='중간').length;
+  const l=rows.filter(d=>d.comp==='낮음').length;
+  document.getElementById('statsStrip').innerHTML=`
+    <div class="stat-chip chip-high"><div class="dot"></div>경쟁 높음 <span class="stat-n">${h}</span></div>
+    <div class="stat-chip chip-mid"><div class="dot"></div>중간 <span class="stat-n">${m}</span></div>
+    <div class="stat-chip chip-low"><div class="dot"></div>낮음 <span class="stat-n">${l}</span></div>
+    <span style="font-size:11.5px;color:var(--ink-dim);padding:3px 7px;">총 ${rows.length}개</span>
+  `;
+  const tbody=document.getElementById('tableBody');
+  document.getElementById('emptyMsg').classList.toggle('show',rows.length===0);
+  tbody.innerHTML='';
+  rows.forEach(d=>{
+    const meta=CAT_META[d.cat]||CAT_META.gen;
+    const pct=Math.min(100,Math.round(d.mobile/MAX_VIZ*100));
+    const cc=d.comp==='낮음'?'low':d.comp==='중간'?'mid':'high';
+    const kwHtml=searchQ?d.kw.replace(new RegExp(`(${searchQ})`,'gi'),'<mark>$1</mark>'):d.kw;
+    const fillClass=d.isGeneral?'vol-fill-g':d.grade==='S'?'vol-fill-s':'vol-fill-a';
+    const tr=document.createElement('tr');
+    if(d.isGeneral) tr.className='is-general'+(showGeneral?'':' hidden-general');
+    tr.innerHTML=`
+      <td><span class="grade-tag ${d.grade}">${d.grade}</span></td>
+      <td class="kw-name">${kwHtml}</td>
+      <td>${d.isGeneral?'<span class="badge badge-general">일반</span>':'<span class="badge badge-helix">헬릭스</span>'}</td>
+      <td><span class="cat-tag ${meta.tagClass}">${meta.label}</span></td>
+      <td class="num-r">${d.mobile.toLocaleString()}</td>
+      <td class="num-r">${d.pc.toLocaleString()}</td>
+      <td><div class="vol-wrap"><div class="vol-bg"><div class="${fillClass}" style="width:${pct}%"></div></div></div></td>
+      <td><span class="comp-badge ${cc}">${d.comp}</span></td>
+      <td class="num-r">${d.ads}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+  updateSecLabel();
+}
+function sortBy(k){if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=-1;}renderTable();}
+buildKpi();buildControls();renderTable();
+</script>
+</body>
+</html>
