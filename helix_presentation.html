@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>헬릭스 키워드 전략 회의 · 2026.06</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface-2: #f0f3f7;
+  --line: #e2e6ed;
+  --line-2: #d0d6e0;
+  --ink: #1a2233;
+  --ink-dim: #6b7a92;
+  --ink-muted: #adb8c8;
+  --accent: #0e9e82;
+  --accent-soft: rgba(14,158,130,.10);
+  --gold: #b58a1a;
+  --gold-soft: rgba(181,138,26,.10);
+  --blue: #2467b8;
+  --blue-soft: rgba(36,103,184,.10);
+  --red: #c0392b;
+  --red-soft: rgba(192,57,43,.08);
+  --orange: #c05a10;
+  --orange-soft: rgba(192,90,16,.09);
+  --purple: #6b4fa8;
+  --purple-soft: rgba(107,79,168,.10);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 120%; }
+body { font-family: 'IBM Plex Sans KR', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+/* ── 수정 참조 번호 ── */
+.el { position: relative; }
+.el-num {
+  position: absolute; top: -16px; left: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; color: var(--ink-muted);
+  letter-spacing: .04em; opacity: .45;
+  pointer-events: none; user-select: none;
+  line-height: 1;
+}
+.section.dark .el-num { color: rgba(255,255,255,.3); }
+
+/* ── SIDENAV ── */
+.sidenav { position: fixed; left: 0; top: 0; bottom: 0; width: 200px; background: var(--surface); border-right: 1px solid var(--line); padding: 28px 0; z-index: 100; overflow-y: auto; box-shadow: 2px 0 8px rgba(0,0,0,.04); }
+.sidenav .logo { padding: 0 20px 20px; border-bottom: 1px solid var(--line); margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; color: var(--accent); text-transform: uppercase; font-weight: 500; }
+.nav-section { padding: 14px 20px 5px; font-size: 9px; color: var(--ink-muted); letter-spacing: .14em; text-transform: uppercase; display: block; }
+.nav-item { display: block; padding: 9px 20px; font-size: 12px; color: var(--ink-dim); text-decoration: none; border-left: 2px solid transparent; transition: all .14s; cursor: pointer; }
+.nav-item:hover { color: var(--ink); background: var(--surface-2); }
+.nav-item.active { color: var(--accent); border-left-color: var(--accent); background: var(--accent-soft); font-weight: 500; }
+
+/* ── MAIN ── */
+.main { margin-left: 200px; }
+
+/* ── SECTION WRAPPER ── */
+.section { padding: 80px 64px; border-bottom: 1px solid var(--line); }
+.section:last-child { border-bottom: none; }
+.section.dark { background: var(--ink); }
+.section.tinted { background: #f0f4f0; }
+.section.gold-tint { background: #faf7f0; }
+
+/* ── SECTION HEADER ── */
+.sec-label { font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: .22em; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.sec-label.on-dark { color: rgba(14,158,130,.8); }
+.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--accent-soft); }
+.sec-label.on-dark::after { background: rgba(14,158,130,.15); }
+.sec-title { font-family: 'Noto Serif KR', serif; font-size: 46px; font-weight: 300; line-height: 1.3; margin-bottom: 18px; }
+.sec-title.on-dark { color: white; }
+.sec-title strong { font-weight: 400; color: var(--accent); }
+.sec-title.on-dark strong { color: #6de4cc; }
+.sec-desc { font-size: 19px; color: var(--ink-dim); line-height: 1.85; max-width: 720px; }
+.sec-desc.on-dark { color: rgba(255,255,255,.55); }
+
+/* ── DETAILS FOLD ── */
+details.fold { margin-top: 24px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+details.fold.on-dark { border-color: rgba(255,255,255,.12); }
+details.fold summary { padding: 16px 22px; font-size: 16px; color: var(--ink-dim); cursor: pointer; list-style: none; display: flex; align-items: center; gap: 9px; background: var(--surface-2); transition: all .15s; user-select: none; }
+details.fold.on-dark summary { background: rgba(255,255,255,.05); color: rgba(255,255,255,.45); }
+details.fold summary::-webkit-details-marker { display: none; }
+details.fold summary::before { content: '▸'; font-size: 9px; color: var(--ink-muted); transition: transform .2s; flex-shrink: 0; }
+details.fold.on-dark summary::before { color: rgba(255,255,255,.3); }
+details.fold[open] summary::before { transform: rotate(90deg); }
+details.fold summary:hover { color: var(--ink); background: var(--surface); }
+details.fold.on-dark summary:hover { color: rgba(255,255,255,.75); background: rgba(255,255,255,.08); }
+details.fold[open] summary { border-bottom: 1px solid var(--line); color: var(--ink); background: var(--surface); }
+details.fold.on-dark[open] summary { border-bottom-color: rgba(255,255,255,.12); color: rgba(255,255,255,.75); background: rgba(255,255,255,.05); }
+.fold-inner { padding: 28px 26px; font-size: 16px; color: var(--ink-dim); line-height: 1.9; background: var(--surface); }
+.fold-inner.on-dark { background: rgba(255,255,255,.03); color: rgba(255,255,255,.5); }
+
+/* ── SECTION 1 : 특화진료 ── */
+.specialty-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 36px; }
+.sp-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+.sp-num { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-muted); margin-bottom: 10px; letter-spacing: .1em; }
+.sp-group { font-size: 13px; font-weight: 600; color: var(--ink-dim); letter-spacing: .07em; text-transform: uppercase; margin-bottom: 12px; }
+.sp-items { display: flex; flex-direction: column; gap: 8px; }
+.sp-item { font-size: 17px; color: var(--ink); display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+.sp-item::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 6px; }
+.sp-item.sig { color: var(--accent); font-weight: 500; }
+.sp-item.sig::before { background: var(--accent); }
+
+.intent-card { margin-top: 32px; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; padding: 28px 32px; }
+.intent-label { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--accent); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 12px; }
+.intent-text { font-family: 'Noto Serif KR', serif; font-size: 24px; font-weight: 300; line-height: 1.75; color: var(--ink); }
+.intent-text strong { color: var(--accent); font-weight: 400; }
+
+/* ── SECTION 2 : 키워드 ── */
+.kw-insight-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 36px; }
+.kw-ins { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+.kw-ins-num { font-family: 'IBM Plex Mono', monospace; font-size: 40px; font-weight: 500; margin-bottom: 8px; }
+.kw-ins-num.accent { color: var(--accent); }
+.kw-ins-num.gold { color: var(--gold); }
+.kw-ins-num.orange { color: var(--orange); }
+.kw-ins-label { font-size: 13px; color: var(--ink-muted); letter-spacing: .07em; text-transform: uppercase; margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace; }
+.kw-ins-title { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.kw-ins-body { font-size: 15px; color: var(--ink-dim); line-height: 1.8; }
+
+.low-comp-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.lc-tag { padding: 5px 12px; border-radius: 20px; font-size: 12px; background: var(--accent-soft); border: 1px solid rgba(14,158,130,.2); color: var(--accent); font-family: 'IBM Plex Mono', monospace; }
+
+/* ── SECTION 3 : FAQ 주인공 ── */
+.faq-hero { background: var(--ink); border-radius: 16px; padding: 44px 48px; margin-top: 36px; position: relative; overflow: hidden; }
+.faq-hero::before { content: ''; position: absolute; right: -60px; top: -60px; width: 280px; height: 280px; border-radius: 50%; background: rgba(14,158,130,.08); }
+.faq-hero-num { font-family: 'IBM Plex Mono', monospace; font-size: 88px; font-weight: 500; color: rgba(14,158,130,.25); line-height: 1; margin-bottom: 8px; }
+.faq-hero-label { font-size: 16px; color: rgba(255,255,255,.45); margin-bottom: 24px; }
+.faq-hero-title { font-family: 'Noto Serif KR', serif; font-size: 34px; font-weight: 300; color: white; line-height: 1.55; margin-bottom: 28px; }
+.faq-hero-title strong { color: #6de4cc; font-weight: 400; }
+.faq-axes { display: flex; gap: 16px; flex-wrap: wrap; }
+.faq-axis { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 14px 18px; }
+.faq-axis-label { font-size: 12px; color: rgba(14,158,130,.7); letter-spacing: .12em; text-transform: uppercase; font-family: 'IBM Plex Mono', monospace; margin-bottom: 6px; }
+.faq-axis-text { font-size: 16px; color: rgba(255,255,255,.7); }
+
+.faq-cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
+.faq-cat { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+.faq-cat-name { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+.faq-cat-count { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--ink-muted); margin-bottom: 10px; }
+.faq-cat-items { display: flex; flex-direction: column; gap: 5px; }
+.faq-cat-item { font-size: 14px; color: var(--ink-dim); display: flex; gap: 6px; line-height: 1.55; }
+.faq-cat-item::before { content: 'Q.'; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-muted); flex-shrink: 0; margin-top: 1px; }
+
+.scoop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
+.scoop-card { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; padding: 20px 22px; }
+.scoop-tag { display: inline-block; padding: 3px 9px; border-radius: 4px; font-size: 12px; font-weight: 600; background: var(--accent-soft); color: var(--accent); font-family: 'IBM Plex Mono', monospace; margin-bottom: 9px; }
+.scoop-title { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.scoop-desc { font-size: 14px; color: var(--ink-dim); line-height: 1.75; }
+
+/* ── SECTION 4 : 키워드 운용 전략 ── */
+.track-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; margin-top: 36px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.track { padding: 28px 26px; border-right: 1px solid var(--line); }
+.track:last-child { border-right: none; }
+.track-tag { display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 13px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; margin-bottom: 14px; }
+.tag-content { background: var(--accent-soft); color: var(--accent); }
+.tag-funnel { background: var(--blue-soft); color: var(--blue); }
+.tag-ads { background: var(--gold-soft); color: var(--gold); }
+.track-title { font-size: 22px; font-weight: 600; color: var(--ink); margin-bottom: 10px; line-height: 1.4; }
+.track-desc { font-size: 16px; color: var(--ink-dim); line-height: 1.8; margin-bottom: 14px; }
+.track-nature { font-size: 13px; color: var(--ink-muted); font-family: 'IBM Plex Mono', monospace; padding-top: 14px; border-top: 1px solid var(--line); }
+
+/* ── SECTION 5 : 결정 사항 ── */
+.decision-list { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
+.decision { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; padding: 24px 28px; }
+.decision-num { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: rgba(181,138,26,.8); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 10px; }
+.decision-q { font-size: 22px; font-weight: 600; color: white; margin-bottom: 10px; line-height: 1.4; }
+.decision-why { font-size: 16px; color: rgba(255,255,255,.5); line-height: 1.8; }
+.decision-tag { margin-top: 14px; font-size: 13px; color: rgba(181,138,26,.65); font-family: 'IBM Plex Mono', monospace; }
+
+/* ── FOOTER BANNER ── */
+.prepared-by { margin-top: 32px; padding: 22px 28px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.09); border-radius: 10px; font-size: 16px; color: rgba(255,255,255,.4); line-height: 1.9; }
+.prepared-by strong { color: rgba(255,255,255,.65); }
+
+@media (max-width: 960px) {
+  .sidenav { display: none; }
+  .main { margin-left: 0; }
+  .section { padding: 52px 28px; }
+  .specialty-grid, .kw-insight-row, .faq-cat-grid, .track-grid, .scoop-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidenav">
+  <div class="logo">Helix · 2026.06</div>
+  <span class="nav-section">발표 순서</span>
+  <a class="nav-item active" href="#s1">01 · 특화진료 확정</a>
+  <a class="nav-item" href="#s2">02 · 키워드 조사 결과</a>
+  <a class="nav-item" href="#s3">03 · FAQ</a>
+  <a class="nav-item" href="#s4">04 · 키워드 운용 전략</a>
+  <a class="nav-item" href="#s5">05 · 오늘 결정할 것</a>
+</nav>
+
+<div class="main">
+
+  <!-- ══ SECTION 1 : 특화진료 ══ -->
+  <div class="section" id="s1">
+    <div class="sec-label">01 · 출발점</div>
+    <h2 class="sec-title">황원장님이 확정하신<br><strong>특화진료 13개</strong>입니다</h2>
+    <p class="sec-desc">황원장님이 확정하신 특화진료 구성을 방향키 삼아 키워드 분석, 경쟁 병원 조사, FAQ 전략 수립을 진행했습니다.</p>
+
+    <div class="specialty-grid">
+      <div class="sp-card">
+        <div class="sp-num">GROUP 01</div>
+        <div class="sp-group">종양 · 암</div>
+        <div class="sp-items">
+          <div class="sp-item">통합 종양 진료</div>
+          <div class="sp-item sig">뇌종양 수술 <span style="font-size:12px;font-weight:400;color:var(--accent);opacity:.7;">★ 신규</span></div>
+          <div class="sp-item sig">방사선 치료 <span style="font-size:12px;font-weight:400;color:var(--accent);opacity:.7;">★ 신규</span></div>
+        </div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-num">GROUP 02</div>
+        <div class="sp-group">인터벤션</div>
+        <div class="sp-items">
+          <div class="sp-item sig">종양 색전술</div>
+          <div class="sp-item sig">혈관 중재술</div>
+          <div class="sp-item sig">스텐트 시술</div>
+        </div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-num">GROUP 03</div>
+        <div class="sp-group">수술</div>
+        <div class="sp-items">
+          <div class="sp-item">뇌척추 수술</div>
+          <div class="sp-item">흉복강경 수술</div>
+          <div class="sp-item">백내장·녹내장 수술</div>
+          <div class="sp-item">비강경 검사</div>
+        </div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-num">GROUP 04</div>
+        <div class="sp-group">특수 전문 치료</div>
+        <div class="sp-items">
+          <div class="sp-item">신장 투석</div>
+          <div class="sp-item">FMT (장내 미생물 이식)</div>
+          <div class="sp-item sig">방사성 요오드 · 동위원소 치료</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="intent-card">
+      <div class="intent-label">구성에서 읽은 것</div>
+      <div class="intent-text">
+        이 13개의 공통점은 <strong>국내 유일, 또는 최고 수준</strong>인 것들입니다.<br>
+        뇌종양 수술, 색전술, 방사성 요오드 치료 — 헬릭스가 사실상 독점하거나 손에 꼽히는 시술들입니다.<br>
+        진정한 하이엔드 전문 동물병원으로 포지셔닝하고 싶다는 방향성이 이 선택에 담겨 있다고 읽었고,<br>
+        <strong>키워드 분석과 FAQ 설계도 그 방향에 맞게</strong> 진행했습니다.
+      </div>
+    </div>
+
+    <details class="fold">
+      <summary>특화진료 전체 명칭·카피·키워드 상세 보기 → 원본 문서 링크 포함</summary>
+      <div class="fold-inner">
+        <p style="margin-bottom:16px;">13개 특화진료의 영문 명칭, 웹 카피, 연결 키워드는 별도 문서(helix_specialty_full)에 정리되어 있습니다. 주요 내용을 요약합니다.</p>
+        <p style="margin-bottom:16px;"><a href="https://pookat73-prog.github.io/helix-keyword-report/" target="_blank" style="color:var(--accent);font-size:14px;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;">→ helix_specialty_full 원본 보기 (GitHub Pages)</a></p>
+        <table style="width:100%;border-collapse:collapse;font-size:12.5px;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--line);">
+              <th style="text-align:left;padding:8px 12px;color:var(--ink-dim);font-weight:600;font-size:11px;">진료명</th>
+              <th style="text-align:left;padding:8px 12px;color:var(--ink-dim);font-weight:600;font-size:11px;">영문</th>
+              <th style="text-align:left;padding:8px 12px;color:var(--ink-dim);font-weight:600;font-size:11px;">핵심 카피 한 줄</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--line);"><td style="padding:9px 12px;font-weight:500;">뇌종양 수술</td><td style="padding:9px 12px;color:var(--ink-dim);font-family:'IBM Plex Mono',monospace;font-size:11.5px;">Brain Tumor Surgery</td><td style="padding:9px 12px;color:var(--ink-dim);">수술 네비게이터와 정밀 영상 기반, 최소 조직 손상 원칙</td></tr>
+            <tr style="border-bottom:1px solid var(--line);"><td style="padding:9px 12px;font-weight:500;">방사선 치료</td><td style="padding:9px 12px;color:var(--ink-dim);font-family:'IBM Plex Mono',monospace;font-size:11.5px;">Radiation Therapy</td><td style="padding:9px 12px;color:var(--ink-dim);">수술 접근이 어려운 부위의 종양을 방사선으로 치료</td></tr>
+            <tr style="border-bottom:1px solid var(--line);"><td style="padding:9px 12px;font-weight:500;">종양 색전술</td><td style="padding:9px 12px;color:var(--ink-dim);font-family:'IBM Plex Mono',monospace;font-size:11.5px;">Tumor Embolization</td><td style="padding:9px 12px;color:var(--ink-dim);">피부 절개 없이 카테터로만 접근하는 최소 침습 중재</td></tr>
+            <tr style="border-bottom:1px solid var(--line);"><td style="padding:9px 12px;font-weight:500;">혈관 중재술</td><td style="padding:9px 12px;color:var(--ink-dim);font-family:'IBM Plex Mono',monospace;font-size:11.5px;">Vascular Intervention</td><td style="padding:9px 12px;color:var(--ink-dim);">하이브리드 수술실에서 외과적 조치와 병행 가능</td></tr>
+            <tr style="border-bottom:1px solid var(--line);"><td style="padding:9px 12px;font-weight:500;">신장 투석</td><td style="padding:9px 12px;color:var(--ink-dim);font-family:'IBM Plex Mono',monospace;font-size:11.5px;">Renal Dialysis</td><td style="padding:9px 12px;color:var(--ink-dim);">혈액 투석 및 CRRT 제공, 집중 신기능 관리</td></tr>
+            <tr><td style="padding:9px 12px;font-weight:500;">방사성 요오드 치료</td><td style="padding:9px 12px;color:var(--ink-dim);font-family:'IBM Plex Mono',monospace;font-size:11.5px;">Radioiodine Therapy</td><td style="padding:9px 12px;color:var(--ink-dim);">고양이 갑상선기능항진증 근치 치료, 최고 완치율</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <!-- ══ SECTION 2 : 키워드 조사 ══ -->
+  <div class="section" id="s2">
+    <div class="sec-label">02 · 조사 결과</div>
+    <h2 class="sec-title">숫자보다<br><strong>검색의 맥락</strong>을 읽었습니다</h2>
+    <p class="sec-desc">109개 키워드를 전수조사했습니다. 시술명 직접 검색량은 거의 없습니다. 검색량이 높은 범용 키워드는 별도로 분석·설계하여 다른 방식으로 다룰 예정입니다. 이어지는 섹션에서 설명드립니다.</p>
+
+    <div class="kw-insight-row">
+      <div class="kw-ins">
+        <div class="kw-ins-label">분석 키워드</div>
+        <div class="kw-ins-num accent">109</div>
+        <div class="kw-ins-title">전문성·의도 기반만 선별</div>
+        <div class="kw-ins-body">위치 기반 범용어, 사람 의료 키워드는 처음부터 뺐습니다. 헬릭스와 연결되는 키워드만 남겼습니다.</div>
+      </div>
+      <div class="kw-ins">
+        <div class="kw-ins-label">저경쟁 선점 기회</div>
+        <div class="kw-ins-num gold">18개</div>
+        <div class="kw-ins-title">지금 콘텐츠 만들면 잡히는 키워드</div>
+        <div class="kw-ins-body">시술명 키워드 대부분이 여기 해당합니다. 검색량이 낮다는 건 경쟁자가 없다는 뜻으로 다르게 바라볼 수 있습니다.</div>
+      </div>
+      <div class="kw-ins">
+        <div class="kw-ins-label">전국권 유입 경로</div>
+        <div class="kw-ins-num orange">직접 경로</div>
+        <div class="kw-ins-title">지방 보호자는 시술명으로 찾습니다</div>
+        <div class="kw-ins-body">"서울 동물병원"이 아니라 "동물 방사선치료", "고양이 요오드치료"로 검색한 뒤 헬릭스를 찾아옵니다.</div>
+      </div>
+    </div>
+
+    <div class="intent-card" style="margin-top:28px;">
+      <div class="intent-label">검색량이 낮은 이유</div>
+      <div class="intent-text" style="font-size:22px;">
+        수요가 없어서가 아니라, <strong>아직 널리 알려지지 않아서</strong>입니다.<br>
+        지금 콘텐츠를 만들어두면 검색이 생길 때 헬릭스가 먼저 뜨게 되고,<br>
+        그렇게 그 분야를 <strong>선점</strong>하게 됩니다.
+      </div>
+    </div>
+
+    <div style="margin-top:20px;">
+      <div style="font-size:11px;color:var(--ink-muted);font-family:'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;">지금 선점 가능한 저경쟁 시술명 키워드</div>
+      <div class="low-comp-list">
+        <span class="lc-tag">강아지뇌종양수술</span>
+        <span class="lc-tag">동물색전술</span>
+        <span class="lc-tag">강아지색전술</span>
+        <span class="lc-tag">동물인터벤션</span>
+        <span class="lc-tag">강아지스텐트시술</span>
+        <span class="lc-tag">강아지방사선치료</span>
+        <span class="lc-tag">방사선치료동물병원</span>
+        <span class="lc-tag">고양이방사성요오드치료</span>
+        <span class="lc-tag">고양이요오드치료</span>
+        <span class="lc-tag">고양이갑상선치료</span>
+        <span class="lc-tag">동물방사선치료</span>
+        <span class="lc-tag">하이브리드수술실동물</span>
+      </div>
+    </div>
+
+    <details class="fold">
+      <summary>전체 키워드 분석 데이터 — 109개 상세 보기</summary>
+      <div class="fold-inner">
+        <p style="margin-bottom:16px;"><a href="https://pookat73-prog.github.io/helix-keyword-report/" target="_blank" style="color:var(--accent);font-size:14px;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;">→ helix_keyword_analysis 원본 보기 (GitHub Pages)</a></p>
+        <p>전체 키워드 분석 테이블(검색량·경쟁도·카테고리 분류)은 기존 v5 보고서에서 확인 가능합니다. 핵심 요약은 다음과 같습니다.</p>
+        <p style="margin-top:12px;">경쟁도 높음 67개 / 중간 7개 / 낮음 18개. 경쟁도 낮음 18개 중 15개가 헬릭스 시그니처 시술명에 해당합니다. 증상 유입어(발작·경련·뇌수막염 등)는 검색량이 높지만 경쟁도도 높아 SEO 단독 공략이 어렵고, 콘텐츠 트랙(증상 설명→헬릭스 연결)으로 접근하는 게 유효합니다.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ══ SECTION 3 : FAQ 주인공 ══ -->
+  <div class="section tinted" id="s3">
+    <div class="sec-label">03 · 오늘의 주인공</div>
+    <h2 class="sec-title">FAQ.<br><strong>34개 질문</strong>입니다</h2>
+    <p class="sec-desc">홈페이지에 올릴 질문들입니다. 어떤 기준으로 골랐는지는 바로 아래에서 보여드리겠습니다.</p>
+
+    <div class="faq-hero">
+      <div class="faq-hero-num">34</div>
+      <div class="faq-hero-label">최종 선정 FAQ 문항 수</div>
+      <div class="faq-hero-title">
+        보호자가 실제로 검색하고, AI도 답변으로 쓰고,<br>
+        경쟁 병원은 <strong>아직 아무도 안 다루는</strong> 질문들입니다.
+      </div>
+      <div class="faq-axes">
+        <div class="faq-axis">
+          <div class="faq-axis-label">기준 01</div>
+          <div class="faq-axis-text">보호자가 실제로 검색하는 주제</div>
+        </div>
+        <div class="faq-axis">
+          <div class="faq-axis-label">기준 02</div>
+          <div class="faq-axis-text">AI 검색 답변으로 채택될 수 있는 형식</div>
+        </div>
+        <div class="faq-axis">
+          <div class="faq-axis-label">기준 03</div>
+          <div class="faq-axis-text">경쟁 병원 FAQ에 없는 영역</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;">
+      <div style="font-size:11px;color:var(--ink-muted);font-family:'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;">9개 카테고리별 구성</div>
+      <div class="faq-cat-grid">
+        <div class="faq-cat">
+          <div class="faq-cat-name">뇌종양 · 신경계</div>
+          <div class="faq-cat-count">5문항</div>
+          <div class="faq-cat-items">
+            <div class="faq-cat-item">강아지가 발작을 일으켰습니다. 뇌종양일 수 있나요?</div>
+            <div class="faq-cat-item">뇌종양 수술의 위험도는 어느 정도인가요?</div>
+            <div class="faq-cat-item">수술 네비게이터란 무엇인가요?</div>
+          </div>
+        </div>
+        <div class="faq-cat">
+          <div class="faq-cat-name">인터벤션</div>
+          <div class="faq-cat-count">5문항</div>
+          <div class="faq-cat-items">
+            <div class="faq-cat-item">종양 색전술이란 무엇인가요?</div>
+            <div class="faq-cat-item">강아지 담낭 점액종은 반드시 수술해야 하나요?</div>
+            <div class="faq-cat-item">인터벤션 시술 후 회복 과정은 어떻게 되나요?</div>
+          </div>
+        </div>
+        <div class="faq-cat">
+          <div class="faq-cat-name">방사선 치료</div>
+          <div class="faq-cat-count">4문항</div>
+          <div class="faq-cat-items">
+            <div class="faq-cat-item">반려동물도 방사선 치료를 받을 수 있나요?</div>
+            <div class="faq-cat-item">방사선 치료 중 보호자가 주의할 것은?</div>
+          </div>
+        </div>
+        <div class="faq-cat">
+          <div class="faq-cat-name">방사성 요오드 치료</div>
+          <div class="faq-cat-count">4문항</div>
+          <div class="faq-cat-items">
+            <div class="faq-cat-item">고양이 갑상선기능항진증 치료법은?</div>
+            <div class="faq-cat-item">격리 기간과 비용이 궁금합니다</div>
+          </div>
+        </div>
+        <div class="faq-cat">
+          <div class="faq-cat-name">신장 투석</div>
+          <div class="faq-cat-count">3문항</div>
+          <div class="faq-cat-items">
+            <div class="faq-cat-item">강아지 신부전에 투석이 필요한 시점은?</div>
+            <div class="faq-cat-item">CRRT와 일반 투석의 차이는 무엇인가요?</div>
+          </div>
+        </div>
+        <div class="faq-cat">
+          <div class="faq-cat-name">안과</div>
+          <div class="faq-cat-count">3문항</div>
+          <div class="faq-cat-items">
+            <div class="faq-cat-item">강아지 백내장 수술 시기는 언제인가요?</div>
+            <div class="faq-cat-item">강아지 녹내장 증상은 어떻게 나타나나요?</div>
+          </div>
+        </div>
+        <div class="faq-cat">
+          <div class="faq-cat-name">건강검진</div>
+          <div class="faq-cat-count">3문항</div>
+          <div class="faq-cat-items">
+            <div class="faq-cat-item">반려동물 건강검진은 몇 살부터인가요?</div>
+            <div class="faq-cat-item">강아지 MRI 검사는 어떤 경우 필요한가요?</div>
+          </div>
+        </div>
+        <div class="faq-cat">
+          <div class="faq-cat-name">병원 포지셔닝</div>
+          <div class="faq-cat-count">4문항</div>
+          <div class="faq-cat-items">
+            <div class="faq-cat-item">헬릭스는 어떤 병원인가요?</div>
+            <div class="faq-cat-item">동네 병원과 전문 병원의 차이는? <span style="font-size:12px;color:var(--ink-muted);font-style:italic;">※ 워딩 조정 가능</span></div>
+            <div class="faq-cat-item">타 지역에서도 진료받을 수 있나요?</div>
+          </div>
+        </div>
+        <div class="faq-cat">
+          <div class="faq-cat-name">치과</div>
+          <div class="faq-cat-count">2문항</div>
+          <div class="faq-cat-items">
+            <div class="faq-cat-item">고양이 구내염이 재발하는 이유는?</div>
+            <div class="faq-cat-item">강아지 치근단 농양은 어떻게 알 수 있나요?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;">
+      <div style="font-size:11px;color:var(--ink-muted);font-family:'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;">헬릭스만 선점 가능한 공백 영역</div>
+      <div class="scoop-grid">
+        <div class="scoop-card">
+          <div class="scoop-tag">독점 가능</div>
+          <div class="scoop-title">수술 네비게이터</div>
+          <div class="scoop-desc">경쟁 병원 FAQ 전무. "수술 네비게이터란?" AI 답변 채택 가능성 높음. 헬릭스 차별점을 자연스럽게 노출.</div>
+        </div>
+        <div class="scoop-card">
+          <div class="scoop-tag">독점 가능</div>
+          <div class="scoop-title">방사성 요오드(I-131) 치료</div>
+          <div class="scoop-desc">국내 시행 병원 극소수. 경쟁 FAQ 전무. 보호자 결정 장벽(격리·비용)을 FAQ로 직접 해소.</div>
+        </div>
+        <div class="scoop-card">
+          <div class="scoop-tag">선점 기회</div>
+          <div class="scoop-title">인터벤션 시술 회복 과정</div>
+          <div class="scoop-desc">경쟁 병원 인터벤션 FAQ 전무. "최소침습·빠른 회복" 포지셔닝 강화 효과.</div>
+        </div>
+        <div class="scoop-card">
+          <div class="scoop-tag">선점 기회</div>
+          <div class="scoop-title">방사선 치료 가능 병원 현황</div>
+          <div class="scoop-desc">"어디서 받을 수 있나요" 유형 질문. 경쟁 병원 FAQ 전무. AI 검색 채택 시 헬릭스 노출 직결.</div>
+        </div>
+      </div>
+    </div>
+
+    <details class="fold">
+      <summary>34문항 선정 매트릭스 · 경쟁 병원 8개소 분석 상세 보기</summary>
+      <div class="fold-inner">
+        <p style="margin-bottom:16px;"><a href="https://pookat73-prog.github.io/helix-keyword-report/" target="_blank" style="color:var(--accent);font-size:14px;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;">→ helix_faq_draft 원본 보기 (GitHub Pages)</a></p>
+        <p style="margin-bottom:16px;"><strong>분석 대상 경쟁 병원 8개소 :</strong></p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
+          <span style="padding:5px 14px;border-radius:20px;font-size:14px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-dim);">해마루동물병원</span>
+          <span style="padding:5px 14px;border-radius:20px;font-size:14px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-dim);">리더스동물의료원</span>
+          <span style="padding:5px 14px;border-radius:20px;font-size:14px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-dim);">샤인동물메디컬센터</span>
+          <span style="padding:5px 14px;border-radius:20px;font-size:14px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-dim);">웨스턴동물의료센터</span>
+          <span style="padding:5px 14px;border-radius:20px;font-size:14px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-dim);">VIP동물의료센터</span>
+          <span style="padding:5px 14px;border-radius:20px;font-size:14px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-dim);">스탠다드동물의료센터</span>
+          <span style="padding:5px 14px;border-radius:20px;font-size:14px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-dim);">일산동물의료원</span>
+          <span style="padding:5px 14px;border-radius:20px;font-size:14px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-dim);">수원본동물의료센터</span>
+        </div>
+        <p style="margin-bottom:16px;"><strong>경쟁 병원 분석 결과 :</strong> 분석 대상 8개소 중 구조화된 FAQ를 운영하는 곳은 해마루 1개소뿐입니다. 인터벤션·방사성 요오드·혈액투석·수술 네비게이터를 FAQ로 설명하는 병원은 전무합니다.</p>
+        <p style="margin-bottom:16px;"><strong>선정 기준 세부 :</strong> ① 검색 수요 (네이버 키워드 월간 검색량) ② AI 검색 적합성 (질문형 전환 가능 여부·헬릭스 독점 답변 가능 여부) ③ 경쟁 공백 (경쟁 병원 7개소 FAQ 미운영 여부). 세 축이 교차하는 질문을 최우선 선정했습니다.</p>
+        <p><strong>제외 기준 :</strong> 강아지 스케일링처럼 검색량은 높지만 어느 동물병원이나 커버하는 범용 주제는 헬릭스 포지셔닝과 맞지 않아 제외했습니다.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ══ SECTION 4 : 키워드 운용 전략 ══ -->
+  <div class="section gold-tint" id="s4">
+    <div class="sec-label">04 · 고검색량 키워드 운용</div>
+    <h2 class="sec-title">고검색량 키워드,<br><strong>범용 키워드 운용 방향</strong></h2>
+    <p class="sec-desc">범용 키워드 운용은 마케팅 실장님 영역과 맞닿아 있어 추가 논의가 필요한 부분입니다. 아래는 현재 시점에서 제가 생각하는 접근 방향입니다.</p>
+
+    <div class="track-grid" style="background:var(--surface);">
+      <div class="track">
+        <div class="track-tag tag-content">직접 노출형 ①</div>
+        <div class="track-title">검색하면<br>헬릭스가 뜬다</div>
+        <div class="track-desc">보호자가 검색했을 때 헬릭스 페이지가 결과에 노출되도록 경로를 만드는 작업입니다. 검색 엔진 최적화(SEO) 관점의 기초 자산입니다.</div>
+        <div class="track-nature" style="border-top:none;padding-top:0;margin-bottom:14px;">매체 예시 · 홈페이지 특화진료 페이지 · FAQ 페이지</div>
+        <div class="track-nature">성격 · 자산 — 일회성 비용</div>
+      </div>
+      <div class="track">
+        <div class="track-tag tag-funnel">유입 후 연결형 ②</div>
+        <div class="track-title">증상 글에서<br>헬릭스로 연결된다</div>
+        <div class="track-desc">증상 관련 글을 읽던 보호자가 헬릭스 특화 시술로 자연스럽게 연결되는 구조입니다. 예: "발작이 반복된다면 뇌종양 감별이 필요합니다 → 헬릭스 신경외과"</div>
+        <div class="track-nature" style="border-top:none;padding-top:0;margin-bottom:14px;">매체 예시 · 블로그 · 네이버 포스트 · 브런치 등</div>
+        <div class="track-nature">성격 · 정보 설계 — 구조 전략</div>
+      </div>
+      <div class="track">
+        <div class="track-tag tag-ads">유료 광고형</div>
+        <div class="track-title">광고로 먼저<br>잡는 키워드</div>
+        <div class="track-desc">비용 비교 검색이거나 경쟁이 심해 검색 최적화(SEO)만으로 상위 노출이 어려운 키워드는 처음부터 광고로 집행합니다. 키워드 성격 판단과 운용은 <strong>마케팅 실장님 주도</strong> 영역입니다.</div>
+        <div class="track-nature" style="border-top:none;padding-top:0;margin-bottom:14px;">매체 예시 · 네이버 검색광고 · 카카오 키워드광고 등</div>
+        <div class="track-nature">성격 · 운용 비용 — 즉시 트래픽</div>
+      </div>
+    </div>
+
+    <details class="fold">
+      <summary>트랙별 대표 키워드 · 실행 항목 상세 보기</summary>
+      <div class="fold-inner">
+        <p style="margin-bottom:16px;"><a href="https://pookat73-prog.github.io/helix-keyword-report/" target="_blank" style="color:var(--accent);font-size:14px;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;">→ helix_keyword_analysis 원본 보기 (GitHub Pages)</a></p>
+        <p style="margin-bottom:16px;"><strong>직접 노출형 ① 대표 키워드 :</strong> "강아지 췌장염 증상은?", "고양이 신부전 초기 증상은?" 등 질문형 FAQ. 구글·네이버 AI 검색(ChatGPT, 클로바X)이 FAQ 형식을 답변 소스로 인용 → 헬릭스가 AI 답변에 노출됩니다.</p>
+        <p style="margin-bottom:16px;"><strong>유입 후 연결형 ② 대표 키워드 :</strong> "강아지 발작 원인과 대처법", "강아지 뇌수막염" 등 증상 유입어. 글 중간에 "발작이 반복된다면 뇌종양 감별이 필요합니다 → 헬릭스 신경외과" 형태의 연결 장치 삽입.</p>
+        <p><strong>유료 광고형 대표 키워드 :</strong> "강아지 췌장염", "강아지 심장병", "강아지MRI비용" 등 고검색량·비용 비교 키워드. 검색 최적화(SEO) 자산을 기다리지 않고 즉시 집행 가능. 마케팅 실장님 주도로 운용합니다.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ══ SECTION 5 : 결정 사항 ══ -->
+  <div class="section dark" id="s5">
+    <div class="sec-label on-dark">05 · 오늘 결정할 것</div>
+    <h2 class="sec-title on-dark">두 가지를<br><strong>확인해 주시면</strong> 됩니다</h2>
+    <p class="sec-desc on-dark">방향이 정해지는 대로 착수하겠습니다.</p>
+
+    <div class="decision-list">
+      <div class="decision">
+        <div class="decision-num">결정 01</div>
+        <div class="decision-q">우선 런칭할 페이지를 확인해 주세요</div>
+        <div class="decision-why">오늘 논의 내용을 바탕으로, 우선 제작이 필요한 페이지는 세 가지입니다. 진료과목 페이지 · 특화진료 페이지 · FAQ 페이지.</div>
+        <div class="decision-tag">→ 오늘 확인</div>
+      </div>
+      <div class="decision">
+        <div class="decision-num">결정 02</div>
+        <div class="decision-q">FAQ에 실무 카테고리를 추가할까요?</div>
+        <div class="decision-why">현재 34개 질문은 키워드·검색 맥락 중심으로 구성되어 있습니다. 진료진이나 리셉션 분들이 실제로 자주 받는 질문을 간단히 듣고, 그 카테고리를 추가할지 여부를 결정해 주시면 반영하겠습니다.</div>
+        <div class="decision-tag">→ 오늘 확인</div>
+      </div>
+    </div>
+
+    <div class="prepared-by">
+      키워드 분석은 <strong>홈페이지 제작을 담당하고 있는 브랜딩 담당자</strong>가 설계의 선행 작업으로 진행했습니다.<br>
+      분석 결과는 <strong>콘텐츠와 광고를 총괄하시는 마케팅 실장님</strong>과 공유하여, 직접 노출형·유입 후 연결형·유료 광고형 각각의 영역에서 활용합니다.
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // 네비 액티브
+  const navItems = document.querySelectorAll('.nav-item');
+  const sectionIds = ['s1','s2','s3','s4','s5'];
+  function updateNav() {
+    let current = '';
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 120) current = id;
+    });
+    navItems.forEach(item => {
+      item.classList.remove('active');
+      if (item.getAttribute('href') === '#' + current) item.classList.add('active');
+    });
+  }
+  window.addEventListener('scroll', updateNav);
+  updateNav();
+
+  // 수정 참조 번호 자동 부여
+  const targets = [
+    '.sec-title',
+    '.sec-desc',
+    '.intent-card',
+    '.kw-ins',
+    '.faq-hero-title',
+    '.faq-axis',
+    '.faq-cat',
+    '.scoop-card',
+    '.track',
+    '.decision',
+    '.prepared-by',
+    '.sp-card',
+  ];
+  let counter = 1;
+  targets.forEach(selector => {
+    document.querySelectorAll(selector).forEach(el => {
+      const pos = window.getComputedStyle(el).position;
+      if (pos === 'static') el.style.position = 'relative';
+
+      const label = document.createElement('span');
+      label.style.cssText = `
+        position:absolute; top:-14px; left:0;
+        font-family:'IBM Plex Mono',monospace;
+        font-size:9px; color:var(--ink-muted);
+        opacity:.4; pointer-events:none;
+        user-select:none; line-height:1;
+        letter-spacing:.03em;
+      `;
+      if (el.closest('.dark')) label.style.color = 'rgba(255,255,255,.35)';
+      label.textContent = '#' + String(counter).padStart(2,'0');
+      el.appendChild(label);
+      counter++;
+    });
+  });
+</script>
+
+</body>
+</html>
