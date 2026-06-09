@@ -170,10 +170,13 @@
   .rank-symptom{background:var(--blue-soft);color:var(--blue);}
   .rank-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-muted);}
   .rank-list{list-style:none;counter-reset:rank;}
-  .rank-list li{counter-increment:rank;display:grid;grid-template-columns:22px 1fr auto auto;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:12.5px;}
+  .rank-list li{counter-increment:rank;display:grid;grid-template-columns:26px 1fr auto auto;align-items:center;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13.5px;}
+  .rank-list li.is-avoid .rank-kw-text{color:var(--ink-muted);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.4);text-decoration-thickness:1.5px;font-weight:400;}
+  .rank-list li.is-avoid .rank-vol{color:var(--ink-muted);}
+  .rank-list li.is-avoid::before{color:var(--ink-muted);opacity:.6;}
   .rank-mid{display:flex;align-items:center;gap:4px;}
-  .rank-flag{font-size:10px;margin-left:4px;cursor:help;display:inline-block;}
-  .usage-pill{display:inline-block;padding:1.5px 7px;border-radius:10px;font-size:9px;font-weight:700;letter-spacing:.02em;white-space:nowrap;}
+  .rank-flag{font-size:13px;margin-left:5px;cursor:help;display:inline-block;vertical-align:middle;}
+  .usage-pill{display:inline-block;padding:3px 10px;border-radius:11px;font-size:11px;font-weight:700;letter-spacing:.02em;white-space:nowrap;}
   .usage-direct{background:var(--accent-soft);color:var(--accent);}
   .usage-funnel{background:var(--blue-soft);color:var(--blue);}
   .usage-ads{background:var(--gold-soft);color:var(--gold);}
@@ -188,11 +191,11 @@
   .usage-guide-item .usage-pill{align-self:flex-start;}
   @media(max-width:860px){.usage-guide-grid{grid-template-columns:1fr 1fr;}}
   .rank-list li:last-child{border-bottom:none;}
-  .rank-list li::before{content:counter(rank,decimal-leading-zero);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:var(--ink-muted);}
+  .rank-list li::before{content:counter(rank,decimal-leading-zero);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--ink-muted);}
   .rank-list li.is-top3::before{color:var(--gold);}
   .rank-list li.is-low .rank-vol{color:var(--accent);font-weight:600;}
   .rank-kw{color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  .rank-vol{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-dim);text-align:right;}
+  .rank-vol{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-dim);text-align:right;font-weight:500;}
   .rank-empty{font-size:11.5px;color:var(--ink-muted);padding:14px 0;text-align:center;}
 
   /* 인사이트 카드 */
@@ -499,7 +502,18 @@
     <div class="sec-head">
       <span class="sec-num">03</span>
       <span class="sec-title">분류별 공략 우선순위</span>
-      <span class="sec-sub">치료법·수술 / 질병명 / 증상 — 큐레이션 Top 10</span>
+      <span class="sec-sub">무엇부터 다룰지 — 키워드 유형별 큐레이션 Top 10</span>
+    </div>
+    <div class="usage-intro">
+      <div class="usage-intro-title">이 섹션의 요점</div>
+      <p class="usage-intro-body">
+        위 섹션이 키워드를 <strong>"어떻게 다룰지"</strong> 였다면, 이 섹션은 <strong>"무엇부터 다룰지"</strong> 에 대한 큐레이션입니다.
+        키워드를 <strong>치료법·수술 / 질병명 / 증상</strong> 세 유형으로 묶고, 각 유형 안에서 마케팅 관점상 우선순위가 높다고 본 키워드를 Top 10으로 뽑았습니다.
+        키워드마다 옆에 붙은 <strong>활용 유형 뱃지</strong>(직접 · 유입→연결 · 광고후보 · 회피)와 보조 표시(<strong>💰 비용</strong> · <strong>🎯 저경쟁</strong> · <strong>? 경계</strong>)로
+        "무엇을" 이 "어떻게" 다뤄질지까지 한 줄로 보실 수 있도록 정리했습니다.
+        <br><br>
+        <span style="color:var(--ink-muted);font-size:12.5px;">※ <span style="text-decoration:line-through;">취소선</span> 으로 표시된 키워드는 <strong style="text-decoration:none;color:var(--ink-dim);">"회피"</strong> 트랙 — 헬릭스가 직접 밀지 않고 1차병원에 양보하는 영역입니다.</span>
+      </p>
     </div>
     <div class="rank-grid">
       <div class="rank-col" data-type="treatment">
@@ -1151,6 +1165,7 @@ function buildRanking(){
       const cls=[];
       if(i<3) cls.push('is-top3');
       if(isLow) cls.push('is-low');
+      if(usage==='avoid') cls.push('is-avoid');
       const volTxt = d.mobile<=5 ? '<10' : d.mobile.toLocaleString();
       const flags=[];
       if(meta.isCost) flags.push('<span class="rank-flag flag-cost" title="비용 검색 키워드">💰</span>');
@@ -1158,7 +1173,7 @@ function buildRanking(){
       if(isLow) flags.push('<span class="rank-flag flag-low" title="저경쟁">🎯</span>');
       const usagePill=usageMeta?`<span class="usage-pill ${usageMeta.cls}" title="${usageMeta.desc}">${usageMeta.label}</span>`:'';
       return `<li class="${cls.join(' ')}">
-        <span class="rank-kw">${d.kw}${flags.join('')}</span>
+        <span class="rank-kw"><span class="rank-kw-text">${d.kw}</span>${flags.join('')}</span>
         <span class="rank-mid">${usagePill}</span>
         <span class="rank-vol">${volTxt}</span>
       </li>`;
