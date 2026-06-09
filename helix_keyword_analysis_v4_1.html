@@ -452,6 +452,14 @@
   .faq-table tbody tr.faq-inactive .faq-kw,
   .faq-table tbody tr.faq-inactive .faq-q{text-decoration:line-through;text-decoration-color:rgba(0,0,0,.3);}
   .faq-inactive-badge{display:inline-block;padding:1.5px 7px;border-radius:4px;font-size:9.5px;font-weight:700;background:var(--orange-soft);color:var(--orange);margin-left:6px;letter-spacing:.05em;}
+  .faq-report-link{display:block;background:linear-gradient(135deg,#fffbf0 0%,var(--surface) 100%);border:1px solid var(--gold);border-left:4px solid var(--gold);border-radius:12px;padding:18px 22px;margin-bottom:18px;text-decoration:none;color:var(--ink);transition:all .18s;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+  .faq-report-link:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.08);border-left-color:var(--gold);}
+  .faq-report-link-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;}
+  .faq-report-link-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+  .faq-report-link-arrow{font-size:18px;color:var(--gold);font-weight:300;transition:transform .18s;}
+  .faq-report-link:hover .faq-report-link-arrow{transform:translateX(4px);}
+  .faq-report-link-desc{font-size:13px;color:var(--ink-dim);line-height:1.7;}
+  .faq-report-link-desc strong{color:var(--ink);font-weight:600;}
   @media(max-width:860px){
     .strategy-flow{flex-direction:column;}
     .strategy-arrow{width:auto;transform:rotate(90deg);padding:6px 0;font-size:22px;}
@@ -496,6 +504,11 @@
   <div class="nav-group">
     <span class="nav-section"><span class="nav-section-ico">📊</span>전체 데이터</span>
     <a class="nav-item" href="#all">전체 키워드 테이블</a>
+  </div>
+
+  <div class="nav-group">
+    <span class="nav-section"><span class="nav-section-ico">📚</span>관련 보고서</span>
+    <a class="nav-item" href="helix_faq_report.html" target="_self">FAQ 후보 선정 근거</a>
   </div>
 </nav>
 
@@ -820,6 +833,13 @@
         <span style="color:var(--ink-muted);font-size:12.5px;">※ 진료 영역별로 접혀 있습니다. 영역 이름을 누르시면 펼쳐 보실 수 있습니다.</span>
       </p>
     </div>
+    <a class="faq-report-link" href="helix_faq_report.html">
+      <div class="faq-report-link-eyebrow">📚 별도 보고서 — 더 자세한 선정 근거</div>
+      <div class="faq-report-link-title">FAQ 후보 선정 근거 보고서 보기 <span class="faq-report-link-arrow">→</span></div>
+      <div class="faq-report-link-desc">
+        이 명단은 funnel 태그 기준의 1차 큐레이션입니다. 별도 보고서에서는 <strong>검색 수요 · AI 검색 적합성 · 경쟁 공백</strong> 3축 평가 매트릭스, 경쟁 병원 8개소 FAQ 벤치마크, 최종 확정 34문항의 선정 근거를 자세히 다뤘습니다.
+      </div>
+    </a>
     <div class="faq-groups" id="faqGroups"></div>
   </section>
 
