@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>헬릭스 키워드 전략 회의 · 2026.06</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg:#f4f6f9;
+    --surface:#ffffff;
+    --surface-2:#f8f9fb;
+    --line:#e2e6ed;
+    --line-2:#d0d6e0;
+    --ink:#1a2233;
+    --ink-dim:#6b7a92;
+    --ink-muted:#adb8c8;
+    --accent:#0e9e82;
+    --accent-soft:rgba(14,158,130,.10);
+    --gold:#b58a1a;
+    --gold-soft:rgba(181,138,26,.10);
+    --red:#c0392b;
+    --red-soft:rgba(192,57,43,.08);
+    --blue:#2467b8;
+    --blue-soft:rgba(36,103,184,.10);
+    --purple:#6b4fa8;
+    --purple-soft:rgba(107,79,168,.10);
+    --orange:#c05a10;
+    --orange-soft:rgba(192,90,16,.09);
+    --pink:#b02a72;
+    --pink-soft:rgba(176,42,114,.09);
+    --p1:#c0510e; --p1-soft:rgba(192,81,14,.10);
+    --p2:#1a5fa8; --p2-soft:rgba(26,95,168,.10);
+    --p3:#5a3d9e; --p3-soft:rgba(90,61,158,.10);
+    --p4:#0a7a62; --p4-soft:rgba(10,122,98,.10);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'IBM Plex Sans KR',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;font-size:14.5px;}
+
+  html{scroll-behavior:smooth;scroll-padding-top:24px;}
+
+  /* SIDENAV — 그룹화 + 스크롤 추적 */
+  .sidenav{position:fixed;left:0;top:0;bottom:0;width:230px;background:var(--surface);border-right:1px solid var(--line);padding:26px 0;z-index:100;overflow-y:auto;box-shadow:2px 0 12px rgba(0,0,0,.05);}
+  .sidenav .logo{padding:0 22px 18px;border-bottom:1px solid var(--line);margin-bottom:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;font-weight:500;}
+  .nav-group{margin-top:14px;}
+  .nav-section{display:flex;align-items:center;gap:7px;padding:8px 22px 6px;font-size:11px;color:var(--ink);letter-spacing:.06em;font-weight:600;}
+  .nav-section .nav-section-ico{font-size:13px;}
+  .nav-item{display:flex;align-items:center;gap:7px;padding:8px 22px 8px 38px;font-size:13.5px;color:var(--ink-dim);cursor:pointer;transition:all .14s;text-decoration:none;border-left:3px solid transparent;}
+  .nav-item:hover{color:var(--ink);background:var(--surface-2);}
+  .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-soft);font-weight:600;}
+
+  .main{margin-left:230px;padding:52px 56px 120px;max-width:1240px;}
+
+  /* SEC HEAD — 발표 슬라이드 헤더 */
+  .sec-head{display:flex;align-items:baseline;gap:14px;padding-bottom:14px;border-bottom:2px solid var(--line);margin-bottom:28px;}
+  .sec-num{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-muted);font-weight:500;}
+  .sec-title{font-family:'Noto Serif KR',serif;font-size:26px;font-weight:500;color:var(--ink);letter-spacing:-.01em;}
+  .sec-sub{font-size:13px;color:var(--ink-dim);margin-left:auto;}
+  .section-block{margin-bottom:60px;}
+
+  /* HERO */
+  .hero{margin-bottom:36px;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;font-weight:600;}
+  h1{font-family:'Noto Serif KR',serif;font-size:38px;font-weight:400;margin-bottom:8px;color:var(--ink);letter-spacing:-.01em;}
+  .hero-sub{color:var(--ink-dim);font-size:14px;margin-bottom:30px;}
+  .kpi-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .kpi{padding:18px 24px;background:var(--surface);border:1px solid var(--line);border-radius:12px;min-width:150px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+  .kpi-label{font-size:11px;color:var(--ink-dim);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;font-weight:600;}
+  .kpi-val{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:500;color:var(--accent);}
+  .kpi-val.gold{color:var(--gold);}
+  .kpi-val.orange{color:var(--orange);}
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     분석 방법 (#methodology)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .methodology-block{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:24px 26px 22px;
+    margin-bottom:36px;
+    box-shadow:0 1px 6px rgba(0,0,0,.04);
+  }
+  .method-eyebrow{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--blue);font-weight:700;margin-bottom:18px;
+    padding:5px 12px;background:var(--blue-soft);border-radius:6px;
+  }
+  .method-flow{display:flex;align-items:stretch;gap:6px;}
+  .method-step{
+    flex:1;min-width:0;
+    padding:14px 16px 12px;
+    background:var(--surface-2);
+    border:1px solid var(--line);
+    border-top:3px solid var(--blue);
+    border-radius:10px;
+  }
+  .method-step-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;font-weight:700;letter-spacing:.18em;
+    color:var(--blue);margin-bottom:6px;
+  }
+  .method-step-title{
+    font-family:'Noto Serif KR',serif;
+    font-size:14.5px;font-weight:600;color:var(--ink);
+    margin-bottom:7px;line-height:1.4;
+  }
+  .method-step-body{font-size:11.5px;color:var(--ink-dim);line-height:1.7;}
+  .method-arrow{
+    display:flex;align-items:center;justify-content:center;
+    width:18px;flex-shrink:0;
+    color:var(--blue);font-size:18px;font-weight:300;
+  }
+  @media(max-width:1100px){
+    .method-flow{flex-direction:column;}
+    .method-arrow{width:auto;transform:rotate(90deg);padding:4px 0;}
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     발표용 결론 슬라이드 (#conclusion)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .slide-conclusion{
+    background:linear-gradient(135deg,#ffffff 0%,#fdfbf4 100%);
+    border:1px solid var(--gold);border-left:6px solid var(--gold);
+    border-radius:18px;padding:38px 42px;margin-bottom:48px;
+    box-shadow:0 4px 18px rgba(0,0,0,.06);
+  }
+  .slide-eyebrow{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);font-weight:700;margin-bottom:14px;
+    padding:5px 12px;background:var(--gold-soft);border-radius:6px;
+  }
+  .slide-headline{
+    font-family:'Noto Serif KR',serif;font-size:30px;font-weight:500;
+    line-height:1.5;color:var(--ink);margin-bottom:18px;letter-spacing:-.01em;
+  }
+  .slide-headline .hl-accent{
+    background:linear-gradient(180deg,transparent 60%,rgba(181,138,26,.25) 60%);
+    padding:0 4px;font-weight:700;color:var(--ink);
+  }
+  .slide-note{
+    font-size:13.5px;line-height:1.85;color:var(--ink-dim);
+    padding:14px 18px;background:var(--surface);border:1px solid var(--line);
+    border-left:3px solid var(--ink-muted);border-radius:0 8px 8px 0;
+    margin-bottom:26px;
+  }
+  .slide-note strong{color:var(--ink);font-weight:600;}
+  .slide-points{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .slide-point{padding:22px 22px 20px;background:var(--surface);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;gap:8px;}
+  .slide-point-num{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.14em;
+    color:var(--gold);background:var(--gold-soft);align-self:flex-start;padding:3px 9px;border-radius:5px;
+  }
+  .slide-point-title{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:600;color:var(--ink);margin-top:2px;}
+  .slide-point-body{font-size:13px;color:var(--ink-dim);line-height:1.7;}
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     활용 유형 3가지 (#usage-types) — 발표 슬라이드
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .usage-intro{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:18px 22px;margin-bottom:20px;}
+  .usage-intro-title{font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:8px;}
+  .usage-intro-body{font-size:13.5px;color:var(--ink);line-height:1.85;}
+  .usage-intro-body strong{color:var(--accent);font-weight:600;}
+  .usage-types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .ut-card-why{margin:10px 0 6px;padding:10px 12px;background:var(--surface-2);border-radius:8px;border-left:2px solid var(--ink-muted);}
+  .ut-card-why-label{font-size:9.5px;color:var(--ink-dim);letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:4px;}
+  .ut-card-why-body{font-size:11.5px;color:var(--ink);line-height:1.7;}
+  .ut-card-whyex{margin-top:8px;padding:9px 11px;font-size:11px;color:var(--ink-dim);background:rgba(255,255,255,.4);border:1px dashed var(--line);border-radius:6px;line-height:1.65;font-style:italic;}
+  .ut-card{background:var(--surface);border:1px solid var(--line);border-top:4px solid transparent;border-radius:12px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:9px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+  .ut-card.ut-direct       {border-top-color:var(--accent);}
+  .ut-card.ut-funnel       {border-top-color:var(--blue);}
+  .ut-card.ut-ads_candidate{border-top-color:var(--gold);}
+  .ut-card.ut-avoid        {border-top-color:#a0a0a0;}
+  .ut-card.ut-pending      {border-top-color:var(--ink-muted);}
+  .ut-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;}
+  .ut-card-name{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:600;color:var(--ink);}
+  .ut-card-count{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-muted);}
+  .ut-card-desc{font-size:12px;color:var(--ink-dim);line-height:1.65;min-height:48px;}
+  .ut-card-kw-label{font-size:9.5px;color:var(--ink-muted);letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-top:6px;}
+  .ut-card-kws{list-style:none;display:flex;flex-direction:column;gap:4px;}
+  .ut-card-kws li{font-size:12.5px;color:var(--ink);padding:4px 0;border-bottom:1px dashed var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:6px;}
+  .ut-card-kws li:last-child{border-bottom:none;}
+  .ut-kw-vol{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-muted);}
+  @media(max-width:1100px){.usage-types-grid{grid-template-columns:repeat(2,1fr);}.slide-points{grid-template-columns:1fr;}}
+  @media(max-width:860px){.usage-types-grid{grid-template-columns:1fr;}.slide-headline{font-size:26px;}.slide-conclusion{padding:26px 22px;}}
+
+  /* 헬릭스 특화진료 한눈에 */
+  .specialty-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .specialty-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px 16px;box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;flex-direction:column;}
+  .specialty-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.2em;font-weight:700;margin-bottom:6px;}
+  .specialty-group-name{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:600;color:var(--ink);line-height:1.3;}
+  .specialty-group-en{font-size:11.5px;color:var(--ink-dim);font-style:italic;padding-bottom:13px;border-bottom:1px solid var(--line);margin-bottom:11px;margin-top:1px;}
+  .specialty-list{list-style:none;display:flex;flex-direction:column;}
+  .specialty-list li{padding:9px 0;border-bottom:1px dashed var(--line);}
+  .specialty-list li:last-child{border-bottom:none;padding-bottom:0;}
+  .specialty-list li.sp-pending{opacity:.4;}
+  .sp-ko{display:block;font-size:13px;color:var(--ink);font-weight:500;line-height:1.45;}
+  .sp-en{display:block;font-size:11px;color:var(--ink-dim);font-style:italic;margin-top:3px;line-height:1.4;}
+  .sp-pending-badge{display:inline-block;padding:1.5px 6px;border-radius:4px;font-size:9px;font-weight:700;background:var(--orange-soft);color:var(--orange);margin-left:6px;letter-spacing:.05em;vertical-align:middle;}
+  @media(max-width:1100px){.specialty-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* 전제 인사이트 */
+  .premise-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:48px;}
+  .premise-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px 26px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+  .premise-card.premise-highlight{
+    border-left:4px solid var(--accent);
+    background:linear-gradient(180deg,#f6fcfa 0%,var(--surface) 60%);
+  }
+  .premise-card.premise-highlight.premise-highlight-warn{
+    border-left-color:var(--orange);
+    background:linear-gradient(180deg,#fdf6ee 0%,var(--surface) 60%);
+  }
+  .premise-icon{font-size:24px;margin-bottom:11px;}
+  .premise-title{font-size:15.5px;font-weight:600;margin-bottom:8px;color:var(--ink);line-height:1.5;}
+  .premise-card.premise-highlight .premise-title{color:var(--accent);}
+  .premise-card.premise-highlight.premise-highlight-warn .premise-title{color:var(--orange);}
+  .premise-body{font-size:13px;color:var(--ink-dim);line-height:1.8;}
+  .premise-body strong{color:var(--ink);font-weight:600;}
+  .removed-kw-inline{display:inline-block;padding:1.5px 7px;border-radius:3px;font-size:11.5px;background:#fdf2f2;color:#a04040;border:1px solid #f5c6c6;text-decoration:line-through;margin:1px 2px;}
+
+  /* 분류별 우선순위 랭킹 */
+  .rank-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .rank-col{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+  .rank-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  .rank-type-badge{display:inline-block;padding:3px 10px;border-radius:5px;font-size:11px;font-weight:600;letter-spacing:.02em;}
+  .rank-treatment{background:var(--accent-soft);color:var(--accent);}
+  .rank-disease{background:var(--red-soft);color:var(--red);}
+  .rank-symptom{background:var(--blue-soft);color:var(--blue);}
+  .rank-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-muted);}
+  .rank-list{list-style:none;counter-reset:rank;}
+  .rank-list li{counter-increment:rank;display:grid;grid-template-columns:26px 1fr auto auto;align-items:center;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13.5px;}
+  .rank-list li.is-avoid .rank-kw-text{color:var(--ink-muted);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.4);text-decoration-thickness:1.5px;font-weight:400;}
+  .rank-list li.is-avoid .rank-vol{color:var(--ink-muted);}
+  .rank-list li.is-avoid::before{color:var(--ink-muted);opacity:.6;}
+  .rank-mid{display:flex;align-items:center;gap:4px;}
+  .rank-flag{font-size:13px;margin-left:5px;cursor:help;display:inline-block;vertical-align:middle;}
+  .usage-pill{display:inline-block;padding:3px 10px;border-radius:11px;font-size:11px;font-weight:700;letter-spacing:.02em;white-space:nowrap;}
+  .usage-direct{background:var(--accent-soft);color:var(--accent);}
+  .usage-funnel{background:var(--blue-soft);color:var(--blue);}
+  .usage-ads{background:var(--gold-soft);color:var(--gold);}
+  .usage-avoid{background:#f5f5f5;color:#999;border:1px solid #e0e0e0;}
+  .usage-pending{background:var(--surface-2);color:var(--ink-muted);border:1px dashed var(--line-2);}
+
+  /* 활용 유형 안내 박스 */
+  .usage-guide{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+  .usage-guide-title{font-size:10.5px;color:var(--ink-dim);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:9px;}
+  .usage-guide-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+  .usage-guide-item{display:flex;flex-direction:column;gap:4px;font-size:11px;color:var(--ink-dim);line-height:1.5;}
+  .usage-guide-item .usage-pill{align-self:flex-start;}
+  @media(max-width:860px){.usage-guide-grid{grid-template-columns:1fr 1fr;}}
+  .rank-list li:last-child{border-bottom:none;}
+  .rank-list li::before{content:counter(rank,decimal-leading-zero);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--ink-muted);}
+  .rank-list li.is-top3::before{color:var(--gold);}
+  .rank-list li.is-low .rank-vol{color:var(--accent);font-weight:600;}
+  .rank-kw{color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .rank-vol{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-dim);text-align:right;font-weight:500;}
+  .rank-empty{font-size:11.5px;color:var(--ink-muted);padding:14px 0;text-align:center;}
+
+  /* 인사이트 카드 */
+  .ins-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px;}
+  .ins-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+  .ins-label{font-size:10.5px;color:var(--ink-dim);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;font-weight:600;}
+  .ins-title{font-size:14.5px;font-weight:600;margin-bottom:6px;color:var(--ink);}
+  .ins-body{font-size:12.5px;color:var(--ink-dim);line-height:1.7;}
+
+  /* Priority cards */
+  .priority-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px;}
+  .priority-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05);}
+  .pc-header{padding:15px 18px;display:flex;align-items:center;gap:11px;border-bottom:1px solid var(--line);background:var(--surface-2);}
+  .pc-rank{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;flex-shrink:0;}
+  .rank-1{background:var(--p1-soft);color:var(--p1);}
+  .rank-2{background:var(--p2-soft);color:var(--p2);}
+  .rank-3{background:var(--p3-soft);color:var(--p3);}
+  .rank-4{background:var(--p4-soft);color:var(--p4);}
+  .pc-name{font-size:13.5px;font-weight:600;color:var(--ink);}
+  .pc-en{font-size:10.5px;color:var(--ink-dim);font-style:italic;margin-top:1px;}
+  .pc-note{font-size:10.5px;color:var(--ink-dim);margin-left:auto;flex-shrink:0;}
+  .pc-thead{display:grid;grid-template-columns:1fr 72px 72px 64px;padding:6px 18px;gap:6px;font-size:9px;color:var(--ink-muted);letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--line);background:#f0f3f7;}
+  .pc-thead span:not(:first-child){text-align:right;}
+  .pc-kw-row{display:grid;grid-template-columns:1fr 72px 72px 64px;padding:8px 18px;border-bottom:1px solid var(--line);align-items:center;gap:6px;transition:background .1s;}
+  .pc-kw-row:last-child{border-bottom:none;}
+  .pc-kw-row:hover{background:var(--surface-2);}
+  .pc-kw-label{font-size:12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;color:var(--ink);}
+  .core-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+  .dot-p1{background:var(--p1);}.dot-p2{background:var(--p2);}.dot-p3{background:var(--p3);}.dot-p4{background:var(--p4);}.dot-rel{background:var(--ink-muted);}
+  .pc-num{font-family:'IBM Plex Mono',monospace;font-size:11.5px;text-align:right;color:var(--ink);}
+  .no-data{color:var(--ink-muted);font-size:10.5px;font-family:'IBM Plex Mono',monospace;}
+
+  /* 배지 */
+  .badge{display:inline-block;padding:1.5px 6px;border-radius:3px;font-size:9px;font-weight:700;}
+  .badge-core{background:var(--gold-soft);color:var(--gold);}
+  .badge-symptom{background:var(--surface-2);color:var(--ink-dim);border:1px solid var(--line);}
+  .badge-hospital{background:var(--blue-soft);color:var(--blue);}
+  .badge-general{background:#f5f5f5;color:#999;border:1px solid #e0e0e0;}
+  .badge-ambiguous{background:var(--purple-soft);color:var(--purple);border:1px solid rgba(107,79,168,.25);margin-left:4px;cursor:help;}
+  .badge-pending{background:var(--orange-soft);color:var(--orange);border:1px solid rgba(192,90,16,.3);margin-left:4px;cursor:help;font-size:9.5px;letter-spacing:.05em;}
+  .pc-kw-row.is-pending{opacity:.4;}
+  tbody tr.is-pending td{opacity:.4;}
+  tbody tr.is-pending:hover td{opacity:.6;}
+  .comp-badge{display:inline-block;padding:1.5px 7px;border-radius:4px;font-size:10px;font-weight:600;}
+  .comp-badge.high{background:var(--red-soft);color:var(--red);}
+  .comp-badge.mid{background:var(--gold-soft);color:var(--gold);}
+  .comp-badge.low{background:var(--accent-soft);color:var(--accent);}
+  .opp-tag{display:inline-block;margin-left:5px;padding:1.5px 6px;border-radius:3px;font-size:9.5px;font-weight:700;background:var(--gold-soft);color:var(--gold);letter-spacing:.02em;vertical-align:middle;}
+  .core-flag{display:inline-flex;align-items:center;gap:2px;padding:1.5px 5px;border-radius:3px;font-size:8.5px;font-weight:700;background:var(--gold-soft);color:var(--gold);margin-left:4px;}
+
+  /* Nationwide */
+  .nation-intro{padding:14px 18px;background:#fff8f0;border:1px solid #f0d8b8;border-radius:10px;margin-bottom:18px;font-size:12.5px;color:var(--ink-dim);line-height:1.7;border-left:3px solid var(--orange);}
+  .nation-intro strong{color:var(--ink);}
+  .nation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;}
+  .nation-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:15px;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+  .nation-card-title{font-size:12px;font-weight:600;margin-bottom:4px;color:var(--orange);}
+  .nation-card-desc{font-size:10.5px;color:var(--ink-muted);margin-bottom:10px;}
+  .nation-kw-item{padding:6px 0;border-bottom:1px solid var(--line);font-size:12px;display:flex;justify-content:space-between;align-items:center;color:var(--ink);}
+  .nation-kw-item:last-child{border-bottom:none;}
+
+  /* 토글 */
+  .toggle-wrap{display:flex;align-items:center;gap:8px;padding:8px 13px;background:var(--surface);border:1px solid var(--line);border-radius:8px;cursor:pointer;user-select:none;font-size:12px;color:var(--ink-dim);transition:all .15s;}
+  .toggle-wrap:hover{color:var(--ink);border-color:var(--ink-muted);}
+  .toggle-wrap.on{border-color:var(--ink-muted);color:var(--ink);}
+  .toggle-dot{width:28px;height:16px;border-radius:8px;background:var(--line-2);position:relative;transition:background .2s;flex-shrink:0;}
+  .toggle-dot::after{content:'';position:absolute;width:12px;height:12px;border-radius:50%;background:white;top:2px;left:2px;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+  .toggle-wrap.on .toggle-dot{background:var(--ink-dim);}
+  .toggle-wrap.on .toggle-dot::after{left:14px;}
+
+  /* Table */
+  .controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:14px;}
+  .search-wrap{position:relative;flex:1;min-width:200px;}
+  .search-wrap input{width:100%;padding:9px 13px 9px 34px;background:var(--surface);border:1px solid var(--line);border-radius:8px;color:var(--ink);font-family:inherit;font-size:12.5px;outline:none;transition:border-color .15s;}
+  .search-wrap input:focus{border-color:var(--accent);}
+  .search-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:14px;height:14px;stroke:var(--ink-dim);}
+  .filter-row{display:flex;gap:6px;flex-wrap:wrap;}
+  .pill{padding:5px 12px;border-radius:20px;border:1px solid var(--line);background:var(--surface);color:var(--ink-dim);font-size:11px;cursor:pointer;transition:all .13s;user-select:none;font-family:inherit;}
+  .pill:hover{color:var(--ink);border-color:var(--ink-muted);}
+  .pill.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:500;}
+  .sort-sel{padding:7px 11px;background:var(--surface);border:1px solid var(--line);border-radius:8px;color:var(--ink);font-family:inherit;font-size:11.5px;outline:none;cursor:pointer;}
+
+  .stats-strip{display:flex;gap:7px;margin-bottom:13px;flex-wrap:wrap;align-items:center;}
+  .stat-chip{padding:3px 9px;border-radius:5px;font-size:11px;display:flex;align-items:center;gap:4px;}
+  .stat-chip .dot{width:5px;height:5px;border-radius:50%;}
+  .chip-high{background:var(--red-soft);color:var(--red);}.chip-high .dot{background:var(--red);}
+  .chip-mid{background:var(--gold-soft);color:var(--gold);}.chip-mid .dot{background:var(--gold);}
+  .chip-low{background:var(--accent-soft);color:var(--accent);}.chip-low .dot{background:var(--accent);}
+  .stat-n{font-family:'IBM Plex Mono',monospace;font-weight:500;}
+
+  .table-wrap{border:1px solid var(--line);border-radius:12px;overflow:auto;box-shadow:0 1px 6px rgba(0,0,0,.05);}
+  table{width:100%;border-collapse:collapse;}
+  thead th{padding:10px 13px;font-size:9.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-dim);background:#f0f3f7;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none;transition:color .13s;}
+  thead th:hover{color:var(--ink);}
+  tbody tr{border-bottom:1px solid var(--line);transition:background .1s;background:var(--surface);}
+  tbody tr:last-child{border-bottom:none;}
+  tbody tr:hover{background:var(--surface-2);}
+
+  /* 일반 병원 행 비활성 */
+  tbody tr.is-general{
+    opacity:0.35;
+    background: repeating-linear-gradient(-45deg,#fff,#fff 5px,#f8f9fb 5px,#f8f9fb 6px);
+  }
+  tbody tr.is-general:hover{opacity:0.55;}
+  tbody tr.is-general.hidden-general{display:none;}
+
+  tbody td{padding:9px 13px;font-size:12.5px;vertical-align:middle;color:var(--ink);}
+  .num-r{font-family:'IBM Plex Mono',monospace;font-size:12px;text-align:right;}
+  .kw-name{font-weight:500;}
+  .kw-name mark{background:#fff3b0;color:#7a5a00;border-radius:2px;padding:0 2px;}
+
+  .cat-tag{display:inline-block;padding:1.5px 7px;border-radius:4px;font-size:9.5px;font-weight:600;white-space:nowrap;}
+  .tag-p1{background:var(--p1-soft);color:var(--p1);}
+  .tag-p2{background:var(--p2-soft);color:var(--p2);}
+  .tag-p3{background:var(--p3-soft);color:var(--p3);}
+  .tag-p4{background:var(--p4-soft);color:var(--p4);}
+  .tag-oph{background:var(--blue-soft);color:var(--blue);}
+  .tag-dent{background:var(--pink-soft);color:var(--pink);}
+  .tag-chk{background:rgba(20,140,60,.09);color:#0f7a36;}
+  .tag-med{background:var(--accent-soft);color:var(--accent);}
+  .tag-rehab{background:var(--orange-soft);color:var(--orange);}
+  .tag-gen{background:#f2f4f7;color:var(--ink-dim);border:1px solid var(--line);}
+  .tag-nation{background:var(--orange-soft);color:var(--orange);}
+
+  .vol-wrap{display:flex;align-items:center;gap:6px;}
+  .vol-bg{flex:1;height:3px;background:var(--line);border-radius:2px;min-width:44px;}
+  .vol-fill{height:100%;border-radius:2px;background:var(--accent);}
+  .vol-fill-dim{height:100%;border-radius:2px;background:var(--ink-muted);}
+
+  .empty-msg{text-align:center;padding:52px;color:var(--ink-dim);font-size:13px;display:none;}
+  .empty-msg.show{display:block;}
+
+  .sec-label{font-size:11.5px;color:var(--ink-dim);margin-bottom:12px;padding:8px 14px;background:var(--surface);border-radius:7px;border:1px solid var(--line);}
+  .sec-label strong{color:var(--ink);}
+
+  /* 고검색량 키워드 활용 전략 */
+  .strategy-section{margin-bottom:22px;padding:22px;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;}
+  .strategy-header{margin-bottom:16px;padding-bottom:14px;border-bottom:1px dashed var(--line-2);}
+  .strategy-title{font-family:'Noto Serif KR',serif;font-size:16.5px;font-weight:600;color:var(--ink);margin-bottom:4px;letter-spacing:-.01em;}
+  .strategy-sub{font-size:11.5px;color:var(--ink-dim);}
+  .strategy-flow{display:flex;align-items:stretch;gap:8px;margin-bottom:14px;}
+  .strategy-card{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 17px 14px;box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;flex-direction:column;min-width:0;}
+  .strategy-step{display:flex;align-items:center;gap:8px;margin-bottom:9px;flex-wrap:wrap;}
+  .strategy-step-num{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.14em;color:var(--accent);background:var(--accent-soft);padding:3px 8px;border-radius:4px;text-transform:uppercase;flex-shrink:0;}
+  .strategy-role{font-size:10.5px;color:var(--ink-dim);font-style:italic;line-height:1.4;}
+  .strategy-card-title{font-family:'Noto Serif KR',serif;font-size:14.5px;font-weight:600;color:var(--ink);margin-bottom:10px;line-height:1.4;}
+  .strategy-why{font-size:11.5px;color:var(--ink-dim);line-height:1.65;padding:9px 12px;background:var(--surface-2);border-left:2px solid var(--ink-muted);border-radius:0 6px 6px 0;margin-bottom:12px;}
+  .strategy-why strong{color:var(--ink);font-weight:600;}
+  .strategy-do-label{font-size:9px;color:var(--ink-muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px;font-weight:600;}
+  .strategy-do{list-style:none;font-size:11.5px;color:var(--ink);line-height:1.6;flex:1;}
+  .strategy-do li{padding:4px 0 4px 12px;position:relative;}
+  .strategy-do li::before{content:'';position:absolute;left:2px;top:11px;width:4px;height:4px;border-radius:50%;background:var(--accent);}
+  .strategy-tag{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);display:flex;align-items:center;gap:8px;}
+  .strategy-tag-label{letter-spacing:.14em;text-transform:uppercase;font-size:9px;color:var(--ink-muted);font-weight:600;}
+  .strategy-tag-val{padding:2px 9px;border-radius:10px;font-weight:600;font-size:10px;letter-spacing:.02em;}
+  .strategy-tag-val.tag-asset{background:var(--accent-soft);color:var(--accent);}
+  .strategy-tag-val.tag-design{background:var(--purple-soft);color:var(--purple);}
+  .strategy-tag-val.tag-cost{background:var(--orange-soft);color:var(--orange);}
+  .strategy-arrow{display:flex;align-items:center;justify-content:center;width:24px;color:var(--ink-muted);font-size:20px;font-weight:300;flex-shrink:0;}
+  .strategy-arrow.strategy-arrow-parallel{color:var(--gold);font-size:24px;font-weight:500;letter-spacing:-2px;}
+  .strategy-summary{padding:14px 18px;background:var(--surface);border:1px solid var(--accent);border-left:3px solid var(--accent);border-radius:8px;font-size:13px;color:var(--ink);line-height:1.7;}
+  .strategy-summary strong{color:var(--accent);font-weight:700;font-family:'IBM Plex Mono',monospace;font-size:13.5px;}
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     FAQ·블로그 콘텐츠 명단 (#faq-list)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .faq-groups{display:flex;flex-direction:column;gap:10px;}
+  .faq-group{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+  .faq-summary{cursor:pointer;padding:14px 20px;display:flex;align-items:center;gap:14px;user-select:none;transition:background .14s;list-style:none;}
+  .faq-summary::-webkit-details-marker{display:none;}
+  .faq-summary::marker{content:'';}
+  .faq-summary:hover{background:var(--surface-2);}
+  .faq-group[open] .faq-summary{background:var(--surface-2);border-bottom:1px solid var(--line);}
+  .faq-group-name{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:600;color:var(--ink);flex:1;}
+  .faq-group-count{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-dim);font-weight:500;}
+  .faq-pending-note{color:var(--orange);font-size:10.5px;margin-left:4px;}
+  .faq-chevron{transition:transform .2s;color:var(--ink-muted);font-size:14px;flex-shrink:0;}
+  .faq-group[open] .faq-chevron{transform:rotate(180deg);}
+  .faq-body{padding:0 16px 14px;}
+  .faq-table{width:100%;border-collapse:collapse;margin-top:6px;}
+  .faq-table thead th{text-align:left;padding:10px 12px;font-size:10px;font-weight:700;color:var(--ink-dim);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);background:var(--surface-2);}
+  .faq-table thead th.num-r{text-align:right;}
+  .faq-table tbody td{padding:11px 12px;font-size:13px;border-bottom:1px dashed var(--line);vertical-align:middle;color:var(--ink);}
+  .faq-table tbody tr:last-child td{border-bottom:none;}
+  .faq-table tbody tr:hover td{background:rgba(0,0,0,.018);}
+  .faq-kw{font-weight:600;white-space:nowrap;}
+  .faq-vol{font-family:'IBM Plex Mono',monospace;color:var(--ink-dim);text-align:right;font-size:12px;white-space:nowrap;}
+  .faq-q{color:var(--ink);line-height:1.65;}
+  .faq-link .usage-pill{font-size:10.5px;padding:2.5px 9px;}
+  .faq-table tbody tr.faq-inactive td{opacity:.4;}
+  .faq-table tbody tr.faq-inactive:hover td{opacity:.6;}
+  .faq-table tbody tr.faq-inactive .faq-kw,
+  .faq-table tbody tr.faq-inactive .faq-q{text-decoration:line-through;text-decoration-color:rgba(0,0,0,.3);}
+  .faq-inactive-badge{display:inline-block;padding:1.5px 7px;border-radius:4px;font-size:9.5px;font-weight:700;background:var(--orange-soft);color:var(--orange);margin-left:6px;letter-spacing:.05em;}
+  .faq-report-link{display:block;background:linear-gradient(135deg,#fffbf0 0%,var(--surface) 100%);border:1px solid var(--gold);border-left:4px solid var(--gold);border-radius:12px;padding:18px 22px;margin-bottom:18px;text-decoration:none;color:var(--ink);transition:all .18s;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+  .faq-report-link:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.08);border-left-color:var(--gold);}
+  .faq-report-link-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;}
+  .faq-report-link-title{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+  .faq-report-link-arrow{font-size:18px;color:var(--gold);font-weight:300;transition:transform .18s;}
+  .faq-report-link:hover .faq-report-link-arrow{transform:translateX(4px);}
+  .faq-report-link-desc{font-size:13px;color:var(--ink-dim);line-height:1.7;}
+  .faq-report-link-desc strong{color:var(--ink);font-weight:600;}
+  @media(max-width:860px){
+    .strategy-flow{flex-direction:column;}
+    .strategy-arrow{width:auto;transform:rotate(90deg);padding:6px 0;font-size:22px;}
+  }
+
+  @media(max-width:860px){
+    .sidenav{display:none;}.main{margin-left:0;padding:24px 18px 80px;}
+    .priority-grid,.nation-grid,.ins-row,.premise-grid,.rank-grid,.specialty-grid{grid-template-columns:1fr;}
+  }
+
+  /* v5 — 회의 목적 */
+  .purpose-card{background:var(--ink);color:white;border-radius:14px;padding:32px 36px;margin-bottom:44px;position:relative;overflow:hidden;}
+  .purpose-card::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(14,158,130,.12);}
+  .purpose-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:rgba(14,158,130,.85);text-transform:uppercase;margin-bottom:14px;}
+  .purpose-text{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:300;line-height:1.7;color:white;margin-bottom:18px;}
+  .purpose-text strong{color:#6de4cc;font-weight:400;}
+  .purpose-flow{font-size:12.5px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .purpose-flow span{color:rgba(255,255,255,.75);}
+  .purpose-flow .arrow{color:rgba(14,158,130,.6);font-size:10px;}
+
+  /* v5 — 페이지 카드 / 로드맵 */
+  .page-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:14px;}
+  .page-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+  .page-card-top{padding:20px 22px 16px;border-bottom:1px solid var(--line);}
+  .page-card-num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-muted);margin-bottom:8px;}
+  .page-card-title{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:6px;}
+  .page-card-sub{font-size:12px;color:var(--ink-dim);line-height:1.65;}
+  .page-card-body{padding:16px 22px;}
+  .kw-connect{display:flex;flex-direction:column;gap:5px;}
+  .kw-connect-item{font-size:12px;color:var(--ink-dim);display:flex;align-items:center;gap:7px;}
+  .kw-connect-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+  .roadmap-note{background:#fff8f0;border:1px solid #f0d8b8;border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:16px 20px;margin-bottom:22px;font-size:12.5px;color:var(--ink-dim);line-height:1.75;}
+  .roadmap-note strong{color:var(--ink);}
+  .phase-list{display:flex;flex-direction:column;gap:10px;}
+  .phase-item{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 22px;display:flex;align-items:flex-start;gap:16px;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+  .phase-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+  .dot-blue{background:var(--blue);}.dot-accent{background:var(--accent);}.dot-gold{background:var(--gold);}
+  .phase-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+  .phase-desc{font-size:12.5px;color:var(--ink-dim);line-height:1.7;}
+  .phase-who{margin-top:8px;font-size:11px;color:var(--ink-muted);font-family:'IBM Plex Mono',monospace;}
+
+  /* v5 — 결정 사항 */
+  .decision-list{display:flex;flex-direction:column;gap:14px;}
+  .decision-item{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:22px 26px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+  .decision-num{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;}
+  .decision-q{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px;line-height:1.4;}
+  .decision-why{font-size:12.5px;color:var(--ink-dim);line-height:1.75;}
+  .decision-tag{margin-top:10px;font-size:11px;color:var(--ink-muted);font-family:'IBM Plex Mono',monospace;}
+
+  /* v5 — details/summary */
+  details{margin-bottom:36px;}
+  details > summary{cursor:pointer;list-style:none;padding:14px 18px;background:var(--surface);border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:10px;user-select:none;}
+  details > summary::-webkit-details-marker{display:none;}
+  details > summary::before{content:'▸';color:var(--accent);font-size:11px;transition:transform .15s;}
+  details[open] > summary::before{transform:rotate(90deg);}
+  details[open] > summary{margin-bottom:18px;}
+
+  @media(max-width:1100px){.page-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav class="sidenav">
+  <div class="logo">Helix · KW v5</div>
+
+  <div class="nav-group">
+    <span class="nav-section"><span class="nav-section-ico">🗂️</span>회의 안건</span>
+    <a class="nav-item" href="#purpose">회의 목적</a>
+  </div>
+
+  <div class="nav-group">
+    <span class="nav-section"><span class="nav-section-ico">📌</span>요약</span>
+    <a class="nav-item" href="#methodology">분석 방법</a>
+    <a class="nav-item" href="#conclusion">핵심 결론</a>
+    <a class="nav-item" href="#specialty">헬릭스 특화진료</a>
+    <a class="nav-item" href="#premise">전제 인사이트</a>
+  </div>
+
+  <div class="nav-group">
+    <span class="nav-section"><span class="nav-section-ico">🎯</span>전략</span>
+    <a class="nav-item" href="#usage-types">활용 유형 3가지</a>
+    <a class="nav-item" href="#ranking">분류별 공략 우선순위</a>
+    <a class="nav-item" href="#strategy">고검색량 활용 전략</a>
+    <a class="nav-item" href="#faq-list">📝 FAQ 콘텐츠 명단</a>
+  </div>
+
+  <div class="nav-group">
+    <span class="nav-section"><span class="nav-section-ico">💉</span>핵심 특화진료</span>
+    <a class="nav-item" href="#priority">전체 개요</a>
+    <a class="nav-item" href="#p1">① 뇌종양 수술</a>
+    <a class="nav-item" href="#p2">② 인터벤션</a>
+    <a class="nav-item" href="#p3">③ 방사선 치료</a>
+    <a class="nav-item" href="#p4">④ 요오드 · 동위원소</a>
+  </div>
+
+  <div class="nav-group">
+    <span class="nav-section"><span class="nav-section-ico">🧩</span>실행안</span>
+    <a class="nav-item" href="#pages">런칭 대상 페이지</a>
+    <a class="nav-item" href="#roadmap">임시 로드맵</a>
+    <a class="nav-item" href="#decision">결정 사항</a>
+  </div>
+
+  <div class="nav-group">
+    <span class="nav-section"><span class="nav-section-ico">📊</span>전체 데이터</span>
+    <a class="nav-item" href="#all">전체 키워드 테이블</a>
+  </div>
+
+  <div class="nav-group">
+    <span class="nav-section"><span class="nav-section-ico">📚</span>관련 보고서</span>
+    <a class="nav-item" href="helix_faq_report.html" target="_self">FAQ 후보 선정 근거</a>
+  </div>
+</nav>
+
+<div class="main">
+
+  <div id="purpose">
+    <div class="purpose-card">
+      <div class="purpose-eyebrow">회의 목적</div>
+      <div class="purpose-text">
+        헬릭스의 검색 키워드 분석 결과를 공유하고,<br>
+        이를 기반으로 <strong>3개 페이지 제작의 방향과 순서</strong>를 함께 결정합니다.
+      </div>
+      <div class="purpose-flow">
+        <span>키워드 리포트 설명</span><span class="arrow">▶</span>
+        <span>런칭 대상 페이지 제안</span><span class="arrow">▶</span>
+        <span>임시 로드맵 검토</span><span class="arrow">▶</span>
+        <span>의사결정</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">HELIX ANIMAL MEDICAL CENTER · KEYWORD STRATEGY · MEETING 2026.06</div>
+    <h1>홈페이지 리뉴얼<br>키워드 전략 회의</h1>
+    <p class="hero-sub">원장님 전원 · 마케팅실장 · 브랜딩실 주관 · 2026.06 (금)</p>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-label">전체 키워드</div><div class="kpi-val" id="kTotal">—</div></div>
+      <div class="kpi"><div class="kpi-label">핵심 4대 특화</div><div class="kpi-val gold" id="kCore">—</div></div>
+      <div class="kpi"><div class="kpi-label">저경쟁 기회</div><div class="kpi-val" id="kLow">—</div></div>
+    </div>
+  </div>
+
+  <!-- ════════════ 분석 방법 ════════════ -->
+  <section id="methodology" class="section-block methodology-block">
+    <div class="method-eyebrow">🔍 들어가기 전에 — 이 자료는 이렇게 만들어졌습니다</div>
+    <div class="method-flow">
+      <div class="method-step">
+        <div class="method-step-num">STEP 1</div>
+        <div class="method-step-title">키워드 후보군 정리</div>
+        <div class="method-step-body">헬릭스가 특화로 다루는 진료 영역(뇌종양 수술·색전술·요오드 치료·안과·내과 등)을 기준으로 관련될 만한 키워드 후보군을 먼저 추렸습니다.</div>
+      </div>
+      <div class="method-arrow" aria-hidden="true">→</div>
+      <div class="method-step">
+        <div class="method-step-num">STEP 2</div>
+        <div class="method-step-title">네이버 키워드 도구로 전수 수집</div>
+        <div class="method-step-body">각 키워드의 실제 모바일·PC 검색량, 경쟁 정도, 광고 노출 데이터를 네이버 키워드 도구에서 전부 내려받았습니다.</div>
+      </div>
+      <div class="method-arrow" aria-hidden="true">→</div>
+      <div class="method-step">
+        <div class="method-step-num">STEP 3</div>
+        <div class="method-step-title">Claude로 전수 분석</div>
+        <div class="method-step-body">내려받은 원본 데이터를 생성형 AI(Claude)에 전수로 돌려, 각 키워드의 맥락과 보호자의 검색 의도를 정리했습니다.</div>
+      </div>
+      <div class="method-arrow" aria-hidden="true">→</div>
+      <div class="method-step">
+        <div class="method-step-num">STEP 4</div>
+        <div class="method-step-title">1차 운용 전략 수립</div>
+        <div class="method-step-body">파악한 맥락 위에, 헬릭스가 어떻게 운용하면 좋을지 트랙별 1차 전략을 정리한 결과가 본 보고서입니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ 키워드 운용 방향 (제안) ════════════ -->
+  <section id="conclusion" class="slide-conclusion">
+    <div class="slide-eyebrow">📌 키워드 운용 방향 — 제안</div>
+    <div class="slide-headline">
+      황원장님의 특화진료 구성 방향을 미루어,<br>
+      키워드 활용을 <span class="hl-accent">선점 · 유입연결 · 광고 집행</span> 세 갈래로 풀어보았습니다
+    </div>
+    <p class="slide-note">
+      단순한 키워드 분석을 넘어, <strong>"이 분석을 어떻게 운용할 것인가"</strong>에 대한 1차 설계안입니다.
+      황원장님께서 강조해오신 특화진료 구성을 토대로 의중을 나름대로 헤아려 정리했으며,
+      마케팅 실장님의 검토·조율을 거쳐 다듬어가는 형태로 보시면 좋겠습니다.<br>
+      <strong>유입연결과 광고 집행은 키워드 성격에 따라 갈리는 두 트랙으로 활용하면 효과적일 것</strong>으로 보았습니다.
+    </p>
+    <div class="slide-points">
+      <div class="slide-point">
+        <span class="slide-point-num">01 · 선점</span>
+        <div class="slide-point-title">시그니처 시술명을 먼저 잡아둔다</div>
+        <div class="slide-point-body">헬릭스가 직접 강조해오신 뇌종양 수술·색전술·요오드 치료 같은 시술명은 지금 검색량이 낮더라도, 콘텐츠를 먼저 만들어두면 추후 생기는 검색량까지 같이 가져올 수 있다고 보았습니다. 두 운용 트랙(유입연결·광고)이 향하는 종착점이기도 합니다.</div>
+      </div>
+      <div class="slide-point">
+        <span class="slide-point-num">02 · 유입연결</span>
+        <div class="slide-point-title">콘텐츠 트랙으로 풀어낼 키워드</div>
+        <div class="slide-point-body">증상·질병 검색이 활발한 범용 키워드는 직접 경쟁하기보다, FAQ·블로그로 유입시킨 뒤 헬릭스 특화 시술로 안내하는 관문 역할이 자연스러울 듯합니다. 콘텐츠 자산이 쌓이며 장기적으로 작동하는 트랙입니다.</div>
+      </div>
+      <div class="slide-point">
+        <span class="slide-point-num">03 · 광고 집행</span>
+        <div class="slide-point-title">광고 트랙으로 풀어낼 키워드</div>
+        <div class="slide-point-body">비용 검색 의도가 강하거나 콘텐츠 자연 검색 노출(SEO) 경쟁이 심해 콘텐츠만으로는 닿기 어려운 키워드는, 마케팅 실장님께서 키워드 성격을 보고 곧바로 네이버 검색광고로 집행해주시는 편이 효과적일 것으로 보았습니다. 콘텐츠 트랙과 나란히 가는 또 하나의 핵심 운용 축입니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ 헬릭스 특화진료 한눈에 ════════════ -->
+  <section id="specialty" class="section-block">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <span class="sec-title">헬릭스 특화진료 한눈에</span>
+      <span class="sec-sub">확정 13개 진료 · 4개 그룹 구조</span>
+    </div>
+    <div class="specialty-grid">
+      <div class="specialty-card">
+        <div class="specialty-eyebrow">GROUP 01</div>
+        <div class="specialty-group-name">종양 치료</div>
+        <div class="specialty-group-en">Oncology &amp; Radiation</div>
+        <ul class="specialty-list">
+          <li><span class="sp-ko">통합 종양 진료</span><span class="sp-en">Integrated Oncology</span></li>
+          <li><span class="sp-ko">뇌종양 수술</span><span class="sp-en">Brain Tumor Surgery</span></li>
+          <li><span class="sp-ko">방사선 치료</span><span class="sp-en">Radiation Therapy</span></li>
+        </ul>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-eyebrow">GROUP 02</div>
+        <div class="specialty-group-name">인터벤션</div>
+        <div class="specialty-group-en">Intervention</div>
+        <ul class="specialty-list">
+          <li><span class="sp-ko">종양 색전술</span><span class="sp-en">Tumor Embolization</span></li>
+          <li><span class="sp-ko">혈관 중재술</span><span class="sp-en">Vascular Intervention</span></li>
+          <li><span class="sp-ko">스텐트 시술</span><span class="sp-en">Stent Intervention</span></li>
+        </ul>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-eyebrow">GROUP 03</div>
+        <div class="specialty-group-name">수술</div>
+        <div class="specialty-group-en">Surgery</div>
+        <ul class="specialty-list">
+          <li><span class="sp-ko">뇌척추 수술</span><span class="sp-en">Neurospinal Surgery</span></li>
+          <li><span class="sp-ko">흉복강경 수술</span><span class="sp-en">Minimally Invasive Surgery</span></li>
+          <li><span class="sp-ko">백내장·녹내장 수술</span><span class="sp-en">Cataract &amp; Glaucoma Surgery</span></li>
+          <li><span class="sp-ko">비강경 검사</span><span class="sp-en">Rhinoscopy &amp; Biopsy</span></li>
+        </ul>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-eyebrow">GROUP 04</div>
+        <div class="specialty-group-name">전문 내과</div>
+        <div class="specialty-group-en">Specialty Medicine</div>
+        <ul class="specialty-list">
+          <li><span class="sp-ko">신장 투석</span><span class="sp-en">Renal Dialysis</span></li>
+          <li><span class="sp-ko">FMT (장내 미생물 이식)</span><span class="sp-en">Fecal Microbiota Transplantation</span></li>
+          <li><span class="sp-ko">고양이 방사성 요오드 치료 · 동위원소 치료</span><span class="sp-en">Feline Radioiodine &amp; Radioisotope Therapy</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ 전제 인사이트 ════════════ -->
+  <section id="premise" class="section-block">
+    <details>
+      <summary>리포트 전제 조건 — 분석 기준 및 키워드 제외 이유 보기</summary>
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <span class="sec-title">들어가기 앞서</span>
+      <span class="sec-sub">분석을 보기 전에 짚어두는 전제 몇 가지</span>
+    </div>
+  <div class="premise-grid">
+    <div class="premise-card premise-highlight">
+      <div class="premise-icon">🐈</div>
+      <div class="premise-title">고양이 키워드로 검색해 들어오시는 보호자는, 이미 답을 진지하게 찾는 단계입니다</div>
+      <div class="premise-body">국내 반려동물 등록 수와 동물병원 방문 빈도 모두 강아지 쪽이 상대적으로 높다 보니, <strong>검색 키워드 생태계 자체가 강아지 중심으로 형성되어 있습니다.</strong> 여기에 고양이는 통증·불편을 겉으로 잘 드러내지 않는 동물 특성상 이상 신호를 알아채는 시점 자체가 늦어지는 경우도 종종 있어, 고양이 검색량은 한 번 더 낮게·늦게 잡히는 편입니다. <strong>다만 그렇기에, 고양이 키워드를 검색해 들어오시는 한 분 한 분은 이미 답을 찾기 위해 진지하게 움직이고 있는 시점이라는 뜻이기도 합니다.</strong> 데이터 양이 적다고 비중을 낮춰 보기보다, 한 검색의 무게가 더 묵직한 영역으로 봐주시면 좋겠습니다.</div>
+    </div>
+<div class="premise-card">
+      <div class="premise-icon">💡</div>
+      <div class="premise-title">검색량·경쟁이 적은 우리 키워드를, 콘텐츠로 직접 키워보자는 시도입니다</div>
+      <div class="premise-body">헬릭스가 강조해오신 영역의 키워드들(고양이 구내염·신부전·갑상선·요오드 치료, 뇌종양 수술·색전술 등)은 <strong>현재 검색량이 많다고는 보기 어려운 편입니다.</strong> 수요가 없어서라기보다는, 해당 치료가 가능하다는 사실 자체가 아직 널리 알려지지 않은 영역이 많기 때문이 아닐까 싶었습니다. 보호자께서는 존재를 모르는 치료를 검색하기는 어려우니까요. 그래서 <strong>"아직 다른 병원도 본격적으로 다루지 않은 영역이라, 우리가 직접 콘텐츠로 키워볼 여지가 있지 않을까"</strong> 정도로 제 나름대로 해석해 보았습니다. FAQ·블로그가 먼저 자리잡고 있을 때 검색이 천천히 따라오는 구조로, 차근차근 헬릭스 색깔이 묻은 키워드로 키워가는 그림을 그려보았습니다.</div>
+    </div>
+    <div class="premise-card">
+      <div class="premise-icon">📉</div>
+      <div class="premise-title">어쩌면 경쟁이 적으니, 적은 비용으로 광고 상위 노출도 일단 노려볼 수 있지 않을까 생각해 봤습니다</div>
+      <div class="premise-body">네이버·구글 광고에서 보면, <strong>헬릭스가 다루는 키워드들 상당수가 경쟁자 수와 입찰 강도가 낮은 영역</strong>에 들어가 있습니다. 위에서 말씀드린 콘텐츠 트랙의 선점 키워드와도 상당 부분 겹쳐 보였습니다. 그래서 <strong>"경쟁이 비어 있는 만큼, 일단 적은 비용으로 광고 상위 노출을 잡아둘 수 있지 않을까"</strong> 정도로 생각해 봤습니다. 콘텐츠로 차근차근 가꾸는 방법(앞 카드)과, 광고로 곧바로 띄워보는 방법이 자연스럽게 짝을 이루는 모양으로 읽혔습니다.</div>
+    </div>
+    <div class="premise-card premise-highlight premise-highlight-warn">
+      <div class="premise-icon">⚠️</div>
+      <div class="premise-title">헬릭스 특화와 결이 다른 키워드들은, 의도적으로 분석에서 빼두었습니다</div>
+      <div class="premise-body">
+        평소 헬릭스 브랜딩 작업을 하면서 익혀온 결로 보았을 때, 아래 묶음의 키워드들은 <strong>헬릭스와 방향이 잘 맞지 않는다고 판단해 의도적으로 분석에서 빼두거나 비활성 처리</strong>했습니다.<br><br>
+        <span class="removed-kw-inline">동물병원</span><span class="removed-kw-inline">24시동물병원</span><span class="removed-kw-inline">근처동물병원</span><span class="removed-kw-inline">가까운동물병원</span> — 위치 기반 즉시 탐색. 헬릭스와 무관한 유입.<br>
+        <span class="removed-kw-inline">뇌전증</span><span class="removed-kw-inline">색전술</span><span class="removed-kw-inline">MRI 단독</span> — 사람 의료 키워드.<br>
+        <span class="removed-kw-inline">강남동물병원</span><span class="removed-kw-inline">서초동물병원</span><span class="removed-kw-inline">지역명+동물병원</span> — 단순 지역명 조합 탐색. 헬릭스 특화 진료와 연결 약함.<br>
+        <span class="removed-kw-inline">강아지스케일링</span><span class="removed-kw-inline">강아지치석제거</span><span class="removed-kw-inline">강아지건강검진</span><span class="removed-kw-inline">강아지장염 등</span> — 1차병원도 두루 다루는 범용 진료 키워드 (<span style="color:var(--ink-muted);font-size:10.5px;">표 안에서는 흐리게 표시</span>).
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- ════════════ 활용 유형 3가지 ════════════ -->
+  <section id="usage-types" class="section-block">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <span class="sec-title">활용 유형 3가지</span>
+      <span class="sec-sub">키워드 성격에 따라 운용 방식이 달라집니다</span>
+    </div>
+    <div class="usage-intro">
+      <div class="usage-intro-title">왜 3가지로 나누었는가</div>
+      <p class="usage-intro-body">
+        키워드를 한 줄로 다루기보다, <strong>누가 / 어떤 의도로 / 어느 정도 경쟁 환경에서</strong> 검색하는지를 기준으로 운용 방식을 나누어 봤습니다.
+        보호자가 시술명을 이미 알고 직접 찾는 키워드, 증상으로 답을 찾기 시작하는 키워드, 비용·정보를 비교하며 결정 단계에 들어선 키워드는 같은 방식으로 다루기 어려웠습니다.
+        그래서 다음 <strong>3가지 트랙</strong>으로 정리했습니다.
+      </p>
+    </div>
+    <div class="usage-types-grid" id="usageTypesGrid"></div>
+  </section>
+
+  <!-- ════════════ 분류별 공략 우선순위 ════════════ -->
+  <section id="ranking" class="section-block">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <span class="sec-title">분류별 공략 우선순위</span>
+      <span class="sec-sub">무엇부터 다룰지 — 키워드 유형별 큐레이션 Top 10</span>
+    </div>
+    <div class="usage-intro">
+      <div class="usage-intro-title">이 섹션의 요점</div>
+      <p class="usage-intro-body">
+        위 섹션이 키워드를 <strong>"어떻게 다룰지"</strong> 였다면, 이 섹션은 <strong>"무엇부터 다룰지"</strong> 에 대한 큐레이션입니다.
+        키워드를 <strong>치료법·수술 / 질병명 / 증상</strong> 세 유형으로 묶고, 각 유형 안에서 마케팅 관점상 우선순위가 높다고 본 키워드를 Top 10으로 뽑았습니다.
+        키워드마다 옆에 붙은 <strong>활용 유형 뱃지</strong>(직접 · 유입→연결 · 광고후보 · 회피)와 보조 표시(<strong>💰 비용</strong> · <strong>🎯 저경쟁</strong> · <strong>? 경계</strong>)로
+        "무엇을" 이 "어떻게" 다뤄질지까지 한 줄로 보실 수 있도록 정리했습니다.
+        <br><br>
+        <span style="color:var(--ink-muted);font-size:12.5px;">※ <span style="text-decoration:line-through;">취소선</span> 으로 표시된 키워드는 <strong style="text-decoration:none;color:var(--ink-dim);">"회피"</strong> 트랙 — 헬릭스가 직접 밀지 않고 1차병원에 양보하는 영역입니다.</span>
+      </p>
+    </div>
+    <div class="rank-grid">
+      <div class="rank-col" data-type="treatment">
+        <div class="rank-head">
+          <span class="rank-type-badge rank-treatment">치료법 · 수술</span>
+          <span class="rank-count" id="rankCount-treatment"></span>
+        </div>
+        <ol class="rank-list" id="rankList-treatment"></ol>
+      </div>
+      <div class="rank-col" data-type="disease">
+        <div class="rank-head">
+          <span class="rank-type-badge rank-disease">질병명</span>
+          <span class="rank-count" id="rankCount-disease"></span>
+        </div>
+        <ol class="rank-list" id="rankList-disease"></ol>
+      </div>
+      <div class="rank-col" data-type="symptom">
+        <div class="rank-head">
+          <span class="rank-type-badge rank-symptom">증상</span>
+          <span class="rank-count" id="rankCount-symptom"></span>
+        </div>
+        <ol class="rank-list" id="rankList-symptom"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ 고검색량 키워드 활용 전략 ════════════ -->
+  <section id="strategy" class="section-block">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <span class="sec-title">고검색량 키워드 활용 전략</span>
+      <span class="sec-sub">콘텐츠 트랙과 광고 트랙, 키워드 성격에 따라 나뉜다</span>
+    </div>
+    <div class="strategy-section">
+      <div class="strategy-header">
+        <div class="strategy-title">콘텐츠 트랙과 광고 트랙, 두 갈래로 풀어낸다</div>
+        <div class="strategy-sub">고검색량 키워드는 버리는 게 아니다 — 키워드 성격에 따라 운용 트랙이 갈린다</div>
+      </div>
+      <div class="strategy-flow">
+        <div class="strategy-card">
+          <div class="strategy-step">
+            <span class="strategy-step-num">콘텐츠 트랙 ①</span>
+            <span class="strategy-role">트래픽 엔진 + AI 검색 노출 기반</span>
+          </div>
+          <div class="strategy-card-title">FAQ·블로그로 콘텐츠를 쌓는다</div>
+          <div class="strategy-why"><strong>역할.</strong> 콘텐츠 트랙의 출발점. 보호자가 도달할 경로 자체를 먼저 만들어두는 단계로 보았습니다.</div>
+          <div class="strategy-do-label">실제로 해야 할 것</div>
+          <ul class="strategy-do">
+            <li>"강아지 췌장염 증상은?", "고양이 신부전 초기 증상은?" 같은 질문 형식 콘텐츠 작성</li>
+            <li>현재 작업 중인 FAQ 키워드 리스트가 여기에 직접 활용됨</li>
+            <li>블로그·홈페이지에 쌓이면 사이트 체류 시간 증가 → 검색 신뢰도 상승</li>
+            <li>구글·네이버 AI 검색(ChatGPT, 클로바X 등)이 FAQ 형식을 답변 소스로 인용 → 헬릭스가 AI 답변에 노출</li>
+          </ul>
+          <div class="strategy-tag">
+            <span class="strategy-tag-label">성격</span>
+            <span class="strategy-tag-val tag-asset">자산 · 일회성 비용</span>
+          </div>
+        </div>
+        <div class="strategy-arrow" aria-hidden="true">→</div>
+        <div class="strategy-card">
+          <div class="strategy-step">
+            <span class="strategy-step-num">콘텐츠 트랙 ②</span>
+            <span class="strategy-role">유입된 보호자를 헬릭스 포지셔닝으로 안내</span>
+          </div>
+          <div class="strategy-card-title">콘텐츠 안에서 헬릭스 특화 시술로 연결한다</div>
+          <div class="strategy-why"><strong>역할.</strong> 콘텐츠 트랙의 도착점. ①에서 쌓은 콘텐츠 안에 헬릭스 방향을 붙여, 범용 키워드를 특화 시술의 관문으로 전환합니다.</div>
+          <div class="strategy-do-label">실제로 해야 할 것</div>
+          <ul class="strategy-do">
+            <li>"강아지 발작 원인과 대처법" 같은 증상 콘텐츠 작성</li>
+            <li>글 중간에 자연스러운 CTA 삽입 — 예: "발작이 반복된다면 뇌종양 감별이 필요합니다 → 헬릭스 신경외과"</li>
+            <li>증상·질병 콘텐츠 → 헬릭스 특화 시술 페이지로 향하는 내부 링크 구조화</li>
+            <li>고검색량 범용 키워드가 헬릭스 전문 시술의 관문이 되는 구조</li>
+          </ul>
+          <div class="strategy-tag">
+            <span class="strategy-tag-label">성격</span>
+            <span class="strategy-tag-val tag-design">콘텐츠 전략 · 정보 설계(IA)</span>
+          </div>
+        </div>
+        <div class="strategy-arrow strategy-arrow-parallel" aria-hidden="true">∥</div>
+        <div class="strategy-card">
+          <div class="strategy-step">
+            <span class="strategy-step-num">광고 트랙</span>
+            <span class="strategy-role">콘텐츠로 닿기 어려운 키워드를 직접 집행</span>
+          </div>
+          <div class="strategy-card-title">광고로 곧바로 집행할 키워드</div>
+          <div class="strategy-why"><strong>역할.</strong> 콘텐츠 트랙과 나란히 가는 또 하나의 운용 축. 비용 검색 의도가 강하거나 콘텐츠 자연 검색 노출(SEO) 경쟁이 심한 키워드는 콘텐츠로 풀지 않고 처음부터 광고로 집행하는 편이 효율적이라고 보았습니다.</div>
+          <div class="strategy-do-label">실제로 해야 할 것</div>
+          <ul class="strategy-do">
+            <li>네이버 검색광고에서 "강아지 췌장염", "강아지 심장병" 등 고검색량 키워드 집행</li>
+            <li>비용 검색·고경쟁 키워드는 콘텐츠 자산을 기다리지 않고 즉시 집행 가능</li>
+            <li>광고 클릭 시 연결되는 랜딩 페이지는 헬릭스 전문성이 드러나는 페이지로 설정</li>
+            <li>마케팅 실장님께서 키워드 성격을 보고 트랙을 판단·운용</li>
+          </ul>
+          <div class="strategy-tag">
+            <span class="strategy-tag-label">성격</span>
+            <span class="strategy-tag-val tag-cost">운용 비용 · 즉시 트래픽</span>
+          </div>
+        </div>
+      </div>
+      <div class="strategy-summary">
+        <strong>콘텐츠 트랙</strong>(①·②)으로 자산을 쌓고, &nbsp;<strong>광고 트랙</strong>으로 곧바로 집행한다.<br>
+        <span style="color:var(--ink-dim);">두 트랙은 키워드 성격에 따라 갈리며, 나란히 작동하는 두 운용 축입니다.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ FAQ·블로그 콘텐츠 1차 명단 ════════════ -->
+  <section id="faq-list" class="section-block">
+    <div class="sec-head">
+      <span class="sec-num">06</span>
+      <span class="sec-title">📝 FAQ·블로그 콘텐츠 1차 명단</span>
+      <span class="sec-sub">funnel 키워드 기준 큐레이션 — 콘텐츠팀·마케팅팀 즉시 활용</span>
+    </div>
+    <div class="usage-intro">
+      <div class="usage-intro-title">이 섹션의 요점</div>
+      <p class="usage-intro-body">
+        앞 섹션의 <strong>"유입→연결"</strong> 트랙에 해당하는 funnel 키워드를 진료 영역별로 묶고, 각 키워드를 어떤 형태의 FAQ 제목으로 풀어내면 좋을지 1차 큐레이션해 두었습니다.
+        <strong>콘텐츠팀이 바로 가져가 작성할 수 있는 명단</strong>이며, 각 행 우측의 "연결 목적"은 그 콘텐츠 안에 헬릭스의 어떤 진료로 안내하면 자연스러울지에 대한 가이드입니다.
+        <br><br>
+        <span style="color:var(--ink-muted);font-size:12.5px;">※ 진료 영역별로 접혀 있습니다. 영역 이름을 누르시면 펼쳐 보실 수 있습니다.</span>
+      </p>
+    </div>
+    <a class="faq-report-link" href="helix_faq_report.html">
+      <div class="faq-report-link-eyebrow">📚 별도 보고서 — 더 자세한 선정 근거</div>
+      <div class="faq-report-link-title">FAQ 후보 선정 근거 보고서 보기 <span class="faq-report-link-arrow">→</span></div>
+      <div class="faq-report-link-desc">
+        이 명단은 funnel 태그 기준의 1차 큐레이션입니다. 별도 보고서에서는 <strong>검색 수요 · AI 검색 적합성 · 경쟁 공백</strong> 3축 평가 매트릭스, 경쟁 병원 8개소 FAQ 벤치마크, 최종 확정 34문항의 선정 근거를 자세히 다뤘습니다.
+      </div>
+    </a>
+    <div class="faq-groups" id="faqGroups"></div>
+  </section>
+
+  <!-- ════════════ 핵심 특화진료 ════════════ -->
+  <section id="priority" class="section-block">
+    <div class="sec-head">
+      <span class="sec-num">07</span>
+      <span class="sec-title">헬릭스 핵심 특화진료 키워드</span>
+      <span class="sec-sub">원장님 우선순위 순 · 시술명 + 증상 유입어</span>
+    </div>
+    <div class="ins-row">
+      <div class="ins-card">
+        <div class="ins-label">★ 핵심 시술명</div>
+        <div class="ins-title">검색량 낮아도 선점 가치</div>
+        <div class="ins-body">강아지 뇌종양 수술·동물 방사선치료·고양이 요오드 치료는 검색량이 거의 없는 이유가 수요 부재가 아니라 인지 부재. 콘텐츠를 만들면 검색량 자체가 생긴다.</div>
+      </div>
+      <div class="ins-card">
+        <div class="ins-label">▲ 증상 유입어</div>
+        <div class="ins-title">유입은 증상 검색에서 시작</div>
+        <div class="ins-body">보호자는 시술명 대신 "강아지 발작", "강아지 뇌수막염"으로 검색을 시작. 증상 → 진단 → 헬릭스 특화 시술 연결이 콘텐츠 핵심 구조.</div>
+      </div>
+      <div class="ins-card">
+        <div class="ins-label">◎ 경쟁 기회</div>
+        <div class="ins-title">전문 시술명은 지금이 타이밍</div>
+        <div class="ins-body">동물 방사선치료·색전술·요오드 치료 키워드는 경쟁도 낮음~중간. 지금 선점하면 전국 보호자 유입 기대.</div>
+      </div>
+    </div>
+    <div class="nation-intro" style="margin-bottom:20px;">
+      <strong>💬 마케팅 실장님 의견.</strong> 실장님 관점에서는 <strong>검색량이 곧 우선순위</strong>이기 때문에, 위에서 강조한 <strong>선점용 키워드(검색량 낮지만 경쟁도 낮은 전문 시술명)는 중요도 비중이 다소 낮게 평가</strong>됩니다. 본 리포트는 장기 포지셔닝 관점을 함께 제시하지만, 단기 광고 운영 우선순위는 검색량 기준으로 재정렬될 수 있다는 점을 참고 부탁드립니다.
+    </div>
+    <div class="priority-grid" id="priorityGrid"></div>
+  </section>
+
+  <!-- ════════════ 런칭 대상 페이지 제안 ════════════ -->
+  <section id="pages" class="section-block">
+    <div class="sec-head">
+      <span class="sec-num">08</span>
+      <span class="sec-title">런칭 대상 페이지 제안</span>
+      <span class="sec-sub">키워드 분석 결과를 토대로 한 3개 페이지 신설안</span>
+    </div>
+    <div class="page-grid">
+      <div class="page-card">
+        <div class="page-card-top">
+          <div class="page-card-num">PAGE 01</div>
+          <div class="page-card-title">특화진료 페이지</div>
+          <div class="page-card-sub">4대 특화진료(뇌종양 수술·인터벤션·방사선치료·요오드치료)를 시술명 + 설명 + 사례 + CTA 구조로 담는 핵심 페이지.</div>
+        </div>
+        <div class="page-card-body">
+          <div class="kw-connect">
+            <div class="kw-connect-item">핵심 시술명 키워드의 도착 페이지</div>
+            <div class="kw-connect-item">검색량 적지만 선점 가치 높은 키워드 흡수</div>
+            <div class="kw-connect-item">FAQ·블로그 콘텐츠의 최종 연결 목적지</div>
+          </div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card-top">
+          <div class="page-card-num">PAGE 02</div>
+          <div class="page-card-title">진료과목 페이지</div>
+          <div class="page-card-sub">내과·외과·영상의학·신경외과 등 진료과목별 안내. 검색량은 적지만 신뢰 형성에 필수.</div>
+        </div>
+        <div class="page-card-body">
+          <div class="kw-connect">
+            <div class="kw-connect-item">진료과목명 키워드 대응</div>
+            <div class="kw-connect-item">병원 규모·전문성 신호 강화</div>
+            <div class="kw-connect-item">특화진료 페이지로 내부 링크 흐름</div>
+          </div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card-top">
+          <div class="page-card-num">PAGE 03</div>
+          <div class="page-card-title">FAQ 페이지</div>
+          <div class="page-card-sub">funnel 키워드 기반 34문항을 진료 영역별로 묶은 보호자 첫 진입 페이지.</div>
+        </div>
+        <div class="page-card-body">
+          <div class="kw-connect">
+            <div class="kw-connect-item">증상·진단 단계 키워드의 유입 통로</div>
+            <div class="kw-connect-item">AI 검색(SGE·Perplexity) 인용 적합 구조</div>
+            <div class="kw-connect-item">각 답변에서 특화진료 페이지로 자연 연결</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ 임시 로드맵 ════════════ -->
+  <section id="roadmap" class="section-block">
+    <div class="sec-head">
+      <span class="sec-num">09</span>
+      <span class="sec-title">임시 로드맵</span>
+      <span class="sec-sub">3개 페이지 제작·런칭의 단계별 진행안 (조정 가능)</span>
+    </div>
+    <div class="roadmap-note">
+      <strong>※ 본 로드맵은 임시안입니다.</strong> 원장님 검수 일정과 콘텐츠 확정 시점에 따라 단계별 기간은 조정될 수 있습니다. 오늘 회의에서 큰 흐름의 동의를 구하고, 세부 일정은 추후 별도 조율을 부탁드립니다.
+    </div>
+    <div class="phase-list">
+      <div class="phase-item">
+        <div class="phase-dot dot-blue"></div>
+        <div>
+          <div class="phase-title">Phase 1 — 콘텐츠 기반 구축</div>
+          <div class="phase-desc">4대 특화진료 본문 초안, FAQ 34문항 1차 작성, 진료과목별 핵심 문구 정리. 원장님 검수 1차 라운드.</div>
+          <div class="phase-who">CONTENT · 콘텐츠팀 주관 / 원장님 감수</div>
+        </div>
+      </div>
+      <div class="phase-item">
+        <div class="phase-dot dot-accent"></div>
+        <div>
+          <div class="phase-title">Phase 2 — 제작 및 검수</div>
+          <div class="phase-desc">3개 페이지 디자인·퍼블리싱, 내부 링크 구조 설계, 원장님 최종 검수 및 수정 반영.</div>
+          <div class="phase-who">DESIGN+DEV · 브랜딩실 주관</div>
+        </div>
+      </div>
+      <div class="phase-item">
+        <div class="phase-dot dot-gold"></div>
+        <div>
+          <div class="phase-title">Phase 3 — 런칭 및 유입 전략 가동</div>
+          <div class="phase-desc">페이지 순차 공개, 저경쟁 키워드 광고 운영 시작, 검색 노출 추적 및 콘텐츠 보강.</div>
+          <div class="phase-who">LAUNCH · 마케팅실 주관</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ 결정 사항 ════════════ -->
+  <section id="decision" class="section-block">
+    <div class="sec-head">
+      <span class="sec-num">10</span>
+      <span class="sec-title">오늘 결정해주실 사항</span>
+      <span class="sec-sub">원장님 의사결정이 필요한 항목</span>
+    </div>
+    <div class="decision-list">
+      <div class="decision-item">
+        <div class="decision-num">DECISION 01</div>
+        <div class="decision-q">4대 특화진료 우선순위에 동의하시나요?</div>
+        <div class="decision-why">제안 순서: <strong>뇌종양 수술 → 인터벤션 → 방사선치료 → 요오드치료</strong>. 검색 키워드 분석과 헬릭스 임상 강점을 결합한 우선순위입니다. 원장님 임상 관점에서 조정이 필요하시면 말씀 부탁드립니다.</div>
+        <div class="decision-tag">→ 특화진료 페이지 구성 순서에 직접 반영</div>
+      </div>
+      <div class="decision-item">
+        <div class="decision-num">DECISION 02</div>
+        <div class="decision-q">3개 페이지 제작 순서를 결정해주세요</div>
+        <div class="decision-why">제안 순서: <strong>특화진료 → FAQ → 진료과목</strong>. 헬릭스 차별화 메시지를 가장 빠르게 노출하는 흐름입니다. 다른 순서(예: FAQ 우선)도 가능합니다.</div>
+        <div class="decision-tag">→ Phase 1·2 작업 순서 결정</div>
+      </div>
+      <div class="decision-item">
+        <div class="decision-num">DECISION 03</div>
+        <div class="decision-q">원장님 검수 방식과 가능 시점</div>
+        <div class="decision-why">초안 검수에 어느 정도의 시간을 어떤 방식(서면/대면/구글닥 코멘트 등)으로 빼주실 수 있는지 공유 부탁드립니다. 일정 산정의 핵심 변수입니다.</div>
+        <div class="decision-tag">→ 전체 일정의 현실성·완성도 결정</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ 전체 키워드 데이터 ════════════ -->
+  <section id="all" class="section-block">
+    <details>
+      <summary>전체 키워드 데이터 테이블 — 펼쳐 보기 (참고용 부록)</summary>
+    <div class="sec-head">
+      <span class="sec-num">11</span>
+      <span class="sec-title">전체 키워드 분석 테이블</span>
+      <span class="sec-sub">전문성·의도 기반 · 일반 동물병원 키워드 비활성 표시</span>
+    </div>
+
+    <div class="controls">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="키워드 검색…">
+      </div>
+      <div class="filter-row" id="filterRow"></div>
+      <div class="filter-row" id="typeFilterRow" style="flex-basis:100%;"></div>
+      <select class="sort-sel" id="sortSel">
+        <option value="mobile_d">모바일 ↓</option>
+        <option value="mobile_a">모바일 ↑</option>
+        <option value="comp_l">경쟁 낮은 순</option>
+        <option value="comp_h">경쟁 높은 순</option>
+        <option value="kw_a">가나다순</option>
+      </select>
+      <div class="toggle-wrap" id="genToggle" onclick="toggleGeneral()">
+        <div class="toggle-dot"></div>
+        <span>일반 병원 키워드 표시</span>
+      </div>
+    </div>
+
+    <div class="stats-strip" id="statsStrip"></div>
+    <div class="sec-label" id="secLabel"></div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th onclick="sortBy('kw')">키워드</th>
+            <th>구분</th>
+            <th onclick="sortBy('cat')">카테고리</th>
+            <th onclick="sortBy('mobile')" style="text-align:right">모바일</th>
+            <th onclick="sortBy('pc')" style="text-align:right">PC</th>
+            <th>검색량</th>
+            <th onclick="sortBy('comp')">경쟁도</th>
+            <th onclick="sortBy('ads')" style="text-align:right">광고수</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+    <div class="empty-msg" id="emptyMsg">검색 결과가 없어요.</div>
+    </details>
+  </section>
+
+</div>
+
+<script>
+const PRIORITY = {
+  p1:{rank:1,label:'뇌종양 수술',en:'Brain Tumor Surgery',note:'뇌척추·신경외과 포함',kws:[
+    {kw:'강아지뇌종양수술',   mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'강아지뇌수술',       mobile:10,  pc:5,   comp:'높음',ads:7,  type:'core'},
+    {kw:'뇌종양수술동물병원', mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'강아지뇌종양',       mobile:390, pc:30,  comp:'높음',ads:10, type:'symptom'},
+    {kw:'고양이뇌종양',       mobile:30,  pc:5,   comp:'높음',ads:7,  type:'symptom'},
+    {kw:'강아지뇌수막염',     mobile:950, pc:80,  comp:'높음',ads:10, type:'symptom'},
+    {kw:'강아지뇌수두증',     mobile:650, pc:80,  comp:'높음',ads:10, type:'symptom'},
+    {kw:'강아지발작',         mobile:930, pc:90,  comp:'높음',ads:10, type:'symptom'},
+    {kw:'강아지경련',         mobile:830, pc:60,  comp:'높음',ads:10, type:'symptom'},
+    {kw:'강아지간질',         mobile:360, pc:40,  comp:'높음',ads:10, type:'symptom'},
+    {kw:'강아지척수공동증',   mobile:430, pc:50,  comp:'높음',ads:7,  type:'symptom'},
+    {kw:'강아지디스크',       mobile:730, pc:120, comp:'높음',ads:10, type:'symptom'},
+    {kw:'강아지디스크증상',   mobile:1170,pc:70,  comp:'높음',ads:10, type:'symptom'},
+    {kw:'강아지목디스크',     mobile:440, pc:40,  comp:'높음',ads:10, type:'symptom'},
+    {kw:'강아지척수염',       mobile:120, pc:20,  comp:'높음',ads:3,  type:'symptom'},
+  ]},
+  p2:{rank:2,label:'인터벤션',en:'Intervention · Embolization · Stent',note:'색전술·혈관중재·스텐트',kws:[
+    {kw:'강아지색전술',         mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'동물색전술',           mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'강아지중재시술',       mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'강아지스텐트시술',     mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'강아지기관스텐트',     mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'동물인터벤션',         mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'하이브리드수술실동물', mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'강아지유선종양',       mobile:1640,pc:190, comp:'높음',ads:10, type:'symptom'},
+    {kw:'강아지담낭점액종',     mobile:570, pc:140, comp:'높음',ads:7,  type:'symptom'},
+    {kw:'강아지담낭',           mobile:490, pc:60,  comp:'높음',ads:3,  type:'symptom'},
+    {kw:'강아지담낭제거수술',   mobile:70,  pc:20,  comp:'중간',ads:3,  type:'symptom'},
+    {kw:'강아지엑소좀',         mobile:240, pc:60,  comp:'높음',ads:7,  type:'symptom',isPending:true},
+  ]},
+  p3:{rank:3,label:'방사선 치료',en:'Radiation Therapy',note:'동물 방사선·종양 연계',kws:[
+    {kw:'동물방사선치료',         mobile:5,   pc:10,  comp:'중간',ads:6, type:'core'},
+    {kw:'반려동물방사선치료',     mobile:5,   pc:5,   comp:'높음',ads:3, type:'core'},
+    {kw:'강아지방사선치료',       mobile:5,   pc:5,   comp:'낮음',ads:0, type:'core'},
+    {kw:'방사선치료동물병원',     mobile:5,   pc:5,   comp:'낮음',ads:0, type:'core'},
+    {kw:'서울방사선치료동물병원', mobile:5,   pc:5,   comp:'낮음',ads:0, type:'core'},
+    {kw:'강아지종양',             mobile:620, pc:70,  comp:'높음',ads:10,type:'symptom'},
+    {kw:'강아지암',               mobile:360, pc:5,   comp:'높음',ads:10,type:'symptom'},
+    {kw:'고양이암',               mobile:200, pc:20,  comp:'높음',ads:7, type:'symptom'},
+    {kw:'고양이비만세포종',       mobile:650, pc:100, comp:'높음',ads:7, type:'symptom'},
+    {kw:'강아지유선종양',         mobile:1640,pc:190, comp:'높음',ads:10,type:'symptom'},
+    {kw:'강아지뇌종양',           mobile:390, pc:30,  comp:'높음',ads:10,type:'symptom'},
+    {kw:'강아지비강종양',         mobile:5,   pc:5,   comp:'높음',ads:3, type:'symptom'},
+  ]},
+  p4:{rank:4,label:'고양이 방사성 요오드 치료 · 동위원소 치료',en:'Feline Radioiodine & Radioisotope Therapy',note:'갑상선기능항진증',kws:[
+    {kw:'고양이방사성요오드치료', mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'고양이요오드치료',       mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'고양이동위원소치료',     mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'고양이동위원소',         mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'고양이갑상선치료',       mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'고양이갑상선기능항진증', mobile:5,   pc:5,   comp:'높음',ads:3,  type:'core'},
+    {kw:'고양이갑상선수술',       mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'서울고양이갑상선치료',   mobile:5,   pc:5,   comp:'낮음',ads:0,  type:'core'},
+    {kw:'고양이갑상선',           mobile:5,   pc:5,   comp:'높음',ads:3,  type:'symptom'},
+    {kw:'고양이체중감소',         mobile:5,   pc:5,   comp:'높음',ads:3,  type:'symptom'},
+    {kw:'고양이다음다뇨',         mobile:5,   pc:5,   comp:'높음',ads:3,  type:'symptom'},
+    {kw:'고양이신부전',           mobile:1280,pc:220, comp:'높음',ads:10, type:'symptom'},
+    {kw:'고양이심장비대증',       mobile:5,   pc:5,   comp:'높음',ads:3,  type:'symptom'},
+  ]}
+};
+
+const NATIONWIDE=[
+  {title:'시술명 직접 탐색',desc:'지방 보호자가 시술명으로 직접 검색 — 헬릭스 노출 기회',kws:[
+    {kw:'강아지뇌종양수술',mobile:5,comp:'낮음'},{kw:'동물방사선치료',mobile:5,comp:'중간'},
+    {kw:'고양이요오드치료',mobile:5,comp:'낮음'},{kw:'동물색전술',mobile:5,comp:'낮음'},
+    {kw:'강아지중재시술',mobile:5,comp:'낮음'},{kw:'강아지CRRT',mobile:5,comp:'낮음'},
+  ]},
+  {title:'전문·종합 병원 탐색',desc:'2차·전문 동물병원을 직접 탐색하는 전국 패턴',kws:[
+    {kw:'서울동물병원',mobile:1120,comp:'높음'},{kw:'2차동물병원',mobile:430,comp:'높음'},
+    {kw:'세컨드오피니언',mobile:310,comp:'낮음'},{kw:'동물메디컬센터',mobile:390,comp:'높음'},
+    {kw:'종합동물병원',mobile:80,comp:'높음'},{kw:'수술잘하는동물병원',mobile:5,comp:'높음'},
+  ]},
+  {title:'경기·수도권 인접 탐색',desc:'경기권에서 서울 전문 병원으로 이동하는 패턴',kws:[
+    {kw:'일산동물병원',mobile:1480,comp:'높음'},{kw:'분당동물병원',mobile:730,comp:'높음'},
+    {kw:'파주동물병원',mobile:620,comp:'높음'},{kw:'일산2차동물병원',mobile:80,comp:'중간'},
+    {kw:'분당2차동물병원',mobile:30,comp:'중간'},{kw:'서울2차동물병원',mobile:40,comp:'중간'},
+  ]}
+];
+
+// isGeneral: 일반 동물병원도 커버하는 범용 키워드 / kwType: symptom·disease·treatment
+// usageType: direct(직접 포지셔닝) · funnel(유입→연결) · ads_candidate(광고 후보) · avoid(경쟁 회피) · pending(보류)
+// isCost: 비용 검색 키워드 / isAmbiguous: 일반 vs 헬릭스 경계 키워드
+const ALL_DATA = [
+  // 뇌종양/신경계 (p1)
+  {kw:'강아지디스크증상',   mobile:1170,pc:70,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'symptom',usageType:'funnel'},
+  {kw:'강아지뇌수막염',     mobile:950, pc:80,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지발작',         mobile:930, pc:90,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'symptom',usageType:'funnel'},
+  {kw:'강아지경련',         mobile:830, pc:60,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'symptom',usageType:'funnel'},
+  {kw:'강아지뇌수두증',     mobile:650, pc:80,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지척수공동증',   mobile:430, pc:50,  comp:'높음',ads:7, cat:'p1',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지뇌종양',       mobile:390, pc:30,  comp:'높음',ads:10,cat:'p1',isCore:true, isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지간질',         mobile:360, pc:40,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지디스크',       mobile:730, pc:120, comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지목디스크',     mobile:440, pc:40,  comp:'높음',ads:10,cat:'p1',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지척수염',       mobile:120, pc:20,  comp:'높음',ads:3, cat:'p1',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'고양이뇌종양',       mobile:30,  pc:5,   comp:'높음',ads:7, cat:'p1',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지뇌수술',       mobile:10,  pc:5,   comp:'높음',ads:7, cat:'p1',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'강아지뇌종양수술',   mobile:5,   pc:5,   comp:'낮음',ads:0, cat:'p1',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'뇌종양수술동물병원', mobile:5,   pc:5,   comp:'낮음',ads:0, cat:'p1',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  // 인터벤션 (p2)
+  {kw:'강아지유선종양',       mobile:1640,pc:190,comp:'높음',ads:10,cat:'p2',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지담낭점액종',     mobile:570, pc:140,comp:'높음',ads:7, cat:'p2',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지담낭',           mobile:490, pc:60, comp:'높음',ads:3, cat:'p2',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지엑소좀',         mobile:240, pc:60, comp:'높음',ads:7, cat:'p2',isCore:false,isGeneral:false,isPending:true,kwType:'treatment',usageType:'funnel'},
+  {kw:'강아지담낭제거수술',   mobile:70,  pc:20, comp:'중간',ads:3, cat:'p2',isCore:false,isGeneral:false,kwType:'treatment',usageType:'funnel'},
+  {kw:'동물색전술',           mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'강아지색전술',         mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'강아지스텐트시술',     mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'동물인터벤션',         mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'하이브리드수술실동물', mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  // 방사선 (p3)
+  {kw:'고양이비만세포종',   mobile:650, pc:100,comp:'높음',ads:7, cat:'p3',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지종양',         mobile:620, pc:70, comp:'높음',ads:10,cat:'p3',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지뇌종양',       mobile:390, pc:30, comp:'높음',ads:10,cat:'p3',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지암',           mobile:360, pc:5,  comp:'높음',ads:10,cat:'p3',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'고양이암',           mobile:200, pc:20, comp:'높음',ads:7, cat:'p3',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'동물방사선치료',     mobile:5,   pc:10, comp:'중간',ads:6, cat:'p3',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'강아지방사선치료',   mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p3',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'방사선치료동물병원', mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p3',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  // 요오드 (p4)
+  {kw:'고양이신부전',             mobile:1280,pc:220,comp:'높음',ads:10,cat:'p4',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'고양이갑상선기능항진증',   mobile:5,   pc:5,  comp:'높음',ads:3, cat:'p4',isCore:true, isGeneral:false,kwType:'disease',usageType:'direct'},
+  {kw:'고양이방사성요오드치료',   mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'고양이요오드치료',         mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'고양이동위원소치료',       mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'고양이동위원소',           mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'고양이갑상선치료',         mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p4',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
+  // 안과
+  {kw:'강아지백내장',         mobile:3210,pc:410,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'disease',usageType:'ads_candidate'},
+  {kw:'강아지눈충혈',         mobile:2530,pc:110,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'symptom',usageType:'funnel'},
+  {kw:'강아지백내장초기',     mobile:1700,pc:90, comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'symptom',usageType:'ads_candidate'},
+  {kw:'강아지백내장수술비용', mobile:1470,pc:180,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'treatment',usageType:'ads_candidate',isCost:true},
+  {kw:'강아지결막염',         mobile:1170,pc:130,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지체리아이',       mobile:820, pc:90, comp:'높음',ads:3, cat:'oph',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지각막궤양',       mobile:760, pc:110,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지녹내장',         mobile:720, pc:110,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지백내장수술',     mobile:650, pc:110,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'강아지포도막염',       mobile:390, pc:50, comp:'높음',ads:3, cat:'oph',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지안과전문병원',   mobile:740, pc:60, comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'안과동물병원',         mobile:290, pc:160,comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'동물안과',             mobile:160, pc:20, comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'고양이안과',           mobile:90,  pc:20, comp:'높음',ads:10,cat:'oph',isCore:false,isGeneral:false,kwType:'treatment',usageType:'direct'},
+  // 치과
+  {kw:'강아지스케일링비용', mobile:4210,pc:360,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true, kwType:'treatment',usageType:'avoid',isCost:true},
+  {kw:'강아지치석제거',     mobile:3890,pc:320,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true, kwType:'treatment',usageType:'avoid'},
+  {kw:'고양이구내염',       mobile:2250,pc:320,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지입냄새',       mobile:2110,pc:170,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true, kwType:'symptom',usageType:'avoid'},
+  {kw:'강아지치주염',       mobile:1090,pc:140,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true, kwType:'disease',usageType:'funnel'},
+  {kw:'고양이구내염약',     mobile:1260,pc:150,comp:'중간',ads:8, cat:'dent',isCore:false,isGeneral:false,kwType:'treatment',usageType:'funnel'},
+  {kw:'고양이스케일링비용', mobile:1210,pc:130,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true, kwType:'treatment',usageType:'avoid',isCost:true},
+  {kw:'고양이입냄새',       mobile:800, pc:70, comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:true, kwType:'symptom',usageType:'avoid'},
+  {kw:'강아지잇몸염증',     mobile:670, pc:30, comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:false,kwType:'symptom',usageType:'funnel'},
+  {kw:'강아지발치비용',     mobile:530, pc:50, comp:'높음',ads:7, cat:'dent',isCore:false,isGeneral:false,kwType:'treatment',usageType:'ads_candidate',isCost:true},
+  {kw:'강아지치과',         mobile:990, pc:180,comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'동물치과',           mobile:270, pc:30, comp:'높음',ads:10,cat:'dent',isCore:false,isGeneral:false,kwType:'treatment',usageType:'direct'},
+  // 검진·영상
+  {kw:'강아지건강검진비용', mobile:2470,pc:270,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:true, kwType:'treatment',usageType:'avoid',isCost:true},
+  {kw:'고양이건강검진비용', mobile:1600,pc:240,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:true, kwType:'treatment',usageType:'avoid',isCost:true},
+  {kw:'강아지건강검진',     mobile:1180,pc:240,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:true, kwType:'treatment',usageType:'avoid'},
+  {kw:'강아지MRI비용',      mobile:1230,pc:130,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment',usageType:'ads_candidate',isCost:true},
+  {kw:'고양이건강검진',     mobile:840, pc:150,comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:true, kwType:'treatment',usageType:'avoid'},
+  {kw:'강아지MRI',          mobile:370, pc:70, comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'강아지CT',           mobile:170, pc:40, comp:'높음',ads:10,cat:'chk',isCore:false,isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'동물병원MRI',        mobile:80,  pc:20, comp:'높음',ads:7, cat:'chk',isCore:false,isGeneral:false,kwType:'treatment',usageType:'direct'},
+  // 내과
+  {kw:'강아지설사할때',       mobile:2130,pc:70, comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:true, kwType:'symptom',usageType:'avoid'},
+  {kw:'강아지심장병',         mobile:2040,pc:250,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지자궁축농증',     mobile:1630,pc:200,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지장염',           mobile:1530,pc:170,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:true, kwType:'disease',usageType:'avoid'},
+  {kw:'강아지당뇨',           mobile:1110,pc:160,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지신부전',         mobile:1090,pc:160,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지췌장염',         mobile:2680,pc:350,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:true, kwType:'disease',usageType:'avoid'},
+  {kw:'강아지폐수종',         mobile:2660,pc:270,comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지혈소판감소증',   mobile:800, pc:100,comp:'높음',ads:3, cat:'med',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지빈혈',           mobile:610, pc:80, comp:'높음',ads:10,cat:'med',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지IBD',            mobile:320, pc:70, comp:'높음',ads:3, cat:'med',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
+  {kw:'강아지수혈',           mobile:230, pc:30, comp:'중간',ads:8, cat:'med',isCore:false,isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'고양이수혈',           mobile:150, pc:20, comp:'높음',ads:7, cat:'med',isCore:false,isGeneral:false,kwType:'treatment',usageType:'direct'},
+  {kw:'장내미생물이식강아지', mobile:40,  pc:5,  comp:'중간',ads:1, cat:'med',isCore:false,isGeneral:false,kwType:'treatment',usageType:'funnel'},
+  // 정형외과 — isAmbiguous: 일반 vs 헬릭스 경계 (UI: ? 뱃지)
+  {kw:'슬개골탈구',           mobile:1440,pc:290,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,isAmbiguous:true,kwType:'disease',usageType:'avoid'},
+  {kw:'강아지십자인대파열',   mobile:1200,pc:170,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,isAmbiguous:true,kwType:'disease',usageType:'avoid'},
+  {kw:'강아지십자인대수술',   mobile:510, pc:90, comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,isAmbiguous:true,kwType:'treatment',usageType:'avoid'},
+  {kw:'슬개골탈구수술',       mobile:480, pc:70, comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,isAmbiguous:true,kwType:'treatment',usageType:'avoid'},
+  {kw:'강아지자궁축농증수술', mobile:470, pc:50, comp:'높음',ads:7, cat:'rehab',isCore:false,isGeneral:false,kwType:'treatment',usageType:'funnel'},
+  {kw:'TPLO',                 mobile:330, pc:140,comp:'높음',ads:10,cat:'rehab',isCore:false,isGeneral:false,isAmbiguous:true,kwType:'treatment',usageType:'avoid'},
+  {kw:'강아지TPLO',           mobile:300, pc:110,comp:'높음',ads:7, cat:'rehab',isCore:false,isGeneral:false,isAmbiguous:true,kwType:'treatment',usageType:'avoid'},
+  // 포지셔닝 (pending)
+  {kw:'서울동물병원',       mobile:1120,pc:180,comp:'높음',ads:10,cat:'gen',isCore:false,isGeneral:false,usageType:'pending'},
+  {kw:'다학제진료',         mobile:600, pc:130,comp:'높음',ads:3, cat:'gen',isCore:false,isGeneral:false,usageType:'pending'},
+  {kw:'고양이전문동물병원', mobile:500, pc:40, comp:'높음',ads:10,cat:'gen',isCore:false,isGeneral:false,usageType:'pending'},
+  {kw:'2차동물병원',        mobile:430, pc:100,comp:'높음',ads:10,cat:'gen',isCore:false,isGeneral:false,usageType:'pending'},
+  {kw:'동물메디컬센터',     mobile:390, pc:50, comp:'높음',ads:10,cat:'gen',isCore:false,isGeneral:false,usageType:'pending'},
+  {kw:'세컨드오피니언',     mobile:310, pc:70, comp:'낮음',ads:0, cat:'gen',isCore:false,isGeneral:false,usageType:'pending'},
+  {kw:'종합동물병원',       mobile:80,  pc:10, comp:'높음',ads:10,cat:'gen',isCore:false,isGeneral:false,usageType:'pending'},
+  {kw:'아하인증동물병원',   mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'gen',isCore:false,isGeneral:false,usageType:'pending'},
+  {kw:'동물병원인증',       mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'gen',isCore:false,isGeneral:false,usageType:'pending'},
+  // 전국권 (pending)
+  {kw:'일산동물병원',   mobile:1480,pc:310,comp:'높음',ads:10,cat:'nation',isCore:false,isGeneral:false,usageType:'pending'},
+  {kw:'분당동물병원',   mobile:730, pc:180,comp:'높음',ads:10,cat:'nation',isCore:false,isGeneral:false,usageType:'pending'},
+  {kw:'파주동물병원',   mobile:620, pc:250,comp:'높음',ads:10,cat:'nation',isCore:false,isGeneral:false,usageType:'pending'},
+  {kw:'일산2차동물병원',mobile:80,  pc:10, comp:'중간',ads:8, cat:'nation',isCore:false,isGeneral:false,usageType:'pending'},
+  {kw:'서울2차동물병원',mobile:40,  pc:20, comp:'중간',ads:6, cat:'nation',isCore:false,isGeneral:false,usageType:'pending'},
+  {kw:'분당2차동물병원',mobile:30,  pc:5,  comp:'중간',ads:5, cat:'nation',isCore:false,isGeneral:false,usageType:'pending'},
+];
+
+const DATA = ALL_DATA.filter((d,i,a)=>a.findIndex(x=>x.kw===d.kw)===i);
+
+const CAT_META = {
+  p1:{label:'뇌종양 수술',tagClass:'tag-p1'},p2:{label:'인터벤션',tagClass:'tag-p2'},
+  p3:{label:'방사선 치료',tagClass:'tag-p3'},p4:{label:'고양이 요오드 · 동위원소',tagClass:'tag-p4'},
+  oph:{label:'안과',tagClass:'tag-oph'},dent:{label:'치과',tagClass:'tag-dent'},
+  chk:{label:'건강검진',tagClass:'tag-chk'},med:{label:'전문 내과',tagClass:'tag-med'},
+  rehab:{label:'정형외과',tagClass:'tag-rehab'},gen:{label:'포지셔닝',tagClass:'tag-gen'},
+  nation:{label:'전국권',tagClass:'tag-nation'},
+};
+
+const compScore = c => c==='낮음'?0:c==='중간'?1:2;
+const MAX_VIZ = 7650;
+let showGeneral = false;
+
+function buildKpi(){
+  document.getElementById('kTotal').textContent = DATA.length;
+  document.getElementById('kCore').textContent = DATA.filter(d=>['p1','p2','p3','p4'].includes(d.cat)).length;
+  document.getElementById('kLow').textContent = DATA.filter(d=>d.comp==='낮음').length + '개';
+}
+
+function buildPriority(){
+  const grid=document.getElementById('priorityGrid');
+  ['p1','p2','p3','p4'].forEach(key=>{
+    const p=PRIORITY[key];
+    const maxM=Math.max(...p.kws.map(k=>k.mobile));
+    const card=document.createElement('div');
+    card.className='priority-card'; card.id=key;
+    card.innerHTML=`
+      <div class="pc-header">
+        <div class="pc-rank rank-${p.rank}">${p.rank}</div>
+        <div><div class="pc-name">${p.label}</div><div class="pc-en">${p.en}</div></div>
+        <div class="pc-note">${p.note} · ${p.kws.length}개 · 최고 ${maxM<=5?'&lt;10':maxM.toLocaleString()}/월</div>
+      </div>
+      <div class="pc-thead"><span>키워드</span><span>모바일</span><span>PC</span><span>경쟁도</span></div>
+      <div class="pc-body">${p.kws.map(k=>{
+        const isCore=k.type==='core';
+        const cc=k.comp==='낮음'?'low':k.comp==='중간'?'mid':'high';
+        const mTxt=k.mobile<=5?'<span class="no-data">&lt;10</span>':`<span class="pc-num">${k.mobile.toLocaleString()}</span>`;
+        const pTxt=k.pc<=5?'<span class="no-data">&lt;10</span>':`<span class="pc-num" style="color:var(--ink-dim)">${k.pc.toLocaleString()}</span>`;
+        return `<div class="pc-kw-row${k.isPending?' is-pending':''}" ${k.isPending?'title="원장님 검토 후 확정 예정"':''}>
+          <div class="pc-kw-label">
+            <div class="core-dot ${isCore?'dot-'+key:'dot-rel'}"></div>
+            ${k.kw}
+            ${isCore?'<span class="badge badge-core">시술명</span>':''}
+            ${k.isPending?'<span class="badge badge-pending" title="원장님 검토 후 확정 예정">보류</span>':''}
+          </div>
+          <div style="text-align:right">${mTxt}</div>
+          <div style="text-align:right">${pTxt}</div>
+          <div><span class="comp-badge ${cc}">${k.comp}</span></div>
+        </div>`;
+      }).join('')}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+function buildNationwide(){
+  const grid=document.getElementById('nationGrid');
+  if(!grid) return;
+  NATIONWIDE.forEach(g=>{
+    const card=document.createElement('div');
+    card.className='nation-card';
+    card.innerHTML=`<div class="nation-card-title">${g.title}</div>
+      <div class="nation-card-desc">${g.desc}</div>
+      ${g.kws.map(k=>{
+        const cc=k.comp==='낮음'?'low':k.comp==='중간'?'mid':'high';
+        return `<div class="nation-kw-item">
+          <span>${k.kw}</span>
+          <span style="display:flex;align-items:center;gap:5px;">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-dim)">${k.mobile<=5?'&lt;10':k.mobile.toLocaleString()}</span>
+            <span class="comp-badge ${cc}" style="font-size:9px;">${k.comp}</span>
+          </span>
+        </div>`;
+      }).join('')}`;
+    grid.appendChild(card);
+  });
+}
+
+const FILTERS=[
+  {label:'전체',cat:'all'},{label:'① 뇌종양',cat:'p1'},{label:'② 인터벤션',cat:'p2'},
+  {label:'③ 방사선',cat:'p3'},{label:'④ 요오드 · 동위원소',cat:'p4'},{label:'안과',cat:'oph'},
+  {label:'치과',cat:'dent'},{label:'검진',cat:'chk'},{label:'내과',cat:'med'},
+  {label:'정형',cat:'rehab'},{label:'전국권',cat:'nation'},{label:'포지셔닝',cat:'gen'},
+  {label:'★ 핵심시술만',cat:'core_only'},
+];
+const TYPE_FILTERS=[
+  {label:'전체',type:'all'},
+  {label:'증상',type:'symptom'},
+  {label:'질병',type:'disease'},
+  {label:'치료법·수술',type:'treatment'},
+];
+let activeCat='all',activeType='all',sortKey='mobile',sortDir=-1,searchQ='';
+
+function buildControls(){
+  const row=document.getElementById('filterRow');
+  FILTERS.forEach(f=>{
+    const pill=document.createElement('button');
+    pill.className=`pill${f.cat==='all'?' active':''}`;
+    pill.textContent=f.label; pill.dataset.cat=f.cat;
+    pill.onclick=()=>{activeCat=f.cat;row.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));pill.classList.add('active');renderTable();};
+    row.appendChild(pill);
+  });
+  const trow=document.getElementById('typeFilterRow');
+  const tlabel=document.createElement('span');
+  tlabel.textContent='분류';
+  tlabel.style.cssText='font-size:10px;color:var(--ink-muted);letter-spacing:.08em;text-transform:uppercase;align-self:center;margin-right:4px;';
+  trow.appendChild(tlabel);
+  TYPE_FILTERS.forEach(f=>{
+    const pill=document.createElement('button');
+    pill.className=`pill${f.type==='all'?' active':''}`;
+    pill.textContent=f.label; pill.dataset.type=f.type;
+    pill.onclick=()=>{activeType=f.type;trow.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));pill.classList.add('active');renderTable();};
+    trow.appendChild(pill);
+  });
+  document.getElementById('sortSel').onchange=e=>{
+    const v=e.target.value;
+    if(v==='mobile_d'){sortKey='mobile';sortDir=-1;}
+    else if(v==='mobile_a'){sortKey='mobile';sortDir=1;}
+    else if(v==='comp_l'){sortKey='comp';sortDir=1;}
+    else if(v==='comp_h'){sortKey='comp';sortDir=-1;}
+    else if(v==='kw_a'){sortKey='kw';sortDir=1;}
+    renderTable();
+  };
+  document.getElementById('searchInput').oninput=e=>{searchQ=e.target.value.trim().toLowerCase();renderTable();};
+}
+
+function toggleGeneral(){
+  showGeneral=!showGeneral;
+  document.getElementById('genToggle').classList.toggle('on',showGeneral);
+  document.querySelectorAll('tr.is-general').forEach(tr=>tr.classList.toggle('hidden-general',!showGeneral));
+  updateSecLabel();
+}
+
+function updateSecLabel(){
+  const allTr=[...document.querySelectorAll('#tableBody tr')];
+  const visible=allTr.filter(tr=>!tr.classList.contains('hidden-general')).length;
+  const genCount=DATA.filter(d=>d.isGeneral).length;
+  document.getElementById('secLabel').innerHTML=showGeneral
+    ?`<strong>${visible}개</strong> 표시 중 — 일반 병원 키워드 <strong>${genCount}개</strong> 포함 (흐리게 표시)`
+    :`<strong>${visible}개</strong> 표시 중 — 헬릭스 직결 키워드만 · 일반 병원 키워드 <strong>${genCount}개</strong> 숨김`;
+}
+
+function renderTable(){
+  let rows=[...DATA];
+  if(activeCat==='core_only') rows=rows.filter(d=>d.isCore);
+  else if(activeCat!=='all') rows=rows.filter(d=>d.cat===activeCat);
+  if(activeType!=='all') rows=rows.filter(d=>d.kwType===activeType);
+  if(searchQ) rows=rows.filter(d=>d.kw.toLowerCase().includes(searchQ));
+  rows.sort((a,b)=>{
+    if(sortKey==='mobile') return sortDir*(b.mobile-a.mobile);
+    if(sortKey==='comp') return sortDir*(compScore(b.comp)-compScore(a.comp));
+    if(sortKey==='kw') return sortDir*a.kw.localeCompare(b.kw,'ko');
+    return 0;
+  });
+  const h=rows.filter(d=>d.comp==='높음').length;
+  const m=rows.filter(d=>d.comp==='중간').length;
+  const l=rows.filter(d=>d.comp==='낮음').length;
+  document.getElementById('statsStrip').innerHTML=`
+    <div class="stat-chip chip-high"><div class="dot"></div>경쟁 높음 <span class="stat-n">${h}</span></div>
+    <div class="stat-chip chip-mid"><div class="dot"></div>중간 <span class="stat-n">${m}</span></div>
+    <div class="stat-chip chip-low"><div class="dot"></div>낮음 <span class="stat-n">${l}</span></div>
+    <span style="font-size:11.5px;color:var(--ink-dim);padding:3px 7px;">총 ${rows.length}개</span>
+  `;
+  const tbody=document.getElementById('tableBody');
+  document.getElementById('emptyMsg').classList.toggle('show',rows.length===0);
+  tbody.innerHTML='';
+  rows.forEach(d=>{
+    const meta=CAT_META[d.cat]||CAT_META.gen;
+    const pct=Math.min(100,Math.round(d.mobile/MAX_VIZ*100));
+    const cc=d.comp==='낮음'?'low':d.comp==='중간'?'mid':'high';
+    const kwHtml=searchQ?d.kw.replace(new RegExp(`(${searchQ})`,'gi'),'<mark>$1</mark>'):d.kw;
+    const fillClass=d.isGeneral?'vol-fill-dim':'vol-fill';
+    const tr=document.createElement('tr');
+    if(d.isGeneral) tr.className='is-general'+(showGeneral?'':' hidden-general');
+    if(d.isPending) tr.classList.add('is-pending');
+    if(d.isPending) tr.title='원장님 검토 후 확정 예정';
+    tr.innerHTML=`
+      <td class="kw-name">${kwHtml}${d.isCore?'<span class="core-flag">★ 핵심</span>':''}</td>
+      <td>${d.isCore?'<span class="badge badge-core">시술명</span>':d.isGeneral?'<span class="badge badge-general">일반</span>':'<span class="badge badge-symptom">증상·탐색</span>'}${d.isAmbiguous?'<span class="badge badge-ambiguous" title="헬릭스 전문성과 일반 병원 영역이 겹치는 경계 키워드">?</span>':''}${d.isPending?'<span class="badge badge-pending" title="원장님 검토 후 확정 예정">보류</span>':''}</td>
+      <td><span class="cat-tag ${meta.tagClass}">${meta.label}</span></td>
+      <td class="num-r">${d.mobile<=5?'<span style="color:var(--ink-muted)">&lt;10</span>':d.mobile.toLocaleString()}</td>
+      <td class="num-r">${d.pc<=5?'<span style="color:var(--ink-muted)">&lt;10</span>':d.pc.toLocaleString()}</td>
+      <td><div class="vol-wrap"><div class="vol-bg"><div class="${fillClass}" style="width:${pct}%"></div></div></div></td>
+      <td><span class="comp-badge ${cc}">${d.comp==='낮음'?'🎯 ':''}${d.comp}</span>${d.comp==='낮음'?'<span class="opp-tag" title="저경쟁 — 선점 기회">저경쟁 ↓</span>':''}</td>
+      <td class="num-r">${d.ads}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+  updateSecLabel();
+}
+function sortBy(k){if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=-1;}renderTable();}
+function setNav(el){document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));el.classList.add('active');}
+// 분류별 공략 우선순위 — 수동 큐레이션 리스트 (B안)
+const RANK_LISTS = {
+  treatment: [
+    {kw:'강아지백내장수술비용', mobile:1470},
+    {kw:'강아지백내장수술',     mobile:650},
+    {kw:'강아지십자인대수술',   mobile:510},
+    {kw:'슬개골탈구수술',       mobile:480},
+    {kw:'강아지자궁축농증수술', mobile:470},
+    {kw:'강아지담낭제거수술',   mobile:70},
+    {kw:'강아지MRI비용',        mobile:1230},
+    {kw:'강아지발치비용',       mobile:530},
+    {kw:'강아지뇌수술',         mobile:10},
+    {kw:'강아지뇌종양수술',     mobile:5},
+  ],
+  disease: [
+    {kw:'강아지췌장염',       mobile:2680},
+    {kw:'강아지폐수종',       mobile:2660},
+    {kw:'고양이구내염',       mobile:2250},
+    {kw:'강아지심장병',       mobile:2040},
+    {kw:'강아지자궁축농증',   mobile:1630},
+    {kw:'강아지유선종양',     mobile:1640},
+    {kw:'고양이신부전',       mobile:1280},
+    {kw:'강아지당뇨',         mobile:1110},
+    {kw:'강아지신부전',       mobile:1090},
+    {kw:'강아지혈소판감소증', mobile:800},
+  ],
+  symptom: [
+    {kw:'강아지백내장',       mobile:3210},
+    {kw:'강아지눈충혈',       mobile:2530},
+    {kw:'강아지설사할때',     mobile:2130},
+    {kw:'강아지백내장초기',   mobile:1700},
+    {kw:'강아지디스크증상',   mobile:1170},
+    {kw:'강아지결막염',       mobile:1170},
+    {kw:'강아지발작',         mobile:930},
+    {kw:'강아지경련',         mobile:830},
+    {kw:'강아지잇몸염증',     mobile:670},
+    {kw:'강아지뇌수막염',     mobile:950},
+  ],
+};
+
+const USAGE_META = {
+  direct:        {label:'직접',    desc:'헬릭스 직접 포지셔닝',     cls:'usage-direct'},
+  funnel:        {label:'유입→연결', desc:'유입 후 전환',             cls:'usage-funnel'},
+  ads_candidate: {label:'광고후보', desc:'광고 후보',                cls:'usage-ads'},
+  avoid:         {label:'회피',    desc:'1차병원 경쟁 회피',        cls:'usage-avoid'},
+  pending:       {label:'보류',    desc:'활용 보류',                cls:'usage-pending'},
+};
+
+function buildRanking(){
+  const dataLookup = Object.fromEntries(DATA.map(d=>[d.kw, d]));
+  ['treatment','disease','symptom'].forEach(type=>{
+    const list=RANK_LISTS[type]||[];
+    const ol=document.getElementById('rankList-'+type);
+    const cnt=document.getElementById('rankCount-'+type);
+    cnt.textContent='큐레이션 Top '+list.length;
+    ol.innerHTML=list.map((d,i)=>{
+      const meta=dataLookup[d.kw]||{};
+      const comp=meta.comp;
+      const isLow=comp==='낮음';
+      const usage=meta.usageType;
+      const usageMeta=USAGE_META[usage];
+      const cls=[];
+      if(i<3) cls.push('is-top3');
+      if(isLow) cls.push('is-low');
+      if(usage==='avoid') cls.push('is-avoid');
+      const volTxt = d.mobile<=5 ? '<10' : d.mobile.toLocaleString();
+      const flags=[];
+      if(meta.isCost) flags.push('<span class="rank-flag flag-cost" title="비용 검색 키워드">💰</span>');
+      if(meta.isAmbiguous) flags.push('<span class="rank-flag flag-amb" title="경계 키워드">?</span>');
+      if(isLow) flags.push('<span class="rank-flag flag-low" title="저경쟁">🎯</span>');
+      const usagePill=usageMeta?`<span class="usage-pill ${usageMeta.cls}" title="${usageMeta.desc}">${usageMeta.label}</span>`:'';
+      return `<li class="${cls.join(' ')}">
+        <span class="rank-kw"><span class="rank-kw-text">${d.kw}</span>${flags.join('')}</span>
+        <span class="rank-mid">${usagePill}</span>
+        <span class="rank-vol">${volTxt}</span>
+      </li>`;
+    }).join('');
+  });
+}
+// 활용 유형 3가지 카드 — 대표 키워드 자동 추출
+const USAGE_CARDS = [
+  {key:'direct',        name:'직접',     icon:'📌',
+   desc:'헬릭스가 특화로 밀고자 하는 시술·진료명 자체. 홈페이지의 특화진료 페이지나 시술 소개 콘텐츠에 그대로 들어가는 키워드입니다.',
+   why:'이미 그 시술이 가능하다는 사실을 어느 정도 알고 있는 보호자가 직접 검색하는 영역입니다. 경쟁이 적거나 헬릭스가 거의 유일하게 다루는 진료 영역이라, 그대로 노출시켜도 부담이 적고 그 자체가 헬릭스의 색깔이 됩니다.',
+   whyEx:'모두 일반 보호자보다는 알아보고 찾아오시는 분이 검색하는 시술명입니다. 검색량은 적지만, 검색하시는 한 분은 거의 즉시 헬릭스에 닿는 단계라고 보았습니다.'},
+  {key:'funnel',        name:'유입→연결',icon:'🔄',
+   desc:'보호자가 흔히 검색하는 증상·질병 키워드. 직접 경쟁하기보다, FAQ·블로그 콘텐츠로 끌어들인 뒤 헬릭스 특화 시술로 자연스럽게 안내하는 관문으로 활용합니다.',
+   why:'보호자가 시술명을 모른 채 증상·질병 단어로 답을 찾기 시작하는 초기 단계입니다. 검색량은 많지만 1차병원도 다루는 영역이라 그대로 경쟁하면 헬릭스 색깔이 흐려질 수 있어, 콘텐츠로 먼저 정보를 드리고 그 안에서 헬릭스 특화 시술로 연결하는 흐름이 자연스러워 보였습니다.',
+   whyEx:'보호자가 시술명까지는 모르고 증상으로 검색하는 단계의 키워드들입니다. "발작이 반복된다면 뇌종양 감별이 필요합니다 → 헬릭스 신경외과"처럼 콘텐츠가 안내해줘야 헬릭스로 이어지는 구조입니다.'},
+  {key:'ads_candidate', name:'광고후보', icon:'💰',
+   desc:'콘텐츠 자연 검색 노출(SEO)이 어렵거나, 보호자가 비용 의도로 검색하는 키워드. 콘텐츠로 풀기보다 네이버 검색광고로 직접 집행하는 트랙입니다.',
+   why:'보호자가 시술·검사를 어느 정도 알고 비용·정보를 비교하며 결정 단계에 들어선 키워드입니다. 의도가 분명한 만큼 광고로 곧바로 띄워주는 편이 빠르고, 자연 검색 노출(SEO)은 경쟁이 심해 콘텐츠로 잡기 어려운 영역입니다.',
+   whyEx:'"비용"이라는 단어가 들어가는 순간 보호자의 의도가 거의 정해진 상태입니다. 광고 한 번의 클릭이 곧 상담·예약으로 이어질 가능성이 높은 키워드들입니다.'},
+];
+function buildUsageTypes(){
+  const grid=document.getElementById('usageTypesGrid');
+  if(!grid) return;
+  USAGE_CARDS.forEach(c=>{
+    const all=DATA.filter(d=>d.usageType===c.key);
+    const top=[...all].sort((a,b)=>b.mobile-a.mobile).slice(0,4);
+    const card=document.createElement('div');
+    card.className='ut-card ut-'+c.key;
+    card.innerHTML=`
+      <div class="ut-card-head">
+        <span class="ut-card-name">${c.icon} ${c.name}</span>
+        <span class="ut-card-count">${all.length}개</span>
+      </div>
+      <div class="ut-card-desc">${c.desc}</div>
+      <div class="ut-card-why">
+        <div class="ut-card-why-label">왜 이 카드에 들어가나요</div>
+        <div class="ut-card-why-body">${c.why}</div>
+      </div>
+      <div class="ut-card-kw-label">대표 키워드</div>
+      <ul class="ut-card-kws">${top.map(d=>{
+        const v=d.mobile<=5?'&lt;10':d.mobile.toLocaleString();
+        return `<li><span>${d.kw}</span><span class="ut-kw-vol">${v}</span></li>`;
+      }).join('')}</ul>
+      <div class="ut-card-whyex">${c.whyEx}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+// 스크롤 스파이 — 사이드바 자동 활성화
+function setupScrollSpy(){
+  const links=document.querySelectorAll('.nav-item');
+  const map=new Map();
+  links.forEach(a=>{
+    const id=a.getAttribute('href').slice(1);
+    const el=document.getElementById(id);
+    if(el) map.set(el,a);
+  });
+  if(!map.size) return;
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const a=map.get(e.target);
+        if(a){
+          links.forEach(l=>l.classList.remove('active'));
+          a.classList.add('active');
+        }
+      }
+    });
+  },{rootMargin:'-30% 0px -60% 0px',threshold:0});
+  map.forEach((_,el)=>io.observe(el));
+}
+
+// FAQ·블로그 콘텐츠 1차 명단 — 진료 영역별 큐레이션
+const FAQ_LIST = [
+  {label:'신경계 (p1)', items:[
+    {kw:'강아지디스크증상',   mobile:1170, q:'강아지 디스크 증상, 어떻게 알 수 있나요?',          link:'디스크 수술 연결'},
+    {kw:'강아지발작',         mobile:930,  q:'강아지가 발작을 일으킨다면 뇌종양일 수 있나요?',     link:'뇌종양 수술 연결'},
+    {kw:'강아지뇌수막염',     mobile:950,  q:'강아지 뇌수막염, 어떤 치료가 필요한가요?',           link:'신경외과 연결'},
+    {kw:'강아지경련',         mobile:830,  q:'강아지 경련과 발작, 어떻게 다른가요?',               link:'신경과 연결'},
+    {kw:'강아지뇌수두증',     mobile:650,  q:'강아지 뇌수두증이란 무엇인가요?',                    link:'신경외과 연결'},
+    {kw:'강아지척수공동증',   mobile:430,  q:'강아지 척수공동증, 수술이 필요한 경우는?',           link:'척수 수술 연결'},
+    {kw:'강아지디스크',       mobile:730,  q:'강아지 디스크, 수술 없이 나을 수 있나요?',           link:'수술 적응증 연결'},
+    {kw:'강아지목디스크',     mobile:440,  q:'강아지 목디스크 증상과 치료법은?',                   link:'수술 연결'},
+    {kw:'강아지간질',         mobile:360,  q:'강아지 간질, 평생 약만 먹어야 하나요?',              link:'신경과 관리 연결'},
+    {kw:'강아지뇌종양',       mobile:390,  q:'강아지 뇌종양, 수술로 나을 수 있나요?',              link:'뇌종양 수술 연결'},
+  ]},
+  {label:'인터벤션·외과 (p2)', items:[
+    {kw:'강아지유선종양',     mobile:1640, q:'강아지 유선종양, 수술하면 완치되나요?',              link:'종양외과 연결'},
+    {kw:'강아지담낭점액종',   mobile:570,  q:'강아지 담낭점액종이란 무엇인가요?',                  link:'외과 수술 연결'},
+    {kw:'강아지담낭',         mobile:490,  q:'강아지 담낭 문제, 언제 수술이 필요한가요?',          link:'담낭 수술 연결'},
+    {kw:'강아지엑소좀',       mobile:240,  q:'강아지 엑소좀 치료란 무엇인가요?',                   link:'통합종양 연결', inactive:true},
+    {kw:'강아지담낭제거수술', mobile:70,   q:'강아지 담낭 제거 수술, 어떻게 진행되나요?',          link:'외과 수술 연결'},
+  ]},
+  {label:'방사선·종양 (p3)', items:[
+    {kw:'고양이비만세포종',   mobile:650,  q:'고양이 비만세포종, 어떤 치료를 받아야 하나요?',      link:'방사선·종양외과 연결'},
+    {kw:'강아지종양',         mobile:620,  q:'강아지 종양, 수술과 방사선 치료 중 무엇이 맞나요?',  link:'통합종양 연결'},
+    {kw:'강아지암',           mobile:360,  q:'강아지 암 진단 후 치료 순서는?',                     link:'방사선 치료 연결'},
+    {kw:'고양이암',           mobile:200,  q:'고양이 암, 치료 옵션에는 어떤 것들이 있나요?',       link:'방사선·종양 연결'},
+  ]},
+  {label:'요오드·갑상선 (p4)', items:[
+    {kw:'고양이신부전',       mobile:1280, q:'고양이 신부전과 갑상선 질환, 어떤 관계인가요?',      link:'요오드 치료 연결'},
+  ]},
+  {label:'안과 (oph)', items:[
+    {kw:'강아지눈충혈',       mobile:2530, q:'강아지 눈이 빨개요, 어떤 질환일 수 있나요?',         link:'각막·결막 진료 연결'},
+    {kw:'강아지결막염',       mobile:1170, q:'강아지 결막염, 안과 전문 치료가 필요한가요?',       link:'안과 전문 연결'},
+    {kw:'강아지체리아이',     mobile:820,  q:'강아지 체리아이, 수술해야 하나요?',                  link:'안과 수술 연결'},
+    {kw:'강아지각막궤양',     mobile:760,  q:'강아지 각막궤양, 방치하면 어떻게 되나요?',           link:'안과 전문 연결'},
+    {kw:'강아지녹내장',       mobile:720,  q:'강아지 녹내장, 실명을 막으려면?',                    link:'안과 전문 연결'},
+    {kw:'강아지포도막염',     mobile:390,  q:'강아지 포도막염이란 무엇인가요?',                    link:'안과 전문 연결'},
+  ]},
+  {label:'치과 (dent)', items:[
+    {kw:'고양이구내염',       mobile:2250, q:'고양이 구내염, 약으로 안 나으면 어떻게 하나요?',     link:'발치·수술 연결'},
+    {kw:'고양이구내염약',     mobile:1260, q:'고양이 구내염 약, 언제까지 먹여야 하나요?',          link:'수술 적응증 연결'},
+    {kw:'강아지잇몸염증',     mobile:670,  q:'강아지 잇몸 염증, 치주 수술이 필요한 경우는?',       link:'치주 수술 연결'},
+  ]},
+  {label:'내과·응급 (med)', items:[
+    {kw:'강아지심장병',       mobile:2040, q:'강아지 심장병, 어떤 전문 치료가 있나요?',            link:'심장 전문 연결'},
+    {kw:'강아지자궁축농증',   mobile:1630, q:'강아지 자궁축농증, 수술 타이밍을 놓치면?',          link:'외과 수술 연결'},
+    {kw:'강아지당뇨',         mobile:1110, q:'강아지 당뇨, 인슐린 외에 치료법이 있나요?',          link:'내과 전문 연결'},
+    {kw:'강아지신부전',       mobile:1090, q:'강아지 신부전, 투석이 가능한 병원이 있나요?',        link:'투석·내과 연결'},
+    {kw:'강아지폐수종',       mobile:2660, q:'강아지 폐에 물이 찼어요, 응급 처치는?',              link:'ICU·응급 연결'},
+    {kw:'강아지혈소판감소증', mobile:800,  q:'강아지 혈소판감소증, 수혈이 필요한가요?',            link:'수혈·내과 연결'},
+    {kw:'강아지빈혈',         mobile:670,  q:'강아지 빈혈, 수혈은 어디서 받을 수 있나요?',         link:'수혈 연결'},
+  ]},
+];
+
+function buildFAQ(){
+  const root=document.getElementById('faqGroups');
+  if(!root) return;
+  FAQ_LIST.forEach((group,idx)=>{
+    const active=group.items.filter(i=>!i.inactive).length;
+    const inactive=group.items.length-active;
+    const el=document.createElement('details');
+    el.className='faq-group';
+    if(idx===0) el.setAttribute('open','');
+    el.innerHTML=`
+      <summary class="faq-summary">
+        <span class="faq-group-name">${group.label}</span>
+        <span class="faq-group-count">활용 ${active}개${inactive?` <span class="faq-pending-note">· 보류 ${inactive}</span>`:''}</span>
+        <span class="faq-chevron">▾</span>
+      </summary>
+      <div class="faq-body">
+        <table class="faq-table">
+          <thead><tr>
+            <th>키워드</th>
+            <th class="num-r">검색량</th>
+            <th>추천 FAQ 제목</th>
+            <th>연결 목적</th>
+          </tr></thead>
+          <tbody>
+            ${group.items.map(it=>`
+              <tr class="${it.inactive?'faq-inactive':''}" ${it.inactive?'title="원장님 검토 후 확정 예정"':''}>
+                <td class="faq-kw">${it.kw}${it.inactive?'<span class="faq-inactive-badge" title="원장님 검토 후 확정 예정">보류</span>':''}</td>
+                <td class="faq-vol">${it.mobile.toLocaleString()}</td>
+                <td class="faq-q">${it.q}</td>
+                <td class="faq-link"><span class="usage-pill usage-funnel">${it.link}</span></td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>`;
+    root.appendChild(el);
+  });
+}
+
+buildKpi();buildRanking();buildUsageTypes();buildPriority();buildFAQ();buildNationwide();buildControls();renderTable();setupScrollSpy();
+
+const allDetails = document.querySelector('#all details');
+if(allDetails) allDetails.addEventListener('toggle', function(){ if(this.open && typeof renderTable==='function') renderTable(); });
+</script>
+</body>
+</html>
