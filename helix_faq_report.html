@@ -33,13 +33,82 @@
     font-family: 'IBM Plex Sans KR', sans-serif;
     background: var(--bg);
     color: var(--ink);
-    line-height: 1.7;
+    line-height: 1.85;
     -webkit-font-smoothing: antialiased;
     font-size: 15px;
   }
 
+  /* ── SIDENAV ── */
+  .sidenav{position:fixed;left:0;top:0;bottom:0;width:196px;background:var(--surface);border-right:1px solid var(--line);padding:28px 0;z-index:100;overflow-y:auto;box-shadow:2px 0 8px rgba(0,0,0,.04);}
+  .sidenav .logo{padding:0 20px 20px;border-bottom:1px solid var(--line);margin-bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase;font-weight:500;}
+  .nav-item{display:block;padding:9px 20px;font-size:12px;color:var(--ink-dim);cursor:pointer;transition:all .14s;text-decoration:none;border-left:2px solid transparent;}
+  .nav-item:hover{color:var(--ink);background:var(--surface-2);}
+  .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-soft);font-weight:500;}
+  .nav-section{padding:14px 20px 5px;font-size:9px;color:var(--ink-muted);letter-spacing:.14em;text-transform:uppercase;display:block;}
+
   /* ── LAYOUT ── */
-  .wrap { max-width: 980px; margin: 0 auto; padding: 56px 40px 120px; }
+  .wrap { max-width: 980px; margin: 0 auto; margin-left: 196px; padding: 56px 56px 120px; }
+
+  /* ── HERO (발표용) ── */
+  .pres-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; letter-spacing: .22em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .pres-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 36px; font-weight: 300;
+    line-height: 1.3; margin-bottom: 10px; color: var(--ink);
+  }
+  .pres-meta {
+    font-size: 13px; color: var(--ink-dim);
+    display: flex; gap: 18px; flex-wrap: wrap; margin-top: 12px;
+  }
+  .pres-meta span { display: flex; align-items: center; gap: 6px; }
+  .pres-meta-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+
+  /* ── KEY CARD ── */
+  .key-card {
+    background: var(--ink); color: white;
+    border-radius: 14px; padding: 32px 36px;
+    margin-bottom: 52px; position: relative; overflow: hidden;
+  }
+  .key-card::before {
+    content: ''; position: absolute; right: -40px; top: -40px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(14,158,130,.12);
+  }
+  .key-card-eyebrow {
+    font-family: 'IBM Plex Mono', monospace; font-size: 9.5px;
+    letter-spacing: .2em; color: rgba(14,158,130,.85);
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .key-card-text {
+    font-family: 'Noto Serif KR', serif; font-size: 20px;
+    font-weight: 300; line-height: 1.7; color: white; margin-bottom: 18px;
+    position: relative;
+  }
+  .key-card-text strong { color: #6de4cc; font-weight: 400; }
+  .key-points { display: flex; gap: 24px; flex-wrap: wrap; position: relative; }
+  .key-point { font-size: 12.5px; color: rgba(255,255,255,.6); display: flex; align-items: center; gap: 7px; }
+  .key-point::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: rgba(14,158,130,.7); flex-shrink: 0; }
+
+  /* ── FOLD ── */
+  details.card-fold { margin-top: 10px; }
+  details.card-fold summary {
+    font-size: 11.5px; color: var(--ink-muted);
+    cursor: pointer; list-style: none;
+    display: flex; align-items: center; gap: 6px;
+    padding: 5px 0; user-select: none;
+    font-family: 'IBM Plex Mono', monospace; letter-spacing: .05em;
+  }
+  details.card-fold summary::-webkit-details-marker { display: none; }
+  details.card-fold summary::before { content: '▸'; font-size: 9px; transition: transform .2s; }
+  details[open].card-fold summary::before { transform: rotate(90deg); }
+  details.card-fold .fold-inner {
+    padding: 10px 0 2px;
+    font-size: 12.5px; color: var(--ink-dim); line-height: 1.75;
+  }
 
   /* ── BACK LINK ── */
   .back-link {
@@ -109,13 +178,13 @@
   }
 
   /* ── SECTION ── */
-  .section { margin-bottom: 56px; }
+  .section { margin-bottom: 56px; margin-top: 100px; }
   .section-title {
     font-family: 'Noto Serif KR', serif;
-    font-size: 19px;
+    font-size: 28px;
     font-weight: 400;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
     border-bottom: 1px solid var(--line);
     color: var(--ink);
     display: flex;
@@ -198,7 +267,8 @@
   }
   .bench-table thead th:first-child { width: 160px; }
   .bench-table tbody td {
-    padding: 13px 16px;
+    padding: 14px 16px;
+    font-size: 13.5px;
     border-bottom: 1px solid var(--line);
     vertical-align: top;
     line-height: 1.6;
@@ -286,7 +356,8 @@
   .matrix-table thead th:first-child { text-align: left; width: 260px; }
   .matrix-table thead th:last-child { text-align: left; }
   .matrix-table tbody td {
-    padding: 12px 14px;
+    padding: 14px 16px;
+    font-size: 13.5px;
     border-bottom: 1px solid var(--line);
     vertical-align: middle;
     line-height: 1.5;
@@ -408,7 +479,8 @@
   }
   .final-table thead th:first-child { width: 40px; text-align: center; }
   .final-table tbody td {
-    padding: 13px 16px;
+    padding: 14px 16px;
+    font-size: 13.5px;
     border-bottom: 1px solid var(--line);
     vertical-align: top;
     line-height: 1.6;
@@ -469,7 +541,8 @@
     border-bottom: 1px solid var(--line);
   }
   .excl-table tbody td {
-    padding: 12px 16px;
+    padding: 14px 16px;
+    font-size: 13.5px;
     border-bottom: 1px solid var(--line);
     vertical-align: top;
     line-height: 1.6;
@@ -501,48 +574,75 @@
     line-height: 1.65;
   }
 
-  @media (max-width: 720px) {
-    .wrap { padding: 32px 20px 80px; }
+  @media (max-width: 900px) {
+    .sidenav { display: none; }
+    .wrap { margin-left: auto; padding: 32px 20px 80px; }
     .frame-grid { grid-template-columns: 1fr; }
     .gap-grid { grid-template-columns: 1fr; }
     .bench-table, .matrix-table, .final-table, .excl-table { font-size: 12px; }
+    .pres-title { font-size: 26px; }
   }
 
   @media print {
     body { background: white; }
-    .wrap { padding: 32px 24px; }
+    .sidenav { display: none; }
+    .wrap { margin-left: auto; padding: 32px 24px; }
     .back-link { display: none; }
   }
 </style>
 </head>
 <body>
 
+<nav class="sidenav">
+  <div class="logo">Helix · FAQ</div>
+  <span class="nav-section">회의 안건</span>
+  <a class="nav-item active" href="#purpose">회의 목적</a>
+  <a class="nav-item" href="#framework">선정 기준</a>
+  <a class="nav-item" href="#benchmark">경쟁 병원 현황</a>
+  <a class="nav-item" href="#matrix">선정 매트릭스</a>
+  <a class="nav-item" href="#gap">선점 공백 영역</a>
+  <a class="nav-item" href="#final">최종 34문항</a>
+  <a class="nav-item" href="#exclusion">제외·보류 항목</a>
+</nav>
+
 <div class="wrap">
 
-  <a href="helix_keyword_analysis_v4_1.html" class="back-link">← 헬릭스 키워드 분석으로 돌아가기</a>
+  <a href="helix_keyword_analysis_v5.html" class="back-link">← 헬릭스 키워드 분석으로 돌아가기</a>
 
   <!-- HEADER -->
   <div class="doc-header">
-    <div class="doc-eyebrow">HELIX ANIMAL MEDICAL CENTER · INTERNAL REPORT</div>
-    <h1 class="doc-title">FAQ 후보 선정 근거 보고서</h1>
-    <p class="doc-sub">키워드 분석 보고서(v4)의 FAQ 콘텐츠 명단을 뒷받침하는 선정 근거 자료</p>
-    <div class="doc-meta">
-      <div class="doc-meta-item">작성일 <span>2026. 06. 09</span></div>
-      <div class="doc-meta-item">분석 대상 병원 <span>8개소</span></div>
-      <div class="doc-meta-item">최종 선정 후보 <span>34문항</span></div>
-      <div class="doc-meta-item">작성 <span>브랜딩실</span></div>
+    <div class="pres-eyebrow">HELIX ANIMAL MEDICAL CENTER · FAQ STRATEGY · MEETING 2026.06</div>
+    <h1 class="pres-title">FAQ 콘텐츠 전략<br>선정 근거 및 운용 방향</h1>
+    <div class="pres-meta">
+      <span><span class="pres-meta-dot"></span>원장님 전원 · 마케팅 실장님</span>
+      <span><span class="pres-meta-dot"></span>홈페이지 제작 담당자 주관</span>
+      <span><span class="pres-meta-dot"></span>2026. 06 (금)</span>
+    </div>
+  </div>
+
+  <!-- KEY CARD -->
+  <div class="key-card">
+    <div class="key-card-eyebrow">핵심 결론</div>
+    <div class="key-card-text">
+      경쟁 병원 8개소 중 <strong>구조화된 FAQ를 운영하는 곳은 1개소</strong>입니다.<br>
+      헬릭스의 핵심 시술을 FAQ로 설명하는 병원은 <strong>전무</strong>합니다.
+    </div>
+    <div class="key-points">
+      <span class="key-point">34문항 최종 선정</span>
+      <span class="key-point">검색 수요 · AI 적합성 · 경쟁 공백 3축 교차</span>
+      <span class="key-point">지금이 선점 타이밍</span>
     </div>
   </div>
 
   <!-- CONTEXT NOTE -->
-  <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:20px 24px;margin-bottom:48px;font-size:14px;line-height:1.8;color:var(--ink-dim);">
+  <div id="purpose" style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:20px 24px;margin-bottom:48px;font-size:14px;line-height:1.8;color:var(--ink-dim);">
     <p style="margin-bottom:10px;font-weight:600;color:var(--ink);font-size:14.5px;">이 보고서는 키워드 분석 보고서(v4)와 함께 읽으시는 것을 권장드립니다.</p>
     <p>키워드 보고서에서 FAQ 콘텐츠를 콘텐츠 트랙의 출발점으로 제안드렸는데, <strong>"그 FAQ 후보는 어떤 근거로 골랐는지"</strong>를 이 자료에서 풀어드리고자 했습니다. 키워드 검색량 데이터(STEP 2에서 수집한 네이버 원본)를 기반으로, 경쟁 병원 8개소의 FAQ 운영 현황을 직접 확인하고 3가지 기준을 교차해 후보를 추렸습니다. 최종 선정된 34개 질문과 제외된 항목의 사유까지 함께 정리했으니, 진료팀 검토 시 참고 자료로 활용해 주시면 좋겠습니다.</p>
   </div>
 
 
   <!-- SECTION 1: FRAMEWORK -->
-  <div class="section">
+  <div class="section" id="framework">
     <h2 class="section-title"><span class="section-num">01</span> 선정 기준 — 왜 이 3가지를 봤는가</h2>
 
     <p style="font-size:14px;color:var(--ink-dim);line-height:1.85;margin-bottom:20px;">
@@ -554,34 +654,49 @@
         <div class="frame-card-num">①</div>
         <div class="frame-card-title">검색 수요</div>
         <div class="frame-card-desc">
-          네이버 키워드 도구 기준 월간 검색량입니다. 보호자들이 실제로 찾고 있는 주제인지 확인했습니다.<br><br>
-          상 3,000+ &nbsp;/&nbsp; 중 500~2,999 &nbsp;/&nbsp; 하 500 미만
+          네이버 키워드 도구 기준 월간 검색량 — 보호자들이 실제로 찾고 있는 주제인지 확인했습니다.
+          <details class="card-fold">
+            <summary>구간 기준 상세</summary>
+            <div class="fold-inner">상 3,000+ &nbsp;/&nbsp; 중 500~2,999 &nbsp;/&nbsp; 하 500 미만</div>
+          </details>
         </div>
       </div>
       <div class="frame-card">
         <div class="frame-card-num">②</div>
         <div class="frame-card-title">AI 검색 적합성</div>
         <div class="frame-card-desc">
-          ChatGPT·클로바X 같은 AI 검색이 "답변 소스"로 채택할 가능성을 봤습니다. 헬릭스가 고유하게 답할 수 있는 주제일수록 채택 가능성이 높다고 보았습니다.
+          AI 검색이 "답변 소스"로 채택할 가능성을 봤습니다.
+          <details class="card-fold">
+            <summary>판단 기준 상세</summary>
+            <div class="fold-inner">ChatGPT·클로바X 같은 AI 검색이 "답변 소스"로 채택할 가능성을 봤습니다. 헬릭스가 고유하게 답할 수 있는 주제일수록 채택 가능성이 높다고 보았습니다.</div>
+          </details>
         </div>
       </div>
       <div class="frame-card">
         <div class="frame-card-num">③</div>
         <div class="frame-card-title">경쟁 공백</div>
         <div class="frame-card-desc">
-          경쟁 병원 8개소의 FAQ 현황을 직접 확인했습니다. 경쟁 병원이 아직 다루지 않는 영역이 헬릭스 선점 기회라고 보았습니다.
+          경쟁 병원 8개소의 FAQ 현황을 직접 확인했습니다.
+          <details class="card-fold">
+            <summary>판단 기준 상세</summary>
+            <div class="fold-inner">경쟁 병원이 아직 다루지 않는 영역이 헬릭스 선점 기회라고 보았습니다.</div>
+          </details>
         </div>
       </div>
     </div>
 
     <div class="frame-note">
-      <strong>검색량이 낮아도 포함한 질문들이 있습니다.</strong> 수술 네비게이터, 방사성 요오드 치료 가능 병원 수처럼 아직 검색량은 적지만 헬릭스만 설명할 수 있는 질문은 AI 검색 선점 효과를 고려해 포함했습니다. 키워드 보고서에서 말씀드린 "콘텐츠로 검색량을 키운다"는 방향과 같은 맥락입니다.
+      <strong>검색량이 낮아도 포함한 질문들이 있습니다.</strong>
+      <details class="card-fold">
+        <summary>상세 보기</summary>
+        <div class="fold-inner">수술 네비게이터, 방사성 요오드 치료 가능 병원 수처럼 아직 검색량은 적지만 헬릭스만 설명할 수 있는 질문은 AI 검색 선점 효과를 고려해 포함했습니다. 키워드 보고서에서 말씀드린 "콘텐츠로 검색량을 키운다"는 방향과 같은 맥락입니다.</div>
+      </details>
     </div>
   </div>
 
 
   <!-- SECTION 2: BENCHMARK -->
-  <div class="section">
+  <div class="section" id="benchmark">
     <h2 class="section-title"><span class="section-num">02</span> 경쟁 병원 FAQ 현황 벤치마킹</h2>
 
     <table class="bench-table">
@@ -647,16 +762,16 @@
 
     <div class="bench-insight">
       <strong>핵심 발견</strong> — 분석 대상 8개 병원 중 구조화된 FAQ를 운영하는 곳은 사실상 해마루 1개소뿐입니다.
-      인터벤션, 방사성 요오드 치료, 혈액투석, 수술 네비게이터 등 헬릭스의 핵심 서비스를
-      FAQ로 설명하는 병원은 전무합니다.
-      지금이 선점 기회이며, 특히 AI 검색(ChatGPT·Perplexity·클로바X)에서
-      해당 주제의 답변 공급자가 될 수 있습니다.
+      <details class="card-fold">
+        <summary>상세 인사이트</summary>
+        <div class="fold-inner">인터벤션, 방사성 요오드 치료, 혈액투석, 수술 네비게이터 등 헬릭스의 핵심 서비스를 FAQ로 설명하는 병원은 전무합니다. 지금이 선점 기회이며, 특히 AI 검색(ChatGPT·Perplexity·클로바X)에서 해당 주제의 답변 공급자가 될 수 있습니다.</div>
+      </details>
     </div>
   </div>
 
 
   <!-- SECTION 3: SELECTION MATRIX -->
-  <div class="section">
+  <div class="section" id="matrix">
     <h2 class="section-title"><span class="section-num">03</span> 기존 FAQ 초안 평가 및 선정 매트릭스</h2>
 
     <p style="font-size:14px;color:var(--ink-dim);line-height:1.85;margin-bottom:20px;">
@@ -984,7 +1099,7 @@
 
 
   <!-- SECTION 4: GAPS -->
-  <div class="section">
+  <div class="section" id="gap">
     <h2 class="section-title"><span class="section-num">04</span> 헬릭스 선점 가능 공백 영역</h2>
 
     <div class="gap-grid">
@@ -1059,7 +1174,7 @@
 
 
   <!-- SECTION 5: FINAL CANDIDATES -->
-  <div class="section">
+  <div class="section" id="final">
     <h2 class="section-title"><span class="section-num">05</span> 최종 FAQ 후보 확정 목록 (34문항)</h2>
 
     <table class="final-table">
@@ -1247,7 +1362,7 @@
 
 
   <!-- SECTION 6: EXCLUSIONS -->
-  <div class="section">
+  <div class="section" id="exclusion">
     <h2 class="section-title"><span class="section-num">06</span> 이번 목록에서 제외하거나 보류한 항목</h2>
 
     <p style="font-size:14px;color:var(--ink-dim);line-height:1.85;margin-bottom:20px;">
@@ -1293,6 +1408,22 @@
   </div>
 
 </div>
+
+<script>
+  const navItems = document.querySelectorAll('.sidenav .nav-item');
+  const sectionIds = ['purpose','framework','benchmark','matrix','gap','final','exclusion'];
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 140) cur = id;
+    });
+    navItems.forEach(i => {
+      i.classList.remove('active');
+      if (i.getAttribute('href') === '#' + cur) i.classList.add('active');
+    });
+  });
+</script>
 
 </body>
 </html>
