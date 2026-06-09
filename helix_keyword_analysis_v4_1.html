@@ -189,6 +189,21 @@
   @media(max-width:1100px){.usage-types-grid{grid-template-columns:repeat(2,1fr);}.slide-points{grid-template-columns:1fr;}}
   @media(max-width:860px){.usage-types-grid{grid-template-columns:1fr;}.slide-headline{font-size:26px;}.slide-conclusion{padding:26px 22px;}}
 
+  /* 헬릭스 특화진료 한눈에 */
+  .specialty-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .specialty-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px 16px;box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;flex-direction:column;}
+  .specialty-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.2em;font-weight:700;margin-bottom:6px;}
+  .specialty-group-name{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:600;color:var(--ink);line-height:1.3;}
+  .specialty-group-en{font-size:11.5px;color:var(--ink-dim);font-style:italic;padding-bottom:13px;border-bottom:1px solid var(--line);margin-bottom:11px;margin-top:1px;}
+  .specialty-list{list-style:none;display:flex;flex-direction:column;}
+  .specialty-list li{padding:9px 0;border-bottom:1px dashed var(--line);}
+  .specialty-list li:last-child{border-bottom:none;padding-bottom:0;}
+  .specialty-list li.sp-pending{opacity:.4;}
+  .sp-ko{display:block;font-size:13px;color:var(--ink);font-weight:500;line-height:1.45;}
+  .sp-en{display:block;font-size:11px;color:var(--ink-dim);font-style:italic;margin-top:3px;line-height:1.4;}
+  .sp-pending-badge{display:inline-block;padding:1.5px 6px;border-radius:4px;font-size:9px;font-weight:700;background:var(--orange-soft);color:var(--orange);margin-left:6px;letter-spacing:.05em;vertical-align:middle;}
+  @media(max-width:1100px){.specialty-grid{grid-template-columns:repeat(2,1fr);}}
+
   /* 전제 인사이트 */
   .premise-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:48px;}
   .premise-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px 26px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
@@ -444,7 +459,7 @@
 
   @media(max-width:860px){
     .sidenav{display:none;}.main{margin-left:0;padding:24px 18px 80px;}
-    .priority-grid,.nation-grid,.ins-row,.premise-grid,.rank-grid{grid-template-columns:1fr;}
+    .priority-grid,.nation-grid,.ins-row,.premise-grid,.rank-grid,.specialty-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -457,6 +472,7 @@
     <span class="nav-section"><span class="nav-section-ico">📌</span>요약</span>
     <a class="nav-item" href="#methodology">분석 방법</a>
     <a class="nav-item" href="#conclusion">핵심 결론</a>
+    <a class="nav-item" href="#specialty">헬릭스 특화진료</a>
     <a class="nav-item" href="#premise">전제 인사이트</a>
   </div>
 
@@ -558,10 +574,62 @@
     </div>
   </section>
 
+  <!-- ════════════ 헬릭스 특화진료 한눈에 ════════════ -->
+  <section id="specialty" class="section-block">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <span class="sec-title">헬릭스 특화진료 한눈에</span>
+      <span class="sec-sub">확정 13개 진료 · 4개 그룹 구조</span>
+    </div>
+    <div class="specialty-grid">
+      <div class="specialty-card">
+        <div class="specialty-eyebrow">GROUP 01</div>
+        <div class="specialty-group-name">종양 치료</div>
+        <div class="specialty-group-en">Oncology &amp; Radiation</div>
+        <ul class="specialty-list">
+          <li><span class="sp-ko">통합 종양 진료</span><span class="sp-en">Integrated Oncology</span></li>
+          <li><span class="sp-ko">뇌종양 수술</span><span class="sp-en">Brain Tumor Surgery</span></li>
+          <li><span class="sp-ko">방사선 치료</span><span class="sp-en">Radiation Therapy</span></li>
+        </ul>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-eyebrow">GROUP 02</div>
+        <div class="specialty-group-name">인터벤션</div>
+        <div class="specialty-group-en">Intervention</div>
+        <ul class="specialty-list">
+          <li><span class="sp-ko">종양 색전술</span><span class="sp-en">Tumor Embolization</span></li>
+          <li><span class="sp-ko">혈관 중재술</span><span class="sp-en">Vascular Intervention</span></li>
+          <li><span class="sp-ko">스텐트 시술</span><span class="sp-en">Stent Intervention</span></li>
+        </ul>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-eyebrow">GROUP 03</div>
+        <div class="specialty-group-name">수술</div>
+        <div class="specialty-group-en">Surgery</div>
+        <ul class="specialty-list">
+          <li><span class="sp-ko">뇌척추 수술</span><span class="sp-en">Neurospinal Surgery</span></li>
+          <li><span class="sp-ko">흉복강경 수술</span><span class="sp-en">Minimally Invasive Surgery</span></li>
+          <li><span class="sp-ko">백내장·녹내장 수술</span><span class="sp-en">Cataract &amp; Glaucoma Surgery</span></li>
+          <li><span class="sp-ko">비강경 검사</span><span class="sp-en">Rhinoscopy &amp; Biopsy</span></li>
+        </ul>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-eyebrow">GROUP 04</div>
+        <div class="specialty-group-name">전문 내과</div>
+        <div class="specialty-group-en">Specialty Medicine</div>
+        <ul class="specialty-list">
+          <li><span class="sp-ko">신장 투석</span><span class="sp-en">Renal Dialysis</span></li>
+          <li class="sp-pending" title="원장님 검토 후 확정 예정"><span class="sp-ko">FMT (장내 미생물 이식)<span class="sp-pending-badge">보류</span></span><span class="sp-en">Fecal Microbiota Transplantation</span></li>
+          <li><span class="sp-ko">고양이 방사성 요오드 치료 · 동위원소 치료</span><span class="sp-en">Feline Radioiodine &amp; Radioisotope Therapy</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- ════════════ 전제 인사이트 ════════════ -->
   <section id="premise" class="section-block">
     <div class="sec-head">
-      <span class="sec-num">01</span>
+      <span class="sec-num">02</span>
       <span class="sec-title">들어가기 앞서</span>
       <span class="sec-sub">분석을 보기 전에 짚어두는 전제 몇 가지</span>
     </div>
@@ -598,7 +666,7 @@
   <!-- ════════════ 활용 유형 3가지 ════════════ -->
   <section id="usage-types" class="section-block">
     <div class="sec-head">
-      <span class="sec-num">02</span>
+      <span class="sec-num">03</span>
       <span class="sec-title">활용 유형 3가지</span>
       <span class="sec-sub">키워드 성격에 따라 운용 방식이 달라집니다</span>
     </div>
@@ -616,7 +684,7 @@
   <!-- ════════════ 분류별 공략 우선순위 ════════════ -->
   <section id="ranking" class="section-block">
     <div class="sec-head">
-      <span class="sec-num">03</span>
+      <span class="sec-num">04</span>
       <span class="sec-title">분류별 공략 우선순위</span>
       <span class="sec-sub">무엇부터 다룰지 — 키워드 유형별 큐레이션 Top 10</span>
     </div>
@@ -659,7 +727,7 @@
   <!-- ════════════ 고검색량 키워드 활용 전략 ════════════ -->
   <section id="strategy" class="section-block">
     <div class="sec-head">
-      <span class="sec-num">04</span>
+      <span class="sec-num">05</span>
       <span class="sec-title">고검색량 키워드 활용 전략</span>
       <span class="sec-sub">콘텐츠 트랙과 광고 트랙, 키워드 성격에 따라 나뉜다</span>
     </div>
@@ -739,7 +807,7 @@
   <!-- ════════════ FAQ·블로그 콘텐츠 1차 명단 ════════════ -->
   <section id="faq-list" class="section-block">
     <div class="sec-head">
-      <span class="sec-num">05</span>
+      <span class="sec-num">06</span>
       <span class="sec-title">📝 FAQ·블로그 콘텐츠 1차 명단</span>
       <span class="sec-sub">funnel 키워드 기준 큐레이션 — 콘텐츠팀·마케팅팀 즉시 활용</span>
     </div>
@@ -758,7 +826,7 @@
   <!-- ════════════ 핵심 특화진료 ════════════ -->
   <section id="priority" class="section-block">
     <div class="sec-head">
-      <span class="sec-num">06</span>
+      <span class="sec-num">07</span>
       <span class="sec-title">헬릭스 핵심 특화진료 키워드</span>
       <span class="sec-sub">원장님 우선순위 순 · 시술명 + 증상 유입어</span>
     </div>
@@ -788,7 +856,7 @@
   <!-- ════════════ 전체 키워드 데이터 ════════════ -->
   <section id="all" class="section-block">
     <div class="sec-head">
-      <span class="sec-num">07</span>
+      <span class="sec-num">08</span>
       <span class="sec-title">전체 키워드 분석 테이블</span>
       <span class="sec-sub">전문성·의도 기반 · 일반 동물병원 키워드 비활성 표시</span>
     </div>
