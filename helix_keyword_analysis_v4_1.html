@@ -283,6 +283,10 @@
   .badge-hospital{background:var(--blue-soft);color:var(--blue);}
   .badge-general{background:#f5f5f5;color:#999;border:1px solid #e0e0e0;}
   .badge-ambiguous{background:var(--purple-soft);color:var(--purple);border:1px solid rgba(107,79,168,.25);margin-left:4px;cursor:help;}
+  .badge-pending{background:var(--orange-soft);color:var(--orange);border:1px solid rgba(192,90,16,.3);margin-left:4px;cursor:help;font-size:9.5px;letter-spacing:.05em;}
+  .pc-kw-row.is-pending{opacity:.4;}
+  tbody tr.is-pending td{opacity:.4;}
+  tbody tr.is-pending:hover td{opacity:.6;}
   .comp-badge{display:inline-block;padding:1.5px 7px;border-radius:4px;font-size:10px;font-weight:600;}
   .comp-badge.high{background:var(--red-soft);color:var(--red);}
   .comp-badge.mid{background:var(--gold-soft);color:var(--gold);}
@@ -401,6 +405,38 @@
   .strategy-arrow.strategy-arrow-parallel{color:var(--gold);font-size:24px;font-weight:500;letter-spacing:-2px;}
   .strategy-summary{padding:14px 18px;background:var(--surface);border:1px solid var(--accent);border-left:3px solid var(--accent);border-radius:8px;font-size:13px;color:var(--ink);line-height:1.7;}
   .strategy-summary strong{color:var(--accent);font-weight:700;font-family:'IBM Plex Mono',monospace;font-size:13.5px;}
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     FAQ·블로그 콘텐츠 명단 (#faq-list)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .faq-groups{display:flex;flex-direction:column;gap:10px;}
+  .faq-group{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+  .faq-summary{cursor:pointer;padding:14px 20px;display:flex;align-items:center;gap:14px;user-select:none;transition:background .14s;list-style:none;}
+  .faq-summary::-webkit-details-marker{display:none;}
+  .faq-summary::marker{content:'';}
+  .faq-summary:hover{background:var(--surface-2);}
+  .faq-group[open] .faq-summary{background:var(--surface-2);border-bottom:1px solid var(--line);}
+  .faq-group-name{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:600;color:var(--ink);flex:1;}
+  .faq-group-count{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-dim);font-weight:500;}
+  .faq-pending-note{color:var(--orange);font-size:10.5px;margin-left:4px;}
+  .faq-chevron{transition:transform .2s;color:var(--ink-muted);font-size:14px;flex-shrink:0;}
+  .faq-group[open] .faq-chevron{transform:rotate(180deg);}
+  .faq-body{padding:0 16px 14px;}
+  .faq-table{width:100%;border-collapse:collapse;margin-top:6px;}
+  .faq-table thead th{text-align:left;padding:10px 12px;font-size:10px;font-weight:700;color:var(--ink-dim);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);background:var(--surface-2);}
+  .faq-table thead th.num-r{text-align:right;}
+  .faq-table tbody td{padding:11px 12px;font-size:13px;border-bottom:1px dashed var(--line);vertical-align:middle;color:var(--ink);}
+  .faq-table tbody tr:last-child td{border-bottom:none;}
+  .faq-table tbody tr:hover td{background:rgba(0,0,0,.018);}
+  .faq-kw{font-weight:600;white-space:nowrap;}
+  .faq-vol{font-family:'IBM Plex Mono',monospace;color:var(--ink-dim);text-align:right;font-size:12px;white-space:nowrap;}
+  .faq-q{color:var(--ink);line-height:1.65;}
+  .faq-link .usage-pill{font-size:10.5px;padding:2.5px 9px;}
+  .faq-table tbody tr.faq-inactive td{opacity:.4;}
+  .faq-table tbody tr.faq-inactive:hover td{opacity:.6;}
+  .faq-table tbody tr.faq-inactive .faq-kw,
+  .faq-table tbody tr.faq-inactive .faq-q{text-decoration:line-through;text-decoration-color:rgba(0,0,0,.3);}
+  .faq-inactive-badge{display:inline-block;padding:1.5px 7px;border-radius:4px;font-size:9.5px;font-weight:700;background:var(--orange-soft);color:var(--orange);margin-left:6px;letter-spacing:.05em;}
   @media(max-width:860px){
     .strategy-flow{flex-direction:column;}
     .strategy-arrow{width:auto;transform:rotate(90deg);padding:6px 0;font-size:22px;}
@@ -429,6 +465,7 @@
     <a class="nav-item" href="#usage-types">활용 유형 3가지</a>
     <a class="nav-item" href="#ranking">분류별 공략 우선순위</a>
     <a class="nav-item" href="#strategy">고검색량 활용 전략</a>
+    <a class="nav-item" href="#faq-list">📝 FAQ 콘텐츠 명단</a>
   </div>
 
   <div class="nav-group">
@@ -699,10 +736,29 @@
     </div>
   </section>
 
+  <!-- ════════════ FAQ·블로그 콘텐츠 1차 명단 ════════════ -->
+  <section id="faq-list" class="section-block">
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <span class="sec-title">📝 FAQ·블로그 콘텐츠 1차 명단</span>
+      <span class="sec-sub">funnel 키워드 기준 큐레이션 — 콘텐츠팀·마케팅팀 즉시 활용</span>
+    </div>
+    <div class="usage-intro">
+      <div class="usage-intro-title">이 섹션의 요점</div>
+      <p class="usage-intro-body">
+        앞 섹션의 <strong>"유입→연결"</strong> 트랙에 해당하는 funnel 키워드를 진료 영역별로 묶고, 각 키워드를 어떤 형태의 FAQ 제목으로 풀어내면 좋을지 1차 큐레이션해 두었습니다.
+        <strong>콘텐츠팀이 바로 가져가 작성할 수 있는 명단</strong>이며, 각 행 우측의 "연결 목적"은 그 콘텐츠 안에 헬릭스의 어떤 진료로 안내하면 자연스러울지에 대한 가이드입니다.
+        <br><br>
+        <span style="color:var(--ink-muted);font-size:12.5px;">※ 진료 영역별로 접혀 있습니다. 영역 이름을 누르시면 펼쳐 보실 수 있습니다.</span>
+      </p>
+    </div>
+    <div class="faq-groups" id="faqGroups"></div>
+  </section>
+
   <!-- ════════════ 핵심 특화진료 ════════════ -->
   <section id="priority" class="section-block">
     <div class="sec-head">
-      <span class="sec-num">05</span>
+      <span class="sec-num">06</span>
       <span class="sec-title">헬릭스 핵심 특화진료 키워드</span>
       <span class="sec-sub">원장님 우선순위 순 · 시술명 + 증상 유입어</span>
     </div>
@@ -732,7 +788,7 @@
   <!-- ════════════ 전체 키워드 데이터 ════════════ -->
   <section id="all" class="section-block">
     <div class="sec-head">
-      <span class="sec-num">06</span>
+      <span class="sec-num">07</span>
       <span class="sec-title">전체 키워드 분석 테이블</span>
       <span class="sec-sub">전문성·의도 기반 · 일반 동물병원 키워드 비활성 표시</span>
     </div>
@@ -813,7 +869,7 @@ const PRIORITY = {
     {kw:'강아지담낭점액종',     mobile:570, pc:140, comp:'높음',ads:7,  type:'symptom'},
     {kw:'강아지담낭',           mobile:490, pc:60,  comp:'높음',ads:3,  type:'symptom'},
     {kw:'강아지담낭제거수술',   mobile:70,  pc:20,  comp:'중간',ads:3,  type:'symptom'},
-    {kw:'강아지엑소좀',         mobile:240, pc:60,  comp:'높음',ads:7,  type:'symptom'},
+    {kw:'강아지엑소좀',         mobile:240, pc:60,  comp:'높음',ads:7,  type:'symptom',isPending:true},
   ]},
   p3:{rank:3,label:'방사선 치료',en:'Radiation Therapy',note:'동물 방사선·종양 연계',kws:[
     {kw:'동물방사선치료',         mobile:5,   pc:10,  comp:'중간',ads:6, type:'core'},
@@ -888,7 +944,7 @@ const ALL_DATA = [
   {kw:'강아지유선종양',       mobile:1640,pc:190,comp:'높음',ads:10,cat:'p2',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
   {kw:'강아지담낭점액종',     mobile:570, pc:140,comp:'높음',ads:7, cat:'p2',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
   {kw:'강아지담낭',           mobile:490, pc:60, comp:'높음',ads:3, cat:'p2',isCore:false,isGeneral:false,kwType:'disease',usageType:'funnel'},
-  {kw:'강아지엑소좀',         mobile:240, pc:60, comp:'높음',ads:7, cat:'p2',isCore:false,isGeneral:false,kwType:'treatment',usageType:'funnel'},
+  {kw:'강아지엑소좀',         mobile:240, pc:60, comp:'높음',ads:7, cat:'p2',isCore:false,isGeneral:false,isPending:true,kwType:'treatment',usageType:'funnel'},
   {kw:'강아지담낭제거수술',   mobile:70,  pc:20, comp:'중간',ads:3, cat:'p2',isCore:false,isGeneral:false,kwType:'treatment',usageType:'funnel'},
   {kw:'동물색전술',           mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
   {kw:'강아지색전술',         mobile:5,   pc:5,  comp:'낮음',ads:0, cat:'p2',isCore:true, isGeneral:false,kwType:'treatment',usageType:'direct'},
@@ -1031,11 +1087,12 @@ function buildPriority(){
         const cc=k.comp==='낮음'?'low':k.comp==='중간'?'mid':'high';
         const mTxt=k.mobile<=5?'<span class="no-data">&lt;10</span>':`<span class="pc-num">${k.mobile.toLocaleString()}</span>`;
         const pTxt=k.pc<=5?'<span class="no-data">&lt;10</span>':`<span class="pc-num" style="color:var(--ink-dim)">${k.pc.toLocaleString()}</span>`;
-        return `<div class="pc-kw-row">
+        return `<div class="pc-kw-row${k.isPending?' is-pending':''}" ${k.isPending?'title="원장님 검토 후 확정 예정"':''}>
           <div class="pc-kw-label">
             <div class="core-dot ${isCore?'dot-'+key:'dot-rel'}"></div>
             ${k.kw}
             ${isCore?'<span class="badge badge-core">시술명</span>':''}
+            ${k.isPending?'<span class="badge badge-pending" title="원장님 검토 후 확정 예정">보류</span>':''}
           </div>
           <div style="text-align:right">${mTxt}</div>
           <div style="text-align:right">${pTxt}</div>
@@ -1164,9 +1221,11 @@ function renderTable(){
     const fillClass=d.isGeneral?'vol-fill-dim':'vol-fill';
     const tr=document.createElement('tr');
     if(d.isGeneral) tr.className='is-general'+(showGeneral?'':' hidden-general');
+    if(d.isPending) tr.classList.add('is-pending');
+    if(d.isPending) tr.title='원장님 검토 후 확정 예정';
     tr.innerHTML=`
       <td class="kw-name">${kwHtml}${d.isCore?'<span class="core-flag">★ 핵심</span>':''}</td>
-      <td>${d.isCore?'<span class="badge badge-core">시술명</span>':d.isGeneral?'<span class="badge badge-general">일반</span>':'<span class="badge badge-symptom">증상·탐색</span>'}${d.isAmbiguous?'<span class="badge badge-ambiguous" title="헬릭스 전문성과 일반 병원 영역이 겹치는 경계 키워드">?</span>':''}</td>
+      <td>${d.isCore?'<span class="badge badge-core">시술명</span>':d.isGeneral?'<span class="badge badge-general">일반</span>':'<span class="badge badge-symptom">증상·탐색</span>'}${d.isAmbiguous?'<span class="badge badge-ambiguous" title="헬릭스 전문성과 일반 병원 영역이 겹치는 경계 키워드">?</span>':''}${d.isPending?'<span class="badge badge-pending" title="원장님 검토 후 확정 예정">보류</span>':''}</td>
       <td><span class="cat-tag ${meta.tagClass}">${meta.label}</span></td>
       <td class="num-r">${d.mobile<=5?'<span style="color:var(--ink-muted)">&lt;10</span>':d.mobile.toLocaleString()}</td>
       <td class="num-r">${d.pc<=5?'<span style="color:var(--ink-muted)">&lt;10</span>':d.pc.toLocaleString()}</td>
@@ -1326,7 +1385,99 @@ function setupScrollSpy(){
   map.forEach((_,el)=>io.observe(el));
 }
 
-buildKpi();buildRanking();buildUsageTypes();buildPriority();buildNationwide();buildControls();renderTable();setupScrollSpy();
+// FAQ·블로그 콘텐츠 1차 명단 — 진료 영역별 큐레이션
+const FAQ_LIST = [
+  {label:'신경계 (p1)', items:[
+    {kw:'강아지디스크증상',   mobile:1170, q:'강아지 디스크 증상, 어떻게 알 수 있나요?',          link:'디스크 수술 연결'},
+    {kw:'강아지발작',         mobile:930,  q:'강아지가 발작을 일으킨다면 뇌종양일 수 있나요?',     link:'뇌종양 수술 연결'},
+    {kw:'강아지뇌수막염',     mobile:950,  q:'강아지 뇌수막염, 어떤 치료가 필요한가요?',           link:'신경외과 연결'},
+    {kw:'강아지경련',         mobile:830,  q:'강아지 경련과 발작, 어떻게 다른가요?',               link:'신경과 연결'},
+    {kw:'강아지뇌수두증',     mobile:650,  q:'강아지 뇌수두증이란 무엇인가요?',                    link:'신경외과 연결'},
+    {kw:'강아지척수공동증',   mobile:430,  q:'강아지 척수공동증, 수술이 필요한 경우는?',           link:'척수 수술 연결'},
+    {kw:'강아지디스크',       mobile:730,  q:'강아지 디스크, 수술 없이 나을 수 있나요?',           link:'수술 적응증 연결'},
+    {kw:'강아지목디스크',     mobile:440,  q:'강아지 목디스크 증상과 치료법은?',                   link:'수술 연결'},
+    {kw:'강아지간질',         mobile:360,  q:'강아지 간질, 평생 약만 먹어야 하나요?',              link:'신경과 관리 연결'},
+    {kw:'강아지뇌종양',       mobile:390,  q:'강아지 뇌종양, 수술로 나을 수 있나요?',              link:'뇌종양 수술 연결'},
+  ]},
+  {label:'인터벤션·외과 (p2)', items:[
+    {kw:'강아지유선종양',     mobile:1640, q:'강아지 유선종양, 수술하면 완치되나요?',              link:'종양외과 연결'},
+    {kw:'강아지담낭점액종',   mobile:570,  q:'강아지 담낭점액종이란 무엇인가요?',                  link:'외과 수술 연결'},
+    {kw:'강아지담낭',         mobile:490,  q:'강아지 담낭 문제, 언제 수술이 필요한가요?',          link:'담낭 수술 연결'},
+    {kw:'강아지엑소좀',       mobile:240,  q:'강아지 엑소좀 치료란 무엇인가요?',                   link:'통합종양 연결', inactive:true},
+    {kw:'강아지담낭제거수술', mobile:70,   q:'강아지 담낭 제거 수술, 어떻게 진행되나요?',          link:'외과 수술 연결'},
+  ]},
+  {label:'방사선·종양 (p3)', items:[
+    {kw:'고양이비만세포종',   mobile:650,  q:'고양이 비만세포종, 어떤 치료를 받아야 하나요?',      link:'방사선·종양외과 연결'},
+    {kw:'강아지종양',         mobile:620,  q:'강아지 종양, 수술과 방사선 치료 중 무엇이 맞나요?',  link:'통합종양 연결'},
+    {kw:'강아지암',           mobile:360,  q:'강아지 암 진단 후 치료 순서는?',                     link:'방사선 치료 연결'},
+    {kw:'고양이암',           mobile:200,  q:'고양이 암, 치료 옵션에는 어떤 것들이 있나요?',       link:'방사선·종양 연결'},
+  ]},
+  {label:'요오드·갑상선 (p4)', items:[
+    {kw:'고양이신부전',       mobile:1280, q:'고양이 신부전과 갑상선 질환, 어떤 관계인가요?',      link:'요오드 치료 연결'},
+  ]},
+  {label:'안과 (oph)', items:[
+    {kw:'강아지눈충혈',       mobile:2530, q:'강아지 눈이 빨개요, 어떤 질환일 수 있나요?',         link:'각막·결막 진료 연결'},
+    {kw:'강아지결막염',       mobile:1170, q:'강아지 결막염, 안과 전문 치료가 필요한가요?',       link:'안과 전문 연결'},
+    {kw:'강아지체리아이',     mobile:820,  q:'강아지 체리아이, 수술해야 하나요?',                  link:'안과 수술 연결'},
+    {kw:'강아지각막궤양',     mobile:760,  q:'강아지 각막궤양, 방치하면 어떻게 되나요?',           link:'안과 전문 연결'},
+    {kw:'강아지녹내장',       mobile:720,  q:'강아지 녹내장, 실명을 막으려면?',                    link:'안과 전문 연결'},
+    {kw:'강아지포도막염',     mobile:390,  q:'강아지 포도막염이란 무엇인가요?',                    link:'안과 전문 연결'},
+  ]},
+  {label:'치과 (dent)', items:[
+    {kw:'고양이구내염',       mobile:2250, q:'고양이 구내염, 약으로 안 나으면 어떻게 하나요?',     link:'발치·수술 연결'},
+    {kw:'고양이구내염약',     mobile:1260, q:'고양이 구내염 약, 언제까지 먹여야 하나요?',          link:'수술 적응증 연결'},
+    {kw:'강아지잇몸염증',     mobile:670,  q:'강아지 잇몸 염증, 치주 수술이 필요한 경우는?',       link:'치주 수술 연결'},
+  ]},
+  {label:'내과·응급 (med)', items:[
+    {kw:'강아지심장병',       mobile:2040, q:'강아지 심장병, 어떤 전문 치료가 있나요?',            link:'심장 전문 연결'},
+    {kw:'강아지자궁축농증',   mobile:1630, q:'강아지 자궁축농증, 수술 타이밍을 놓치면?',          link:'외과 수술 연결'},
+    {kw:'강아지당뇨',         mobile:1110, q:'강아지 당뇨, 인슐린 외에 치료법이 있나요?',          link:'내과 전문 연결'},
+    {kw:'강아지신부전',       mobile:1090, q:'강아지 신부전, 투석이 가능한 병원이 있나요?',        link:'투석·내과 연결'},
+    {kw:'강아지폐수종',       mobile:2660, q:'강아지 폐에 물이 찼어요, 응급 처치는?',              link:'ICU·응급 연결'},
+    {kw:'강아지혈소판감소증', mobile:800,  q:'강아지 혈소판감소증, 수혈이 필요한가요?',            link:'수혈·내과 연결'},
+    {kw:'강아지빈혈',         mobile:670,  q:'강아지 빈혈, 수혈은 어디서 받을 수 있나요?',         link:'수혈 연결'},
+  ]},
+];
+
+function buildFAQ(){
+  const root=document.getElementById('faqGroups');
+  if(!root) return;
+  FAQ_LIST.forEach((group,idx)=>{
+    const active=group.items.filter(i=>!i.inactive).length;
+    const inactive=group.items.length-active;
+    const el=document.createElement('details');
+    el.className='faq-group';
+    if(idx===0) el.setAttribute('open','');
+    el.innerHTML=`
+      <summary class="faq-summary">
+        <span class="faq-group-name">${group.label}</span>
+        <span class="faq-group-count">활용 ${active}개${inactive?` <span class="faq-pending-note">· 보류 ${inactive}</span>`:''}</span>
+        <span class="faq-chevron">▾</span>
+      </summary>
+      <div class="faq-body">
+        <table class="faq-table">
+          <thead><tr>
+            <th>키워드</th>
+            <th class="num-r">검색량</th>
+            <th>추천 FAQ 제목</th>
+            <th>연결 목적</th>
+          </tr></thead>
+          <tbody>
+            ${group.items.map(it=>`
+              <tr class="${it.inactive?'faq-inactive':''}" ${it.inactive?'title="원장님 검토 후 확정 예정"':''}>
+                <td class="faq-kw">${it.kw}${it.inactive?'<span class="faq-inactive-badge" title="원장님 검토 후 확정 예정">보류</span>':''}</td>
+                <td class="faq-vol">${it.mobile.toLocaleString()}</td>
+                <td class="faq-q">${it.q}</td>
+                <td class="faq-link"><span class="usage-pill usage-funnel">${it.link}</span></td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>`;
+    root.appendChild(el);
+  });
+}
+
+buildKpi();buildRanking();buildUsageTypes();buildPriority();buildFAQ();buildNationwide();buildControls();renderTable();setupScrollSpy();
 </script>
 </body>
 </html>
