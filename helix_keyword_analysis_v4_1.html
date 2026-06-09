@@ -112,9 +112,9 @@
   .slide-point-body{font-size:13px;color:var(--ink-dim);line-height:1.7;}
 
   /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     활용 유형 5가지 (#usage-types) — 발표 슬라이드
+     활용 유형 3가지 (#usage-types) — 발표 슬라이드
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  .usage-types-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+  .usage-types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
   .ut-card{background:var(--surface);border:1px solid var(--line);border-top:4px solid transparent;border-radius:12px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:9px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
   .ut-card.ut-direct       {border-top-color:var(--accent);}
   .ut-card.ut-funnel       {border-top-color:var(--blue);}
@@ -366,7 +366,7 @@
 
   <div class="nav-group">
     <span class="nav-section"><span class="nav-section-ico">🎯</span>전략</span>
-    <a class="nav-item" href="#usage-types">활용 유형 5가지</a>
+    <a class="nav-item" href="#usage-types">활용 유형 3가지</a>
     <a class="nav-item" href="#ranking">분류별 공략 우선순위</a>
     <a class="nav-item" href="#strategy">고검색량 활용 전략</a>
   </div>
@@ -426,7 +426,7 @@
       <div class="slide-point">
         <span class="slide-point-num">03 · 광고 집행</span>
         <div class="slide-point-title">광고 트랙으로 풀어낼 키워드</div>
-        <div class="slide-point-body">비용 검색 의도가 강하거나 SEO 경쟁이 심해 콘텐츠만으로는 닿기 어려운 키워드는, 마케팅 실장님께서 키워드 성격을 보고 곧바로 네이버 검색광고로 집행해주시는 편이 효과적일 것으로 보았습니다. 콘텐츠 트랙과 나란히 가는 또 하나의 핵심 운용 축입니다.</div>
+        <div class="slide-point-body">비용 검색 의도가 강하거나 콘텐츠 자연 검색 노출(SEO) 경쟁이 심해 콘텐츠만으로는 닿기 어려운 키워드는, 마케팅 실장님께서 키워드 성격을 보고 곧바로 네이버 검색광고로 집행해주시는 편이 효과적일 것으로 보았습니다. 콘텐츠 트랙과 나란히 가는 또 하나의 핵심 운용 축입니다.</div>
       </div>
     </div>
   </section>
@@ -468,11 +468,11 @@
   </div>
   </section>
 
-  <!-- ════════════ 활용 유형 5가지 ════════════ -->
+  <!-- ════════════ 활용 유형 3가지 ════════════ -->
   <section id="usage-types" class="section-block">
     <div class="sec-head">
       <span class="sec-num">02</span>
-      <span class="sec-title">활용 유형 5가지</span>
+      <span class="sec-title">활용 유형 3가지</span>
       <span class="sec-sub">키워드를 어떻게 다룰지 — 한눈에 보는 행동 분류</span>
     </div>
     <div class="usage-types-grid" id="usageTypesGrid"></div>
@@ -569,7 +569,7 @@
             <span class="strategy-role">콘텐츠로 닿기 어려운 키워드를 직접 집행</span>
           </div>
           <div class="strategy-card-title">광고로 곧바로 집행할 키워드</div>
-          <div class="strategy-why"><strong>역할.</strong> 콘텐츠 트랙과 나란히 가는 또 하나의 운용 축. 비용 검색 의도가 강하거나 SEO 경쟁이 심한 키워드는 콘텐츠로 풀지 않고 처음부터 광고로 집행하는 편이 효율적이라고 보았습니다.</div>
+          <div class="strategy-why"><strong>역할.</strong> 콘텐츠 트랙과 나란히 가는 또 하나의 운용 축. 비용 검색 의도가 강하거나 콘텐츠 자연 검색 노출(SEO) 경쟁이 심한 키워드는 콘텐츠로 풀지 않고 처음부터 광고로 집행하는 편이 효율적이라고 보았습니다.</div>
           <div class="strategy-do-label">실제로 해야 할 것</div>
           <ul class="strategy-do">
             <li>네이버 검색광고에서 "강아지 췌장염", "강아지 심장병" 등 고검색량 키워드 집행</li>
@@ -1149,13 +1149,14 @@ function buildRanking(){
     }).join('');
   });
 }
-// 활용 유형 5가지 카드 — 대표 키워드 자동 추출
+// 활용 유형 3가지 카드 — 대표 키워드 자동 추출
 const USAGE_CARDS = [
-  {key:'direct',        name:'직접',     icon:'📌', desc:'헬릭스만 가능한 시술명. 홈페이지·시술 소개에 그대로 노출.'},
-  {key:'funnel',        name:'유입→연결',icon:'🔄', desc:'증상·질병 키워드로 유입시킨 뒤 헬릭스 특화 시술로 안내.'},
-  {key:'ads_candidate', name:'광고후보', icon:'💰', desc:'SEO가 어렵거나 비용 검색 의도가 강함. 광고로 보완.'},
-  {key:'avoid',         name:'회피',     icon:'🚫', desc:'1차병원도 다 다루는 범용 키워드. 포지셔닝 희석.'},
-  {key:'pending',       name:'보류',     icon:'⏸',  desc:'전략적 판단 미정. 추후 재분류.'},
+  {key:'direct',        name:'직접',     icon:'📌',
+   desc:'헬릭스가 특화로 밀고자 하는 시술·진료명 자체. 홈페이지의 특화진료 페이지나 시술 소개 콘텐츠에 그대로 들어가는 키워드입니다. (예: 뇌종양 수술 · 색전술 · 요오드 치료)'},
+  {key:'funnel',        name:'유입→연결',icon:'🔄',
+   desc:'보호자가 흔히 검색하는 증상·질병 키워드. 직접 경쟁하기보다, FAQ·블로그 콘텐츠로 끌어들인 뒤 헬릭스 특화 시술로 자연스럽게 안내하는 관문으로 활용합니다.'},
+  {key:'ads_candidate', name:'광고후보', icon:'💰',
+   desc:'콘텐츠 자연 검색 노출(SEO)이 어렵거나, 보호자가 비용 의도로 검색하는 키워드. 콘텐츠로 풀기보다 네이버 검색광고로 직접 집행하는 트랙입니다. (예: 백내장수술비용 · MRI비용 · 발치비용)'},
 ];
 function buildUsageTypes(){
   const grid=document.getElementById('usageTypesGrid');
