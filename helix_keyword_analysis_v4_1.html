@@ -114,7 +114,15 @@
   /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      활용 유형 3가지 (#usage-types) — 발표 슬라이드
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .usage-intro{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:18px 22px;margin-bottom:20px;}
+  .usage-intro-title{font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:8px;}
+  .usage-intro-body{font-size:13.5px;color:var(--ink);line-height:1.85;}
+  .usage-intro-body strong{color:var(--accent);font-weight:600;}
   .usage-types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .ut-card-why{margin:10px 0 6px;padding:10px 12px;background:var(--surface-2);border-radius:8px;border-left:2px solid var(--ink-muted);}
+  .ut-card-why-label{font-size:9.5px;color:var(--ink-dim);letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:4px;}
+  .ut-card-why-body{font-size:11.5px;color:var(--ink);line-height:1.7;}
+  .ut-card-whyex{margin-top:8px;padding:9px 11px;font-size:11px;color:var(--ink-dim);background:rgba(255,255,255,.4);border:1px dashed var(--line);border-radius:6px;line-height:1.65;font-style:italic;}
   .ut-card{background:var(--surface);border:1px solid var(--line);border-top:4px solid transparent;border-radius:12px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:9px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
   .ut-card.ut-direct       {border-top-color:var(--accent);}
   .ut-card.ut-funnel       {border-top-color:var(--blue);}
@@ -473,7 +481,15 @@
     <div class="sec-head">
       <span class="sec-num">02</span>
       <span class="sec-title">활용 유형 3가지</span>
-      <span class="sec-sub">키워드를 어떻게 다룰지 — 한눈에 보는 행동 분류</span>
+      <span class="sec-sub">키워드 성격에 따라 운용 방식이 달라집니다</span>
+    </div>
+    <div class="usage-intro">
+      <div class="usage-intro-title">왜 3가지로 나누었는가</div>
+      <p class="usage-intro-body">
+        키워드를 한 줄로 다루기보다, <strong>누가 / 어떤 의도로 / 어느 정도 경쟁 환경에서</strong> 검색하는지를 기준으로 운용 방식을 나누어 봤습니다.
+        보호자가 시술명을 이미 알고 직접 찾는 키워드, 증상으로 답을 찾기 시작하는 키워드, 비용·정보를 비교하며 결정 단계에 들어선 키워드는 같은 방식으로 다루기 어려웠습니다.
+        그래서 다음 <strong>3가지 트랙</strong>으로 정리했습니다.
+      </p>
     </div>
     <div class="usage-types-grid" id="usageTypesGrid"></div>
   </section>
@@ -1152,11 +1168,17 @@ function buildRanking(){
 // 활용 유형 3가지 카드 — 대표 키워드 자동 추출
 const USAGE_CARDS = [
   {key:'direct',        name:'직접',     icon:'📌',
-   desc:'헬릭스가 특화로 밀고자 하는 시술·진료명 자체. 홈페이지의 특화진료 페이지나 시술 소개 콘텐츠에 그대로 들어가는 키워드입니다. (예: 뇌종양 수술 · 색전술 · 요오드 치료)'},
+   desc:'헬릭스가 특화로 밀고자 하는 시술·진료명 자체. 홈페이지의 특화진료 페이지나 시술 소개 콘텐츠에 그대로 들어가는 키워드입니다.',
+   why:'이미 그 시술이 가능하다는 사실을 어느 정도 알고 있는 보호자가 직접 검색하는 영역입니다. 경쟁이 적거나 헬릭스가 거의 유일하게 다루는 진료 영역이라, 그대로 노출시켜도 부담이 적고 그 자체가 헬릭스의 색깔이 됩니다.',
+   whyEx:'모두 일반 보호자보다는 알아보고 찾아오시는 분이 검색하는 시술명입니다. 검색량은 적지만, 검색하시는 한 분은 거의 즉시 헬릭스에 닿는 단계라고 보았습니다.'},
   {key:'funnel',        name:'유입→연결',icon:'🔄',
-   desc:'보호자가 흔히 검색하는 증상·질병 키워드. 직접 경쟁하기보다, FAQ·블로그 콘텐츠로 끌어들인 뒤 헬릭스 특화 시술로 자연스럽게 안내하는 관문으로 활용합니다.'},
+   desc:'보호자가 흔히 검색하는 증상·질병 키워드. 직접 경쟁하기보다, FAQ·블로그 콘텐츠로 끌어들인 뒤 헬릭스 특화 시술로 자연스럽게 안내하는 관문으로 활용합니다.',
+   why:'보호자가 시술명을 모른 채 증상·질병 단어로 답을 찾기 시작하는 초기 단계입니다. 검색량은 많지만 1차병원도 다루는 영역이라 그대로 경쟁하면 헬릭스 색깔이 흐려질 수 있어, 콘텐츠로 먼저 정보를 드리고 그 안에서 헬릭스 특화 시술로 연결하는 흐름이 자연스러워 보였습니다.',
+   whyEx:'보호자가 시술명까지는 모르고 증상으로 검색하는 단계의 키워드들입니다. "발작이 반복된다면 뇌종양 감별이 필요합니다 → 헬릭스 신경외과"처럼 콘텐츠가 안내해줘야 헬릭스로 이어지는 구조입니다.'},
   {key:'ads_candidate', name:'광고후보', icon:'💰',
-   desc:'콘텐츠 자연 검색 노출(SEO)이 어렵거나, 보호자가 비용 의도로 검색하는 키워드. 콘텐츠로 풀기보다 네이버 검색광고로 직접 집행하는 트랙입니다. (예: 백내장수술비용 · MRI비용 · 발치비용)'},
+   desc:'콘텐츠 자연 검색 노출(SEO)이 어렵거나, 보호자가 비용 의도로 검색하는 키워드. 콘텐츠로 풀기보다 네이버 검색광고로 직접 집행하는 트랙입니다.',
+   why:'보호자가 시술·검사를 어느 정도 알고 비용·정보를 비교하며 결정 단계에 들어선 키워드입니다. 의도가 분명한 만큼 광고로 곧바로 띄워주는 편이 빠르고, 자연 검색 노출(SEO)은 경쟁이 심해 콘텐츠로 잡기 어려운 영역입니다.',
+   whyEx:'"비용"이라는 단어가 들어가는 순간 보호자의 의도가 거의 정해진 상태입니다. 광고 한 번의 클릭이 곧 상담·예약으로 이어질 가능성이 높은 키워드들입니다.'},
 ];
 function buildUsageTypes(){
   const grid=document.getElementById('usageTypesGrid');
@@ -1172,11 +1194,16 @@ function buildUsageTypes(){
         <span class="ut-card-count">${all.length}개</span>
       </div>
       <div class="ut-card-desc">${c.desc}</div>
+      <div class="ut-card-why">
+        <div class="ut-card-why-label">왜 이 카드에 들어가나요</div>
+        <div class="ut-card-why-body">${c.why}</div>
+      </div>
       <div class="ut-card-kw-label">대표 키워드</div>
       <ul class="ut-card-kws">${top.map(d=>{
         const v=d.mobile<=5?'&lt;10':d.mobile.toLocaleString();
         return `<li><span>${d.kw}</span><span class="ut-kw-vol">${v}</span></li>`;
-      }).join('')}</ul>`;
+      }).join('')}</ul>
+      <div class="ut-card-whyex">${c.whyEx}</div>`;
     grid.appendChild(card);
   });
 }
