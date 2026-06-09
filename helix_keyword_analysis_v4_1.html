@@ -73,6 +73,54 @@
   .kpi-val.orange{color:var(--orange);}
 
   /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     분석 방법 (#methodology)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .methodology-block{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:24px 26px 22px;
+    margin-bottom:36px;
+    box-shadow:0 1px 6px rgba(0,0,0,.04);
+  }
+  .method-eyebrow{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--blue);font-weight:700;margin-bottom:18px;
+    padding:5px 12px;background:var(--blue-soft);border-radius:6px;
+  }
+  .method-flow{display:flex;align-items:stretch;gap:6px;}
+  .method-step{
+    flex:1;min-width:0;
+    padding:14px 16px 12px;
+    background:var(--surface-2);
+    border:1px solid var(--line);
+    border-top:3px solid var(--blue);
+    border-radius:10px;
+  }
+  .method-step-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;font-weight:700;letter-spacing:.18em;
+    color:var(--blue);margin-bottom:6px;
+  }
+  .method-step-title{
+    font-family:'Noto Serif KR',serif;
+    font-size:14.5px;font-weight:600;color:var(--ink);
+    margin-bottom:7px;line-height:1.4;
+  }
+  .method-step-body{font-size:11.5px;color:var(--ink-dim);line-height:1.7;}
+  .method-arrow{
+    display:flex;align-items:center;justify-content:center;
+    width:18px;flex-shrink:0;
+    color:var(--blue);font-size:18px;font-weight:300;
+  }
+  @media(max-width:1100px){
+    .method-flow{flex-direction:column;}
+    .method-arrow{width:auto;transform:rotate(90deg);padding:4px 0;}
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      발표용 결론 슬라이드 (#conclusion)
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   .slide-conclusion{
@@ -371,6 +419,7 @@
 
   <div class="nav-group">
     <span class="nav-section"><span class="nav-section-ico">📌</span>요약</span>
+    <a class="nav-item" href="#methodology">분석 방법</a>
     <a class="nav-item" href="#conclusion">핵심 결론</a>
     <a class="nav-item" href="#premise">전제 인사이트</a>
   </div>
@@ -409,6 +458,36 @@
       <div class="kpi"><div class="kpi-label">저경쟁 기회</div><div class="kpi-val" id="kLow">—</div></div>
     </div>
   </div>
+
+  <!-- ════════════ 분석 방법 ════════════ -->
+  <section id="methodology" class="section-block methodology-block">
+    <div class="method-eyebrow">🔍 들어가기 전에 — 이 자료는 이렇게 만들어졌습니다</div>
+    <div class="method-flow">
+      <div class="method-step">
+        <div class="method-step-num">STEP 1</div>
+        <div class="method-step-title">키워드 후보군 정리</div>
+        <div class="method-step-body">헬릭스가 특화로 다루는 진료 영역(뇌종양 수술·색전술·요오드 치료·안과·내과 등)을 기준으로 관련될 만한 키워드 후보군을 먼저 추렸습니다.</div>
+      </div>
+      <div class="method-arrow" aria-hidden="true">→</div>
+      <div class="method-step">
+        <div class="method-step-num">STEP 2</div>
+        <div class="method-step-title">네이버 키워드 도구로 전수 수집</div>
+        <div class="method-step-body">각 키워드의 실제 모바일·PC 검색량, 경쟁 정도, 광고 노출 데이터를 네이버 키워드 도구에서 전부 내려받았습니다.</div>
+      </div>
+      <div class="method-arrow" aria-hidden="true">→</div>
+      <div class="method-step">
+        <div class="method-step-num">STEP 3</div>
+        <div class="method-step-title">Claude로 전수 분석</div>
+        <div class="method-step-body">내려받은 원본 데이터를 생성형 AI(Claude)에 전수로 돌려, 각 키워드의 맥락과 보호자의 검색 의도를 정리했습니다.</div>
+      </div>
+      <div class="method-arrow" aria-hidden="true">→</div>
+      <div class="method-step">
+        <div class="method-step-num">STEP 4</div>
+        <div class="method-step-title">1차 운용 전략 수립</div>
+        <div class="method-step-body">파악한 맥락 위에, 헬릭스가 어떻게 운용하면 좋을지 트랙별 1차 전략을 정리한 결과가 본 보고서입니다.</div>
+      </div>
+    </div>
+  </section>
 
   <!-- ════════════ 키워드 운용 방향 (제안) ════════════ -->
   <section id="conclusion" class="slide-conclusion">
