@@ -555,8 +555,97 @@
   details[open].faq-part > summary::before{transform:rotate(90deg);}
   .faq-part > summary:hover{background:var(--surface-2);}
   details[open].faq-part > summary{background:var(--surface-2);border-bottom:1px solid var(--line);margin-bottom:0;}
-  .faq-part-inner{padding:0;font-size:13px;color:var(--ink-dim);line-height:1.8;background:var(--surface-2);}
-  .faq-part-frame{width:100%;border:none;display:block;background:white;}
+  .faq-part-inner{padding:28px 26px;font-size:14px;color:var(--ink);line-height:1.7;background:white;}
+  .faq-part-inner p{font-size:13.5px;color:var(--ink-dim);line-height:1.85;margin-bottom:18px;}
+  .faq-part-inner p strong{color:var(--ink);font-weight:600;}
+
+  /* MOD-C scoped — FAQ 후보 선정 근거 보고서 스타일 (helix_faq_report.html 이식) */
+  .faq-part-inner .frame-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px;}
+  .faq-part-inner .frame-card{background:#f8f9fb;border:1px solid var(--line);border-radius:12px;padding:20px 18px;}
+  .faq-part-inner .frame-card-num{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:500;color:#0d6e58;margin-bottom:8px;line-height:1;}
+  .faq-part-inner .frame-card-title{font-weight:600;font-size:14px;margin-bottom:8px;color:var(--ink);}
+  .faq-part-inner .frame-card-desc{font-size:12.5px;color:var(--ink-dim);line-height:1.65;}
+  .faq-part-inner .frame-note{background:rgba(13,110,88,.08);border:1px solid rgba(13,110,88,.16);border-radius:10px;padding:14px 18px;font-size:13px;color:#0d6e58;line-height:1.7;}
+  .faq-part-inner .frame-note strong{font-weight:600;color:var(--ink);}
+
+  .faq-part-inner .bench-table{width:100%;border-collapse:collapse;font-size:12.5px;background:white;border-radius:10px;overflow:hidden;border:1px solid var(--line);}
+  .faq-part-inner .bench-table thead th{background:#f2f4f7;padding:11px 14px;text-align:left;font-weight:600;font-size:11px;color:var(--ink-dim);letter-spacing:.03em;border-bottom:1px solid var(--line);}
+  .faq-part-inner .bench-table thead th:first-child{width:150px;}
+  .faq-part-inner .bench-table tbody td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6;color:var(--ink);}
+  .faq-part-inner .bench-table tbody tr:last-child td{border-bottom:none;}
+  .faq-part-inner .bench-table td.hospital{font-weight:500;font-size:12.5px;}
+  .faq-part-inner .bench-table td.hospital small{display:block;font-weight:400;font-size:11px;color:var(--ink-muted);margin-top:2px;}
+  .faq-part-inner .chip{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10.5px;font-weight:600;font-family:'IBM Plex Mono',monospace;letter-spacing:.03em;}
+  .faq-part-inner .chip-none{background:rgba(181,42,42,.07);color:#b52a2a;}
+  .faq-part-inner .chip-partial{background:rgba(122,92,0,.08);color:#7a5c00;}
+  .faq-part-inner .chip-exist{background:rgba(13,110,88,.08);color:#0d6e58;}
+  .faq-part-inner .bench-insight{margin-top:14px;background:white;border:1px solid var(--line);border-left:3px solid #0d6e58;border-radius:0 10px 10px 0;padding:14px 18px;font-size:13px;line-height:1.75;color:var(--ink-dim);}
+  .faq-part-inner .bench-insight strong{color:var(--ink);font-weight:600;}
+
+  .faq-part-inner .matrix-legend{display:flex;gap:18px;margin-bottom:16px;flex-wrap:wrap;}
+  .faq-part-inner .legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-dim);}
+  .faq-part-inner .legend-dot{width:10px;height:10px;border-radius:50%;}
+  .faq-part-inner .dot-high{background:#0d6e58;}
+  .faq-part-inner .dot-mid{background:#7a5c00;}
+  .faq-part-inner .dot-low{background:#d0d5de;}
+  .faq-part-inner .matrix-table{width:100%;border-collapse:collapse;font-size:12.5px;background:white;border-radius:10px;overflow:hidden;border:1px solid var(--line);}
+  .faq-part-inner .matrix-table thead th{background:#f2f4f7;padding:10px 12px;text-align:center;font-size:11px;font-weight:600;color:var(--ink-dim);border-bottom:1px solid var(--line);letter-spacing:.03em;}
+  .faq-part-inner .matrix-table thead th:first-child{text-align:left;width:48%;}
+  .faq-part-inner .matrix-table thead th:last-child{text-align:left;}
+  .faq-part-inner .matrix-table tbody td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle;line-height:1.5;}
+  .faq-part-inner .matrix-table tbody tr:last-child td{border-bottom:none;}
+  .faq-part-inner .cat-row td{background:#f2f4f7 !important;padding:7px 12px !important;font-size:10.5px;font-weight:600;color:var(--ink-muted);letter-spacing:.1em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;}
+  .faq-part-inner .score-cell{text-align:center;}
+  .faq-part-inner .score-dot{display:inline-block;width:11px;height:11px;border-radius:50%;}
+  .faq-part-inner .s-h{background:#0d6e58;}
+  .faq-part-inner .s-m{background:#7a5c00;}
+  .faq-part-inner .s-l{background:#d0d5de;}
+  .faq-part-inner .q-text{font-size:13px;color:var(--ink);line-height:1.55;}
+  .faq-part-inner .verdict{display:inline-block;padding:3px 8px;border-radius:5px;font-size:10.5px;font-weight:600;font-family:'IBM Plex Mono',monospace;white-space:nowrap;}
+  .faq-part-inner .v-confirm{background:rgba(13,110,88,.08);color:#0d6e58;border:1px solid rgba(13,110,88,.16);}
+  .faq-part-inner .v-add{background:rgba(26,79,160,.08);color:#1a4fa0;border:1px solid rgba(26,79,160,.2);}
+  .faq-part-inner .v-drop{background:rgba(181,42,42,.07);color:#b52a2a;border:1px solid rgba(181,42,42,.15);}
+  .faq-part-inner .v-review{background:rgba(122,92,0,.08);color:#7a5c00;border:1px solid rgba(122,92,0,.2);}
+
+  .faq-part-inner .gap-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .faq-part-inner .gap-card{background:white;border:1px solid var(--line);border-radius:12px;padding:18px 18px;}
+  .faq-part-inner .gap-card-title{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .faq-part-inner .gap-badge{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:rgba(13,110,88,.08);color:#0d6e58;letter-spacing:.05em;}
+  .faq-part-inner .gap-list{list-style:none;display:flex;flex-direction:column;gap:6px;padding:0;margin:0;}
+  .faq-part-inner .gap-list li{font-size:12.5px;color:var(--ink-dim);padding-left:14px;position:relative;line-height:1.6;}
+  .faq-part-inner .gap-list li::before{content:'→';position:absolute;left:0;color:#0d6e58;font-size:11px;top:2px;}
+
+  .faq-part-inner .final-table{width:100%;border-collapse:collapse;font-size:13px;background:white;border-radius:10px;overflow:hidden;border:1px solid var(--line);}
+  .faq-part-inner .final-table thead th{background:var(--ink);padding:12px 14px;text-align:left;font-weight:500;font-size:11.5px;color:rgba(255,255,255,.7);letter-spacing:.05em;border-bottom:none;}
+  .faq-part-inner .final-table thead th:first-child{width:42px;text-align:center;}
+  .faq-part-inner .final-table tbody td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6;color:var(--ink);}
+  .faq-part-inner .final-table tbody tr:last-child td{border-bottom:none;}
+  .faq-part-inner .final-num{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-muted);font-weight:500;}
+  .faq-part-inner .final-q{font-size:13.5px;font-weight:500;color:var(--ink);}
+  .faq-part-inner .final-q small{display:block;font-weight:400;font-size:11.5px;color:var(--ink-muted);margin-top:3px;font-family:'IBM Plex Mono',monospace;}
+  .faq-part-inner .final-reason{font-size:12px;color:var(--ink-dim);line-height:1.65;}
+  .faq-part-inner .cat-label{display:inline-block;padding:2px 8px;font-size:10.5px;font-weight:600;border-radius:4px;font-family:'IBM Plex Mono',monospace;margin-bottom:4px;}
+  .faq-part-inner .cl-oncology{background:rgba(181,42,42,.08);color:#b52a2a;}
+  .faq-part-inner .cl-intervention{background:rgba(26,79,160,.08);color:#1a4fa0;}
+  .faq-part-inner .cl-neuro{background:rgba(78,46,150,.08);color:#4e2e96;}
+  .faq-part-inner .cl-thyroid{background:rgba(13,110,88,.08);color:#0d6e58;}
+  .faq-part-inner .cl-kidney{background:rgba(0,90,130,.08);color:#005a82;}
+  .faq-part-inner .cl-general{background:#eef1f6;color:var(--ink-dim);}
+  .faq-part-inner .cl-ophtho{background:rgba(122,92,0,.08);color:#7a5c00;}
+
+  .faq-part-inner .excl-table{width:100%;border-collapse:collapse;font-size:12.5px;background:white;border-radius:10px;overflow:hidden;border:1px solid var(--line);}
+  .faq-part-inner .excl-table thead th{background:#f2f4f7;padding:10px 14px;text-align:left;font-size:11.5px;font-weight:600;color:var(--ink-dim);border-bottom:1px solid var(--line);}
+  .faq-part-inner .excl-table tbody td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6;color:var(--ink-dim);}
+  .faq-part-inner .excl-table tbody tr:last-child td{border-bottom:none;}
+  .faq-part-inner .excl-q{color:var(--ink);font-size:13px;}
+
+  .faq-part-inner h3.faq-subhead{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:500;margin:24px 0 14px;color:var(--ink);padding-bottom:8px;border-bottom:1px solid var(--line);}
+  .faq-part-inner h3.faq-subhead:first-child{margin-top:0;}
+
+  @media(max-width:900px){
+    .faq-part-inner .frame-grid,.faq-part-inner .gap-grid{grid-template-columns:1fr;}
+    .faq-part-inner .bench-table,.faq-part-inner .matrix-table,.faq-part-inner .final-table,.faq-part-inner .excl-table{font-size:11.5px;}
+  }
 </style>
 </head>
 <body>
@@ -1122,14 +1211,242 @@
       <span style="margin-left:auto;font-size:11px;color:var(--ink-muted);">질문 시 펼쳐서 확인</span>
     </div>
     <div class="faq-embed-body">
+
+      <!-- PART 1 : 선정 기준 -->
       <details class="faq-part">
-        <summary>전체 보고서 펼쳐 보기 — 선정 기준 · 경쟁 병원 벤치마킹 · 34문항 매트릭스</summary>
+        <summary>① 선정 기준 — 왜 이 3가지를 봤는가</summary>
         <div class="faq-part-inner">
-          <iframe class="faq-part-frame" src="helix_faq_report.html" loading="lazy" style="height:1600px;" title="FAQ 후보 선정 근거 보고서"></iframe>
+          <p>키워드 보고서에서 "FAQ는 콘텐츠 트랙의 출발점"이라고 말씀드렸는데, 막상 후보를 고르다 보니 기준 없이 검색량 순으로만 나열하면 헬릭스와 결이 맞지 않는 질문들이 섞이는 문제가 생겼습니다. 그래서 아래 3가지 축을 교차해 후보를 걸러냈습니다. 세 축이 모두 겹치는 질문일수록 "지금 헬릭스가 만들어야 할 FAQ"에 가깝다고 판단했습니다.</p>
+          <div class="frame-grid">
+            <div class="frame-card">
+              <div class="frame-card-num">①</div>
+              <div class="frame-card-title">검색 수요</div>
+              <div class="frame-card-desc">네이버 키워드 도구 기준 월간 검색량입니다. 보호자들이 실제로 찾고 있는 주제인지 확인했습니다.<br><br>상 3,000+ &nbsp;/&nbsp; 중 500~2,999 &nbsp;/&nbsp; 하 500 미만</div>
+            </div>
+            <div class="frame-card">
+              <div class="frame-card-num">②</div>
+              <div class="frame-card-title">AI 검색 적합성</div>
+              <div class="frame-card-desc">ChatGPT·클로바X 같은 AI 검색이 "답변 소스"로 채택할 가능성을 봤습니다. 헬릭스가 고유하게 답할 수 있는 주제일수록 채택 가능성이 높다고 보았습니다.</div>
+            </div>
+            <div class="frame-card">
+              <div class="frame-card-num">③</div>
+              <div class="frame-card-title">경쟁 공백</div>
+              <div class="frame-card-desc">경쟁 병원 8개소의 FAQ 현황을 직접 확인했습니다. 경쟁 병원이 아직 다루지 않는 영역이 헬릭스 선점 기회라고 보았습니다.</div>
+            </div>
+          </div>
+          <div class="frame-note">
+            <strong>검색량이 낮아도 포함한 질문들이 있습니다.</strong> 수술 네비게이터, 방사성 요오드 치료 가능 병원 수처럼 아직 검색량은 적지만 헬릭스만 설명할 수 있는 질문은 AI 검색 선점 효과를 고려해 포함했습니다. 키워드 보고서에서 말씀드린 "콘텐츠로 검색량을 키운다"는 방향과 같은 맥락입니다.
+          </div>
         </div>
       </details>
+
+      <!-- PART 2 : 경쟁 병원 벤치마킹 -->
+      <details class="faq-part">
+        <summary>② 경쟁 병원 FAQ 현황 — 8개소 분석</summary>
+        <div class="faq-part-inner">
+          <table class="bench-table">
+            <thead>
+              <tr><th>병원</th><th>FAQ 페이지 유무</th><th>주요 다루는 주제</th><th>누락된 주요 영역</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="hospital">해마루동물병원<small>분당 / 국내 최초 이차진료</small></td>
+                <td><span class="chip chip-exist">있음</span><br><small style="color:var(--ink-muted);font-size:10.5px;">JS 렌더링으로 내용 비공개</small></td>
+                <td>진료 접수·절차, 응급진료 안내, 인터벤션 개요 — 블로그 콘텐츠 기반 추정</td>
+                <td>방사성 요오드, 수술 네비게이터, 투석 상세 설명</td>
+              </tr>
+              <tr>
+                <td class="hospital">리더스동물의료원<small>분당·동탄 / VECCS 인증</small></td>
+                <td><span class="chip chip-none">없음</span></td>
+                <td>—</td><td>전 영역 공백</td>
+              </tr>
+              <tr>
+                <td class="hospital">샤인동물메디컬센터<small>송파 / 간담낭췌장 특화</small></td>
+                <td><span class="chip chip-none">없음</span></td>
+                <td>—</td><td>전 영역 공백</td>
+              </tr>
+              <tr>
+                <td class="hospital">웨스턴동물의료센터<small>신촌 / 척추관절 연구소</small></td>
+                <td><span class="chip chip-none">없음</span><br><small style="color:var(--ink-muted);font-size:10.5px;">커뮤니티에 후기·소식만 존재</small></td>
+                <td>—</td><td>전 영역 공백</td>
+              </tr>
+              <tr>
+                <td class="hospital">VIP동물의료센터<small>서울 5지점 / 15개 특화센터</small></td>
+                <td><span class="chip chip-none">없음</span><br><small style="color:var(--ink-muted);font-size:10.5px;">TV 콘텐츠·칼럼 형식으로 운영</small></td>
+                <td>스케일링, 심장병 개요 — 영상·칼럼 형식</td>
+                <td>FAQ 공식 구조 없음. 인터벤션·투석·요오드 설명 부재</td>
+              </tr>
+              <tr>
+                <td class="hospital">스탠다드(SD)동물의료센터<small>서울·김포 / 블로그 중심</small></td>
+                <td><span class="chip chip-partial">블로그</span><br><small style="color:var(--ink-muted);font-size:10.5px;">홈페이지 FAQ 없음</small></td>
+                <td>스케일링 마취 여부, 기본 진료 Q&A — 블로그 산발 게시</td>
+                <td>전문 시술·종양·신경계 관련 일체 없음</td>
+              </tr>
+              <tr>
+                <td class="hospital">일산동물의료원<small>일산 / 뇌수술·인터벤션 센터</small></td>
+                <td><span class="chip chip-none">준비중</span><br><small style="color:var(--ink-muted);font-size:10.5px;">"준비중" 상태로 공개됨</small></td>
+                <td>—</td><td>전 영역 공백</td>
+              </tr>
+              <tr>
+                <td class="hospital">본동물의료센터<small>수원·안양 / 2차 의료기관</small></td>
+                <td><span class="chip chip-none">없음</span></td>
+                <td>—</td><td>전 영역 공백</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="bench-insight">
+            <strong>핵심 발견</strong> — 분석 대상 8개 병원 중 구조화된 FAQ를 운영하는 곳은 사실상 해마루 1개소뿐입니다. 인터벤션, 방사성 요오드 치료, 혈액투석, 수술 네비게이터 등 헬릭스의 핵심 서비스를 FAQ로 설명하는 병원은 전무합니다. 지금이 선점 기회이며, 특히 AI 검색(ChatGPT·Perplexity·클로바X)에서 해당 주제의 답변 공급자가 될 수 있습니다.
+          </div>
+        </div>
+      </details>
+
+      <!-- PART 3 : 선정 매트릭스 + 공백 영역 + 최종 목록 + 제외 항목 -->
+      <details class="faq-part">
+        <summary>③ 34문항 선정 매트릭스 및 최종 목록</summary>
+        <div class="faq-part-inner">
+
+          <h3 class="faq-subhead">3-1. 기존 FAQ 초안 평가 및 선정 매트릭스</h3>
+          <p>이전에 작성했던 FAQ 28개 초안을 위의 3축 기준으로 다시 평가하고, 신규 추가가 필요하다고 판단된 7개를 더해 총 34개로 확정했습니다. 아래 표에서 <span style="color:#1a4fa0;font-weight:600;">▲ 신규 추가</span>로 표시된 항목이 이번에 새로 제안하는 질문들입니다.</p>
+          <div class="matrix-legend">
+            <div class="legend-item"><div class="legend-dot dot-high"></div> <span style="color:var(--ink);">높음</span></div>
+            <div class="legend-item"><div class="legend-dot dot-mid"></div> <span style="color:var(--ink);">중간</span></div>
+            <div class="legend-item"><div class="legend-dot dot-low"></div> <span style="color:var(--ink);">낮음</span></div>
+            <div class="legend-item" style="margin-left:10px;padding-left:10px;border-left:1px solid var(--line);">
+              <span class="verdict v-confirm">확정</span>&nbsp; 기존 초안 유지
+            </div>
+            <div class="legend-item"><span class="verdict v-add">신규 추가</span>&nbsp; 이번 제안 항목</div>
+            <div class="legend-item"><span class="verdict v-drop">제외</span>&nbsp; 우선순위 하향</div>
+            <div class="legend-item"><span class="verdict v-review">재검토</span>&nbsp; 진료팀 확인 필요</div>
+          </div>
+          <table class="matrix-table">
+            <thead>
+              <tr><th>질문</th><th>검색 수요</th><th>AI 적합성</th><th>경쟁 공백</th><th>판정</th></tr>
+            </thead>
+            <tbody>
+              <tr class="cat-row"><td colspan="5">① 뇌종양 · 신경계</td></tr>
+              <tr><td class="q-text">강아지가 갑자기 발작을 일으켰습니다. 원인이 뇌종양일 수 있나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">강아지 뇌종양 수술은 어느 정도의 위험도를 가지고 있나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">강아지 디스크(추간판 탈출증) 수술 후 얼마나 회복되나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">강아지 머리가 한쪽으로 기울어지고 눈이 떨립니다. 무슨 증상인가요?</td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">수술 네비게이터란 무엇이며, 일반 수술과 어떻게 다른가요?<br><small style="color:#1a4fa0;font-size:11.5px;">▲ 신규 추가 제안</small></td><td class="score-cell"><div class="score-dot s-l"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-add">신규 추가</span></td></tr>
+
+              <tr class="cat-row"><td colspan="5">② 인터벤션</td></tr>
+              <tr><td class="q-text">종양 색전술이란 무엇이며, 수술과 어떻게 다른가요?</td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">강아지 담낭 점액종은 반드시 수술해야 하나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">스텐트 시술은 어떤 상황에서 시행되나요?</td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">강아지 유선 종양은 어떻게 치료하나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">인터벤션 시술 후 입원 기간과 회복 과정이 어떻게 되나요?<br><small style="color:#1a4fa0;font-size:11.5px;">▲ 신규 추가 제안</small></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-add">신규 추가</span></td></tr>
+
+              <tr class="cat-row"><td colspan="5">③ 방사선 치료</td></tr>
+              <tr><td class="q-text">반려동물도 방사선 치료를 받을 수 있나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">방사선 치료 중 부작용은 어떻게 관리하나요?</td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">고양이 비만세포종은 어떤 치료가 필요한가요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">항암 치료 중 강아지가 밥을 잘 먹지 않습니다. 어떻게 해야 하나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">방사선 치료가 가능한 병원이 국내에 얼마나 되나요? 헬릭스는 어떤 장비를 사용하나요?<br><small style="color:#1a4fa0;font-size:11.5px;">▲ 신규 추가 제안</small></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-add">신규 추가</span></td></tr>
+
+              <tr class="cat-row"><td colspan="5">④ 고양이 방사성 요오드 치료</td></tr>
+              <tr><td class="q-text">고양이 갑상선기능항진증이란 무엇인가요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">방사성 요오드(I-131) 치료는 어떻게 진행되나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">약물 치료와 방사성 요오드 치료 중 어느 것이 더 나은가요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">요오드 치료 후 고양이와 함께 지내는 데 주의사항이 있나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">방사성 요오드 치료를 시행하는 병원은 국내에 얼마나 있나요?<br><small style="color:#1a4fa0;font-size:11.5px;">▲ 신규 추가 제안</small></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-add">신규 추가</span></td></tr>
+
+              <tr class="cat-row"><td colspan="5">⑤ 신장 · 혈액투석</td></tr>
+              <tr><td class="q-text">고양이 신부전 진단을 받았습니다. 투석 치료가 필요한가요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">혈액투석과 복막투석은 어떻게 다른가요?<br><small style="color:#1a4fa0;font-size:11.5px;">▲ 신규 추가 제안</small></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-add">신규 추가</span></td></tr>
+              <tr><td class="q-text">강아지 심장병 진단을 받았는데, 어떤 검사와 치료가 필요한가요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+
+              <tr class="cat-row"><td colspan="5">⑥ 안과</td></tr>
+              <tr><td class="q-text">강아지 백내장 수술은 언제 하는 것이 좋은가요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">강아지 녹내장은 어떤 증상이 나타나나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">강아지 각막 궤양은 어떻게 치료하나요?</td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+
+              <tr class="cat-row"><td colspan="5">⑦ 건강검진</td></tr>
+              <tr><td class="q-text">반려동물 건강검진은 몇 살부터 받아야 하나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">강아지 MRI 검사는 어떤 경우에 필요한가요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">강아지 건강검진 결과가 정상인데도 정기 검진을 받아야 하나요?</td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+
+              <tr class="cat-row"><td colspan="5">⑧ 협진 · 병원 포지셔닝</td></tr>
+              <tr><td class="q-text">헬릭스동물메디컬센터는 어떤 병원인가요?</td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">동네 동물병원과 헬릭스 같은 전문 병원은 어떻게 다른가요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">타 지역에서도 진료를 받을 수 있나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">다른 병원에서 세컨드 오피니언을 받고 싶은데 가능한가요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-h"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">강아지 자궁축농증 수술 후 관리는 어떻게 해야 하나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-l"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td><span class="verdict v-review">재검토</span></td></tr>
+
+              <tr class="cat-row"><td colspan="5">⑨ 치과 (범주 분리 권장)</td></tr>
+              <tr><td class="q-text">강아지 스케일링은 얼마나 자주 해야 하나요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-l"></div></td><td class="score-cell"><div class="score-dot s-l"></div></td><td><span class="verdict v-drop">제외 검토</span></td></tr>
+              <tr><td class="q-text">고양이 구내염이 재발하는 이유는 무엇인가요?</td><td class="score-cell"><div class="score-dot s-h"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+              <tr><td class="q-text">강아지 치근단 농양은 어떻게 알 수 있나요?</td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td class="score-cell"><div class="score-dot s-m"></div></td><td><span class="verdict v-confirm">확정</span></td></tr>
+            </tbody>
+          </table>
+
+          <h3 class="faq-subhead">3-2. 헬릭스 선점 가능 공백 영역</h3>
+          <div class="gap-grid">
+            <div class="gap-card"><div class="gap-card-title">수술 네비게이터 <span class="gap-badge">독점 가능</span></div><ul class="gap-list"><li>경쟁 병원 FAQ 전무 — 헬릭스만 설명 가능</li><li>"수술 네비게이터란?" 검색 시 AI 답변 채택 가능성 높음</li><li>브랜드 차별점을 자연스럽게 노출하는 포맷</li></ul></div>
+            <div class="gap-card"><div class="gap-card-title">방사성 요오드(I-131) 치료 <span class="gap-badge">독점 가능</span></div><ul class="gap-list"><li>국내 시행 병원 극소수 — 경쟁 FAQ 전무</li><li>"고양이 방사성 요오드" 월 검색량 높음</li><li>보호자 결정 장벽(격리·비용)을 FAQ로 해소 가능</li></ul></div>
+            <div class="gap-card"><div class="gap-card-title">인터벤션 시술 회복 과정 <span class="gap-badge">선점 기회</span></div><ul class="gap-list"><li>"시술 후 어떻게 되나요" 패턴 검색 빈번</li><li>경쟁 병원 인터벤션 FAQ 전무</li><li>최소침습·빠른 회복이라는 포지셔닝 강화 효과</li></ul></div>
+            <div class="gap-card"><div class="gap-card-title">방사선 치료 가능 병원 현황 <span class="gap-badge">선점 기회</span></div><ul class="gap-list"><li>"어디서 받을 수 있나요" 유형 질문 — 검색량 꾸준</li><li>병원 선택 단계의 보호자를 직접 유입 가능</li><li>경쟁 병원 FAQ 전무, AI 검색 채택 시 헬릭스 노출 직결</li></ul></div>
+            <div class="gap-card"><div class="gap-card-title">혈액투석 vs 복막투석 비교 <span class="gap-badge">선점 기회</span></div><ul class="gap-list"><li>두 치료법 차이를 설명하는 FAQ 어디에도 없음</li><li>중증 보호자의 의사결정 단계 정보 수요 높음</li><li>헬릭스 CRRT 역량을 자연스럽게 소개 가능</li></ul></div>
+            <div class="gap-card"><div class="gap-card-title">방사성 요오드 치료 병원 수 <span class="gap-badge">독점 가능</span></div><ul class="gap-list"><li>"국내에 몇 곳인가요" 유형 — AI 검색 채택 확률 최상위</li><li>헬릭스가 시행하는 사실을 전제로 한 답변 구조 가능</li><li>보호자의 신뢰도 즉시 상승 효과</li></ul></div>
+          </div>
+
+          <h3 class="faq-subhead">3-3. 최종 FAQ 후보 확정 목록 (34문항)</h3>
+          <table class="final-table">
+            <thead><tr><th>#</th><th>질문</th><th>선정 근거</th></tr></thead>
+            <tbody>
+              <tr><td class="final-num">01</td><td class="final-q"><span class="cat-label cl-neuro">신경계</span><br>강아지가 갑자기 발작을 일으켰습니다. 원인이 뇌종양일 수 있나요?<small>검색량 상 / AI 적합성 상 / 경쟁 공백 상</small></td><td class="final-reason">3축 최상위 교차. "강아지 발작 원인" 고검색량 + 경쟁 FAQ 전무.</td></tr>
+              <tr><td class="final-num">02</td><td class="final-q"><span class="cat-label cl-neuro">신경계</span><br>강아지 뇌종양 수술의 위험도는 어느 정도인가요?<small>검색량 상 / AI 적합성 상 / 경쟁 공백 상</small></td><td class="final-reason">고위험 수술에 대한 보호자 불안 해소 수요. 수술 네비게이터 연계 답변 가능.</td></tr>
+              <tr><td class="final-num">03</td><td class="final-q"><span class="cat-label cl-neuro">신경계</span><br>강아지 디스크 수술 후 회복 기간은 얼마나 걸리나요?<small>검색량 상 / AI 적합성 중 / 경쟁 공백 상</small></td><td class="final-reason">"강아지 디스크 수술 회복" 고검색량. 재활 연계 포지셔닝 가능.</td></tr>
+              <tr><td class="final-num">04</td><td class="final-q"><span class="cat-label cl-neuro">신경계</span><br>강아지 머리가 한쪽으로 기울고 눈이 떨립니다. 무슨 증상인가요?<small>검색량 중 / AI 적합성 상 / 경쟁 공백 상</small></td><td class="final-reason">증상 기반 검색 패턴. 전정 질환·뇌병변 감별 설명으로 신뢰도 제고.</td></tr>
+              <tr><td class="final-num">05</td><td class="final-q"><span class="cat-label cl-neuro">신경계</span><br>수술 네비게이터란 무엇이며, 일반 수술과 어떻게 다른가요? <span style="color:#1a4fa0;font-size:11px;">▲ 신규</span><small>검색량 하 / AI 적합성 상 / 경쟁 공백 최상</small></td><td class="final-reason">헬릭스 단독 포지셔닝. AI 검색 채택 시 브랜드 노출 직결. 검색량 낮아도 전략적 필수 포함.</td></tr>
+              <tr><td class="final-num">06</td><td class="final-q"><span class="cat-label cl-intervention">인터벤션</span><br>종양 색전술이란 무엇이며, 수술과 어떻게 다른가요?<small>검색량 중 / AI 적합성 상 / 경쟁 공백 상</small></td><td class="final-reason">중재시술 개념 설명 수요 높음. 경쟁 FAQ 전무.</td></tr>
+              <tr><td class="final-num">07</td><td class="final-q"><span class="cat-label cl-intervention">인터벤션</span><br>강아지 담낭 점액종은 반드시 수술해야 하나요?<small>검색량 상 / AI 적합성 중 / 경쟁 공백 상</small></td><td class="final-reason">"담낭 점액종 수술 vs 관리" 검색량 꾸준. 응급 수술 필요성 안내 역할.</td></tr>
+              <tr><td class="final-num">08</td><td class="final-q"><span class="cat-label cl-intervention">인터벤션</span><br>스텐트 시술은 어떤 상황에서 시행되나요?<small>검색량 중 / AI 적합성 상 / 경쟁 공백 상</small></td><td class="final-reason">기관·요도·담도 등 다양한 적응증 포괄 설명 가능. 경쟁 FAQ 전무.</td></tr>
+              <tr><td class="final-num">09</td><td class="final-q"><span class="cat-label cl-oncology">종양</span><br>강아지 유선 종양은 어떻게 치료하나요?<small>검색량 상 / AI 적합성 중 / 경쟁 공백 중</small></td><td class="final-reason">고검색량 질환. 다학제 진료 포지셔닝과 연결 가능.</td></tr>
+              <tr><td class="final-num">10</td><td class="final-q"><span class="cat-label cl-intervention">인터벤션</span><br>인터벤션 시술 후 입원 기간과 회복 과정은 어떻게 되나요? <span style="color:#1a4fa0;font-size:11px;">▲ 신규</span><small>검색량 중 / AI 적합성 상 / 경쟁 공백 최상</small></td><td class="final-reason">최소침습 장점을 FAQ에서 자연 강조. 보호자 불안 해소 효과.</td></tr>
+              <tr><td class="final-num">11</td><td class="final-q"><span class="cat-label cl-oncology">종양/방사선</span><br>반려동물도 방사선 치료를 받을 수 있나요?<small>검색량 상 / AI 적합성 상 / 경쟁 공백 상</small></td><td class="final-reason">방사선 치료 인식 부재한 보호자 대상 기초 교육 FAQ. AI 채택 최상위 유형.</td></tr>
+              <tr><td class="final-num">12</td><td class="final-q"><span class="cat-label cl-oncology">방사선</span><br>방사선 치료 중 부작용은 어떻게 관리하나요?<small>검색량 중 / AI 적합성 상 / 경쟁 공백 상</small></td><td class="final-reason">치료 결정 이후 보호자가 반드시 갖는 질문. 경쟁 FAQ 전무.</td></tr>
+              <tr><td class="final-num">13</td><td class="final-q"><span class="cat-label cl-oncology">종양</span><br>고양이 비만세포종은 어떤 치료가 필요한가요?<small>검색량 상 / AI 적합성 중 / 경쟁 공백 상</small></td><td class="final-reason">고검색량 종양 질환. 피부·내장형 감별 설명으로 전문성 표현 가능.</td></tr>
+              <tr><td class="final-num">14</td><td class="final-q"><span class="cat-label cl-oncology">종양</span><br>항암 치료 중 강아지가 밥을 잘 먹지 않습니다. 어떻게 해야 하나요?<small>검색량 상 / AI 적합성 중 / 경쟁 공백 중</small></td><td class="final-reason">항암 중 보호자 불안 해소 수요 높음. 실질적 관리 지침으로 신뢰도 제고.</td></tr>
+              <tr><td class="final-num">15</td><td class="final-q"><span class="cat-label cl-oncology">방사선</span><br>방사선 치료가 가능한 병원이 국내에 얼마나 되나요? <span style="color:#1a4fa0;font-size:11px;">▲ 신규</span><small>검색량 중 / AI 적합성 상 / 경쟁 공백 최상</small></td><td class="final-reason">병원 선택 단계 보호자 유입. AI 검색 채택 시 헬릭스 즉시 노출 구조.</td></tr>
+              <tr><td class="final-num">16</td><td class="final-q"><span class="cat-label cl-thyroid">고양이 갑상선</span><br>고양이 갑상선기능항진증이란 무엇인가요?<small>검색량 상 / AI 적합성 상 / 경쟁 공백 상</small></td><td class="final-reason">고양이 중·노령 보호자 핵심 질문. "고양이 살빠짐 원인" 연결 검색량.</td></tr>
+              <tr><td class="final-num">17</td><td class="final-q"><span class="cat-label cl-thyroid">고양이 갑상선</span><br>방사성 요오드(I-131) 치료는 어떻게 진행되나요?<small>검색량 상 / AI 적합성 상 / 경쟁 공백 최상</small></td><td class="final-reason">국내 시행 병원 극소 → 공급 독점 FAQ. 보호자 결정 장벽 해소.</td></tr>
+              <tr><td class="final-num">18</td><td class="final-q"><span class="cat-label cl-thyroid">고양이 갑상선</span><br>약물 치료와 방사성 요오드 치료 중 어느 것이 더 나은가요?<small>검색량 상 / AI 적합성 상 / 경쟁 공백 최상</small></td><td class="final-reason">치료 선택 단계 핵심 질문. 요오드 치료 우위를 객관적으로 설명할 기회.</td></tr>
+              <tr><td class="final-num">19</td><td class="final-q"><span class="cat-label cl-thyroid">고양이 갑상선</span><br>요오드 치료 후 고양이와 함께 지내는 데 주의사항이 있나요?<small>검색량 상 / AI 적합성 상 / 경쟁 공백 최상</small></td><td class="final-reason">치료 결정 이후 필수 정보. 격리 우려를 해소하는 FAQ로 전환율 기여.</td></tr>
+              <tr><td class="final-num">20</td><td class="final-q"><span class="cat-label cl-thyroid">고양이 갑상선</span><br>방사성 요오드 치료를 시행하는 병원은 국내에 얼마나 있나요? <span style="color:#1a4fa0;font-size:11px;">▲ 신규</span><small>검색량 중 / AI 적합성 상 / 경쟁 공백 최상</small></td><td class="final-reason">AI 검색 채택 시 헬릭스 즉시 노출. 공급 희소성을 신뢰로 전환하는 구조.</td></tr>
+              <tr><td class="final-num">21</td><td class="final-q"><span class="cat-label cl-kidney">신장/투석</span><br>고양이 신부전 진단을 받았습니다. 투석 치료가 필요한가요?<small>검색량 상 / AI 적합성 상 / 경쟁 공백 상</small></td><td class="final-reason">고검색량 + 경쟁 FAQ 전무. CRRT 도입 사실과 자연 연결.</td></tr>
+              <tr><td class="final-num">22</td><td class="final-q"><span class="cat-label cl-kidney">신장/투석</span><br>혈액투석과 복막투석은 어떻게 다른가요? <span style="color:#1a4fa0;font-size:11px;">▲ 신규</span><small>검색량 중 / AI 적합성 상 / 경쟁 공백 최상</small></td><td class="final-reason">중증 신부전 보호자의 의사결정 지원. 헬릭스 CRRT 역량 자연 노출.</td></tr>
+              <tr><td class="final-num">23</td><td class="final-q"><span class="cat-label cl-kidney">심장</span><br>강아지 심장병 진단을 받았는데, 어떤 검사와 치료가 필요한가요?<small>검색량 상 / AI 적합성 중 / 경쟁 공백 중</small></td><td class="final-reason">승모판 폐쇄부전 등 고빈도 심장 질환 대응. 내과 전문성 표현.</td></tr>
+              <tr><td class="final-num">24</td><td class="final-q"><span class="cat-label cl-ophtho">안과</span><br>강아지 백내장 수술은 언제 하는 것이 좋은가요?<small>검색량 상 / AI 적합성 중 / 경쟁 공백 중</small></td><td class="final-reason">수술 시기에 대한 보호자 혼란 해소. 안과 수술 수요 직접 연결.</td></tr>
+              <tr><td class="final-num">25</td><td class="final-q"><span class="cat-label cl-ophtho">안과</span><br>강아지 녹내장은 어떤 증상이 나타나나요?<small>검색량 상 / AI 적합성 상 / 경쟁 공백 중</small></td><td class="final-reason">증상 인지 → 조기 내원 유도 경로. 안과 전문성 표현 기회.</td></tr>
+              <tr><td class="final-num">26</td><td class="final-q"><span class="cat-label cl-ophtho">안과</span><br>강아지 각막 궤양은 어떻게 치료하나요?<small>검색량 중 / AI 적합성 중 / 경쟁 공백 중</small></td><td class="final-reason">안과 범주 보완. 각막 손상 초기 대응 안내로 내원 전환 가능.</td></tr>
+              <tr><td class="final-num">27</td><td class="final-q"><span class="cat-label cl-general">건강검진</span><br>반려동물 건강검진은 몇 살부터 받아야 하나요?<small>검색량 상 / AI 적합성 중 / 경쟁 공백 중</small></td><td class="final-reason">진입 장벽이 낮은 질문. 건강검진 → 전문 진료 유입 퍼널 역할.</td></tr>
+              <tr><td class="final-num">28</td><td class="final-q"><span class="cat-label cl-general">건강검진</span><br>강아지 MRI 검사는 어떤 경우에 필요한가요?<small>검색량 상 / AI 적합성 상 / 경쟁 공백 중</small></td><td class="final-reason">MRI 필요 여부는 보호자 빈번 질문. 영상의학 역량 자연 노출.</td></tr>
+              <tr><td class="final-num">29</td><td class="final-q"><span class="cat-label cl-general">건강검진</span><br>결과가 정상이어도 정기 건강검진을 받아야 하나요?<small>검색량 중 / AI 적합성 중 / 경쟁 공백 상</small></td><td class="final-reason">예방의학적 포지셔닝 강화. 재방문율 제고 역할.</td></tr>
+              <tr><td class="final-num">30</td><td class="final-q"><span class="cat-label cl-general">포지셔닝</span><br>헬릭스동물메디컬센터는 어떤 병원인가요?<small>검색량 중 / AI 적합성 상 / 경쟁 공백 상</small></td><td class="final-reason">브랜드 인지도 구축 FAQ. AI 검색에서 병원명 검색 시 답변 채택 필수 항목.</td></tr>
+              <tr><td class="final-num">31</td><td class="final-q"><span class="cat-label cl-general">포지셔닝</span><br>동네 동물병원과 전문 병원은 어떻게 다른가요?<small>검색량 상 / AI 적합성 상 / 경쟁 공백 상</small></td><td class="final-reason">2차 병원 선택 단계 보호자 대상 필수 FAQ. 전원 의사결정 지원.</td></tr>
+              <tr><td class="final-num">32</td><td class="final-q"><span class="cat-label cl-general">포지셔닝</span><br>타 지역에서도 진료를 받을 수 있나요?<small>검색량 상 / AI 적합성 중 / 경쟁 공백 상</small></td><td class="final-reason">광역 방문 보호자의 불안 해소. 서초·일산 양 지점 안내와 연결.</td></tr>
+              <tr><td class="final-num">33</td><td class="final-q"><span class="cat-label cl-general">포지셔닝</span><br>다른 병원에서 세컨드 오피니언을 받고 싶은데 가능한가요?<small>검색량 상 / AI 적합성 중 / 경쟁 공백 상</small></td><td class="final-reason">세컨드 오피니언 수요 꾸준. 신뢰 기반 첫 방문 유도 효과.</td></tr>
+              <tr><td class="final-num">34</td><td class="final-q"><span class="cat-label cl-general">치과</span><br>고양이 구내염이 재발하는 이유는 무엇인가요?<small>검색량 상 / AI 적합성 중 / 경쟁 공백 중</small></td><td class="final-reason">난치성 구내염 보호자의 핵심 질문. 전발치 전문 진료로 연결 가능.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 class="faq-subhead">3-4. 이번 목록에서 제외하거나 보류한 항목</h3>
+          <p>아래 항목들은 검색량이 낮은 게 아니라, 헬릭스가 강조하려는 전문성과 연결이 약하거나 진료팀 확인이 필요한 경우여서 이번 34개에서 우선순위를 낮췄습니다. 제외 판단에 동의하지 않으시거나 추가 의견이 있으시면 언제든지 말씀해 주시면 반영하겠습니다.</p>
+          <table class="excl-table">
+            <thead><tr><th style="width:80px;">판정</th><th>질문</th><th>우선순위를 낮춘 이유</th></tr></thead>
+            <tbody>
+              <tr><td><span class="verdict v-drop">제외</span></td><td class="excl-q">강아지 스케일링은 얼마나 자주 해야 하나요?</td><td>검색량은 높지만 1차 병원에서도 두루 다루는 기초 질문입니다. 경쟁 공백이 없어 선점 효과를 기대하기 어렵고, 같은 치과 범주에서 고양이 구내염·치근단 농양이 헬릭스 전문성을 더 잘 보여줄 수 있어 그쪽으로 대체했습니다.</td></tr>
+              <tr><td><span class="verdict v-review">보류</span></td><td class="excl-q">강아지 자궁축농증 수술 후 관리는 어떻게 해야 하나요?</td><td>검색량은 높습니다. 다만 답변 내용이 일반외과 수준에 머물러 헬릭스의 특화 진료와 연결 포인트를 찾기가 어려웠습니다. 진료팀에서 특이 케이스나 프로토콜이 있으시다면 포함 재검토를 권장합니다.</td></tr>
+              <tr><td><span class="verdict v-review">보류</span></td><td class="excl-q">강아지 치근단 농양은 어떻게 알 수 있나요?</td><td>치과 전문성을 충분히 표현할 수 있는 질문입니다. 이번 34개 안에서 치과 범주 비중을 감안해 우선순위를 낮췄을 뿐이며, 치과 FAQ를 추가로 확장하실 때 1순위로 추가를 권장합니다.</td></tr>
+            </tbody>
+          </table>
+
+        </div>
+      </details>
+
       <div style="padding:14px 22px;font-size:11.5px;color:var(--ink-muted);background:var(--surface-2);border-top:1px solid var(--line);">
-        보고서를 새 탭으로 열려면 <a href="helix_faq_report.html" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600;">helix_faq_report.html ↗</a>
+        원본 보고서를 새 탭으로 열려면 <a href="helix_faq_report.html" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600;">helix_faq_report.html ↗</a>
       </div>
     </div>
   </div>
